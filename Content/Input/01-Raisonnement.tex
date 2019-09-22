@@ -1,6 +1,6 @@
 % !TEX program = xelatex
 % !TEX encoding = UTF8
-% !TEX root = ../main.tex
+% !TEX root = ../Main/main.tex
 
 \section{Éléments de logique}
 On utilise la définition d'ensemble ainsi que les calculs algébriques sur les petits entiers. On présente un peu de
@@ -14,11 +14,11 @@ calcul propositionnel.
 \begin{vocabulary}
 \par\noindent
 \begin{itemize}
-\itemrnd
+\item
 valeur de vérité est synonyme de valeur logique.
-\itemrnd
+\item
 \(𝗩\) et \(1\) sont synonymes de \(\mytrue\).
-\itemrnd
+\item
 \(𝗙\) et \(0\) sont synonymes de \(\myfalse\).
 \end{itemize}
 \end{vocabulary}
@@ -33,9 +33,9 @@ Une proposition est un objet mathématique auquel est associée une valeur logiq
 \begin{definition}
 \par\noindent
 \begin{itemize}
-\itemrnd
+\item
 \(\mytrue\) est une proposition à laquelle est associée la valeur logique \(\mytrue\).
-\itemrnd
+\item
 \(\myfalse\) est une proposition à laquelle est associée la valeur logique \(\myfalse\).
 \end{itemize}
 \end{definition}
@@ -274,6 +274,7 @@ On peut le lire dans le tableau précédent, mais on a aussi
 &{}=𝚟𝚕(𝖯)+𝚟𝚕(¬𝖯)-𝚟𝚕(𝖯).𝚟𝚕(¬𝖯)
 \\&{}=𝚟𝚕(𝖯)+1-𝚟𝚕(𝖯)-𝚟𝚕(𝖯).(1-𝚟𝚕(𝖯))
 \\&{}=1
+\qedhere
 \end{align*}
 \end{proof}
 %
@@ -282,10 +283,10 @@ On peut le lire dans le tableau précédent, mais on a aussi
 [Implication]
 Si \(𝖯\) et \(𝖰\) sont des propositions, on pose :
 \begin{equation*}
-(𝖯⇒𝖰)≝((\mynot 𝖯)\myor𝖰)
+(𝖯⇒𝖰)\mybydef{=}(\bigl(\mynot 𝖯)\myor𝖰\bigr)
 \end{equation*}
 \begin{equation*}
-(𝖰⇐𝖯)≝(𝖯⇒𝖰)
+(𝖰⇐𝖯)\mybydef{=}(𝖯⇒𝖰)
 \end{equation*}
 \(⇒\) est lu «implique» ou entraine.
 \(⇐\) est lu «est impliqué par» ou «est entrainé par».
@@ -298,7 +299,7 @@ conclusion.
 Si \(𝖯\) et \(𝖰\) sont des propositions, on pose
 \begin{equation*}
 𝖯⟺𝖰
-\overset{\text{déf}}{=}(𝖯\myand𝖰)\myor((\mynot 𝖯)\myand(\mynot 𝖰))
+\overset{\text{déf}}{=}(𝖯\myand𝖰)\myor\bigl((\mynot 𝖯)\myand(\mynot 𝖰)\bigr)
 \end{equation*}
 \end{definition}
 \begin{vocabulary}
@@ -310,21 +311,21 @@ Les équivalences sont les propositions complexes de la forme \(𝖯⟺𝖰\).
 \begin{theorem}[Tautologies]
 Si \(𝖯\) et \(𝖰\) sont des propositions, les équivalences suivantes sont des tautologies :
 \begin{itemize}
-\itemrnd
-(\mynot (\mynot 𝖯))⟺𝖯
-\itemrnd
+\item
+\(\bigl(\mynot (\mynot 𝖯)\bigr)⟺𝖯\)
+\item
 \((𝖯\myand𝖯)⟺𝖯\),
-\itemrnd
+\item
 \((𝖯\myor𝖯)⟺𝖯\)
-\itemrnd
+\item
 \((𝖯\myand𝖰)⟺(𝖰\myand𝖯)\)
-\itemrnd
+\item
 \(\displaystyle
-\mynot(𝖯\myand𝖰)⟺((\mynot𝖯)\myor(\mynot𝖰))
+\mynot(𝖯\myand𝖰)⟺\bigl((\mynot𝖯)\myor(\mynot𝖰)\bigr)
 \)
-\itemrnd
+\item
 \(\displaystyle
-\mynot(𝖯\myor𝖰)⟺()(\mynot𝖯)\myand(\mynot 𝖰))
+\mynot(𝖯\myor𝖰)⟺\mynot𝖯)\myand(\mynot 𝖰)
 \)
 \end{itemize}
 \end{theorem}
@@ -409,7 +410,15 @@ Il est facile de voir à partir de leurs définitions que \(\myand\) et
 \end{array}
 \end{equation*}
 \begin{equation*}
-\begin{array}{|*4{>{\(}wc{0.75cm}<{\)}|}*6{>{\(}wc{1.5cm}<{\)}|}}
+\begin{array}{|>{\(}wc{0.5cm}<{\)}|
+>{\(}wc{0.75cm}<{\)}|
+>{\(}wc{0.5cm}<{\)}|
+>{\(}wc{0.75cm}<{\)}|
+>{\(}wc{1.25cm}<{\)}|
+>{\(}wc{1.5cm}<{\)}|
+>{\(}wc{1.25cm}<{\)}|
+>{\(}wc{1.5cm}<{\)}|
+*2{>{\(}wc{1.5cm}<{\)}|}}
 \hline
 𝖯 &
 ¬𝖯 &
@@ -420,7 +429,7 @@ Il est facile de voir à partir de leurs définitions que \(\myand\) et
 𝖯⇔𝖰 &
 𝖯⇒𝖰 &
 𝖰⇒𝖯 &
-(𝖯⇒𝖰)\mathbin{∧}(𝖰⇒𝖯)\\\hline
+\stackrel{(𝖯⇒𝖰)\mathbin{∧}}{(𝖰⇒𝖯)}\\\hline
 1 &
 0 &
 1 &
@@ -539,9 +548,9 @@ Dans la suite, on n'utilise plus \(𝗩\) et \(𝗙\), seulement \(1\) et \(0\).
 [Tautologies]
 Si \(𝖯\) et \(𝖰\) sont des propositions, les propositions suivantes sont des tautologies :
 \begin{itemize}
-\itemrnd
+\item
 \(𝖯⇒𝖯\),
-\itemrnd
+\item
 \(𝖯⇒(𝖯\myor𝖰)\)
 \end{itemize}
 \end{theorem}
@@ -583,6 +592,7 @@ Si \(𝖯\) et \(𝖰\) sont des propositions, les propositions suivantes sont d
 0 &
 1\\\hline
 \end{array}
+\qedhere
 \end{equation*}
 \end{proof}
 %
@@ -733,23 +743,23 @@ Avec l'associativité de \(\myor\) vue ci-dessous, on a
 Si \(𝖯\) et \(𝖰\) sont des propositions, les propositions complexes suivantes sont toutes des
 tautologies :
 \begin{itemize}
-\itemrnd
+\item
 \(
 (𝖯⇔𝖰)⟺((𝖯⇒𝖰)\myand(𝖰⇒𝖯))
 \)
-\itemrnd
+\item
 \(
 (𝖯⇔𝖰)⟺(𝖰⇔𝖯)
 \)
-\itemrnd
+\item
 \(
 \mynot (𝖯⇔𝖰)⟺((\mynot 𝖯)⇔𝖰)
 \)
-\itemrnd
+\item
 \(
 \mynot (𝖯⇔𝖰)⟺(𝖯⇔(\mynot 𝖰))
 \)
-\itemrnd
+\item
 \(
 \mynot (𝖯⇒𝖰)⟺(𝖯\myand\mynot 𝖰)
 \)
@@ -832,13 +842,11 @@ Pour finir, par substitutions successives :
 \begin{theorem}
 [Contraposition]
 Si \(𝖯\) et \(𝖰\) sont des propositions, on a les tautologies :
-\begin{equation*}
-(𝖯⟺
-𝖰)⟺((\mynot 𝖯)⟺ (\mynot 𝖰))
-\end{equation*}
-\begin{equation*}
-(𝖯⇒𝖰)⟺((\mynot 𝖰)⇒(\mynot 𝖯))
-\end{equation*}
+\begin{gather*}
+(𝖯⇔𝖰)⟺\bigl((\mynot 𝖯)⇔(\mynot 𝖰)\bigl)
+\\
+(𝖯⇒𝖰)⟺\bigl((\mynot 𝖰)⇒(\mynot 𝖯)\bigr)
+\end{gather*}
 \end{theorem}
 \begin{proof}
 \begin{equation*}
@@ -1027,24 +1035,24 @@ L'équivalence des propositions définit une relation d'équivalence entre les p
 \begin{proof}
 \par\noindent
 \begin{itemize}
-\itemrnd
+\item
 Réflexivité :
 \begin{align*}
 𝖯⇔𝖯
-&≝
-(𝖯\myand𝖯)\myor((\mynot 𝖯)\myand(\mynot 𝖯))
+&\mybydef{=}
+(𝖯\myand𝖯)\myor\bigl((\mynot 𝖯)\myand(\mynot 𝖯)\bigr)
 \\&\overset{\text{subs}}{⟺}
-(𝖯\myor(\mynot 𝖯))
+\bigl(𝖯\myor(\mynot 𝖯)\bigr)
 \end{align*}
-\itemrnd
+\item
 Symétrie : c'est la première tautologie du théorème précédent.
-\itemrnd
+\item
 Transitivité :
 \begin{equation*}
 \setlength{\extrarowheight}{0.25ex}
-\mynewcolumntype{A}{1cm}
-\mynewcolumntype{B}{1.5cm}
-\mynewcolumntype{C}{3.5cm}
+\mynewcolumntype{A}{0.5cm}
+\mynewcolumntype{B}{1.25cm}
+\mynewcolumntype{C}{3.75cm}
 \begin{array}{|AAABBCB}
 \hline
 𝖯 &
@@ -1111,6 +1119,7 @@ Transitivité :
 1 &
 1\\\hline
 \end{array}
+\qedhere
 \end{equation*}
 \end{itemize}
 \end{proof}
@@ -1122,19 +1131,19 @@ On peut écrire les suites d'équivalence en ligne.
 [Associativités]
 Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
 \begin{itemize}
-\itemrnd
+\item
 \(
 (𝖯\myand(𝖰\myand𝖱))⟺((𝖯\myand𝖰)\myand𝖱)
 \)
-\itemrnd
+\item
 \(
 (𝖯\myor(𝖰\myor𝖱))⟺((𝖯\myor𝖰)\myor𝖱)
 \)
-\itemrnd
+\item
 \(
 (𝖯⇔(𝖰⇔𝖱))⟺((𝖯⇔𝖰)⇔𝖱)
 \)
-\itemrnd
+\item
 \(
 (𝖯⇒(𝖰⇒𝖱))⟹((𝖯⇒𝖰)⇒𝖱)
 \)
@@ -1152,9 +1161,9 @@ Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
 \begin{proof}
 \begin{equation*}
 \setlength{\extrarowheight}{0.25ex}
-\mynewcolumntype{A}{0.75cm}
-\mynewcolumntype{B}{1.25cm}
-\mynewcolumntype{C}{2.5cm}
+\mynewcolumntype{A}{0.5cm}
+\mynewcolumntype{B}{1cm}
+\mynewcolumntype{C}{2.25cm}
 \begin{array}{|AAABCBC}
 \hline
 𝖯 &
@@ -1241,9 +1250,9 @@ On en déduit :
 Pour les deux dernières lignes :
 \begin{equation*}
 \setlength{\extrarowheight}{0.25ex}
-\newcolumntype{X}{>{\(}wc{1.5cm}<{\)}|>{\(}wc{2.5cm}<{\)}|}
+\newcolumntype{X}{>{\(}wc{1.25cm}<{\)}|>{\(}wc{2.5cm}<{\)}|}
 \begin{array}{|
-*{3}{>{\(}wc{0.75cm}<{\)}|}
+*{3}{>{\(}wc{0.5cm}<{\)}|}
 *{2}{X}
 }
 \hline
@@ -1280,7 +1289,8 @@ Pour les deux dernières lignes :
 0 &
 1 &
 1 &
-0\\\hline
+0 &
+1\\\hline
 0 &
 1 &
 1 &
@@ -1391,11 +1401,11 @@ Pour les deux dernières lignes :
 [Distributivités \(\myand\) \(\myor\)]
 Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
 \begin{itemize}
-\itemrnd
+\item
 \(
 (𝖯\myor(𝖰\myand𝖱))⟺((𝖯\myor𝖰)\myand(𝖯\myor𝖱))
 \)
-\itemrnd
+\item
 \(
 (𝖯\myand(𝖰\myor𝖱))⟺((𝖯\myand𝖰)\myor(𝖯\myand𝖱))
 \)
@@ -1405,9 +1415,9 @@ Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
 \begin{proof}
 \begin{equation*}
 \setlength{\extrarowheight}{0.25ex}
-\mynewcolumntype{A}{0.75cm}
-\mynewcolumntype{B}{1.25cm}
-\mynewcolumntype{C}{3cm}
+\mynewcolumntype{A}{0.5cm}
+\mynewcolumntype{B}{1cm}
+\mynewcolumntype{C}{3.25cm}
 \begin{array}{|AAABCBBC}
 \hline
 𝖯 &
@@ -1498,7 +1508,8 @@ On pourrait faire le même tableau en échangeant les deux opérateurs, on peut 
 \\&{}⟺
 ¬(𝖯\mathbin{∧}𝖰)\mathbin{∧}¬(𝖯\mathbin{∧}𝖱)
 \\&{}⟺
-¬((𝖯\mathbin{∧}𝖰)\mathbin{∨}(𝖯\mathbin{∧}𝖱))
+¬\bigl((𝖯\mathbin{∧}𝖰)\mathbin{∨}(𝖯\mathbin{∧}𝖱)\bigr)
+\qedhere
 \end{align*}
 \end{proof}
 
@@ -1506,28 +1517,28 @@ On pourrait faire le même tableau en échangeant les deux opérateurs, on peut 
 [Distributivités à gauche de $⇒$]
 Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
 \begin{itemize}
-\itemrnd
+\item
 \(
-(𝖯⇒(𝖰\myand𝖱))⟺((𝖯⇒𝖰)\myand(𝖯⇒𝖱))
+\bigl(𝖯⇒(𝖰\myand𝖱)\bigr)⟺\bigl((𝖯⇒𝖰)\myand(𝖯⇒𝖱)\bigr)
 \)
-\itemrnd
+\item
 \(
-(𝖯⇒(𝖰\myor𝖱))⟺((𝖯⇒𝖰)\myor(𝖯⇒𝖱))
+\bigl(𝖯⇒(𝖰\myor𝖱)\bigr)⟺\bigl((𝖯⇒𝖰)\myor(𝖯⇒𝖱)\bigr)
 \)
 \end{itemize}
 \end{theorem}
 \begin{proof}
 Par la définition de l'implication et le théorème précédent,
 \begin{align*}
-¬𝖯\mathbin{∨}(𝖰\mathbin{∧}𝖱))
+¬\bigl(𝖯\mathbin{∨}(𝖰\mathbin{∧}𝖱)\bigr)
 &{}⟺
-((¬𝖯\mathbin{∨}𝖰)\mathbin{∧}(¬𝖯\mathbin{∨}𝖱))(¬𝖯\mathbin{∨}(𝖰\mathbin{∨}𝖱))
-\\&{}⟺
-((¬𝖯\mathbin{∨}¬𝖯)\mathbin{∨}(𝖰\mathbin{∨}𝖱))
-\\&{}⟺
+(¬𝖯\mathbin{∨}𝖰)\mathbin{∧}(¬𝖯\mathbin{∨}𝖱)
+\\
+¬𝖯\mathbin{∨}(𝖰\mathbin{∨}𝖱)
+&{}⟺
 ((¬𝖯\mathbin{∨}𝖰)\mathbin{∨}(¬𝖯\mathbin{∨}𝖱))
 \end{align*}
-On a terminé en utilisant associativité et commutativité de $\mathbin{∨}$.
+On a terminé en utilisant associativité et commutativité de \(\mathbin{∨}\).
 \end{proof}
 %
 \begin{theorem}
@@ -1535,11 +1546,11 @@ On a terminé en utilisant associativité et commutativité de $\mathbin{∨}$.
 Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
 
 \begin{itemize}
-\itemrnd
+\item
 \(
 ((𝖯\myand𝖰)⇒𝖱)⟺(𝖯⇒(𝖰⇒𝖱))
 \)
-\itemrnd
+\item
 \(
 ((𝖯\myor𝖰)⇒𝖱)⟺((𝖯⇒𝖱)\myand(𝖰⇒𝖱))
 \)
@@ -1571,19 +1582,20 @@ et par la définition de l'implication et le théorème \ref{seq:refTheorem16},
 (¬𝖯\mathbin{∨}𝖱)\mathbin{∧}(¬𝖰\mathbin{∨}𝖱)
 \\&{}⟺
 (𝖯⇒𝖱)\mathbin{∧}(𝖰⇒𝖱)
+\qedhere
 \end{align*}
 \end{proof}
 %
 \begin{theorem}
 Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions.
 \begin{itemize}
-\itemrnd
+\item
 \(
-(𝖯⇔(𝖰\myand𝖱))⟸((𝖯⇔𝖰)\myand(𝖯⇔𝖱))
+\bigl(𝖯⇔(𝖰\myand𝖱)\bigr)⟸\bigl((𝖯⇔𝖰)\myand(𝖯⇔𝖱)\bigr)
 \)
-\itemrnd
+\item
 \(
-(𝖯⇔(𝖰\myor𝖱))⟹((𝖯⇔𝖰)\myor(𝖯⇔𝖱))
+\bigl(𝖯⇔(𝖰\myor𝖱)\bigr)⟹\bigl((𝖯⇔𝖰)\myor(𝖯⇔𝖱)\bigr)
 \)
 \end{itemize}
 \end{theorem}
@@ -1678,19 +1690,19 @@ Pour la première implication, on compare les colonnes en gras :
 Les cases grises montrent qu'il n'y a pas d'équivalences.
 Pour la deuxième implication, sont équivalentes :
 \begin{itemize}
-\itemrnd
+\item
 \(
 (𝖯⇔(𝖰\mathbin{∧}𝖱))⟸((𝖯⇔𝖰)\mathbin{∧}(𝖯⇔𝖱))
 \)
-\itemrnd
+\item
 \(
 ¬((𝖯⇔𝖰)\mathbin{∧}(𝖯⇔𝖱))⟹¬(𝖯⇔(𝖰\mathbin{∧}𝖱))
 \)
-\itemrnd
+\item
 \(
 (¬(𝖯⇔𝖰)\mathbin{∨}¬(𝖯⇔𝖱))⟹(¬𝖯⇔¬(𝖰\mathbin{∧}𝖱))
 \)
-\itemrnd
+\item
 \(
 ((¬𝖯⇔¬𝖰)\mathbin{∨}(¬𝖯⇔¬𝖱))⟹(¬𝖯⇔(¬𝖰\mathbin{∨}¬𝖱))
 \)
@@ -1707,16 +1719,16 @@ Il suffit de substituer à chaque proposition sa négation.
 
 Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions.
 \begin{itemize}
-\itemrnd
+\item
 $⇒$ est réflexive :
 Par définition, $𝖯⇒𝖯$ est la tautologie \((\mynot 𝖯)\myor𝖯\).
-\itemrnd
+\item
 \(⇒\) est anti-symétrique à équivalence près :
 on a déjà vu la tautologie
 \begin{equation*}
 (𝖯⇒𝖰\myand𝖯\Leftarrow𝖰)⟺(𝖯⇔𝖰)
 \end{equation*}
-\itemrnd
+\item
 $⇒$ est transitive :
 \begin{equation*}
 \setlength\extrarowheight{0.25ex}
@@ -1800,11 +1812,11 @@ Cette partie repose sur la notion d'ensembles détaillée au chapitre suivant.
 [Quantificateurs existentiel et universel]
 Pour tout ensemble \(𝐸\), les propositions suivantes sont des tautologies
 \begin{itemize}
-\itemrnd
+\item
 \(
 𝐸≠∅⟺∃𝑥(𝑥∈𝐸)
 \)
-\itemrnd
+\item
 \(
 𝐸=∅⟺∀𝑥(𝑥∉𝐸)
 \)
@@ -1819,13 +1831,13 @@ Ce ne sont pas des définitions car la notion d'ensemble est pré-requise, qui u
 Étant donnés un ensemble \(𝛺\) et une proposition dont l'écriture dépend formellement d'un paramètre \(𝑥\)
 notée $𝖯(𝑥)$,
 \begin{itemize}
-\itemrnd
+\item
 \(\displaystyle
 ∃𝑥∈𝛺\;(𝖯(𝑥))
 \overset{\text{déf}}{⟺}
 ∃𝑥\;(𝑥∈𝛺\myand𝖯(𝑥))
 \)
-\itemrnd
+\item
 \(\displaystyle
 ∀𝑥∈𝛺\;(𝖯(𝑥))
 \overset{\text{déf}}{⟺}
@@ -1850,11 +1862,11 @@ possibles.
 Étant donnés un ensemble \(𝛺\) et une proposition dont l'écriture dépend formellement d'un paramètre \(𝑥\)
 notée \(𝖯(𝑥)\), on a les tautologies
 \begin{itemize}
-\itemrnd
+\item
 \(\displaystyle
 ∃𝑥∈𝛺\;𝖯(𝑥)⟺\{𝑧∈𝛺\;/\;𝖯(𝑧)\}≠∅⟹𝛺≠∅
 \)
-\itemrnd
+\item
 \(\displaystyle
 ∀𝑥∈𝛺\;(𝖯(𝑥))⟺\{𝑧∈𝛺\;/\;¬𝖯(𝑧)\}=∅⟺\{𝑧∈𝛺\;/\;𝖯(𝑧)\}=𝛺
 \)
