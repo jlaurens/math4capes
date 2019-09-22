@@ -1,0 +1,715 @@
+% !TEX encoding = UTF-8
+% !TEX program = xelatex
+% !TEX root =../Main/main.tex
+
+Dans la suite \(𝐺\), \(𝐹\) et \(𝐸\) désignent des ensembles.
+%
+\section{Dénombrement}
+Cardinal d’un ensemble fini.
+\subsection{Ensembles finis ou infinis}
+\subsubsection{Définitions}
+\begin{definition}
+\par\noindent
+\begin{enumerate}
+\item Un ensemble \(𝐸\) est \mykeyword{infini} signifie qu'il existe une injection de \(𝐸\) dans une
+partie stricte de \(𝐸\).
+\item Un ensemble \(𝐸\) est \mykeyword{fini} signifie qu'il n'est pas infini.
+\end{enumerate}
+\end{definition}
+\begin{theorem}
+\par\noindent
+\begin{enumerate}
+\item Un ensemble dont une partie est infinie est infini.
+\item Toute partie d'un ensemble fini est finie.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item Si \(𝐸⊂𝐺\) et \(𝜑~:𝐸→𝐸\) est une injection. L'application
+\begin{equation*}
+\begin{matrix}
+𝜓:&𝐺&⟶&𝐺
+\\
+&𝑥&⟼&\begin{cases}
+𝑥\text{ si }𝑥∈𝐺∖𝐸
+\\
+𝜑(𝑥)\text{ sinon}
+\end{cases}
+\end{matrix}
+\end{equation*}
+est une injection dont l'image est \(\operatorname{Im}𝜑∪𝐺∖𝐸\), qui est une partie stricte de \(𝐺\) dès que \(\operatorname{Im}𝜑\) est
+une partie stricte de \(𝐺\).
+\item Par contraposition de ce qui précède.
+\end{enumerate}
+\end{proof}
+\begin{theorem}
+Un ensemble infini privé d'un seul élément est encore infini.
+\end{theorem}
+\begin{proof}
+Soit \(𝐹⊊𝐸\), \(𝜑\) une injection de \(𝐸\) dans \(𝐹\) et \(𝑥∈𝐸\). Soit 𝜏 la transposition qui échange \(𝑥\) et
+\(𝜑(𝑥)\). \(𝜏(𝐹)\) est une partie stricte de \(𝐸\) car elle ne contient pas \(𝜏(𝐸∖𝐹)\). \(𝜏∘𝜑\) est une
+injection de \(𝐸\) dans \(𝜏(𝐹)\) telle que \(𝜏∘𝜑(𝑥)=𝑥\). Elle induit une injection de \(𝐸∖\{𝑥\}\) dans
+\(𝜏(𝐹)∖\{𝑥\}\) où \(𝜏(𝐹)∖\{𝑥\}⊊𝐸∖\{𝑥\}\). Donc \(𝐸∖\{𝑥\}\) est infini.
+\end{proof}
+\subsubsection[Intervalles entiers]{Intervalles entiers}
+\begin{theorem}
+Soit \(𝑛∈ℕ\), \(⟦1;𝑛⟧\) est un ensemble fini.
+\end{theorem}
+\begin{proof}
+Soit \(𝐸\) l'ensemble des entiers tels que \(⟦1;𝑛⟧\) est infini.
+Supposons par l'absurde que \(𝐸\) n'est pas vide. \(𝐸\) ne contient pas \(0\) car
+\(⟦1;0⟧=\mathsf{ ∅}\) et il n'existe pas de partie stricte de \(⟦1;0⟧\) donc il n'existe pas d'injection d'une
+partie stricte de \(⟦1;0⟧\) dans \(⟦1;0⟧\). Le minimum de \(𝐸\), non nul, est noté \(𝑚\). Comme \(⟦1;𝑚⟧\) est
+infini, et \(⟦1;𝑚⟧=⟦1;𝑚-1⟧∪\{𝑚\}\), par le lemme précédent, \ \(⟦1;𝑚-1⟧\) est infini, ce qui contredit la
+minimalité de \(𝑚\).
+\end{proof}
+\begin{theorem}
+Soient \(𝑛,𝑚∈ℕ\).
+\begin{enumerate}
+\item S'il existe une injection de \(⟦1;𝑛⟧\) dans \(⟦1;𝑚⟧\) alors \(𝑛⩽𝑚\).
+\item S'il existe une surjection de \(⟦1;𝑛⟧\) sur \(⟦1;𝑚⟧\) alors \(𝑛⩾𝑚\).
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item Par récurrence sur \(𝑛\).
+\begin{itemize}
+\item
+Initialisation.
+Pour \(𝑛=0\), comme \(𝑚∈ℕ\), \(𝑛=0⩽𝑚\).
+\item
+Hérédité.
+On montre d'abord que s'il existe une injection, notée \(𝜑\), de \(⟦1;𝑛+1⟧\) dans \(⟦1;𝑚+1⟧\) alors il
+existe une injection de \(⟦1;𝑛⟧\) dans \(⟦1;𝑚⟧\).
+\\
+Si \(𝑚+1∉\operatorname{Im}𝜑\), \(𝜑_{\left|⟦1;𝑛⟧\right.}\) est une injection \(⟦1;𝑛⟧\) dans \(⟦1;𝑚⟧\).
+\\
+Si \(𝑚+1∈\operatorname{Im}𝜑\), soit \(𝜏\) la transposition qui échange \(𝑛+1\) et \(𝜑^{-1}(𝑚+1)\),
+\(𝜑∘𝜏_{\left|⟦1;𝑛⟧\right.}\) est une injection de \(⟦1;𝑛⟧\) dans \(⟦1;𝑚⟧\).
+
+On combine avec une hypothèse de récurrence pour obtenir \(𝑛⩽𝑚\) et \(𝑛+1⩽𝑚+1\), ce qui donne l'hérédité.
+\end{itemize}
+\item Par récurrence sur \(𝑚\).
+\begin{itemize}
+\item
+Initialisation. Pour \(𝑚=0\), comme \(𝑛∈ℕ\), \(𝑛⩾0=𝑚\).
+\item
+Hérédité. On montre d'abord que s'il existe une surjection, notée \(𝜑\), de \(⟦1;𝑛+1⟧\) sur \(⟦1;𝑚+1⟧\) alors il
+existe une surjection de \(⟦1;𝑛⟧\) sur \(⟦1;𝑚⟧\).
+\\
+Si \(𝜑(𝑛+1)≠𝑚+1\), l'application
+\begin{equation*}
+\begin{matrix}
+𝜓:&⟦1;𝑛⟧&⟶&⟦1;𝑚⟧
+\\
+&𝑖&⟼&\begin{cases}
+𝜑(𝑛+1)\text{ si }𝜑(𝑖)=𝑚+1
+\\
+𝜑(𝑖)\text{ sinon}
+\end{cases}
+\end{matrix}
+\end{equation*}
+est une surjection. En effet, il existe \(𝑖\) de \(⟦1;𝑛+1⟧\) tel que \(𝜑(𝑖)=𝑚+1\). Par hypothèse, \(𝑖≠𝑛+1\), d'où
+ \(𝜓(i)=𝜑(𝑛+1)\), donc \(𝜑(𝑛+1)∈\operatorname{Im}𝜓\). De plus, pour tout entier 𝑗 de \(⟦1;𝑚⟧\) autre que \(𝜑(𝑛+1)\), il
+existe \(𝑖\) de \(⟦1;𝑛+1⟧\) tel que \(𝜑(𝑖)=𝑗\). Comme on a \(𝑗≠𝜑(𝑛+1)\), on a \(𝑖≠𝑛+1\). Comme on a \(𝑗≠𝑚+1\)
+, on a \(𝜑(𝑖)≠𝑚+1\) et par définition de \(𝜓\), \(𝜑(𝑖)=𝜓(i)\). Ainsi \(𝑗∈\operatorname{Im}𝜓\) et \(𝜓\) est surjective.
+\par\noindent
+Si \(𝜑(𝑛+1)=𝑚+1\), l'application
+\begin{equation*}
+\begin{matrix}
+𝜓:&⟦1;𝑛⟧&⟶&⟦1;𝑚⟧
+\\
+&𝑖&⟼&\begin{cases}
+1\text{ si }𝜑(i)=𝑚+1
+\\
+𝜑(i)\text{ sinon}
+\end{cases}
+\end{matrix}
+\end{equation*}
+est une surjection. En effet, pour tout entier 𝑗 de \(⟦1;𝑚⟧\), il existe \(𝑖\) de \(⟦1;𝑛+1⟧\) tel que \(𝜑(𝑖)=𝑗\)
+. Comme on a \(𝑗≠𝑚+1\), on a \(𝑖≠𝑛+1\) et d'où \(𝜓(i)=𝜑(𝑖)=𝑗\). Ainsi \(𝑗∈\operatorname{Im}𝜓\) et \(𝜓\) est
+surjective.\qedhere
+\end{itemize}
+\end{enumerate}
+\end{proof}
+%
+\begin{theorem}
+S'il existe une bijection entre \(⟦1;𝑛⟧\) et \(⟦1;𝑚⟧\) alors \(𝑛=𝑚\).
+\end{theorem}
+\begin{proof}
+S'il existe une bijection entre \(⟦1;𝑛⟧\) et \(⟦1;𝑚⟧\) alors en particulier :
+\begin{enumerate}
+\item il existe une injection de \(⟦1;𝑛⟧\) dans \(⟦1;𝑚⟧\), et \(𝑛⩽𝑚\),
+\item il existe une surjection de \(⟦1;𝑛⟧\) sur \(⟦1;𝑚⟧\), et \(𝑚⩽𝑛\).
+\end{enumerate}
+Par conséquent, \(𝑛=𝑚\).
+\end{proof}
+%
+\begin{theorem}
+\par\noindent
+\begin{enumerate}
+\item Toute injection de \(⟦1;𝑛⟧\) dans lui-même est une bijection.
+\item Toute surjection de \(⟦1;𝑛⟧\) sur lui-même est une bijection.
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item Par récurrence sur \(𝑛\).
+\begin{itemize}
+\item
+Initialisation. Toute application de \( ∅\) dans lui-même est une bijection.
+\item
+Hérédité. Soit \(𝜑\) une injection de \(⟦1;𝑛+1⟧\) dans lui-même.
+\\
+Si \(𝑛+1=𝜑(𝑛+1)\), \(𝜑_{\left|⟦1;𝑛⟧\right.}\) est une injection de \(⟦1;𝑛⟧\) dans \(⟦1;𝑛+1⟧\) qui
+n'atteint pas \(𝑛+1\), c'est donc une injection de \(⟦1;𝑛⟧\) dans lui-même. Par hypothèse de récurrence, c'est une
+bijection, donc une surjection. Ainsi \(\Im 𝜑\), qui contient \(\Im 𝜑_{\left|⟦1;𝑛⟧\right.}\), contient \(⟦1;𝑛⟧\).
+Comme il contient par ailleurs \(𝑛+1\), il contient \(⟦1;𝑛+1⟧\) donc \(𝜑\) est surjective : c'est une bijection.
+\\
+Si \(𝑛+1≠𝜑(𝑛+1)\), l'application \(𝜏\) de \(⟦1;𝑛+1⟧\) dans lui-même qui échange \(𝑛+1\) et \(𝜑(𝑛+1)\) est
+une bijection :
+\begin{equation*}
+\begin{matrix}
+𝜏~:&⟦1;𝑛+1⟧&⟶&⟦1;𝑛+1⟧
+\\
+&𝑖&⟼&\begin{cases}
+𝑛+1~\text{si }~𝑖=𝜑(𝑛+1)
+\\
+𝜑(𝑛+1)~\text{si }~𝑖=𝑛+1
+\\
+𝑖\text{sinon}
+\end{cases}
+\end{matrix}
+\end{equation*}
+On a \(𝜏∘𝜑(𝑛+1)=𝑛+1\) et \(𝜏∘𝜑\) est une injection, par le point précédent, \(𝜏∘𝜑\) est aussi une bijection. Par
+conséquent, \(𝜏∘𝜏∘𝜑\), qui vaut \(𝜑\), en est aussi une.
+\end{itemize}%
+\item Par récurrence sur \(𝑛\).
+\begin{itemize}
+\item
+Initialisation.
+Toute application de \( ∅\) dans lui-même est une bijection, ainsi que toute application de
+\(⟦1;1⟧\) dans lui-même.
+\item
+Hérédité.
+Pour tout \(𝑛⩾0\), soit \(𝜑\) une surjection de \(⟦1;𝑛+1⟧\) dans lui-même.
+\\
+Si \(𝑛+1=𝜑(𝑛+1)\). Pour tout 𝑦 de \(⟦1;𝑛⟧\), \(?\overset{-1}{?}(𝑦)\) est une partie non vide de \(⟦1;𝑛+1⟧\)
+ qui ne contient pas \(𝑛+1\), c'est donc une partie non vide de \(⟦1;𝑛⟧\). Donc \(𝜑_{\left|⟦1;𝑛⟧\right.}\) a pour
+image \(⟦1;𝑛⟧\) et par hypothèse de récurrence, elle induit une bijection de \(⟦1;𝑛⟧\) dans lui-même. Cela fait de
+\(𝜑\) une bijection de \(⟦1;𝑛+1⟧\) dans lui-même.
+\\
+Si \(𝑛+1≠𝜑(𝑛+1)\), on a \(𝜏∘𝜑(𝑛+1)=𝑛+1\) et \(𝜏∘𝜑\) est une surjection, par le point précédent, \(𝜏∘𝜑\)
+est aussi une bijection. Par conséquent, \(𝜏∘𝜏∘𝜑\), qui vaut \(𝜑\), en est aussi une.\qedhere
+\end{itemize}
+\end{enumerate}
+\end{proof}
+%
+\begin{theorem}
+\(ℕ\) est infini.
+\end{theorem}
+\begin{proof}
+Soit
+\begin{equation*}
+\begin{matrix}
+𝜑:&ℕ&⟶&ℕ^{\ast }
+\\
+&𝑛&⟼&𝑛+1
+\end{matrix},\ \begin{matrix}
+𝜓:&ℕ^{\ast
+}&⟶&ℕ
+\\
+&𝑛&⟼&𝑛-1
+\end{matrix}
+\end{equation*}
+On a \(∀𝑛∈ℕ,\ 𝜓∘𝜑(𝑛)=𝜓(𝑛+1)=𝑛\).
+Donc, \(𝜑\) est une injection de \(ℕ\) dans \(ℕ^{\ast }\) qui est une partie stricte de \(ℕ\).
+\end{proof}
+%
+\subsubsection[Cas général]{Cas général}
+\begin{theorem}
+\label{seq:refTheorem7}
+L'ensemble \(𝐸\) est infini si et seulement s'il existe une injection de \(ℕ\) dans \(𝐸\).
+\end{theorem}
+\begin{proof}
+Si \(𝜑\) est une injection de \(ℕ\) dans \(𝐸\), l'application
+\begin{equation*}
+\begin{matrix}
+𝜓:&𝐸&⟶&𝐸
+\\
+&𝑥&⟼&\begin{cases}
+𝑥\text{ si }𝑥∉\operatorname{Im}𝜑
+\\
+𝜑\bigl(1+𝜑^{-1}(𝑥)\bigr)\text{ sinon}
+\end{cases}
+\end{matrix}
+\end{equation*}
+est une injection de \(𝐸\) dans \(𝐸∖\{𝜑(0)\}\).
+\end{proof}
+%
+%
+\begin{theorem}
+Soit \(𝑓:𝛦→𝐹\).
+\begin{enumerate}
+\item Si \(𝑓(𝛦)\) est infini alors \(𝐸\) est infini.
+\item Si \(𝐸\) est fini alors \(𝑓(𝛦)\) est fini.
+\item Si \(𝑓\) est injective, alors \(𝛦\) est infini si et seulement si \(𝑓(𝛦)\) est infini.
+\item Si \(𝑓\) est injective, alors \(𝛦\) est fini si et seulement si \(𝑓(𝛦)\) est fini.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item Soit \(𝜑:ℕ→𝑓(𝐸)\) une injection. On sait que \(𝑓\) induit une surjection de \(𝛦\) sur \(𝑓(𝛦)\), encore
+notée \(𝑓\), qui admet une réciproque à droite, notée \(𝑔:𝑓(𝐸)→𝐸\), injective et telle que
+\(𝑓∘𝑔=\operatorname{Id}_{𝑓(𝐸)}\). \(𝑔∘𝜑\) est une injection de \(ℕ\) dans \(𝐸\).
+\item \ C'est la contraposée du point précédent.
+\item Si \(𝜑:ℕ→𝐸\) est une injection, alors \(𝑓∘𝜑:ℕ→𝑓(𝐸)\) est une injection : si \(𝛦\) est infini, \(𝑓(𝛦)\)
+aussi. Avec i) on a l'équivalence.
+\item C'est la contraposée du point précédent.
+\qedhere
+\end{enumerate}
+\end{proof}
+\begin{theorem}
+\label{seq:refTheorem9}
+Il existe une injection de \(ℕ\) dans \(𝐸\) si et seulement si pour tout entier naturel \(𝑛\) il existe une injection
+de \(⟦1;𝑛⟧\) dans \(𝐸\).
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item
+Condition nécessaire.
+Soit \(𝜑\) une injection de \(ℕ\) dans \(𝐸\). Alors, pour tout \(𝑛∈ℕ\), \(𝜑_{\left|⟦1;𝑛⟧\right.}\) est une
+injection de \(⟦1;𝑛⟧\) dans \(𝐸\) (y compris \(𝑛=0\) ).
+\item
+Condition suffisante.
+Soit \(𝜑_𝑛\) l'injection de \(⟦1;𝑛⟧\) dans \(𝐸\). On définit l'injection de \(ℕ\) dans \(𝐸\) par récurrence.
+On pose \(𝑒_1\mybydef{=}𝜑_1(1)\). Pour \(𝑛>1\), si \(𝑒_1\),..., \(𝑒_𝑛\) sont mutuellement
+distincts, on n'a pas \(\operatorname{Im}𝜑_{𝑛+1}⊂\{𝑒_1,...,𝑒_𝑛\}\) sinon \(\{𝑒_𝑖↦𝑖\}∘𝜑_{𝑛+1}\) serait une injection
+de \(⟦1;𝑛+1⟧\) dans \(⟦1;𝑛⟧\). Ainsi, il existe un élément de \(𝐸\) différent de \ \(𝑒_1\),..., \(𝑒_𝑛\), c'est
+\(𝑒_{𝑛+1}\).
+À préciser.
+\end{enumerate}
+\end{proof}
+\begin{theorem}
+\label{seq:refTheorem10}
+Un ensemble \(𝐸\) est fini s'il existe une bijection de \(𝐸\) vers \(⟦1;𝑛⟧\) où \(𝑛∈ℕ\).
+\end{theorem}
+\begin{proof}
+Par l'absurde, soit \(𝜑_𝑛\) une bijection de \(𝐸\) vers \(⟦1;𝑛⟧\) et \(𝜓\) une injection de \(𝐸\) vers \(𝐹\) où
+\(𝐹⊊𝐸\). L'application \(𝜑_𝑛^{-1}∘𝜓∘𝜑_𝑛\) est injective. Son image est incluse dans \(𝜑_𝑛^{-1}(𝐹)\), c'est
+donc une partie stricte de \(⟦1;𝑛⟧\). Contradiction avec la finitude de \(⟦1;𝑛⟧\).
+\end{proof}
+%
+\subsection{Cardinal}
+\subsubsection{Définition}
+\begin{lemma}
+Soit \(𝐸\) un ensemble. L'ensemble des entiers naturels \(𝑛\) tels qu'il existe une injection de \(⟦1;𝑛⟧\) dans
+\(𝐸\) est non vide, s'il est majoré alors \(𝐸\) est fini, s'il n'est pas majoré alors \(𝐸\) est infini.
+\end{lemma}
+\begin{proof}
+Notons \(𝐴\) l'ensemble des entiers naturels en question. Pour \(𝑛=0\), on a \(⟦1;0⟧=\mathsf{ ∅}\) et l'unique
+application de \(\mathsf{ ∅}\) dans \(𝐸\) est injective. Ainsi, \(𝐴\) est non vide.
+
+Si \(𝐴\) est majoré, notons \(𝑚\) son maximum et \(𝜑_𝑚\) une injection correspondante. Si \(𝜑_𝑚\) n'est pas
+surjective, \(𝐸∖\operatorname{Im}𝜑_𝑚\) contient un élément \(𝑦\) et l'application
+\begin{equation*}
+\begin{matrix}
+𝜓:&⟦0;𝑚+1⟧&⟶&𝐸
+\\
+&𝑛&⟼&\begin{cases}
+𝑦\text{ si }𝑛=𝑚+1
+\\
+𝜑_𝑚(𝑛)\text{ sinon}
+\end{cases}
+\end{matrix}
+\end{equation*}
+est injective, ce qui contredit la maximalité de \(𝑚\). Donc \(𝜑_𝑚\) est une bijection et par le lemme
+\ref{seq:refTheorem10}, \(𝐸\) est fini.
+
+Si A n'est pas majoré alors pour tout \(𝑛∈ℕ^{ *}\) il existe une injection de \(⟦1;𝑚⟧\) dans \(𝐸\) avec
+\(𝑛⩽𝑚\), qui par restriction, donne une injection de \(⟦1;𝑛⟧\) dans \(𝐸\). Par le lemme \ref{seq:refTheorem9} il y
+a une injection de \(ℕ\) dans \(𝐸\) et par le lemme \ref{seq:refTheorem7} \(𝐸\) est infini.
+\end{proof}
+\begin{definition}
+Soit \(𝐸\) un ensemble fini. \(𝑛\) est le \mykeyword{cardinal}, ou \mykeyword{nombre d'éléments}, de \(𝐸\) signifie
+qu'il existe une bijection de \(⟦1;𝑛⟧\) dans \(𝐸\). Il est noté \(\operatorname{card}(𝐸)\), ou \(|𝐸|\).
+\end{definition}
+\begin{vocabulary}
+\par\noindent
+\begin{itemize}
+\item
+\(𝐸\) a \(𝑛\) éléments signifie \(\operatorname{card}(𝐸)=𝑛\).
+\item
+\(𝐸\) a au moins, ou plus de, \(𝑛\) éléments signifie \(\operatorname{card}(𝐸)⩾𝑛\).
+\item
+\(𝐸\) a strictement plus de \(𝑛\) éléments signifie \(\operatorname{card}(𝐸)>𝑛\).
+\item
+\(𝐸\) a au plus, ou moins de, \(𝑛\) éléments signifie \(\operatorname{card}(𝐸)⩽𝑛\).
+\item
+\(𝐸\) a strictement moins de \(𝑛\) éléments signifie \(\operatorname{card}(𝐸)<𝑛\).
+\end{itemize}
+On peut remplacer «a» par «possède», «contient» et autres synonymes.
+\end{vocabulary}
+\begin{theorem}
+\begin{equation*}
+|∅|=0
+\end{equation*}
+\end{theorem}
+\begin{proof}
+L'application vide est une bijection de \(⟦1;0⟧\) dans \( ∅\).
+\end{proof}
+\begin{theorem}
+Le cardinal d'un singleton est \(1\).
+\end{theorem}
+\begin{proof}
+Soit \(\{𝑥\}\) le singleton, l'unique application de \(⟦1;1⟧\) dans \(\{𝑥\}\) est une bijection.
+\end{proof}
+\subsubsection{Applications et cardinal}
+\begin{theorem}
+Soient \(𝐸\) et \(𝐹\) deux ensembles finis. Il existe une bijection de \(𝐸\) dans \(𝐹\) si et seulement si
+\(\operatorname{card}(𝐸)=\operatorname{card}(𝐹)\).
+\end{theorem}
+\begin{proof}
+ \(𝐸\) et \(𝐹\) sont finis donc il existe une bijection \(𝑓\) de \(⟦1;|𝐸|⟧\) dans \(𝐸\) et une bijection \(𝑔\) de
+\(⟦1;|𝐹|⟧\) dans \(𝐹\).
+\\
+Si \(ℎ\) est une bijection de \(𝐸\) vers \(𝐹\), alors \(𝑔^{-1}\circ ℎ\circ 𝑓\) est une bijection de \(⟦1;|𝐸|⟧\)
+vers \(⟦1;|𝐹|⟧\), donc, \(\operatorname{card}(𝐸)=\operatorname{card}(𝐹)\).
+\\
+Si \(\operatorname{card}(𝐸)=\operatorname{card}(𝐹)\), \(𝑔\circ 𝑓^{-1}\) est une bijection de \(𝐸\) vers F.
+\end{proof}
+\begin{theorem}
+\par\noindent
+\begin{enumerate}
+\item S'il existe une injection de \(𝐸\) dans \(𝐹\) fini, \(𝐸\) est fini et
+\(\operatorname{card}(𝐸)⩽\operatorname{card}(𝐹)\).
+\item S'il existe une surjection de \(𝐸\) fini sur \(𝐹\), \(𝐹\) est fini et
+\(\operatorname{card}(𝐸)⩾\operatorname{card}(𝐹)\).
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item Si \(𝜑\) est une injection de \(𝐸\) dans \(𝐹\), \(𝑔^{-1}∘𝜑∘𝑓\) est une injection de \(⟦1;|𝐸|⟧\) dans
+\(⟦1;|𝐹|⟧\), donc \(\operatorname{card}(𝐸)⩽\operatorname{card}(𝐹)\).
+\item Si \(𝜑\) est une surjection de \(𝐸\) sur \(𝐹\), \(𝑔^{-1}∘𝜑∘𝑓\) est une surjection de \(⟦1;|𝐸|⟧\) sur
+\(⟦1;|𝐹|⟧\), donc \(\operatorname{card}(𝐸)⩾\operatorname{card}(𝐹)\).
+\end{enumerate}
+\end{proof}
+%
+%
+\begin{theorem}
+Soient \(𝐸\) et \(𝐹\) deux ensembles finis de même cardinal.
+\begin{enumerate}
+\item Toute injection de \(𝐸\) dans \(𝐹\) est une bijection.
+\item Toute surjection de \(𝐸\) sur \(𝐹\) est une bijection.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Soit \(𝑛\) le cardinal commun, \(𝑓\) une bijection de \(⟦1;𝑛⟧\) dans \(𝐸\), \(𝑔\) une bijection de \(⟦1;𝑛⟧\) dans
+\(𝐹\) et \(𝜑:𝐸→𝐹\).
+\begin{enumerate}
+\item \(𝑔^{-1}∘𝜑∘𝑓\) est une injection de \(⟦1;𝑛⟧\) dans lui-même, c'est une bijection, donc \(𝜑\) aussi puisque
+\(𝜑=𝑔∘(𝑔^{-1}∘𝜑∘𝑓)∘𝑓^{-1}\).
+\item \(𝑔^{-1}∘𝜑∘𝑓\) est une surjection de \(⟦1;𝑛⟧\) dans lui-même, c'est une bijection, donc \(𝜑\) aussi puisque
+\(𝜑=𝑔∘(𝑔^{-1}∘𝜑∘𝑓)∘𝑓^{-1}\).\qedhere
+\end{enumerate}
+\end{proof}
+%
+\begin{theorem}
+Soit \(𝐸\) un ensemble fini et \(𝐹\) une partie de \(𝐸\), alors \(\operatorname{card}(𝐹)⩽\operatorname{card}(𝐸)\)
+avec égalité si et seulement si \(𝐸\) et \(𝐹\) sont égaux.
+\end{theorem}
+\begin{proof}
+On applique le lemme à l'injection canonique pour obtenir l'inégalité. En cas d'égalité des cardinaux, l'injection
+canonique est aussi une surjection et son image vaut à la fois \(𝐸\) et \(𝐹\).
+\end{proof}
+\begin{theorem}
+Soit \(𝑓:𝐸→𝐹\). Si \(𝐸\) est fini alors \(\operatorname{card}(𝑓(𝐸))⩽\operatorname{card}(𝐸)\) avec égalité si et
+seulement si \(𝑓\) est injective
+\end{theorem}
+\begin{proof}
+Comme \(𝑓\) induit une surjection de \(𝐸\) sur \(𝑓(𝐸)\) on a l'inégalité. On a égalité si et seulement si \(𝑓\)
+induit une bijection de \(𝐸\) sur \(𝑓(𝐸)\), id est \(𝑓\) injective.
+\end{proof}
+\subsubsection{Opérations binaires}
+\begin{theorem}
+Étant donnés \(𝐸\) et \(𝐹\) deux ensembles finis disjoints, \(𝐸∪𝐹\) est fini et
+\(\operatorname{card}(𝐸∪𝐹)=\operatorname{card}(𝐸)+\operatorname{card}(𝐹)\).
+\end{theorem}
+\begin{proof}
+\(𝐸\) étant fini, il existe une bijection \(𝑓\) de \(⟦1;|𝐸|⟧\) dans \(𝐸\). De même, il existe une bijection \(𝑔\)
+de \(⟦1;|𝐹|⟧\) dans \(𝐹\). Les applications
+\begin{equation*}
+\begin{matrix}
+ℎ:&⟦1;|𝐸|+|𝐹|⟧&⟶&𝐸∪𝐹\phantom{A^A}
+\\
+&𝑖&⟼&\begin{cases}
+𝑓(𝑖)\text{ si }1⩽𝑖⩽|𝐸|
+\\
+𝑔(𝑖-|𝐸|)\text{ si }|𝐸|<𝑖⩽|𝐸|+|𝐹|\phantom{A^A}
+\end{cases}
+\end{matrix}
+\end{equation*}
+et
+\begin{equation*}
+\begin{matrix}
+𝑘:&𝐸∪𝐹&⟶&⟦1;|𝐸|+|𝐹|⟧\phantom{A^A}
+\\
+&𝑥&⟼&\begin{cases}
+𝑓^{-1}(𝑥)\text{ si }𝑥∈𝐸
+ \\
+|𝐸|+𝑔^{-1}(𝑥)\text{ si }𝑥∈𝐹\phantom{A^A}
+ \end{cases}
+\end{matrix}
+\end{equation*}
+sont bien définies.
+
+Pour \(ℎ\), d'une part \(⟦1;|𝐸|⟧\) et \(⟧|𝐸|;|𝐸|+|𝐹|⟧\) sont les deux composantes d'une partition de
+\(⟦1;|𝐸|+|𝐹|⟧\) et d'autre part, si \(1⩽𝑖⩽|𝐸|\), \(𝑓\) est définie en 𝑖 \({}\) et \(𝑓(𝑖)∈𝐸∪𝐹\) et si
+\(|𝐸|<𝑖⩽|𝐸|+|𝐹|\), on a \(0<𝑖-|𝐸|⩽|𝐹|\), \(𝑔\) définie en \(𝑖-|𝐸|\) et \(𝑔(𝑖-|𝐸|)∈𝐸∪𝐹\).
+
+Pour \(𝑘\), d'une part \(𝐸\) et \(𝐹\) sont les deux composantes d'une partition de \(𝐸∪𝐹\) et d'autre part, si on a
+ \(𝑥∈𝐸\), \(𝑓^{-1}\) est définie en \(𝑥\) et on a \(𝑓^{-1}(𝑥)∈⟦1;|𝐸|+|𝐹|⟧\) et si \(𝑥∈𝐹\), \(𝑔^{-1}\) est
+définie en \(𝑥\) et on a \(⟦1;|𝐸|+𝑔^{-1}(𝑥)∈⟦1;|𝐸|+|𝐹|⟧\).
+
+Montrons que \(ℎ\) et \(𝑘\) sont réciproques l'une de l'autre.
+\begin{itemize}
+\item
+On a \(∀𝑖∈⟦1;|𝐸|+|𝐹|⟧,\ 𝑘∘ℎ(𝑖)=𝑖\).
+
+Si \(1⩽𝑖⩽|𝐸|\) alors \(ℎ(𝑖)∈𝐸\), car \ \(ℎ(𝑖)\mybydef{=}𝑓(𝑖)\) et~ \(𝑓(𝑖)∈𝐸\), d'où
+\(𝑘\bigl(𝑓(𝑖)\bigr)=𝑓^{-1}\bigl(𝑓(𝑖)\bigr)=𝑖\).
+
+Si \(|𝐸|<𝑖⩽|𝐸|+|𝐹|\) alors \(ℎ(𝑖)∈𝐹\), car \ \(ℎ(𝑖)\mybydef{=}𝑔(𝑖-|𝐸|)\) et~ \(𝑔(𝑖-|𝐸|)∈𝐹\),
+d'où il vient \(𝑘(𝑔(𝑖-𝑚))=|𝐸|+𝑔^{-1}\bigl(𝑔(𝑖-|𝐸|)\bigr)=|𝐸|+𝑖–|𝐸|=𝑖\).
+\item
+On a \(∀𝑥∈𝐸∪𝐹,\ ℎ∘𝑘(𝑥)=𝑥\).
+
+Si \(𝑥∈𝐸\) alors \(𝑘(𝑥)∈⟦1;|𝐸|⟧\), car \ \(𝑘(𝑥)\mybydef{=}𝑓^{-1}(𝑥)\) et \(𝑓^{-1}(𝑥)∈⟦1;|𝐸|⟧\),
+d'où il vient \(ℎ∘𝑘(𝑥)=ℎ\bigl(𝑓^{-1}(𝑥)\bigr)=𝑓\bigl(𝑓^{-1}(𝑥)\bigr)=𝑥\).
+
+Si \(𝑥∈𝐹\) alors \(𝑘(𝑥)∈⟧|𝐸|;|𝐸|+|𝐹|⟧\), \(𝑘(𝑥)\mybydef{=}|𝐸|+𝑔^{-1}(𝑥)\) et
+\(𝑔^{-1}(𝑥)∈⟦1;|𝐹|⟧\), d'où il vient \(ℎ∘𝑘(𝑥)=ℎ\bigl(|𝐸|+𝑔^{-1}(𝑥)\bigr)=𝑔\bigl(|𝐸|+𝑔^{-1}(𝑥)-|𝐸|\bigr)=𝑔\bigl(𝑔^{-1}(𝑥)\bigr)=𝑥\).
+\end{itemize}
+Ainsi \(ℎ\) est bijective et \(\operatorname{card}(𝐸∪𝐹)=\operatorname{card}(𝐸)+\operatorname{card}(𝐹)\).
+\end{proof}
+%
+\begin{theorem}
+Soit \(𝐹\) partie de \(𝐸\) fini, on a \(\operatorname{card}(𝐸∖
+𝐹)=\operatorname{card}(𝐸)–\operatorname{card}(𝐹)\).
+\end{theorem}
+\begin{proof}
+Sachant que \(𝐸=(𝐸∖𝐹)∪𝐹\) et \((𝐸∖𝐹)∩𝐹=∅\), on applique la proposition précédente d'où
+\(\operatorname{card}(𝐸)=\operatorname{card}(𝐸∖𝐹)+\operatorname{card}(𝐹)\).
+\end{proof}
+%
+\begin{theorem}
+Soient \(𝐸\) et \(𝐹\) deux ensembles finis. \(𝐸∪𝐹\) et \(𝐸∩𝐹\) sont finis et
+ \(\operatorname{card}(𝐸∪𝐹)=\operatorname{card}(𝐸)+\operatorname{card}(𝐹)–\operatorname{card}(𝐸∩𝐹)\).
+\end{theorem}
+\begin{proof}
+ \(𝐸∩𝐹\) et \(𝐸∖𝐹\) sont finis en tant que parties de \(𝐸\) qui est fini. De plus, on a \(𝐸∪𝐹=(𝐸∖𝐹)∪𝐹\)
+ avec \((𝐸∖𝐹)∩𝐹=∅\). Par ce qui précède, \(𝐸∪𝐹\) est fini et
+\(\operatorname{card}(𝐸∪𝐹)=\operatorname{card}(𝐸∖𝐹)+\operatorname{card}(𝐹).\) Par ailleurs, on a
+\(𝐸=(𝐸∖𝐹)∪(𝐸∩𝐹)\) avec \((𝐸∖𝐹)∩(𝐸∩𝐹)=∅\), d'où par ce qui précède
+\(\operatorname{card}(𝐸)=\operatorname{card}(𝐸∖𝐹)+\operatorname{card}(𝐸∩𝐹)\). En combinant, il vient le résultat.
+\end{proof}
+\subsubsection{Principe des bergers}
+\begin{theorem}
+Soit \((𝐸_𝑖)_{𝑖∈𝐼}\) avec \(𝐼\) fini, telle que
+\begin{enumerate}
+\item \(∀𝑖∈𝐼,\ 𝐸_𝑖\text{ est fini}\),
+\item \(
+∀𝑖,𝑗∈𝐼,\ 𝑖≠𝑗⇒𝐸_𝑖∩𝐸_𝑗=∅
+\)
+\end{enumerate}
+alors \(\operatorname{card}\Bigl(\bigcup_{𝑖∈𝐼}𝐸_𝑖\bigr)=\sum
+_{𝑖∈𝐼}\operatorname{card}(𝐸_𝑖)\) \footnote{Où sont définies les unions, intersections, sommes et produits finis ?}.
+\end{theorem}
+\begin{proof}
+Par récurrence sur le cardinal de \(𝐼\).
+\begin{itemize}
+\item
+Initialisation.
+Si \(|𝐼|=0\), c'est-à-dire \(𝐼\) est vide, d'une part la réunion est vide, donc son cardinal est
+ \(0\), et d'autre part la somme est vide, donc vaut aussi \(0\).
+\item
+Hérédité.
+Si \(|𝐼|=𝑛+1\), \(𝐼\) n'est pas vide et contient \(𝑖_0\). On a
+\begin{equation*}
+𝐼=𝐼∖\{𝑖_0\}∪\{𝑖_0\}
+\text{ et }
+𝐼∖\{𝑖_0\}∩\{𝑖_0\}= ∅
+\end{equation*}
+d'après ce qui précède,
+\begin{equation*}
+𝑛+1=|𝐼|=|𝐼∖\{𝑖_0\}|∪|\{𝑖_0\}|=|𝐼∖\{𝑖_0\}|+1
+\end{equation*}
+d'où \(|𝐼∖\{𝑖_0\}|=𝑛\).
+
+Par ailleurs,
+\begin{equation*}
+\bigcup_{𝑖∈𝐼}𝐸_{𝑖}=𝐸_{𝑖_0}∪\left(\bigcup_{𝑖∈𝐼∖\{𝑖_0\}}𝐸_{𝑖}\right)
+\end{equation*}
+et
+\begin{equation*}
+𝐸_{𝑖_0}∩\Bigl(\bigcup_{𝑖∈𝐼∖\{𝑖_0\}}𝐸_{𝑖}\Bigr)=\bigcup_{𝑖∈𝐼∖\{𝑖_0\}}\left(𝐸_{𝑖_0}∩𝐸_{𝑖}\right)=\bigcup_{𝑖∈𝐼∖\{𝑖_0\}}
+∅= ∅,
+\end{equation*}
+donc
+\(\Bigl|\bigcup_{𝑖∈𝐼}𝐸_{𝑖}\Bigr|=|𝐸_{𝑖_0}|+\Bigr|\bigcup_{𝑖∈𝐼∖\{𝑖_0\}}𝐸_{𝑖}\Bigr|=|𝐸_{𝑖_0}|+\sum
+_{𝑖∈𝐼∖\{𝑖_0\}}|𝐸_{𝑖}|=\sum _{𝑖∈𝐼}|𝐸_{𝑖}|\).\qedhere
+\end{itemize}
+\end{proof}
+\begin{lemma}
+[des bergers]
+Soit \(𝐸\) un ensemble et \(𝐸_{1,}…,𝐸_𝑟\) une partition de \(𝐸\).
+Si \(\operatorname{card}𝐸_1=...=\operatorname{card}𝐸_𝑟=𝑝\) alors \(\operatorname{card}𝐸=𝑟\times 𝑝\).
+\end{lemma}
+\begin{proof}
+\(\operatorname{card}𝛦=\operatorname{card}\left(\bigcup_{𝑖=1}^{𝑟}𝐸_𝑖\right)=\sum
+_{𝑖=1}^{𝑟}\operatorname{card}(𝐸_𝑖)=𝑝\sum _{𝑖=1}^{𝑟}1=𝑟×𝑝\)
+\end{proof}
+%
+\begin{theorem}
+[des bergers]
+Soient \(𝐸\), \(𝐹\) deux ensembles finis et \(𝑓:𝐸→𝐹\) une application surjective telle que tout élément de \(𝐹\) a
+exactement \(𝑛\) antécédents dans \(𝐸\). Alors on a \(\operatorname{card}(𝐸)=𝑛\times \operatorname{card}(𝐹)\).
+\end{theorem}
+\begin{proof}
+On sait que \(\bigcup_{𝑦∈𝑓(𝛦)}\overset{-1}{𝑓}(𝑦)\) est une partition\footnote{Voir le chapitre
+sur les relations d'équivalence.} de \(𝛦\) et par surjection \(𝑓(𝛦)=𝐹\), donc
+\begin{equation*}
+\bigl|𝛦\bigr|=\Bigl|\bigcup_{𝑦∈𝐹}\overset{-1}{𝑓}(𝑦)\Bigr|=\sum
+_{𝑦∈𝐹}\Bigl|\overset{-1}{𝑓}(𝑦)\Bigr|=𝑛\sum _{𝑦∈𝐹}1=𝑛×\bigl|𝐹\bigr|.\qedhere
+\end{equation*}
+\end{proof}
+%
+\begin{theorem}
+Soit \(𝑓:𝐸→𝐹\) avec \(𝐸\) fini.
+\begin{equation*}
+\operatorname{card}(𝛦)=\sum _{𝑦∈𝐹}\operatorname{card}\bigl(\overset{-1}{𝑓}(𝑦)\bigr)
+\end{equation*}
+\end{theorem}
+\begin{proof}
+C'est une partie de la preuve précédente.
+\end{proof}
+%
+\subsubsection{Produit cartésien}
+\begin{theorem}
+Soient \(𝐺\) et \(𝐹\) deux ensembles finis alors \(𝐺×𝐹\) est fini et
+\begin{equation*}
+\operatorname{card}(𝐺×𝐹)=\operatorname{card}(𝐺)×\operatorname{card}(𝐹)
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Soit \(𝑔\) une bijection de \(⟦1;|𝐺|⟧\) dans \(𝐺\) et \(𝑓\) une bijection de \(⟦1;|𝐹|⟧\) dans \(𝐹\). Les
+applications
+\begin{gather*}
+\begin{matrix}
+ℎ:&⟦1;|𝐺|⟧×⟦1;|𝐹|⟧&⟶&𝐺\text{𝑥}𝐹
+\\
+&(𝑖;𝑗)&⟼&\bigl(𝑔(𝑖);𝑓(𝑗)\bigr)
+\end{matrix}
+\intertext{et}
+\begin{matrix}
+𝑘:&𝐺×𝐹&⟶&⟦1;|𝐺|⟧×⟦1;|𝐹|⟧
+\\
+&(𝑥;𝑦)&⟼&\bigl(𝑔^{-1}(𝑥);𝑓^{-1}(𝑦)\bigr)
+\end{matrix}
+\end{gather*}
+sont bien définies et réciproques l'une de l'autre car
+\begin{multline*}
+∀(𝑖;𝑗)∈⟦1;|𝐺|⟧×⟦1;|𝐹|⟧,
+\\
+𝑘∘ℎ(𝑖;𝑗)=𝑘\bigl(𝑔(𝑖),𝑓(𝑗)\bigr)=\bigl(𝑔^{-1}∘𝑔(𝑖),𝑓^{-1}∘𝑓(𝑗)\bigr)=(𝑖;𝑗)
+\end{multline*}
+\begin{multline*}
+∀(𝑖;𝑗)∈⟦1;|𝐺|⟧×⟦1;|𝐹|⟧,
+\\
+𝑘∘ℎ(𝑖;𝑗)=𝑘\bigl(𝑔(𝑖),𝑓(𝑗)\bigr)=\bigl(𝑔^{-1}∘𝑔(𝑖),𝑓^{-1}∘𝑓(𝑗)\bigr)=(𝑖;𝑗)
+\end{multline*}
+\begin{multline*}
+∀(𝑥,𝑦)∈𝐺×𝐹,
+\\
+ℎ∘𝑘(𝑥,𝑦)=ℎ\bigl(𝑔^{-1}(𝑥),𝑓^{-1}(𝑦)\bigr)=\bigl(𝑔∘𝑔^{-1}(𝑥),𝑓∘𝑓^{-1}(𝑦)\bigr)=(𝑥,𝑦)
+\end{multline*}
+Cela montre que \(ℎ\) est bijective, donc \(𝐺×𝐹\) et \(⟦1;|𝐺|⟧×⟦1;|𝐹|⟧\) sont équipotents.
+
+De plus, les applications
+\begin{gather*}
+\begin{matrix}
+ℎ :&⟦1;|𝐺|⟧×⟦1;|𝐹|⟧&⟶&⟦1;|𝐺|×|𝐹|⟧
+\\
+&(𝑖;𝑗)&⟼&(𝑖-1)|𝐹|+𝑗
+\end{matrix}
+\intertext{et}
+\begin{matrix}
+𝑘\text
+:&⟦1;|𝐺|×|𝐹|⟧&⟶&⟦1;|𝐺|⟧×⟦1;|𝐹|⟧
+\\
+&𝑛&⟼&(1+(𝑛-1)÷|𝐹|;1+(𝑛-1)\mathbin{\operatorname{\%}}|𝐹|)
+\end{matrix}
+\end{gather*}
+sont bien définies et réciproques l'une de l'autre. Pour \(ℎ\), l'ensemble d'arrivée est justifié par
+\begin{equation*}
+1⩽𝑖⩽|𝐺|\myand1⩽𝑗⩽|𝐹|⇒1⩽(𝑖-1)|𝐹|+𝑗⩽(|𝐺|-1)|𝐹|+|𝐹|=|𝐺||𝐹|
+\end{equation*}
+et pour \(𝑔\), l'ensemble d'arrivée est justifié par
+\begin{align*}
+1⩽𝑛⩽|𝐺||𝐹|
+&{}
+⇒0⩽𝑛-1⩽|𝐺||𝐹|-1⇒0⩽(𝑛-1)÷|𝐹|⩽|𝐺|-1
+\\&{}
+⇒1⩽1+(𝑛-1)÷|𝐹|⩽|𝐺|
+\end{align*}
+et \(0⩽(𝑛-1)\mathbin{\operatorname{\%}}|𝐹|⩽|𝐹|-1⇒1⩽1+(𝑛-1)\mathbin{\operatorname{\%}}|𝐹|⩽|𝐹|\).
+
+Pour la réciprocité, on a
+\begin{align*}
+𝑘∘ℎ(𝑖;𝑗)&{}=𝑘((𝑖-1)|𝐹|+𝑗)
+\\&{}
+=(1+((𝑖-1)|𝐹|+𝑗-1)÷|𝐹|;1+((𝑖-1)|𝐹|+𝑗-1)\mathbin{\operatorname{\%}}|𝐹|)
+\\&{}
+=(1+(𝑖-1)+(𝑗-1)÷|𝐹|;1+(𝑗-1)\mathbin{\operatorname{\%}}|𝐹|)
+\\&{}
+=(𝑖;𝑗)
+\end{align*}
+sachant que
+\begin{equation*}
+1⩽𝑗⩽|𝐹|⇒0⩽𝑗-1⩽|𝐹|-1⇒(𝑗-1) ÷|𝐹|=0
+\end{equation*}
+et \((𝑗-1) ÷|𝐹|=𝑗-1\) et
+\begin{align*}
+ℎ∘𝑘(𝑛)
+&{}
+=ℎ((1+(𝑛-1)÷|𝐹|;1+(𝑛-1)\mathbin{\operatorname{\%}}|𝐹|))
+\\&{}
+=(1+(𝑛-1)÷|𝐹|-1)|𝐹|+1+(𝑛-1)\mathbin{\operatorname{\%}}|𝐹|
+\\&{}
+=1+((𝑛-1)÷|𝐹|)|𝐹|+(𝑛-1)\mathbin{\operatorname{\%}}|𝐹|
+\end{align*}
+qui fait apparaître la division euclidienne de \(𝑛-1\) par \(|𝐹|\) et donne \(ℎ∘𝑘(𝑛)=ℎ\).
+
+Ainsi \(𝑘\) est bijective, donc \(⟦1;|𝐺|⟧×⟦1;|𝐹|⟧\) est fini et son cardinal est \ \(|𝐺||𝐹|\). Comme il est
+équipotent à \(𝐺×𝐹\), ce dernier est fini et de même cardinal.
+\end{proof}
+%
+\begin{theorem}
+Pour tout \(𝑗∈ℕ^{\ast }\), \(\operatorname{card}(𝐸^𝑗)=(\operatorname{card}(𝐸))^𝑗\).
+\end{theorem}
+\begin{proof}
+Par récurrence sur \(𝑗\) dans \(ℕ^{\ast}\).
+\begin{itemize}
+\item Initialisation. Pour \(𝑗=1\), on a
+\(\operatorname{card}(𝐸^1)=\operatorname{card}(𝐸)=\bigl(\operatorname{card}(𝐸)\bigr)^1\).
+\item Hérédité. Par ce qui précède, \(|𝐸^{𝑗+1}|=|𝐸^{𝑗}×𝐸|=|𝐸^{𝑗}||𝐸|=|𝐸|^{𝑗}|𝐸|=|𝐸|^{𝑗+1}\).
+\end{itemize}
+\end{proof}

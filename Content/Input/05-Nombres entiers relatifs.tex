@@ -1,0 +1,409 @@
+% !TEX encoding = UTF-8
+% !TEX program = xelatex
+% !TEX root =../Main/main.tex
+
+\section{Entiers relatifs}
+Construction de \(ℤ\).
+\subsection{Définition}
+\begin{definition}
+On définit sur \(ℕ^2\) la relation \(𝓡\) par :
+
+\(∀(𝑎;𝑏),(𝑐;𝑑)∈ℕ^2,\ (𝑎;𝑏)𝓡(𝑐;𝑑)\mybydef{⟺}𝑎+𝑑=𝑐+𝑏\).
+\end{definition}
+\begin{theorem}
+\begin{equation*}
+∀𝑛∈ℕ,\ (𝑛;𝑛)𝓡(0;0)
+\end{equation*}
+\end{theorem}
+\begin{proof}
+On a \(𝑛+0=0+𝑛\).
+\end{proof}
+\begin{theorem}
+\(𝓡\) est une relation d'équivalence sur \(ℕ^2\).
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item
+Réflexivité : \(𝑎+𝑏=𝑎+𝑏\) donc \((𝑎;𝑏)𝓡(𝑎;𝑏)\).
+\item
+Symétrie :
+\((𝑎;𝑏)𝓡(𝑐;𝑑)\mybydef{⟺}𝑎+𝑑=𝑐+𝑏⟺𝑐+𝑏=𝑎+𝑑\mybydef{⟺}(𝑐;𝑑)𝓡(𝑎;𝑏)\)
+\item
+Transitivité :
+\end{enumerate}
+\begin{align*}
+𝑎+𝑑=𝑐+𝑏\myand𝑐+𝑓=𝑑+𝑒
+&{}⟹
+(𝑎+𝑑)+(𝑐+𝑓)=(𝑐+𝑏)+(𝑑+𝑒)
+\\&{}⟹
+(𝑎+𝑓)+(𝑑+𝑐)=(𝑏+𝑒)+(𝑑+𝑐)
+\\&{}⟹
+𝑎+𝑓=𝑏+𝑒
+\end{align*}
+\end{proof}
+\begin{definition}
+\begin{equation*}
+ℤ\mybydef{=}ℕ^2⁄𝓡
+\end{equation*}
+C'est l'ensemble des \mykeyword{entiers relatifs}.
+\end{definition}
+\subsection{Addition}
+\subsubsection{Définition}
+\begin{definition}
+[Addition dans \(ℤ\)]
+Pour tous \((𝑎,𝑏),(𝑐,𝑑)∈ℕ^2\), on pose : \((𝑎,𝑏)+_{ℕ^2}(𝑐,𝑑)\mybydef{=}(𝑎+𝑐,𝑏+𝑑)\).
+\end{definition}
+\begin{proposition}
+Soient \((𝑎;𝑏),(𝑎';𝑏'),(𝑐;𝑑),(𝑐';𝑑')∈ℕ^2\).
+\begin{gather*}
+(𝑎;𝑏)𝓡(𝑎';𝑏')\myand(𝑐;𝑑)𝓡(𝑐';𝑑')
+⟹
+\bigl((𝑎;𝑏)+(𝑐;𝑑)\bigr)𝓡\bigl((𝑎';𝑏')+(𝑐';𝑑')\bigr)
+\end{gather*}
+\end{proposition}
+\begin{remark}
+L'addition est compatible avec la relation d'équivalence.
+\end{remark}
+\begin{proof}
+\begin{multline*}
+𝑎+𝑏'=𝑎'+𝑏\myand𝑐+𝑑'=𝑐'+𝑑
+\\⟹
+(𝑎+𝑏')+(𝑐+𝑑')=(𝑎'+𝑏)+(𝑐'+𝑑)
+\\⟹
+(𝑎+𝑐)+(𝑏'+𝑑')=(𝑎'+𝑐')+(𝑏+𝑑)
+\end{multline*}
+\end{proof}
+%
+\begin{definition}
+Soient \(𝑝,𝑞∈ℤ\), on pose :
+
+\(𝑝+_ℤ𝑞\mybydef{=}𝑝'+_{ℕ^2}𝑞'\text{ où }𝑝'∈𝑝\myand𝑞'∈𝑞\).
+\end{definition}
+\subsubsection{Propriétés}
+\begin{theorem}
+\((ℕ^2,+_{ℕ^2})\) est un monoïde régulier commutatif.
+\end{theorem}
+\begin{proof}
+En tant que carré de \((ℕ,+)\). L'élément neutre est \((0;0)\).
+\end{proof}
+\begin{theorem}
+\((ℤ,+_ℤ)\) est un groupe abélien.
+\end{theorem}
+\begin{proof}
+L'addition dans \(ℤ\) est associative, commutative et admet \(\overline{(0;0)}\) comme élément neutre, cela se déduit de
+la proposition précédente appliquée aux représentants. Symétrie : soit \(\overline{(𝑎;𝑏)}∈ℤ\), on a
+\begin{equation*}
+\overline{(𝑎,𝑏)}+\overline{(𝑏,𝑎)}\mybydef{=}\overline{(𝑎+𝑏,𝑎+𝑏)}=\overline{(0;0)}
+\end{equation*}
+donc \(\overline{(𝑎,𝑏)}\) est symétrique de \(\overline{(𝑏,𝑎)}\).
+\end{proof}
+%
+\begin{terminology}
+Dans \(ℤ\), symétrique et \mykeyword{opposé} sont synonymes. L'opposé de \(𝑝\) est noté \(-𝑝\).
+\end{terminology}
+\begin{remark}
+On rappelle que par unicité de l'opposé, on a \(-(-𝑝)=𝑝\).
+\end{remark}
+\begin{theorem}
+L'application \(𝑓:ℕ→ℤ\) définie par \(𝑓(𝑎)=\overline{(𝑎,0)}\) est un homomorphisme injectif de monoïdes.
+\end{theorem}
+\begin{proof}
+On a \(𝑓(𝑎+𝑏)=\overline{(𝑎+𝑏,0)}=\overline{(𝑎,0)}+_ℤ\overline{(𝑏,0)}=𝑓(𝑎)+_ℤ𝑓(𝑏)\). L'injectivité vient de
+\begin{gather*}
+𝑓(𝑎)=𝑓(𝑏)⟹\overline{(𝑎;0)}𝓡\overline{(𝑏;0)}⟹𝑎+0=0+𝑏⟹𝑎=𝑏
+\qedhere
+\end{gather*}
+\end{proof}
+\begin{remark}
+On identifie \(ℕ\) à son image par \(𝑓\) dans \(ℤ\) : pour tout
+entier naturel \(𝑎\), on a \(𝑎=\overline{(𝑎,0)}\). De plus, \(𝑓\) étend l'addition dans \(ℕ\), on ne fait plus de
+différence entre \(+\) et \(+_ℤ\).
+\end{remark}
+\begin{definition}
+\(-ℕ\) désigne l'ensemble des entiers relatifs opposés des entiers naturels.
+\end{definition}
+\begin{theorem}
+\par\noindent
+\begin{enumerate}
+\item
+\vspace{0.5\abovedisplayskip}
+\hfill
+\(\displaystyle
+ℤ=ℕ∪(-ℕ)
+\)\hfill\null
+\item
+\vspace{0.5\abovedisplayskip}
+\hfill
+\(\displaystyle
+ℕ∩(-ℕ)=\text{\{}0\text{\}}
+\)\hfill\null
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item
+Soit \(\overline{(𝑎,𝑏)}∈ℤ\).
+\begin{itemize}
+\item
+Si \(𝑎⩾𝑏\), on a \(\overline{(𝑎;𝑏)}=\overline{(𝑎-𝑏;0)}\), c'est un entier naturel.
+\item
+Si \(𝑎⩽𝑏\), on a \(\overline{(𝑎;𝑏)}=\overline{(0;𝑏-𝑎)}=-\overline{(𝑏-𝑎;0)}\), c'est l'opposé d'un entier
+naturel.
+\end{itemize}
+\item
+Pour des entiers naturels \(𝑎\) et \(𝑏\), on a
+\begin{gather*}
+𝑎=-𝑏⟺\overline{(𝑎,0)}=\overline{(0,𝑏)}⟺𝑎+𝑏=0⟺𝑎=𝑏=0.
+\qedhere
+\end{gather*}
+\end{enumerate}
+\end{proof}
+\begin{definition}
+[Valeur absolue et signe]
+Pour tout entier relatif \(𝑝\), la \mykeyword{valeur absolue} de \(𝑝\) est \(𝑝\) s'il est entier
+naturel et \(-𝑝\) sinon, elle est notée \(\left|𝑝\right|\) ou \(\left|𝑝\right|\).
+\end{definition}
+\begin{definition}
+Le
+\mykeyword{signe} de \(𝑝\) est 0 si \(𝑝\) est nul, \(1\) si \(𝑝\) est entier naturel non nul et \(-1\)
+sinon, il est noté \(\operatorname{sgn}(𝑝)\).
+\end{definition}
+\begin{lemma}
+Pour tout \(𝑝\) entier relatif, \(𝑝=\operatorname{sgn}(𝑝)×\left|𝑝\right|\).
+\end{lemma}
+\begin{theorem}
+Pour \(𝑝\) et \(𝑞\) sont entiers relatifs, on a \(\left|-𝑝\right|=\left|𝑝\right|\),
+\(\left|(\left|𝑝\right|)\right|=\left|𝑝\right|\) et \(\left|𝑝×𝑞\right|=\left|𝑝\right|×\left|𝑞\right|\).
+\end{theorem}
+\begin{proof}
+Si \(𝑝\) est entier naturel, on a
+\(\left|𝑝\right|=𝑝\) et \(\left|-𝑝\right|=-(-𝑝)=𝑝\),
+sinon, on a
+\(\left|𝑝\right|=-𝑝\) et \(\left|-𝑝\right|=-𝑝\).
+Dans tous les cas, \(\left|𝑝\right|\) est entier naturel donc \(\left|\bigl(\left|(𝑝)\right|\bigr)\right|=\left|𝑝\right|\).
+Si \(𝑝\) et \(𝑞\) sont dans \(ℕ\), \(𝑝×𝑞\) aussi et
+\(\left|𝑝×𝑞\right|=𝑝×𝑞=\left|𝑝\right|×\left|𝑞\right|\).
+Si \(𝑝\) est dans \(ℕ\), mais pas \(𝑞\), on a
+
+\(\left|𝑝×𝑞\right|=\left|-(𝑝×(-𝑞))\right|=\left|𝑝×(-𝑞)\right|=\left|𝑝\right|×\left|-𝑞\right|=\left|𝑝\right|×\left|𝑞\right|\)
+.
+\emph{Idem} pour \(𝑞\) est dans \(ℕ\), mais pas \(𝑝\).
+Si \(𝑝\) et \(𝑞\) ne sont pas dans \(ℕ\), on a
+\begin{gather*}
+\left|𝑝×𝑞\right|=\left|-(𝑝×(-𝑞))\right|=\left|(-𝑝)×(-𝑞)\right|
+=\left|-𝑝\right|×\left|-𝑞\right|=\left|𝑝\right|×\left|𝑞\right|
+\qedhere
+\end{gather*}
+\end{proof}
+\subsection{Soustraction}
+\begin{definition}
+[Soustraction]
+Soient \(𝑝,𝑞∈ℤ\), on pose :
+\begin{gather*}
+𝑝-𝑞\mybydef{=}𝑝+(-𝑞).
+\end{gather*}
+\end{definition}
+\begin{theorem}
+Soient \(𝑝,𝑞∈ℤ\), on a \(𝑝-𝑞=-(𝑞-𝑝)\).
+\end{theorem}
+\begin{proof}
+\((𝑝-𝑞)+(𝑞-𝑝)=(𝑝+(-𝑞))+(𝑞+(-𝑝))=(𝑝+(-𝑝))+(𝑞+(-𝑞))=0+0=0\).
+\end{proof}
+%
+\subsection{Produit}
+\begin{definition}
+Soient \(\overline{(𝑎;𝑏)}\) et \(\overline{(𝑐;𝑑)}\) de \(ℤ\) on pose :
+\begin{gather*}
+\overline{(𝑎;𝑏)}×\overline{(𝑐;𝑑)}\mybydef{=}\overline{(𝑎𝑐+𝑏𝑑;𝑎𝑑+𝑏𝑐)}
+\end{gather*}
+\end{definition}
+\begin{theorem}
+Pour \(𝑝\) et \(𝑞\) entiers relatifs, on a
+\begin{enumerate}
+\item
+\(0×𝑝=0\),
+\item
+\(1×𝑝=𝑝\),
+\item
+\((-1)×𝑝=-𝑝\), en particulier \((-1)×(-1)=1\),
+\item
+\(𝑝×𝑞=𝑞×𝑝\) ( × est \mykeyword{commutatif} dans \(ℤ\)) et
+\item
+\(𝑝×(-𝑞)=(-𝑝)×𝑞=-(𝑝×𝑞)\).
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item
+\vspace{0.5\abovedisplayskip}
+\(
+0×\overline{(𝑎;𝑏)}=\overline{(0;0)}×\overline{(𝑎;𝑏)}=\overline{(0×𝑎+0×𝑏;0×𝑏+0×𝑎)}=\overline{(0;0)}=0
+\)
+\item
+\vspace{0.5\abovedisplayskip}
+\(
+1×\overline{(𝑎;𝑏)}=\overline{(1;0)}×\overline{(𝑎;𝑏)}=\overline{(1×𝑎+0×𝑏;1×𝑏+0×𝑎)}=\overline{(𝑎;𝑏)}
+\)
+\item
+\vspace{0.5\abovedisplayskip}
+\((-1)×\overline{(𝑎;𝑏)}=\overline{(0;1)}×\overline{(𝑎;𝑏)}=\overline{(0×𝑎+1×𝑏;0×𝑏+1×𝑎)}=\overline{(𝑏;𝑎)}=-\overline{(𝑎;𝑏)}\)
+.
+En particulier, \((-1)×(-1)=-(-1)=1\)
+\item
+\vspace{0.5\abovedisplayskip}
+\(
+\overline{(𝑎;𝑏)}×\overline{(𝑐;𝑑)}\mybydef{=}\overline{(𝑎𝑐+𝑏𝑑;𝑎𝑑+𝑏𝑐)}=\overline{(𝑐𝑎+𝑑𝑏;𝑐𝑏+𝑑𝑎)}\mybydef{=}\overline{(𝑐;𝑑)}×\overline{(𝑎;𝑏)}
+\)
+\item
+On a
+\(
+\overline{(𝑎;𝑏)}×\overline{(𝑐;𝑑)}=-\overline{(𝑎𝑑+𝑏𝑐;𝑎𝑐+𝑏𝑑)}=\overline{(𝑎;𝑏)}×\overline{(𝑑;𝑐)}=\overline{(𝑎;𝑏)}×(-\overline{(𝑐;𝑑)})
+\).
+Dans cette dernière égalité on échange \(\overline{(𝑎;𝑏)}\) et \(\overline{(𝑐;𝑑)}\) puis on utilise deux fois la
+commutativité de 4) :
+\(\overline{(𝑎;𝑏)}×\overline{(𝑐;𝑑)}=(-\overline{(𝑎;𝑏)})×\overline{(𝑐;𝑑)}\).
+\qedhere
+\end{enumerate}
+\end{proof}
+\begin{theorem}
+Pour \(𝑝\) et \(𝑞\) entiers relatifs, on a \(\operatorname{sgn}(-𝑝)=-\operatorname{sgn}(𝑝)\),
+\(\operatorname{sgn}(\operatorname{sgn}(𝑝))=\operatorname{sgn}(𝑝)\) et
+\(\operatorname{sgn}(𝑝×𝑞)=\operatorname{sgn}(𝑝)×\operatorname{sgn}(𝑞)\), en particulier si \(𝑝\) n'est pas nul,
+\(\operatorname{sgn}(𝑝^2)=1\) \footnote{Attention à la définition du carré.}.
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{itemize}
+\item
+Si \(𝑝\) est nul, on a
+\(\operatorname{sgn}(-0)=0=-0=-\operatorname{sgn}(0)\),
+\(\operatorname{sgn}(\operatorname{sgn}(0))=\operatorname{sgn}(0)\) et
+\(\operatorname{sgn}(0×𝑞)=\operatorname{sgn}(0)=0=0×\operatorname{sgn}(𝑞)=\operatorname{sgn}(0)×\operatorname{sgn}(𝑞)\).
+\item
+Si \(𝑝\) est entier naturel, on a
+\(\operatorname{sgn}(-𝑝)=-1=-\operatorname{sgn}(𝑝)\) et
+\(\operatorname{sgn}(\operatorname{sgn}(𝑝))=\operatorname{sgn}(1)=1=\operatorname{sgn}(𝑝)\),
+sinon, on a
+\(\operatorname{sgn}(-𝑝)=1=-(-1)=-\operatorname{sgn}(𝑝)\) et
+\(\operatorname{sgn}(\operatorname{sgn}(𝑝))=\operatorname{sgn}(-1)=-1=\operatorname{sgn}(𝑝)\).
+\item
+
+Si \(𝑝\) et \(𝑞\) sont dans \(ℕ\), on a
+\(\operatorname{sgn}(𝑝×𝑞)=1=1×1=\operatorname{sgn}(𝑝)×\operatorname{sgn}(𝑞)\).
+\item
+Si \(𝑝\) est dans \(ℕ\), mais pas \(𝑞\), on a \(\operatorname{sgn}(𝑝)×\operatorname{sgn}(𝑞)=-1\)
+\(
+\operatorname{sgn}(𝑝×𝑞)=\operatorname{sgn}(-(𝑝×(-𝑞)))=-\operatorname{sgn}(𝑝×(-𝑞))=-\operatorname{sgn}(𝑝)×\operatorname{sgn}(-𝑞)=-1
+\),
+\(\operatorname{sgn}(𝑝)=1\) et \(\operatorname{sgn}(1)=1\), sinon, on a \(\operatorname{sgn}(𝑝)=-1\) et
+\(\operatorname{sgn}(-1)=-1\).
+\item
+\emph{Idem} pour \(𝑞\) est dans \(ℕ\), mais pas \(𝑝\).
+\item
+Si \(𝑝\) et \(𝑞\) ne sont pas dans \(ℕ\), on a \(\operatorname{sgn}(𝑝)×\operatorname{sgn}(𝑞)=(-1)×(-1)=1\).
+\(\operatorname{sgn}(𝑝×𝑞)=\operatorname{sgn}(-(𝑝×(-𝑞)))=\operatorname{sgn}((-𝑝)×(-𝑞))=1\).
+\item
+Si \(𝑝\) est dans \(ℕ\), \(\operatorname{sgn}(𝑝^2)=1^2=1\) sinon \(\operatorname{sgn}(𝑝^2)=(-1)^2=1\).
+\qedhere
+\end{itemize}
+\end{proof}
+%
+\begin{theorem}
+\((ℤ,+,×)\) est un anneau commutatif unitaire.
+\end{theorem}
+\subsubsection{Ordre}
+\begin{theorem}
+Pour tous \(𝑎\) et \(𝑏\) dans \(ℕ\), on a \(𝑎⩽𝑏⇔𝑏-𝑎∈ℕ\).\end{theorem}
+\begin{proof}
+Dans \(ℤ\), on a \(𝑏=𝑎+(𝑏-𝑎)\). À compléter...
+\end{proof}
+\begin{definition}
+Pour tous \(𝑎\) et \(𝑏\) dans \(ℤ\), on pose
+\begin{itemize}
+\item
+\(𝑎⩽𝑏\mybydef{⟺}𝑏-𝑎∈ℕ\),
+\item
+\(𝑎<𝑏\mybydef{⟺}𝑎⩽𝑏\myand a≠b\),
+\item
+\(𝑎⩾𝑏\mybydef{⟺}𝑏⩽𝑎\), \(𝑎>𝑏\mybydef{⟺}𝑏<𝑎\).
+\end{itemize}
+\end{definition}
+\begin{theorem}
+\par\noindent
+\begin{itemize}
+\item
+\(𝑝⩽𝑞\myand𝑝'⩽𝑞'⟹𝑝+𝑝'⩽𝑞+𝑞'\),
+\item
+\(𝑝⩽𝑞\myand0⩽𝑟⟹𝑝𝑟⩽𝑞𝑟\),
+\item
+\(𝑝⩽𝑞\myand0⩾𝑟⟹𝑝𝑟⩾𝑞𝑟\).
+\end{itemize}
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+%
+\begin{theorem}
+\par\noindent
+\begin{itemize}
+\item
+Toute partie non vide majorée de \(ℤ\) admet un maximum.
+\item
+Toute partie non vide minorée de \(ℤ\) admet un minimum.
+\end{itemize}
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+\begin{definition}
+[Intervalles entiers relatifs]
+Pour tous entiers relatifs \(𝑝\) et \(𝑞\), on pose
+\begin{itemize}
+\item
+\(⟦𝑝;𝑞⟧\mybydef{=}\left\{𝑛∈ℤ\left|𝑝⩽𝑛⩽𝑞\right.\right\}\),
+\item
+\(⟦𝑝;𝑞⟦\mybydef{=}\left\{𝑛∈ℤ\left|𝑝⩽𝑛<𝑞\right.\right\}\),
+\item
+\(⟧𝑝;𝑞⟧\mybydef{=}\left\{𝑛∈ℤ\left|𝑝<𝑛⩽𝑞\right.\right\}\),
+\item
+\(⟧𝑝;𝑞⟦\mybydef{=}\left\{𝑛∈ℤ\left|𝑝<𝑛<𝑞\right.\right\}\),
+\item
+\(⟦𝑝;+∞⟦\mybydef{=}\left\{𝑛∈ℤ\left|𝑝⩽𝑛\right.\right\}\),
+\item
+\(⟧𝑝;+∞⟦\mybydef{=}\left\{𝑛∈ℤ\left|𝑝<𝑛\right.\right\}\),
+\item
+\(⟧-∞;𝑞⟧\mybydef{=}\left\{𝑛∈ℤ\left|𝑛⩽𝑞\right.\right\}\),
+\item
+\(⟧-∞;𝑞⟦\mybydef{=}\left\{𝑛∈ℤ\left|𝑛<𝑞\right.\right\}\).
+\end{itemize}
+\end{definition}
+\begin{remark}
+\(⟦𝑝;𝑝⟧=\left\{𝑝\right\}\), \(⟦𝑝;𝑝⟦=∅\)...
+\end{remark}
+\begin{terminology}
+Si \(𝑛\) est négatif, son successeur est \(𝑛+1\) et son prédécesseur est \(𝑛-1\).
+\end{terminology}
+\begin{remark}
+Cela étend les définitions éponymes dans \(ℕ\) de manière formellement homogène.
+\end{remark}
+\begin{theorem}
+[Récurrence décalée]
+Si une partie de \(ℤ\) contient un entier relatif \(𝑛\) et contient le successeur de chacun de ses éléments, alors elle
+contient \(⟦𝑛;+∞⟦\).
+\end{theorem}
+\begin{proof}
+Notons cette partie \(𝐴\). Par l'absurde, si \(⟦𝑛;∞⟦∖𝐴\) n'est pas vide, soit \(𝑚\) son minimum. On a \(𝑛⩽𝑚\),
+\(𝑛≠𝑚\) qui garantit \(𝑚>0\). Par minimalité, \(𝑚-1∉⟦𝑛;∞⟦∖𝐴\), donc \(𝑚-1∈𝐴\) et \(𝑚∈𝐴\) par succession.
+Contradiction. (\emph{Idem} cas \(ℕ\)).
+\end{proof}
+\begin{theorem}
+[Récurrence décalée]
+Si une partie de \(ℤ\) contient un entier relatif \(𝑛\) et contient le prédécesseur de chacun de ses éléments, alors elle
+contient \(⟧-∞;𝑛⟧\).
+\end{theorem}
+\begin{proof}
+On se ramène au théorème précédent en prenant les opposés.
+\end{proof}

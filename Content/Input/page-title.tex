@@ -1,0 +1,17 @@
+% !TEX program = xelatex
+% !TEX root = ../main.tex
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\node[inner sep=0pt] (background) at (current page.center) {\includegraphics[width=\paperwidth]{background}};
+\draw (current page.center) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering Mathématiques fondamentales\\[15pt] % Book title
+{\Large Préparation au CAPES de mathématiques}\\[20pt] % Subtitle
+{\huge Jérôme LAURENS}}}; % Author name
+\end{tikzpicture}
+\vfill
+\endgroup

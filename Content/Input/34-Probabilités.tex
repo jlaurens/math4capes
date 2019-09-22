@@ -1,0 +1,611 @@
+% !TEX encoding = UTF-8
+% !TEX program = xelatex
+% !TEX root =../Main/main.tex
+
+\section{Probabilités}
+Espaces probabilisés finis. Probabilités conditionnelles, conditionnement et indépendance.
+\subsection{Prérequis, rappels et précautions}
+On suppose connus les notions élémentaires de la théorie des ensembles ainsi que le vocabulaire afférent. En
+particulier, on utilisera les notions de réunion et d'intersection de familles d'ensembles rappelées au chapitre II.
+\subsection{Généralités.}
+Le cas des variables aléatoires qui suivent la loi de Poisson ne rentre pas dans le cadre de probabilités finies car
+l'ensemble des événements est infini : il faut étendre le programme au cas dénombrable. De là au cas général, il n'y a
+souvent qu'un pas. On donne les définitions essentielles en faisant apparaître, quand c'est nécessaire, les trois
+situations :
+\begin{enumerate}
+\item cas fini,
+\item cas dénombrable,
+\item cas général.
+\end{enumerate}
+Ce sont les définitions mathématiques, pas les définitions pragmatiques utilisées dans l'enseignement secondaire.
+\subsubsection{Univers}
+\begin{terminology}
+En théorie des probabilités, \mykeyword{univers} est synonyme de \mykeyword{ensemble},
+\mykeyword{issue} est synonyme de \mykeyword{élément}. L'univers est noté en général \(Ω\).
+Dans ce contexte, un autre synonyme moins fréquent de issue est éventualité.
+\end{terminology}
+Dans toute la suite \(Ω\) désigne un univers fini, dénombrable ou général selon le cas.
+\subsubsection{Événements}
+\begin{definition}
+[Événements, Tribu, cas général]
+Une \mykeyword{tribu sur }\(𝛀\) est un ensemble non vide de parties de \(Ω\) stable par
+passage au complémentaire et par union dénombrable. Elle est notée en général \(𝒯\). Les éléments de
+la tribu sont appelés \mykeyword{événements}. \((Ω,𝒯)\) est un \textbf{espace
+probabilisable}.
+\end{definition}
+\begin{remark}
+Si \ \(Ω\) est dénombrable, \(𝒫(Ω)\) est la tribu choisie par défaut, ce
+qui permet une définition simplifiée des événements. Ce choix recouvre en réalité toutes les possibilités.
+\end{remark}
+\begin{definition}
+[Événements, cas fini ou dénombrable]
+Les parties de \(Ω\) sont appelés \mykeyword{événements}.
+\end{definition}
+\begin{remark}
+\vspace*{-\baselineskip}
+\begin{itemize}
+\item
+Dans les deux cas, un événement est un ensemble d'issues.
+\item
+Il ne faut pas confondre l'événement avec sa description. Par exemple, «~tirer un nombre multiple
+de 3~» n'a pas du tout la même signification selon que le dé a quatre, six ou huit faces. D'ailleurs, la probabilité
+n'est pas la même.
+\end{itemize}
+\end{remark}
+\begin{definition}
+Le \mykeyword{contraire} d'un événement \(𝐸\) est le complémentaire \(Ω∖ 𝐸\) de \(𝐸\) dans
+\(Ω\). Il est noté \(\overline{𝐸}\), qui peut être lu « \(𝐸\) barre~». Deux événements sont
+\mykeyword{contraires} si l'un est le contraire de l'autre.
+\end{definition}
+\begin{remark}
+contraire et complémentaire sont deux termes synonymes en mathématique mais pas en
+français.
+\end{remark}
+Dans le cas fini, \(∅\) et \(Ω\) sont des événements par définition, mais dans le cas
+général, on a la
+\begin{proposition}
+\(∅\) et \(Ω\) sont des événements.
+Cela équivaut à dire que toute tribu contient \(∅\) et \(Ω\).
+\end{proposition}
+\begin{proof}
+Par définition d'une tribu. Il existe au moins un événement \(𝐸\). Le contraire \(\overline{𝐸}\),
+\(𝐸∩\overline{𝐸}\) et \(𝐸∪\overline{𝐸}\) sont aussi des événements. Or
+\(𝐸∩\overline{𝐸}=∅\) et \(𝐸∪\overline{𝐸}=Ω\).
+\end{proof}
+\begin{theorem}
+Toute tribu est stable par intersection dénombrable.
+\end{theorem}
+\begin{proof}
+C'est immédiat dans le cas fini ou dénombrable. On sait que l'intersection est le complémentaire de la réunion des
+complémentaires : pour toute famille dénombrable d'événements \((𝐸_{𝑖})_{𝑖∈𝐼}\), \((\overline{𝐸}_{𝑖})_{𝑖∈𝐼}\) est
+aussi une famille dénombrable d'événements, la réunion est un événement ainsi que son contraire.
+\end{proof}
+\begin{definition}
+[Issues possibles]
+Les éléments d'un événement sont les \mykeyword{issues possibles} de l'événement. Si l'événement n'est pas
+spécifié, il s'agit de \(Ω\).
+\end{definition}
+\begin{definition}
+[Événement incompatibles]
+Deux événements sont \mykeyword{incompatibles} signifie que leur intersection est vide. Un événement est
+\mykeyword{incompatible} avec un autre s'ils sont incompatibles.
+\end{definition}
+\begin{remark}
+Tout événement est incompatible avec son contraire.
+\end{remark}
+\begin{terminology}
+Incompatible est synonyme de \mykeyword{disjoint}, qui appartient plutôt au vocabulaire ensembliste.
+\end{terminology}
+\begin{theorem}
+L'événement \(∅\) est incompatible avec tout événement. Il est le seul incompatible avec lui-même.
+\end{theorem}
+\begin{proof}
+Pour tout événement \(𝐸\), on a \(\mathsf ∅∩𝐸= ∅\) et si \(𝐸∩𝐸=∅\) alors
+\(𝐸=∅\). puisque \(𝐸∩𝐸=𝐸\).
+\end{proof}
+\begin{theorem}
+Soit \(𝐸\), \(𝐹\) deux événements, on a
+\begin{equation*}
+𝐸⊂𝐹⟺𝐸∩\overline{𝐹}=∅
+\end{equation*}
+\emph{id est} \(𝐸\) est inclus dans \(𝐹\) si et seulement si \(𝐸\) et
+\(\overline{𝐹}\) sont incompatibles.
+\end{theorem}
+%
+\begin{theorem}
+Soit \(𝐸\), \(𝐹\) deux événements, on a
+\begin{equation*}
+(𝐸∩𝐹)∩(𝐸∩\overline{𝐹})=∅\text{ et }𝐸=(𝐸∩𝐹)∪(𝐸∩\overline{𝐹}).
+\end{equation*}
+\(\bigl\{𝐸∩𝐹; 𝐸∩\overline{𝐹}\bigr\}\) est une partition de \(𝐸\).
+\end{theorem}
+\begin{proof}
+Par associativité de l'intersection, on a
+\((𝐸∩𝐹)∩(𝐸∩\overline{𝐹})=𝐸∩(𝐹∩\overline{𝐹})=𝐸∩∅=
+∅\).
+Par distributivité, on a
+\((𝐸∩𝐹)∪(𝐸∩\overline{𝐹})=𝐸∩(𝐹∪\overline{𝐹})=𝐸∩Ω=𝐸\)
+\end{proof}
+\begin{definition}
+[et, ou]
+Soit \(𝐸\), \(𝐹\) deux événements, l'événement \(𝐸∩𝐹\) est noté \(𝑬\myand𝑭\), l'événement \(𝐸∪𝐹\) est noté \(𝑬\myor𝑭\).
+\subsubsection[Probabilité]{Probabilité}
+\end{definition}
+\begin{definition}
+[Probabilité]
+Une \mykeyword{loi de probabilité} est une application \(ℙ\)
+\begin{enumerate}
+\item qui à tout événement associe un nombre dans \([0;1]\).
+\item telle que \(ℙ(Ω)=1\)
+\item et
+\begin{enumerate}
+\item cas fini : si deux événements \(𝐸\) et \(𝐹\) sont incompatibles, on a \(ℙ(𝐸∪𝐹)=ℙ(𝐸)+ℙ(𝐹)\),
+\item autres cas : pour toute famille dénombrable \((𝐸_{𝑖})_{𝑖∈𝐼}\) d'événements deux à deux incompatibles
+\(ℙ\left(\bigcup_{𝑖∈𝐼}𝐸_{𝑖}\right)=∑_{𝑖∈𝐼}ℙ\left(𝐸_{𝑖}\right)\)
+\end{enumerate}
+\end{enumerate}
+Selon le cas, \((Ω,ℙ)\) ou \((Ω,𝒯,ℙ)\) est appelé \mykeyword{espace probabilisé}.
+\\
+Loi de probabilité, \mykeyword{mesure de probabilité}, et \mykeyword{probabilité} sont
+synonymes l'un de l'autre.
+\end{definition}
+\begin{remark}
+Pour information, la propriété 3-b ci-dessus est la σ-additivité de ℙ.
+\end{remark}
+Dans la suite de la section, \((Ω,ℙ)\) ou \((Ω,𝒯,ℙ)\) est un espace probabilisé, selon le cas.
+%
+\begin{theorem}
+[Probabilité du contraire]
+Pour tout événement \(𝐸\) \textit{, } \(ℙ\left(\overline{𝐸}\right)=1-ℙ(𝐸)\).
+\end{theorem}
+\begin{proof}
+Pour tout événement \(𝐸\), on a \(𝐸∩\overline{𝐸}=∅\) et \(𝐸∪\overline{𝐸}=Ω\) donc
+\(1=ℙ(Ω)=ℙ\bigl(𝐸∪\overline{𝐸}\bigr)=ℙ(𝐸)+ℙ\bigl(\overline{𝐸}\bigr)\).
+\end{proof}
+\begin{theorem}
+On a \(ℙ(∅)=0\).
+\end{theorem}
+\begin{proof}
+On applique le théorème précédent au cas particulier \(𝐸=Ω\). D'une autre façon, on a \(∅∩∅=∅\) et \(∅∪∅=∅\) donc \(ℙ(∅)=ℙ(∅∪∅)=ℙ(∅)+ℙ(∅)\) et par régularité
+\(0=ℙ(∅)\).
+\end{proof}
+\begin{theorem}
+[de l'intersection]
+Pour des événements \(𝐸\) et \(𝐹\) on a
+\begin{equation*}
+ℙ(𝐸∩𝐹)+ℙ(𝐸∪𝐹)=ℙ(𝐸)+ℙ(𝐹)
+\end{equation*}
+\end{theorem}
+\begin{proof}
+On a
+\((𝐸∩𝐹)∪(\overline{𝐸}∩𝐹)=(𝐸∪\overline{𝐸})∩𝐹=Ω∩𝐹=𝐹\) et
+\begin{equation*}
+(𝐸∩𝐹)∩(\overline{𝐸}∩𝐹)=(𝐸∩\overline{𝐸})∩𝐹=∅∩𝐹=∅
+\end{equation*}
+donc
+\(ℙ(\overline E∩𝐹)=ℙ(𝐹)-ℙ(𝐸∩𝐹)\).
+De plus
+\begin{gather*}
+𝐸∪(\overline{𝐸}∩𝐹)=(𝐸∪\overline{𝐸})∩(𝐸∪𝐹)=Ω∩(𝐸∪𝐹)=𝐸∪𝐹
+\intertext{et}
+𝐸∩(\overline{𝐸}∩𝐹)=(𝐸∩\overline{𝐸})∩𝐹=∅∩𝐹=∅
+\end{gather*}
+donc
+\(ℙ(𝐸∪𝐹)=ℙ(𝐸)+ℙ(\overline{𝐸}∩𝐹)=ℙ(𝐸)+ℙ(𝐹)-ℙ(E∩𝐹)\).
+\end{proof}
+\begin{remark}
+\( \)on pouvait traiter \(𝐸\) et \(𝐹\) de manière symétrique mais c'est un
+peu plus long.
+\end{remark}
+\begin{definition}
+[Événements certains, possible, impossible]
+Un événement est \mykeyword{certain} quand sa probabilité vaut \(1\). Un événement est
+\mykeyword{impossible} quand sa probabilité vaut \(0\), il est
+\mykeyword{possible} sinon.
+\end{definition}
+\begin{attention}
+\vspace{-\baselineskip}
+\begin{itemize}
+\item
+L'univers des possibles est un événement certain, mais selon cette terminologie, ce n'est pas le seul.
+\item
+Dans le langage courant, improbable peut correspondre à une probabilité faible, mais pas nulle : voir «hautement
+improbable».
+\end{itemize}
+\end{attention}
+%
+\begin{theorem}
+[Croissance]
+Soit \(𝐸\), \(𝐹\) deux événements, on a
+\(𝐸⊂𝐹⟹ℙ(𝐸)≤ℙ(𝐹)\).
+\end{theorem}
+\begin{proof}
+On a \(𝐹=𝐸∪(𝐹∖𝐸)\) et \(𝐸∩(𝐹∖ 𝐸)=∅\) donc \(ℙ(𝐹)=ℙ(𝐸)+ℙ(𝐹∖
+𝐸)≥ℙ(𝐸)\).
+\end{proof}
+%
+\begin{theorem}
+[Continuité]
+Si \((𝐸_{𝑛})_{𝑛∈ℕ}\) est une suite d'événements mutuellement incompatibles,
+\(ℙ\left(\bigcup_{𝑖=0}^{𝑛}𝐸_{𝑖}\right)\bigcup_{𝑛→∞}ℙ\left(\operatornamewithlimits{?}_{𝑖=0}^∞𝐸_{𝑖}\right)
+\).
+\end{theorem}
+%
+\begin{remark}
+Ce théorème n'a d'intérêt que pour un univers infini.
+\end{remark}
+\begin{proof}
+C'est une conséquence immédiate de
+\begin{gather*}
+ℙ\Bigl(\bigcup_{𝑖=0}^{𝑛}𝐸_{𝑖}\Bigr)=\sum_{𝑖=0}^{𝑛}ℙ(𝐸_{𝑖}),\
+ℙ\Bigl(\bigcup_{𝑖=0}^∞𝐸_{𝑖}\Bigr)=\sum _{𝑖=0}^∞ℙ(𝐸_{𝑖})
+\intertext{et}
+\sum
+_{𝑖=0}^{𝑛}ℙ(𝐸_{𝑖})\mathop{⟶}_{𝑛→∞}\sum_{𝑖=0}^∞ℙ(𝐸_{𝑖}).\qedhere
+\end{gather*}
+\end{proof}
+%
+%
+\begin{theorem}
+[Continuité monotone]
+\par\noindent
+\begin{enumerate}
+\item
+Si \((𝐸_{𝑛})_{𝑛∈ℕ}\) est une suite croissante d'événements,
+\begin{equation*}
+ℙ(𝐸_{𝑛})\mathop{⟶}_{𝑛→∞}ℙ\Bigl(\bigcup_{𝑖∈ℕ}𝐸_{𝑖}\Bigr).
+\end{equation*}
+\item Si \((𝐸_{𝑛})_{𝑛∈ℕ}\) est une suite décroissante d'événements,
+\begin{gather*}
+ℙ(𝐸_{𝑛})\mathop{⟶}_{𝑛→∞}ℙ\Bigl(\bigcap_{𝑖∈ℕ}𝐸_{𝑖}\Bigr).
+\end{gather*}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Dans le cas fini, c'est immédiat car une suite monotone est constante à partir d'un certain rang.
+\begin{enumerate}
+\item
+On définit la suite d'événements \((𝐹_{𝑛})_{𝑛∈ℕ}\) par 
+\begin{gather*}
+𝐹_{0}\mybydef{=}𝐸_{0},\
+∀𝑛∈ℕ^{*},\
+𝐹_{𝑛}\mybydef{=}𝐸_{𝑛}∖𝐸_{𝑛-1}
+\end{gather*}
+Ces événements sont deux à deux disjoints : pour \(0<𝑚<𝑛\)
+\begin{align*}
+𝐹_{𝑚} ∩ 𝐹_{𝑛}
+&{}=
+\bigl(𝐸_{𝑚}∖𝐸_{𝑚-1}\bigr)
+∩
+\bigl(𝐸_{𝑛}∖𝐸_{𝑛-1}\bigr)
+\\&{}=
+\bigl(𝐸_{𝑚}∩\overline{𝐸_{𝑚-1}}\bigr)
+∩
+\bigl(𝐸_{𝑛}∩\overline{𝐸_{𝑛-1}}\bigr)
+\\&{}=
+𝐸_{𝑚}
+∩
+\overline{𝐸_{𝑛-1}}
+⊂𝐸_{𝑚}
+∩
+\overline{𝐸_{𝑚}}
+= ∅
+\end{align*}
+On peut montrer par récurrence que
+\(
+∀𝑛∈ℕ,\
+𝐸_{𝑛} = 
+\bigcup_{𝑖=0}^{𝑛}𝐹_{𝑛}
+\).
+L'initialisation est immédiate.
+L'hérédité vient de
+\begin{align*}
+\bigcup_{𝑖=0}^{𝑛+1}𝐹_{𝑛} &{}= \bigcup_{𝑖=0}^{𝑛}𝐹_{𝑛}∪𝐹_{𝑛+1}
+= 𝐸_{𝑛} ∪ \bigl(𝐸_{𝑛+1}∖𝐸_{𝑛}\bigr)
+\\&{}
+= \bigl(𝐸_{𝑛} ∩ 𝐸_{𝑛+1}\bigr) ∪ \bigl(𝐸_{𝑛+1}∖𝐸_{𝑛}\bigr)
+= 𝐸_{𝑛+1}
+\end{align*}
+On peut appliquer le théorème précédent pour obtenir la première proposition.
+\item
+la deuxième proposition se déduit de la première par passage au contraire. En effet, si \((𝐸_{𝑛})_{𝑛∈ℕ}\) est
+une suite décroissante d'événements, alors \((\overline{𝐸}_{𝑛})_{𝑛∈ℕ}\) est une suite croissante d'événements\footnote{Le passage au complémentaire définit une application décroissante des parties d'un ensemble.}
+donc
+\begin{gather*}
+ℙ(\overline{𝐸}_{𝑛})
+\mathop{⟶}_{𝑛→∞}
+ℙ\Bigl(\bigcup_{𝑖∈ℕ}\overline{𝐸}_{𝑖}\Bigl)
+\text{ et }
+1-ℙ(\overline{𝐸}_{𝑛})
+\mathop{⟶}_{𝑛→∞}
+1-ℙ\Bigl(\bigcup_{𝑖∈ℕ}\overline{𝐸}_{𝑖}\Bigr).
+\intertext{Or}
+1-ℙ(\overline{𝐸}_{𝑛})=ℙ(𝐸_{𝑛})
+\text{ et }
+1-ℙ\Bigl(\bigcup_{𝑖∈ℕ}\overline{𝐸}_{𝑖}\Bigr)=ℙ\Bigl(\bigcap_{𝑖∈ℕ}𝐸_{𝑖}\Bigr).\qedhere
+\end{gather*}
+\end{enumerate}
+\end{proof}
+%
+\subsubsection{Cas des espaces finis ou dénombrables}
+Dans cette section \(Ω\) est fini ou dénombrable.
+\paragraph{Événements élémentaires}
+\begin{definition}
+[Événement élémentaire]
+Un événement est \mykeyword{élémentaire} signifie qu'il n'est pas vide et qu'il n'est pas la réunion de
+deux événements incompatibles et non vides.
+\end{definition}
+%
+\begin{theorem}
+Deux événements élémentaires différents sont incompatibles.
+\end{theorem}
+\begin{proof}
+Soit \(𝐸\), \(𝐹\) deux événements élémentaires, on a
+\begin{gather*}
+𝐸=(𝐸∩𝐹)∪(𝐸∩\overline{𝐹})\text{ et }∅=(𝐸∩𝐹)∩(𝐸∩\overline{𝐹}),
+%\\
+%𝐹=(𝐸∩𝐹)∪(\overline{𝐸}∩𝐹)\text{ et }∅=(𝐸∩𝐹)∩(\overline{𝐸}∩𝐹).
+\end{gather*}
+Donc \(∅=𝐸∩𝐹\) ou bien \(∅=𝐸∩\overline{𝐹}\) et d'une manière symétrique
+\(∅=𝐸∩𝐹\) ou bien \(∅=\overline{𝐸}∩𝐹\). Si les événements ne sont pas incompatibles,
+alors \(∅=𝐸∩\overline{𝐹}=\overline{𝐸}∩𝐹\) d'où \(𝐸⊂𝐹\) et \(𝐸⊃𝐹\) et l'égalité des événements.
+\end{proof}
+\begin{theorem}
+Dans le cas dénombrable, toute issue appartient à un unique événement élémentaire.
+\end{theorem}
+\begin{proof}
+Si \(𝑥\) est une issue, les événements qui contiennent \(𝑥\) sont en nombre dénombrable, donc leur
+intersection est un événement qui contient \(𝑥\), noté ici \(𝐸_{𝑥}\).
+Si on a \(𝐸_{𝑥}=𝐸∪𝐹\) avec \(∅=𝐸∩𝐹\), alors \(𝑥∈𝐸\) ou bien \(𝑥∈𝐹\). Dans le premier cas, on obtient \(𝐸_{𝑥}⊂𝐸\) par définition de
+\(𝐸_{𝑥}\) et \(𝐸⊂𝐸_{𝑥}\) par définition de \(𝐸\).
+On en déduit \(𝐸_{𝑥}=𝐸\) et
+\(∅=𝐸∩\overline{𝐸}=(𝐸∪𝐹)∩\overline{𝐸}=(𝐸∩\overline{𝐸})∪(𝐹∩\overline{𝐸})=∅∪(𝐹∩\overline{𝐸})=𝐹∩\overline{𝐸}\).
+Ainsi \(𝐹⊂𝐸\) et \(𝐹=𝐹∩𝐸=∅\), donc \(𝐸_{𝑥}\) est élémentaire.
+\end{proof}
+\begin{theorem}
+Dans le cas dénombrable, tout événement est la réunion des événements élémentaires qu'il contient. En
+particulier, l'univers est la réunion de tous les événements élémentaires.
+\end{theorem}
+\begin{proof}
+Par définition, tout événement contient les événements élémentaires qu'il contient, donc leur réunion.
+L'inclusion réciproque vient de la proposition précédente.
+\end{proof}
+\begin{theorem}
+Si toutes les parties sont des événements, les événements élémentaires sont les singletons.
+\end{theorem}
+\begin{proof}
+Tout singleton est un événement élémentaire. En effet, c'est une partie de l'univers, or toutes ses parties sont des
+événements, donc c'est un événement. Les parties de \(\{𝑥\}\) étant \(∅\) et \(\{𝑥\}\), il n'existe pas
+deux événements différents et non vides dans \(\{𝑥\}\).
+
+Si un événement \(𝐸\) contient une paire \(\{𝑥,𝑦\}\), alors
+\begin{gather*}
+𝐸=\bigl(𝐸∩\{𝑥\}\bigr)∪\bigl(𝐸∩\overline{\{𝑥\}}\bigr)=\{𝑥\}∪\bigl(𝐸∩\overline{\{𝑥\}}\bigr).
+\end{gather*}
+\(𝑦\) est dans \(𝐸\) mais pas \(\{𝑥\}\), il est donc dans \(𝐸∩\overline{\{𝑥\}}\). Ainsi \(𝐸\) n'est pas élémentaire.
+Par contraposition, si un événement est élémentaire, alors il ne contient pas de paire. Comme il n'est pas vide, c'est
+un singleton.
+\end{proof}
+\begin{remark}
+ on pouvait définir les singletons comme événements élémentaires, la définition ci-dessus
+devenant du coup un théorème.
+\end{remark}
+\begin{theorem}
+Une loi de probabilités est entièrement déterminée par la probabilité de chaque événement élémentaire, sauf
+éventuellement un.
+La somme des probabilités de tous les événements élémentaires vaut 1.
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+\paragraph{Cas des espaces finis}
+Dans cette section \(Ω\) est fini.
+\begin{definition}
+[Loi uniforme]
+On appelle loi uniforme toute loi de probabilités qui donne à chaque événement élémentaire la même probabilité.
+\end{definition}
+\begin{theorem}
+Dans le cas d'une loi uniforme sur un espace fini \(Ω\), la probabilité de chaque événement élémentaire
+est \(\frac 1{\left|Ω\right|}\).
+\end{theorem}
+\begin{proof}
+Soit \(𝑝\) la probabilité commune à tous les événements élémentaires.
+On a
+\begin{gather*}
+1=ℙ(Ω)=ℙ\Bigl(\bigcup_{𝑥∈Ω}\{𝑥\}\Bigr)=∑_{𝑥∈Ω}ℙ\bigl(\{𝑥\}\bigr)=𝑝\sum
+_{𝑥∈Ω}1=𝑝\left|Ω\right|
+\qedhere
+\end{gather*}
+\end{proof}
+%
+\begin{theorem}
+Dans le cas d'une loi uniforme, la probabilité d'un événement est le nombre de cas favorables sur le
+nombre de cas possibles.
+\end{theorem}
+\begin{proof}
+\begin{gather*}
+ℙ(𝐸)=ℙ\Bigl(\bigcup_{𝑥∈𝐸}\{𝑥\}\Bigr)=
+∑_{𝑥∈𝐸}ℙ\bigl(\{𝑥\}\bigr)=\frac
+1{\left|Ω\right|}∑_{𝑥∈𝐸}1=\frac{\left|𝐸\right|}{\left|Ω\right|}
+\qedhere
+\end{gather*}
+\end{proof}
+%
+\subsubsection{Indépendance}
+\begin{definition}
+[Indépendance]
+Deux événements \(𝐸\) et \(𝐹\) sont \mykeyword{indépendants} signifie que
+\begin{equation*}
+ℙ(𝐸∩𝐹)=ℙ(𝐸)×ℙ(𝐹)
+\end{equation*}
+On dit aussi que \(𝐸\) est \mykeyword{indépendant} de \(𝐹\).
+\end{definition}
+\begin{remark}
+il n'y a pas de notation symbolique pour deux événements indépendants.
+On pourrait noter par exemple \(𝐸⟘𝐹\).
+\end{remark}
+\begin{lemma}
+Tout événement est indépendant d'un événement certain.
+\end{lemma}
+\begin{proof}
+\(𝐸\) et \(𝐹\) deux événements, on a \(𝐸=(𝐸∩𝐹)∪(𝐸∩\overline{𝐹})\) et \((𝐸∩𝐹)∪(𝐸∩\overline{𝐹})= ∅\), d'où
+\(ℙ(𝐸)=ℙ(𝐸∩𝐹)+ℙ(𝐸∩\overline{𝐹})\).
+Si \(𝐹\) est certain, \(ℙ(𝐹)=1\) et \(ℙ(\overline{𝐹})=0\), et \(ℙ(𝐸∩\overline{𝐹})=0\) puisque
+\(𝐸∩\overline{𝐹}⊂\overline{𝐹}\).
+Donc
+\(ℙ(𝐸∩𝐹)=ℙ(𝐸)=ℙ(𝐸)×ℙ(𝐹)\).
+\end{proof}
+\begin{theorem}
+Tout événement est indépendant d'un événement impossible.
+\end{theorem}
+\begin{proof}
+\(𝐸\) et \(𝐹\) deux événements, \(𝐹\) étant impossible. Comme \((𝐸∩𝐹)⊂𝐹\) et \(0≤ℙ(𝐸∩𝐹)≤ℙ(𝐹)=0\), on a
+\(ℙ(𝐸∩𝐹)=0\). Bien sûr, \(ℙ(𝐸)×ℙ(𝐹)=0\).
+\end{proof}
+\begin{proposition}
+Soit \(𝐸\) et \(𝐹\) deux événements. Sont équivalents
+\begin{itemize}
+\item
+\(𝐸\) et \(𝐹\) sont indépendants
+\item
+\(𝐹\) et \(𝐸\) sont indépendants
+\item
+\(𝐸\) et \(\overline{𝐹}\) sont indépendants
+\end{itemize}
+\end{proposition}
+\begin{proof}
+Comme \(𝐸∩𝐹=𝐹∩𝐸\), on a \(ℙ(𝐸∩𝐹)=ℙ(𝐹∩𝐸)\) d'où l'équivalence des deux premières propositions.
+
+De plus, \(𝐸=(𝐸∩𝐹)∪(𝐸∩\overline{𝐹})\)
+et \(∅=(𝐸∩𝐹)∩(𝐸∩\overline{𝐹})\), donc
+\(ℙ(𝐸)=ℙ(𝐸∩𝐹)+ℙ(𝐸∩\overline{𝐹})\) et
+\begin{align*}
+ℙ(𝐸∩𝐹)-ℙ(𝐸)×ℙ(𝐹)&{}=ℙ(𝐸)-ℙ(𝐸∩\overline{𝐹})-ℙ(𝐸)×ℙ(𝐹)
+\\
+&{}=ℙ(𝐸)×(1-ℙ(𝐹))-ℙ(𝐸∩\overline{𝐹})
+\\
+&{}=ℙ(𝐸)×ℙ(\overline{𝐹})-ℙ(𝐸∩\overline{𝐹})
+\end{align*}
+ce qui donne les autres équivalences.
+\end{proof}
+\begin{example}
+Deux événements contraires et possibles ne sont pas indépendants.
+\end{example}
+%
+\subsection{Probabilités composées}
+\subsubsection{Restriction.}
+On peut changer d'univers en prenant une sous-tribu.
+À compléter.
+\subsubsection{Probabilités produit dans le cas fini.}
+Cela permet de modéliser des combinaisons d'expériences aléatoires indépendantes, comme des répétitions par exemple.
+
+Si \((Ω_1,ℙ_1)\) et \((Ω_2,ℙ_2)\) sont deux univers probabilisés finis, alors \(Ω_1×Ω_2\) est un
+univers fini, ses événements élémentaires sont les singletons.
+\begin{theorem}
+[Probabilité produit]
+L'application qui à tout événement élémentaire \(\{(𝑥_1,𝑥_2)\}\) de \(Ω_1×Ω_2\) associe le nombre
+\(ℙ_1\bigl(\{𝑥_1\}\bigr)×ℙ_2\bigl(\{𝑥_2\}\bigr)\) définit bien une loi de probabilités sur \(Ω_1×Ω_2\). C'est la \mykeyword{loi produit}.
+\end{theorem}
+\begin{proof}
+On a
+\begin{gather*}
+∑_{(𝑥_1,𝑥_2)∈Ω_1×Ω_2}ℙ_1\bigl(\{𝑥_1\}\bigr)×ℙ_2\bigl(\{𝑥_2\}\bigr)=∑_{𝑥_1∈Ω_1}ℙ_1\bigl(\{𝑥_1\}\bigr)∑_{𝑥_2∈Ω_2}ℙ_2\bigl(\{𝑥_2\}\bigr)
+\intertext{qui vient de}
+∑_{(𝑖,𝑗)∈𝐼×𝐽}𝑝_{𝑖}𝑞_{𝑗}=∑_{𝑖∈𝐼}𝑝_{𝑖}∑_{𝑗∈𝐽}𝑞_{𝑗}
+ \qedhere
+\end{gather*}
+\end{proof}
+\begin{remark}
+Pour les répétitions d'une même expérience modélisée par \((Ω, ℙ)\) une infinité dénombrable de fois,
+on a aussi une probabilité produit sur \(Ω^ℕ\). Les événements de références ne sont pas les événements élémentaires
+mais des cylindres, c'est-à-dire des suites d'événements de \(Ω\) qui valent \(Ω\) à partir d'un certain rang. À
+compléter...
+\end{remark}
+\subsubsection{Probabilités conditionnelles}
+La notion est générale, on ne l'appliquera qu'aux espaces dénombrables.
+
+ \((Ω,𝒯,ℙ)\) est un espace probabilisé.
+\begin{theorem}
+[Probabilité conditionnelle]
+Si \(𝐴\) est un événement possible, l'application \(𝐸↦ℙ(𝐸∩𝐴)/ℙ(𝐴)\) définit une loi de probabilités
+sur \((Ω,𝒯)\) qui est notée \(ℙ_{𝐴}\).
+\end{theorem}
+\begin{proof}
+Pour tout événement \(𝐸\), \(𝐸∩𝐴⊂𝐴\), donc \(ℙ(𝐸∩𝐴)≤ℙ(𝐴)\). Comme \(ℙ(𝐴)≠0\),
+\(0≤\frac{ℙ(𝐸∩𝐴)}{ℙ(𝐴)}≤1\).
+Ensuite
+\(\frac{ℙ(Ω∩𝐴)}{ℙ(𝐴)}=\frac{ℙ(𝐴)}{ℙ(𝐴)}=1\).
+Pour une famille d'événements \((𝐸_{𝑖})_{𝑖∈𝐼}\) mutuellement incompatibles, les événements
+\((𝐸_{𝑖}∩𝐴)_{𝑖∈𝐼}\) sont aussi mutuellement incompatibles car
+\((𝐸_{𝑖}∩𝐴)∩(𝐸_{𝑗}∩𝐴)=(𝐸_{𝑖}∩𝐸_{𝑗})∩𝐴\).
+de plus, on a
+\(\left(\bigcup_{𝑖∈𝐼}𝐸_{𝑖}\right)∩𝐴=\left(\bigcup_{𝑖∈𝐼}𝐸_{𝑖}∩𝐴\right)\),
+ce qui donne
+\begin{equation*}
+ℙ\Bigl(\bigcup_{𝑖∈𝐼}\bigl(𝐸_{𝑖}∩𝐴\bigr)\Bigr)=∑_{𝑖∈𝐼}ℙ\left(𝐸_{𝑖}∩𝐴\right)
+\end{equation*}
+d'où la σ-additivité en divisant par \(ℙ(𝐴)\).
+\end{proof}
+\begin{theorem}
+Deux événements possibles \(𝐸\) et \(𝐹\) sont indépendants si et seulement si \(ℙ(𝐸)=ℙ_{𝐹}(𝐸)\) ou
+de manière symétrique \(ℙ(𝐹)=ℙ_{𝐸}(𝐹)\).
+\end{theorem}
+\begin{proof}
+C'est une application directe de la définition de l'indépendance.
+\end{proof}
+\begin{definition}
+[Système complet d'événements]
+Une famille dénombrable \((𝐸_{𝑖})_{𝑖∈𝐼}\) d'événements est un \mykeyword{système complet} d'événements
+signifie que
+\begin{enumerate}
+\item ils sont mutuellement incompatibles : \(∀𝑖,𝑗∈𝐼,\;𝑖≠𝑗⟹𝐸_{𝑖}∩𝐸_{𝑗}=∅\),
+\item leur réunion est l'univers : \(\bigcup_{𝑖∈𝐼}𝐸_{𝑖}=Ω\),
+\item ils sont tous possibles : \(∀𝑖∈𝐼,\;ℙ(𝐸_{𝑖})≠0\).
+\end{enumerate}
+\end{definition}
+\begin{information}
+Dans le contexte dénombrable, les événements élémentaires forment un système complet d'événements. Un tel système peut
+être utilisé pour restreindre l'ensemble des événements et simplifier le modèle.
+\end{information}
+\begin{theorem}
+[des probabilités totales]
+Pour un système complet d'événements \((𝐸_{𝑖})_{𝑖∈𝐼}\) et un événement \(𝐸\), on a
+\begin{gather*}
+ℙ(𝐸)=∑_{𝑖∈𝐼}ℙ(𝐸_{𝑖})\;ℙ_{𝐸_{𝑖}}(𝐸).
+\end{gather*}
+\end{theorem}
+\begin{proof}
+D'une part
+\begin{equation*}
+𝐸=𝐸∩Ω=𝐸∩\bigcup_{𝑖∈𝐼}𝐸_{𝑖}=\bigcup_{𝑖∈𝐼}𝐸∩𝐸_{𝑖}
+\end{equation*}
+et d'autre part les \(𝐸∩𝐸_{𝑖}\) sont mutuellement incompatibles car si \(𝑖≠𝑗\) dans \(𝐼\),
+\((𝐸∩𝐸_{𝑖})∩(𝐸∩𝐸_{𝑗})=𝐸∩(𝐸_{𝑖}∩𝐸_{𝑗})=𝐸∩∅=∅\).
+Donc
+\begin{align*}
+ℙ(𝐸)&{}=ℙ\left(\bigcup_{𝑖∈𝐼}𝐸∩𝐸_{𝑖}\right)
+\\&{}=∑_{𝑖∈𝐼}ℙ(𝐸∩𝐸_{𝑖})
+\\&{}=∑_{𝑖∈𝐼}ℙ(𝐸_{𝑖})\frac{ℙ(𝐸∩𝐸_{𝑖})}{ℙ(𝐸_{𝑖})}
+\\&{}=∑_{𝑖∈𝐼}ℙ(𝐸_{𝑖})\;ℙ_{𝐸_{𝑖}}(𝐸).
+\qedhere
+\end{align*}
+\end{proof}
+%
+\begin{theorem}
+[de Bayes]
+Pour un système complet d'événements \((𝐸_{𝑖})_{𝑖∈𝐼}\) et un événement \(𝐸\) possible, on a
+\begin{gather*}
+ℙ_{𝐸}(𝐸_{𝑖})=\frac{ℙ(𝐸_{𝑖})ℙ_{𝐸_{𝑖}}(𝐸)}{∑_{𝑗∈𝐼}ℙ(𝐸_{𝑗})ℙ_{𝐸_{𝑗}}(𝐸)}.
+\end{gather*}
+\end{theorem}
+\begin{proof}
+C'est quasi immédiat avec la formule des probabilités totales :
+\begin{gather*}
+ℙ_{𝐸}(𝐸_{𝑖})\mybydef{=}\frac{ℙ(𝐸∩𝐸_{𝑖})}{ℙ(𝐸)}=\frac{ℙ(𝐸_{𝑖})\;ℙ_{𝐸_{𝑖}}(𝐸)}{∑_{𝑗∈𝐼}ℙ(𝐸_{𝑗})\;ℙ_{𝐸_{𝑗}}(𝐸)}
+\qedhere
+\end{gather*}
+\end{proof}
+\begin{remark}
+cette formule est tellement simple qu'on ne la retient pas, on la
+retrouve selon les besoins.
+\end{remark}

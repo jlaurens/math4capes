@@ -1,0 +1,531 @@
+%!TEX program = xelatex
+% !TEX root = ../Main/main.tex
+% !TEX encoding = UTF-8
+
+\section{Éléments de théorie des ensembles}
+Vocabulaire de la théorie des ensembles.
+\subsection{Égalité}
+\begin{axiom}
+[Principe de Leibnitz] \(𝖯(.)\) étant un prédicat d'une variable
+\begin{equation*}
+∀𝑥,𝑦\text{, }(𝑥=𝑦)⟹(𝖯(𝑥)⇔𝖯(𝑦))
+\end{equation*}\end{axiom}
+\begin{remark}
+Cela fait un axiome par prédicat... pour pouvoir remplacer dans
+n'importe quelle expression un objet par un autre qui lui est égal.
+\end{remark}
+%
+\subsection{Éléments de théorie des ensembles}
+\subsubsection{Axiomes ZFC (de Zermelo, Fraenkel et du choix)}
+Pour la culture, voici une liste d'axiomes qui permettent de bâtir correctement la théorie des ensembles. À partir de
+là, on peut construire l'ensemble des entiers naturels puis les autres ensembles de nombres, avec d'autres axiomes
+éventuellement.
+
+En général, la rédaction est descriptive puis symbolique. Au début, tous les objets sont des ensembles.
+%
+\begin{axiom}
+[Extensionnalité]
+\label{seq:refAxiom1}
+Si deux ensembles ont les mêmes éléments, alors ils sont égaux.
+\begin{equation*}
+∀𝑥\;(∀𝑦\;((∀𝑧\;(𝑧∈𝑥⇔𝑧∈𝑦))⟹𝑥=𝑦))
+\end{equation*}
+\end{axiom}
+\begin{remark}
+C'est bien un axiome et pas une définition car les éléments étant eux-mêmes des
+ensembles, parler des «~mêmes éléments~» utilise implicitement l'égalité des ensembles. La réciproque vient simplement
+du principe de substitution.
+\end{remark}
+%
+\begin{axiom}
+[Ensemble vide]
+Il existe un ensemble sans élément. Il est noté \(∅\).
+\end{axiom}
+%
+\begin{lemma}
+L'ensemble vide est unique.
+\end{lemma}
+\begin{proof}
+Si \(𝑥\) et \(𝑦\) sont des ensembles vides, pour tout \(𝑧\) on a
+\begin{equation*}
+𝑧∈𝑥⟺\myfalse⟺𝑧∈𝑦
+\end{equation*}
+Donc tous les ensembles vides ont les mêmes éléments : ils sont égaux.
+\end{proof}
+%
+\begin{axiom}
+[Paire]
+Si \(𝑥\) et \(𝑦\) sont des ensembles, alors il existe un ensemble contenant
+\(𝑥\) et \(𝑦\), \ et eux seuls comme éléments. Il est noté \(\{𝑥,𝑦\}\).
+\(∀𝑥\;\bigl(∀𝑦\;\bigl(∀𝑧\;(𝑧∈\{𝑥,𝑦\}⟹(𝑧=𝑥\myor𝑧=𝑦))\bigr)\bigr)\).
+\end{axiom}
+%
+\begin{attention}
+En théorie des ensembles, une paire peut avoir un seul élément : on n'a pas supposé que \(𝑥\) et \(𝑦\) étaient distincts.
+\end{attention}
+%
+\begin{definition}
+[Singleton]
+Un \mykeyword{singleton} est une paire \(\{𝑥,𝑥\}\) où \(𝑥\) est un ensemble, il est noté \(\{𝑥\}\).
+\end{definition}
+%
+\begin{lemma}
+Un singleton n'est pas vide.
+\end{lemma}
+%
+\begin{proof}
+Par définition, \(𝑥∈\left\{𝑥\right\}\).
+\end{proof}
+\begin{theorem} 
+Si \(𝑥\) est un ensemble, on a
+\begin{equation*}
+∀𝑦\;\bigl((𝑦∈\{𝑥\})⟹(𝑦=𝑥)\bigr),
+\end{equation*}
+et
+\begin{equation*}
+∀𝑦,𝑦'\;((𝑦∈\{𝑥\}\myand𝑦'∈\{𝑥\})⟹(𝑦=𝑦'))
+\end{equation*}
+\end{theorem}
+%
+\begin{proof}
+Par l'axiome de la paire,
+\begin{equation*}
+∀𝑦\;(𝑦∈\{𝑥,𝑥\}⟹(𝑦=𝑥\myor𝑦=𝑥)⟹(𝑦=𝑥))
+\end{equation*}
+\(∀𝑦,𝑦'\;\bigl((𝑦∈\{𝑥\}\myand𝑦'∈\{𝑥\})⟹(𝑦=𝑥\myand𝑦'=𝑥)⟹(𝑦=𝑦')\bigr)\).
+\end{proof}
+%
+\begin{theorem} 
+Un ensemble non vide \(𝐸\) est un singleton si
+\vskip\abovedisplayskip
+\begin{enumerate}
+\item
+\(
+∃𝑥\;\bigl(∀𝑦\;\bigl((𝑦∈𝐸)⟹(𝑦=𝑥)\bigr)\bigr)
+\)
+ou
+\item
+\(
+∀𝑦,𝑦'\;\bigl((𝑦∈𝐸\myand𝑦'∈𝐸)⟹(𝑦=𝑦')\bigr)
+\)
+\end{enumerate}
+\vskip\belowdisplayskip
+Un ensemble \(𝐸\) est un singleton si
+\(∃!𝑥(𝑥∈𝐸)\).
+\end{theorem}
+%
+\begin{proof}
+À compléter.
+\par\noindent
+\begin{enumerate}
+\item La première proposition entraîne
+\begin{equation*}
+∀𝑦\ \bigl((𝑦∈𝐸)⟹(𝑦=𝑥)⟹(𝑦∈\{𝑥\})\bigr)
+\end{equation*}
+Avec \(𝑦_0\) dans \(𝐸\), elle entraîne aussi \(𝑦_0=𝑥\), ce qui donne \(𝑥∈𝐸\) puis
+\begin{equation*}
+∀𝑦\ \bigl((𝑦∈\{𝑥\})⟹(𝑦=𝑥)⟹(𝑦=𝑥\myand𝑥∈𝐸)⟹(𝑦∈𝐸)\bigr)
+\end{equation*}
+Par l'axiome d'extensionnalité, on obtient \(𝐸=\{𝑥\}\).
+\item Soit \(𝑦_0\) dans \(𝐸\) , la deuxième proposition donne
+\begin{equation*}
+∀𝑦\ \bigl((𝑦∈𝐸)⟹(𝑦=𝑦_0)\bigr)
+\end{equation*}
+qui est la première proposition.
+\(𝐸\) est non vide et l'unicité signifie exactement la dernière proposition.
+\end{enumerate}
+\end{proof}
+%
+\begin{axiom}
+[Réunion]
+Pour tout ensemble \(𝑥\), il existe un ensemble qui contient tous les éléments des éléments de
+\(𝑥\) et eux seuls, il est noté \(\bigcup_{𝑦∈𝑥}𝑦\) :
+\begin{equation*}
+∀𝑥\;\left(
+∀𝑧\;\left(
+\vphantom{\displaystyle\bigcup}
+\smash{𝑧∈\bigcup_{𝑦∈𝑥}}𝑦⟺∃𝑦\;(𝑧∈𝑦\myand𝑦∈𝑥)
+\right)
+\right)
+\vphantom{\displaystyle\bigcup_{𝑦∈𝑥}}
+\end{equation*}
+\end{axiom}
+%
+\begin{axiom}
+[Ensemble des parties]
+Pour tout ensemble \(𝑥\), il existe un ensemble dont les éléments sont les sous-ensembles de
+\(𝑥\) et eux seuls. Il est noté \(𝒫(𝑥)\).
+\begin{equation*}
+∀𝑥\;
+\Bigl(∀𝑦\;
+\bigl(
+𝑦∈𝒫(𝑥)⟺∀𝑧\;(𝑧∈𝑦⇒𝑧∈𝑥)
+\bigr)
+\Bigr)
+\end{equation*}
+\end{axiom}
+%
+\begin{axiom}
+[Infini]
+Il existe un ensemble \(Ω\) qui contient \(\mathsf{ ∅}\) et tel que pour chacun de ses éléments
+\(𝑥\), \(Ω\) contient \(𝑥∪\{𝑥\}\).
+\begin{equation*}
+∃Ω\;
+\left(
+(∅∈Ω)\myand
+\left(∀𝑥\;(𝑥∈Ω⟹𝑥∪\{𝑥\}∈Ω)
+\right)
+\right)
+\end{equation*}
+\end{axiom}
+%
+\begin{axiom}
+[Schéma de compréhension]
+Pour tout ensemble \(𝐸\) et toute proposition dont l'écriture dépend formellement d'un paramètre \(𝑥\) notée
+\(𝖯(𝑥)\), il existe un ensemble dont les éléments sont les éléments de \(𝐸\) vérifiant \(𝖯\).
+\begin{equation*}
+∀𝐸\;
+\Bigl(∀𝖯(𝑥)\;
+\bigl(∃𝐹\;
+\bigl(∀𝑥\;(𝑥∈𝐹⟺(𝑥∈𝐸\myand𝖯(𝑥)))
+\bigr)
+\bigr)
+\Bigr)
+\end{equation*}
+\end{axiom}
+\begin{terminology}
+On le note \(\bigl\{𝑥∈𝐸\mathbin|𝖯(𝑥)\bigr\}\), lu «ensemble des \(𝑥\) éléments de \(𝐸\) tels
+que \(𝖯(𝑥)\)».
+\end{terminology}
+%
+\begin{axiom}
+[Schéma de remplacement]
+Pour tout ensemble \(𝐸\) et toute relation fonctionnelle \(ℛ\), formellement définie comme une proposition \(𝑥ℛ𝑦\) et telle que \(𝑥ℛ𝑦\) et \(𝑥ℛ𝑦'\) entraîne 
+\(𝑦=𝑦'\), il existe un ensemble contenant les images par \(ℛ\) des éléments de l'ensemble d'origine \(𝐸\) et elles seules.
+\begin{equation*}
+\left(
+\vphantom{{A^A}^A}
+∀𝐸\;\left(
+\vphantom{A^{A^A}}
+∀𝗑ℛ𝗒\;\left(
+\vphantom{A^A}
+∀𝑥\;\left(
+\vphantom{A^A}
+∀𝑦\;\left(∀𝑦'\;\left(𝑥ℛ𝑦\myand𝑥ℛ𝑦'⇒𝑦=𝑦'\right)\right)\right)\right)⟹...\right.\right.
+\end{equation*}
+\begin{equation*}
+\left.\left....⟹
+\left(∃Ω\;
+\left(
+∀𝑦\;((𝑦∈Ω)⇔∃𝑥\;((𝑥∈𝐸)\myand(𝑥ℛ𝑦)))
+\vphantom{A^A}\right)
+\vphantom{A^A}\right)
+\vphantom{A^{A^A}}\right)
+\vphantom{{A^A}^A}\right)
+\end{equation*}
+\end{axiom}
+%
+\begin{axiom}
+[Fondation]
+Tout ensemble \(𝐸\) non vide contient un élément \(𝑥\) qui ne contient aucun élément de
+\(𝐸\).
+\begin{equation*}
+∀𝐸\;\left(
+\vphantom{{A^A}^A}
+\left(
+\vphantom{A^A}
+∃𝑥\;(𝑥∈𝐸)\right)
+⟹
+\left(
+∃𝑥\;(∀𝑦\;(𝑦∈𝑥⇒𝑦∉𝐸))
+\vphantom{A^A}
+\right)
+\vphantom{{A^A}^A}
+\right)
+\end{equation*}
+\end{axiom}
+%
+\begin{axiom}
+[Choix]
+Étant donné un ensemble \(𝐸\) d'ensembles non vides mutuellement disjoints, il existe un ensemble qui
+contient exactement un élément de chaque élément de \(𝐸\).
+\end{axiom}
+La formulation symbolique est laissée en exercice.
+\begin{remark}
+\(𝐸\) et \(𝐹\) sont des ensembles.
+\end{remark}
+\subsubsection{Comparaison}
+\begin{definition}
+[Inclusion des ensembles]
+\begin{equation*}
+𝐸⊂𝐹\mybydef{⟺}𝐹⊃𝐸\mybydef{⟺}∀𝑥\;(𝑥∈𝐸⇒𝑥∈𝐹)
+\end{equation*}
+On dit : \(𝐸\) est un \mykeyword{sous-ensemble} de \(𝐹\), \(𝐸\) est \mykeyword{inclus dans} \(𝐹\) ou \(𝐹\) \textbf{contient} \(𝐸\).
+\mykeyword{Partie} est synonyme de sous-ensemble.
+\end{definition}
+%
+\begin{definition}
+[Égalité des ensembles]
+\begin{equation*}
+𝐸=𝐹\mybydef{⟺}∀𝑥(𝑥∈𝐸⇔𝑥∈𝐹)
+\end{equation*}
+\end{definition}
+\begin{remark}
+C'est en réalité un axiome de la théorie des ensembles, voir l'axiome \ref{seq:refAxiom1}
+d'extensionnalité.
+\end{remark}
+%
+\begin{theorem}
+[Double inclusion]
+\begin{equation*}
+𝐸=𝐹⟺𝐸⊂𝐹\myand𝐹⊂𝐸
+\end{equation*}\end{theorem}
+\begin{proof}
+On a \((𝑥∈𝐸⇔𝑥∈𝐹)⟺((𝑥∈𝐸⇒𝑥∈𝐹)\myand(𝑥∈𝐹⇒𝑥∈𝐸))\).
+
+À compléter...
+\end{proof}
+%
+\begin{definition}
+[Partie stricte]
+\begin{equation*}
+𝐸⊊𝐹\mybydef{⟺}𝐹⊋𝐸\mybydef{⟺}∀𝑥\;(𝑥∈𝐸⇒𝑥∈𝐹)\myand∃𝑦\;(𝑦∉𝐸\text{ et
+}𝑦∈𝐹)
+\end{equation*}
+On dit : \(𝐸\) est un \mykeyword{sous-ensemble strict} de \(𝐹\), \(𝐸\) est \textbf{inclus strictement dans} \(𝐹\) ou \(𝐹\)
+\textbf{contient strictement} \(𝐸\).
+\end{definition}
+%
+\begin{lemma} 
+Il n'existe pas de partie stricte de \(∅\).
+\end{lemma}
+\begin{proof}
+De la définition précédente, on déduit
+\begin{equation*}
+(∀𝑥\;(𝑥∈𝐸⇒𝑥∈𝐹)\myand∃𝑦\;(𝑦∉𝐸\myand𝑦∈𝐹))⇒∃𝑦\;(𝑦∈𝐹)⇒𝐹≠∅
+\end{equation*}
+d'où le résultat par contraposition.
+\end{proof}
+\subsubsection{Opérations binaires}
+%
+\begin{definition}
+[Union et intersection]
+Pour tout \(𝑥\)
+\begin{equation*}
+𝑥∈𝐸∪𝐹\mybydef{⟺}𝑥∈𝐸\myor𝑥∈𝐹
+\end{equation*}
+\begin{equation*}
+𝑥∈𝐸∩𝐹\mybydef{⟺}𝑥∈𝐸\myand𝑥∈𝐹
+\end{equation*}
+\(∪\) se lit \mykeyword{union} ou \mykeyword{réunion}, \(∩\) se lit \mykeyword{inter} ou
+\mykeyword{intersection}.
+«L'union (ou la réunion) de \(𝐸\) et \(𝐹\)» désigne \(𝐸∪𝐹\), «l'intersection de \(𝐸\) et \(𝐹\)» désigne \(𝐸∩𝐹\).
+\end{definition}
+%
+\begin{remark}%
+Pour des définitions en compréhension, on a
+\begin{equation*}
+\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝖯(𝑥)\right\}∪\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝖯'(𝑥)\right\}
+=\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝖯(𝑥)\myor𝖯'(𝑥)\right\}
+\end{equation*}
+\begin{equation*}\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝖯(𝑥)\right\}∩\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝖯'(𝑥)\right\}
+=\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝖯(𝑥)\myand𝖯'(𝑥)\right\}
+\end{equation*}
+\end{remark}
+%
+\begin{theorem} 
+Pour tout ensemble \(𝐸\) et toute proposition dont l'écriture dépend formellement d'un paramètre \(𝗑\) notée
+\(𝖯(𝗑)\),
+\begin{equation*}
+\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝖯(𝑥)\right\}∪\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|\mynot𝖯(𝑥)\right\}=𝐸
+\end{equation*}
+\begin{equation*}
+\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝖯(𝑥)\right\}∩\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|\mynot𝖯(𝑥)\right\}=∅
+\end{equation*}
+\end{theorem}
+%
+\begin{proof}
+On a
+\begin{align*}
+𝑥∈\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝙿(𝑥)\right\}∪
+\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|¬𝙿(𝑥)\right\}
+&{}⟺\left(
+\vphantom{A^A}
+𝑥∈𝐸∧𝙿(𝑥)\right)∨
+\left(
+\vphantom{A^A}
+𝑥∈𝐸∧¬𝙿(𝑥)\right)
+\\
+&{}⟺𝑥∈𝐸∧\left(
+\vphantom{A^A}
+𝙿(𝑥)∨¬𝙿(𝑥)
+\right)
+\\&{}⟺𝑥∈𝐸
+\end{align*}
+\begin{align*}
+𝑥∈\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|𝙿(𝑥)\right\}∩
+\left\{
+\vphantom{A^A}
+𝑥∈𝐸\middle|¬𝙿(𝑥)\right\}
+&{}⟺\left(\vphantom{A^A}
+𝑥∈𝐸∧𝙿(𝑥)\right)
+∧\left(\vphantom{A^A}
+𝑥∈𝐸∧¬𝙿(𝑥)\right)
+\\&{}⟺𝑥∈𝐸∧\left(
+\vphantom{A^A}
+𝙿(𝑥)∧¬𝙿(𝑥)\right)
+\\&{}⟺𝑥∈∅
+\end{align*}
+\end{proof}
+%
+\begin{theorem}
+[Propriétés]
+\(∪\) et \(∩\) sont des opérations commutatives et associatives.
+\(𝐸∩𝐹=𝐹∩𝐸\) et \(𝐸∪𝐹=𝐹∪𝐸\)
+\(𝐸∩(𝐹∩𝐺)=(𝐸∩𝐹)∩𝐺\) et \(𝐸∪(𝐹∪𝐺)=(𝐸∪𝐹)∪𝐺\)
+\begin{enumerate}
+\item \(∅\) est élément neutre de \(∪\) et élément absorbant de \(∩,\)
+\item \(∪\) est distributive par rapport à \(∩ :\)
+\begin{equation*}
+𝐸∪(𝐹∩𝐺)=(𝐸∪𝐹)∩(𝐸∪𝐺)
+\end{equation*}
+\item \(∩\) est distributive par rapport à \(∪ :\)
+\begin{equation*}
+𝐸∩(𝐹∪𝐺)=(𝐸∩𝐹)∪(𝐸∩𝐺)
+\end{equation*}
+\item \(∪\) et \(∩\) sont croissantes par rapport à chacun de leurs arguments :
+\begin{equation*}
+𝐹⊂𝐺⟹(𝐸∩𝐹⊂𝐸∩𝐺\myand𝐸∪𝐹⊂𝐸∪𝐺)
+\end{equation*}
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item Pour la commutativité de la réunion : pour tout \(𝑥\)
+\begin{equation*}
+𝑥∈𝐸∪𝐹\mybydef{⟺}𝑥∈𝐸\myor𝑥∈𝐹⟺𝑥∈𝐹\myor𝑥∈𝐸\mybydef{⟺}𝑥∈𝐹∪𝐸
+\end{equation*}
+De même pour l'intersection par commutativité de \(\myand\) .
+\item Pour l'associativité de la réunion : pour tout \(𝑥\)
+\begin{align*}
+𝑥∈𝐸∪(𝐹∪𝐺)
+&{}⟺𝑥∈𝐸\;\myor\;𝑥∈𝐹∪𝐺
+\\&{}⟺𝑥∈𝐸\;\myor\;(𝑥∈𝐹\;\myor\;𝑥∈𝐺)
+\\&{}⟺(𝑥∈𝐸\;\myor\;𝑥∈𝐹)\;\myor\;𝑥∈𝐺
+\\&{}⟺𝑥∈𝐸∪𝐹\;\myor\;𝑥∈𝐺
+\\&{}⟺𝑥∈(𝐸∪𝐹)∪𝐺
+\end{align*}
+De même pour l'intersection par associativité de \(\myand\)
+\item
+Élément neutre : pour tout \(𝑥\)
+\begin{equation*}
+𝑥∈𝐸∪∅\mybydef{⟺}𝑥∈𝐸\myor𝑥∈∅⟺𝑥∈𝐸
+\end{equation*}
+On rappelle que \(𝑥∈∅\) est toujours \(\myfalse\).
+\item
+Élément absorbant : pour tout \(𝑥\)
+\begin{equation*}
+𝑥∈𝐸∩∅\mybydef{⟺}𝑥∈𝐸\myand𝑥∈∅⟺𝑥∈∅
+\end{equation*}
+\item Distributivités : deux versions en prenant d'abord l'opérateur au dessus, puis celui qui est dessous.
+Pour tout \(𝑥\)
+\begin{align*}
+𝑥∈𝐸\myover{∪}{∩}\bigl(𝐹\myover{∩}{∪}𝐺\bigr)
+&{}⟺𝑥∈𝐸\myorand𝑥∈𝐹\myover{∩}{∪}𝐺
+\\&{}⟺𝑥∈𝐸\myorand\bigl(𝑥∈𝐹\myandor𝑥∈𝐺\bigr)
+\\&{}⟺\bigl(𝑥∈𝐸\myorand𝑥∈𝐹\bigr)\myandor\bigl(𝑥∈𝐸\myorand𝑥∈𝐺\bigr)
+\\&{}⟺𝑥∈𝐸\myover{∪}{∩}𝐹\myandor𝑥∈𝐸\myover{∪}{∩}𝐺
+\\&{}⟺𝑥∈\bigl(𝐸\myover{∪}{∩}𝐹\bigr)\myover{∩}{∪}\bigl(𝐸\myover{∪}{∩}𝐺\bigr)
+\end{align*}
+\item Croissance : même convention que ci-dessus. On suppose \(𝐹⊂𝐺\). Pour tout \(𝑥\)
+\begin{equation*}
+𝑥∈𝐸\myover{∩}{∪}𝐹⟹𝑥∈𝐸\myandor𝑥∈𝐹⟹𝑥∈𝐸\myandor𝑥∈𝐺⟹𝑥∈𝐸\myover{∩}{∪}𝐺
+\end{equation*}
+\end{enumerate}
+\end{proof}
+%
+\begin{definition} 
+[Partition]
+Une partition de \(𝐸\) est une partie \(𝑃\) de \(𝒫(𝐸)\) dont les éléments sont non vides,
+mutuellement disjoints et ont pour réunion \(𝐸\), \textit{id est}
+\begin{enumerate}
+\vskip\abovedisplayskip
+\item \hfill\(\displaystyle
+∀𝐹∈𝑃\text{, }𝐹≠∅
+\)\hfill~
+\vskip\abovedisplayskip
+\item\hfill\(\displaystyle
+∀𝐹,𝐺∈𝑃\text{, }(𝐹≠𝐺)⟹(𝐹∩𝐺=∅)
+\)\hfill~
+\vskip\abovedisplayskip
+\item \hfill\(𝐸=\bigcup_{𝐹∈𝑃}𝐹\).\hfill~
+\vskip\belowdisplayskip
+\end{enumerate}
+Les éléments de \(𝑃\) sont ses \mykeyword{composantes}.
+\end{definition}
+%
+\begin{definition}
+[Différence]
+Pour tout \(𝑥\)
+\begin{equation*}
+𝑥∈𝐸\mathbin{∖}𝐹\mybydef{⟺}𝑥∈𝐸\myand𝑥∉𝐹
+\end{equation*}
+Si \(𝐸\) contient \(𝐹\), \(𝐸\mathbin{∖}𝐹\) est le
+\textbf{complémentaire} de \(𝐹\) dans \(𝐸\).
+\end{definition}
+\subsubsection[Produit cartésien]{Produit cartésien}
+\begin{definition}
+[Couple, composante]
+Pour tous \(𝑥\) et \(𝑦\),\((𝒙,𝒚)\) est un \mykeyword{couple}.
+\(𝑥\) et \(𝑦\) en sont les \mykeyword{composantes}, \(𝑥\) en est la
+\mykeyword{première composante} et \(𝑦\) en est la \mykeyword{deuxième composante}. Pour tous
+\(𝑥'\) et \(𝑦'\),
+\begin{equation*}
+(𝑥,𝑦)=(𝑥',𝑦')\mybydef{⟺}𝑥=𝑥'\myand𝑦=𝑦'
+\end{equation*}
+Dans le contexte de la géométrie, l'abscisse est synonyme de la première composante et l'ordonnée est synonyme de la deuxième composante.
+\end{definition}
+%
+\begin{remark}
+En théorie des ensembles avancée, on a \((𝑥,𝑦)\mybydef{⟺}\{\{𝑥\},\{𝑥,𝑦\}\}\).
+L'existence du deuxième membre repose sur l'\emph{axiome de la paire}, son unicité repose sur l'\emph{axiome
+d'extensionnalité}.
+\end{remark}
+%
+\begin{definition}
+[Produit cartésien]
+\(𝐸\) et \(𝐹\) étant des ensembles, le \mykeyword{produit cartésien} de \(𝐸\)
+par \(𝐹\), noté \(𝑬×𝑭\), est l'ensemble de tous les couples dont la première composante est dans \(𝐸\) et
+la deuxième dans \(𝐹\).
+\end{definition}
+\begin{Exercise}
+Montrer que le produit cartésien est associatif, mais pas commutatif.
+\end{Exercise}

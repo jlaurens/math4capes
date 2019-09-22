@@ -1,0 +1,1147 @@
+% !TEX encoding = UTF-8
+% !TEX program = xelatex
+% !TEX root = ../Main/main.tex
+
+\section{Nombres entiers naturels}
+Construction de \(ℕ\).
+\subsection{Présentation axiomatique}
+\subsubsection{Définition}
+%
+\begin{definition} 
+\(ℕ\) est un ensemble dont les éléments sont appelés \mykeyword{entiers naturels}.
+\end{definition}
+%
+\begin{axiom}
+[de Peano]
+\par\noindent
+\begin{enumerate}[
+    label=\textcolor{ocre}{\textbf{P\arabic*)}},
+    ref=P\arabic*,
+    itemindent=1.5\parindent
+  ]
+\item
+\label{axm.peano.1}
+\(0\) est un entier naturel, lu «~zéro~».
+\item
+\label{axm.peano.2}
+Tout entier naturel \(𝑛\) a un unique \mykeyword{successeur} noté \(𝑛_+\).
+\item
+\label{axm.peano.3}
+Aucun entier naturel n'a \(0\) pour successeur.
+\item
+\label{axm.peano.4}
+Deux entiers naturels ayant même successeur sont égaux.
+\item
+\label{axm.peano.5}
+\mykeyword{Récurrence}. Si un ensemble d'entiers naturels contient \(0\) et contient le successeur de
+chacun de ses éléments alors cet ensemble est égal à \(ℕ\).
+\begin{equation*}
+\begin{cases}
+𝐸⊂ℕ\\0∈𝐸\\∀𝑛∈ℕ,\ 𝑛∈𝐸⇒𝑛_+∈𝐸
+\end{cases}
+⟹𝐸=ℕ
+\end{equation*}
+\end{enumerate}
+\end{axiom}
+\begin{remark}
+On peut reformuler ces axiomes en utilisant la notion d'application.
+\end{remark}
+%
+\begin{definition} 
+\(ℕ^{\ast }\mybydef{=}ℕ∖\{0\}\), lu «~n étoile~».
+\end{definition}
+%
+\begin{definition} 
+\mykeyword{Suivant} est synonyme de \mykeyword{successeur}.
+\(𝑝\) 
+\mykeyword{succède à} \(𝑞\) signifie que \(𝑝\) est \ le successeur de \(𝑞\).
+\end{definition}
+%
+\begin{definition}
+[Nombres] 
+\par\noindent
+\begin{itemize}
+\item
+\(1\mybydef{=}0₊\), lu «~un~»,
+\item
+\(2\mybydef{=}1₊\), lu «~deux~», 
+\item
+\(3\mybydef{=}2₊\), lu «~trois~»,
+\item
+\(4\mybydef{=}3₊\), lu «~quatre~»,
+\item
+\(5\mybydef{=}4₊\), lu «~cinq~»,
+\item
+\(6\mybydef{=}5₊\), lu «~six~»,
+\item
+\(7\mybydef{=}6₊\), lu «~sept~»,
+\item
+\(8\mybydef{=}7₊\), lu «~huit~»,
+\item
+\(9\mybydef{=}8₊\), lu «~neuf~».
+\end{itemize}
+\end{definition}
+%
+\begin{notation}
+\label{ntn.N.successeur}
+\(𝑛₊\) est noté \(𝑛+1\)
+\end{notation}
+%
+\subsubsection{Principe de récurrence}
+Si un ensemble \(𝐸\) inclus dans \(ℕ\) est donné en compréhension, \emph{id est} 
+\(𝐸\mybydef{=}\bigl\{𝑛∈ℕ\mathbin|𝖯(𝑛)\bigr\}\), \(𝐸\) contient \(𝑛\) signifie \(𝖯(𝑛)\) est vraie :
+on spécialise l'axiome \ref{axm.peano.5}.
+%
+\begin{axiom}
+[Récurrence]
+Si \(𝖯(0)\) est vraie et si pour tout entier naturel \(𝑛\), \(𝖯(𝑛)⇒𝖯(𝑛+1)\) est vraie alors pour tout entier
+naturel \(𝑛\), \(𝖯(𝑛)\) est vraie.
+\end{axiom}
+%
+\begin{attention}
+Ceci n'est pas un théorème, c'est exactement l'axiome \ref{axm.peano.5} dans le cas particulier des
+ensembles définis en compréhension.
+\end{attention}
+%
+\begin{theorem} 
+Pour démontrer \(∀𝑛∈ℕ,\ 𝖯(𝑛)\),
+\begin{enumerate}
+\item on démontre \(𝖯(0)\), c'est \mykeyword{l'initialisation,}
+\item on démontre \(∀𝑛∈ℕ,\ 𝖯(𝑛)⇒𝖯(𝑛+1)\), c'est \mykeyword{l'hérédité}.
+\end{enumerate}
+\end{theorem}
+%
+\begin{theorem}
+[Récurrence à deux niveaux]
+Si
+\begin{enumerate}
+\item
+\(𝖯(0)\) est vraie,
+\item
+\(𝖯(1)\) est vraie et
+\item
+pour tout entier naturel \(𝑛\), on a \(𝖯(𝑛)\myand𝖯(𝑛+1)⇒𝖯(𝑛+2)\) est vraie
+\end{enumerate}
+alors pour tout entier naturel \(𝑛\), \(𝖯(𝑛)\) est vraie.
+\end{theorem}
+%
+\begin{proof}
+Soit \(𝖰(𝑛)\mybydef{=}𝖯(𝑛)\text{ et }𝖯(𝑛+1)\). On a \(𝖰(0)=𝖯(0)\text{ et }𝖯(1)\),
+%
+\begin{equation*}
+(𝖯(𝑛)\text{ et }𝖯(𝑛+1)⇒𝖯(𝑛+2))⟺(𝖯(𝑛)\text{ et }𝖯(𝑛+1)⇒𝖯(𝑛+1)\text{ et }𝖯(𝑛+2))
+\end{equation*}
+ainsi que
+\(∀𝑘∈ℕ,\ 𝖯(𝑛)⟺∀𝑘∈ℕ,\ 𝖰(𝑛)\).
+Donc les deux formulations de récurrence sont équivalentes.
+\end{proof}
+%
+\begin{remark}
+Les récurrences à plus de niveaux sont laissées en exercice.
+\end{remark}
+%
+Si nous anticipons sur la définition de la relation d'ordre, nous avons
+%
+\begin{theorem}
+[Récurrence forte]
+Si \(𝖯(0)\) est vraie et si pour tout entier naturel \(𝑛\), \((∀0≤𝑘≤𝑛,𝖯(𝑘))⇒𝖯(𝑛+1)\) est vraie alors pour tout
+entier naturel \(𝑛\), \(𝖯(𝑛)\) est vraie.
+\end{theorem}
+%
+\begin{proof}
+Soit \(𝖰(𝑛)\mybydef{=}\bigl(∀0≤𝑘≤𝑛,𝖯(𝑘)\bigr)\). On a \(𝖰(0)=𝖯(0)\),
+\begin{align*}
+\lefteqn{\bigl(∀0≤𝑘≤𝑛,𝖯(𝑘)\bigr)⇒𝖯(𝑛+1)}\hspace{4em}
+\\&{}⟺
+(∀0≤𝑘≤𝑛,\ 𝖯(𝑘))⇒(∀0≤𝑘≤𝑛+1,𝖯(𝑘))
+\\&{}⟺
+𝖰(𝑛)⇒𝖰(𝑛+1)
+\end{align*}
+ainsi que
+\(\bigl(∀𝑛∈ℕ,\ 𝖯(𝑛)\bigr)⟺\bigl(∀𝑛∈ℕ,\ 𝖰(𝑛)\bigr)\).
+Donc les deux formulations de récurrence sont équivalentes.
+\end{proof}
+%
+\begin{definition} 
+Un prédécesseur de \(𝑛\) est un entier naturel, noté \(𝑛₋\), dont le successeur est \(𝑛\).
+\end{definition}
+%
+\begin{theorem} 
+Tout entier naturel \(𝑛\) admet au plus un prédécesseur.
+\end{theorem}
+%
+\begin{proof}
+Par définition, deux prédécesseurs de \(𝑛\) ont le même successeur \(𝑛\). Par l'axiome \ref{axm.peano.4}
+ils sont égaux.
+\end{proof}
+%
+\begin{theorem} 
+Tout entier naturel est le prédécesseur de son successeur.
+%
+\begin{equation*}
+∀𝑛∈ℕ,\ 𝑛=(𝑛₊)₋
+\end{equation*}
+\end{theorem}
+%
+\begin{corollary}
+En particulier, tout successeur admet un prédécesseur.
+\end{corollary}
+%
+\begin{proof}
+Par définition du prédécesseur on a \(\bigl((𝑛₊)₋\bigr)₊=𝑛₊\),
+ainsi \(𝑛\) et \((𝑛₊)₋\) ont pour successeur \(𝑛₊\), ils sont donc égaux par l'axiome \ref{axm.peano.4}.
+\end{proof}
+%
+\begin{theorem} 
+Les entiers naturels non nuls sont les successeurs.
+\end{theorem}
+%
+\begin{corollary}
+En particulier, tout entier naturel non nul admet un prédécesseur.
+\end{corollary}
+%
+\begin{proof}
+Soit \(𝐸\) l'ensemble des entiers naturels successeurs et \(𝐹\mybydef{=}\{0\}∪𝐸\). Par l'axiome
+\ref{axm.peano.2}, tout élément de \(𝐹\) admet un successeur qui est dans \(𝐸\) et \emph{a fortiori} dans \(𝐹\). Ainsi, \(𝐹\) est une partie de \(ℕ\) qui contient \(0\) et le successeur de chacun de ses éléments,
+c'est donc \(ℕ\) lui-même par l'axiome \ref{axm.peano.5}. Par l'axiome \ref{axm.peano.3}, \(𝐸\)
+ne contient pas \(0\), donc \(ℕ∖\{0\}=\left(\{0\}∪𝐸\right)∖\{0\}=
+∅∪\left(𝐸∖\{0\}\right)=𝐸\).
+\end{proof}
+%
+\begin{theorem} 
+
+Tout entier naturel non nul est le successeur de son prédécesseur.
+%
+\begin{equation*}
+∀𝑛∈ℕ^{ *},\ 𝑛=(𝑛₋)₊
+\end{equation*}
+\end{theorem}
+%
+\begin{proof}
+\item 
+
+C'est une application directe de la définition et des lemmes précédents.
+\end{proof}
+%
+\begin{theorem} 
+L'application \(𝑛↦𝑛₊\) est un bijection de \(ℕ\) sur \(ℕ^{\ast}\), elle est \mykeyword{nommée décalage à
+droite}. Sa réciproque est nommée \mykeyword{décalage à gauche}.
+\end{theorem}
+%
+\begin{proof}
+Immédiat. À préciser...
+\end{proof}
+%
+\begin{definition} 
+Soit \(𝐸\) une partie de \(ℕ\), \(𝑝\) est un \mykeyword{élément minimal} de \(𝐸\) signifie qu'il appartient à \(𝐸\) et que son
+prédécesseur, s'il existe, n'appartient pas à \(𝐸\).
+
+\(𝐸\) admet un élément minimal signifie qu'il existe un élément minimal de \(𝐸\).
+%
+\end{definition}
+%
+\begin{examples}
+\par\noindent
+\begin{enumerate}
+\item Si \(𝐸\) contient \(0\), celui-ci est minimal.
+\item Dans l'ensemble des entiers naturels pairs, tout entier est minimal.
+\end{enumerate}
+\end{examples}
+%
+\begin{theorem} 
+Toute partie non vide de \(ℕ\) continet un élément minimal.
+\end{theorem}
+%
+\begin{proof}
+Soit \(𝐸\) une telle partie. Si \(𝐸\) contient \(0\), c'est immédiat. Sinon le complémentaire de \(𝐸\) contient \(0\), mais
+n'est pas \(ℕ\) : par l'axiome \ref{axm.peano.5} il ne peut pas contenir le successeur de chacun de ses
+éléments. Il existe donc un entier qui n'appartient pas à \(𝐸\) mais dont le successeur appartient à \(𝐸\). Ce
+successeur est un élément minimal de \(𝐸\).
+\end{proof}
+%
+\begin{attention}
+Le théorème suivant est \mykeyword{fondamental~}! Il est utilisé notamment pour les suites récurrentes.
+La preuve de l'unicité est facile, celle de l'existence est plus technique sans être réellement difficile.
+\end{attention}
+%
+\begin{theorem}
+[Définition par récurrence]
+Soit un ensemble \(𝐸\) qui contient \(𝑎\) et \(𝐻~:ℕ×𝐸→𝐸\). Il existe une application \(𝑓\) de \(ℕ\) dans \(𝐸\), et
+une seule, telle que
+%
+\begin{enumerate}
+\item %
+\(
+𝑓(0)=𝑎
+\)
+\item \(∀𝑛∈ℕ,\ 𝑓(𝑛₊)=𝐻\bigl(𝑛,𝑓(𝑛)\bigr)\).
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item Unicité. Soient \(𝑓_1\) et \(𝑓_2\) de telles applications et 
+\begin{equation*}
+𝐹\mybydef{=}\left\{𝑛∈ℕ\mathbin|𝑓_1(𝑛)=𝑓_2(𝑛)\right\}
+\end{equation*}
+Par la propriété 1) du théorème,
+\(𝑓_1(0)=𝑎=𝑓_2(0)\) donc \(𝐹\) contient \(0\). Par la propriété 2),
+\begin{equation*}
+𝑓_1(𝑛)=𝑓_2(𝑛)⇒𝐻\bigl(𝑛,𝑓_1(𝑛)\bigr)=𝐻\bigl(𝑛,𝑓_2(𝑛)\bigr)⇒𝑓_1(𝑛₊)=𝑓_2(𝑛₊)
+\end{equation*}
+et \(𝐹\) contient le successeur de chacun de ses éléments. Par l'axiome de récurrence, \(𝐹\) vaut \(ℕ\) et 
+\(𝑓_1=𝑓_2\).
+\item Existence : par construction du graphe. On considère les parties \(𝑀\) de \(ℕ×𝐸\) qui ont les deux propriétés
+suivantes :
+\begin{itemize}
+\item
+\(
+(0,𝑎)∈𝑀
+\)
+\item
+\((𝑛,𝑦)∈𝑀⇒\bigl(𝑛₊,𝐻(𝑛,𝑦)\bigr)∈𝑀\). 
+\end{itemize}
+\(ℕ×𝐸\) est un tel ensemble. L'intersection \(𝛤\) de tous ces ensembles a encore ces propriétés et c’est le plus
+petit sous-ensemble de \(ℕ×𝐸\) qui les a. Montrons que c'est le graphe d'une application.
+
+On considère
+\(𝐹\mybydef{=}\bigl\{𝑛∈ℕ\mathbin|∃𝑦∈𝐸,(𝑛,𝑦)∈𝛤\bigr\}\). 
+\(𝐹\) contient \(0\) puisque \((0,𝑎)∈𝛤\).
+Si \(𝐹\) contient \(𝑛\), alors \((𝑛,𝑦)∈𝛤\) pour un certain \(𝑦\) de \(𝐸\) et par la propriété 2) on a
+\(\bigl(𝑛₊,𝐻(𝑛,𝑦)\bigr)∈𝛤\), donc \(𝐹\) contient \(𝑛₊\). Ainsi, \(𝐹\) vaut \(ℕ\) et \(∀𝑛∈ℕ,\ ∃𝑦∈𝐸,\ (𝑛,𝑦)∈𝛤\).
+
+On considère maintenant
+\begin{equation*}
+𝐹\mybydef{=}\bigl\{𝑛∈ℕ\mathbin|∃𝑦,𝑧∈𝐸,𝑦≠𝑧,(𝑛,𝑦)∈𝛤,(𝑛,𝑧)∈𝛤\bigr\}.
+\end{equation*}
+Si \(𝐹\) contient \(0\), on a \((0,𝑥)∈𝛤\) avec \(𝑥≠𝑎\). \(𝛤∖\{(0,𝑥)\}\) a les deux propriétés ci-dessus et il est
+strictement inclus dans \(𝛤\), ce qui contredit la minimalité de \(𝛤\). Donc \ \(𝐹\) ne contient pas 0.
+
+Si \(𝐹\) n'est
+pas vide, il admet un élément minimal non nul \(𝑝\). Comme \(𝑝₋\) n'est pas dans \(𝐹\), il existe un unique \(𝑡\) 
+tel que \((𝑝₋,𝑡)∈𝛤\). Comme \(𝑝\) et dans \(𝐹\), on a \((𝑝,𝑥)∈𝛤\) avec \(𝑥≠𝐻(𝑝₋,𝑡)\). Puisque 
+\((0,𝑎)≠(𝑝,𝑥)\), \(𝛤∖\{(𝑝,𝑥)\}\) contient \((0,𝑎)\). De plus, si \ \(𝛤∖\{(𝑝,𝑥)\}\) contient \((𝑛,𝑦)\) alors
+on a
+%
+\begin{equation*}
+\bigl(𝑛₊,𝐻(𝑛,𝑦)\bigr)=(𝑝,𝑧)⇒
+\begin{cases}
+𝑛=𝑝₋
+\\𝑦=𝑡
+\\𝑧≠𝑥
+\end{cases}
+\end{equation*}
+c'est-à-dire \(𝛤∖\{(𝑝,𝑥)\}\) contient \(bigl(𝑛₊,𝐻(𝑛,𝑦)\bigr)\). \(𝛤∖\{(𝑝,𝑥)\}\) a les deux propriétés ci-dessus et
+il est strictement inclus dans \(𝛤\), cela contredit la minimalité de \(𝛤\).
+
+Donc \(𝐹\) est vide et \(𝛤\) est le
+graphe d’une application \(𝑓\) de \(ℕ\) dans \(𝐸\) pour laquelle on a bien \(𝑓(0)=𝑎\), \(𝑓(𝑛₊)=𝐻(𝑛,𝑓(𝑛))\) 
+pour chaque entier \(𝑛\).\qedhere
+\end{enumerate}
+\end{proof}
+%
+\begin{theorem}
+[Intervalles entiers]
+Il existe une unique application de \(ℕ\) dans \( 𝒫(ℕ)\), notée \(𝑛↦⟦0;𝑛⟧\) telle que
+%
+\begin{enumerate}
+\item \(⟦0;0⟧=\{0\}\),
+\item \(∀𝑛∈ℕ,\ ⟦0;𝑛₊⟧=⟦0;𝑛⟧∪\{𝑛₊\}\).
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+On applique le théorème de définition par récurrence à \(𝑎=\{0\}\), \(𝐸= 𝒫(ℕ)\) et 
+\(𝐻(𝑛,𝑦)\mybydef{=}𝑦∪\{𝑛₊\}\).
+\end{proof}
+%
+\begin{lemma}
+%
+\(
+ℕ=\bigcup_{𝑛=0}^∞⟦0;𝑛⟧
+\)
+\end{lemma}
+%
+\begin{proof}
+C'est immédiat.
+\end{proof}
+\subsection{Addition des entiers naturels}
+\subsubsection{Définition}
+%
+\begin{theorem} 
+\label{thm.N.addition0}
+Pour tout entier naturel \(𝑛\), il existe une unique application de \(ℕ\) dans \(ℕ\), notée \(𝑝↦+_{𝑛}(𝑝)\) telle que
+%
+\begin{enumerate}
+\item \(+_{𝑛}(0)=𝑛\),
+\item \(∀𝑝∈ℕ,\ +_{𝑛}(𝑝₊)=\bigl(+_{𝑛}(𝑝)\bigr)₊\).
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+C'est une définition par récurrence.
+À compléter.
+\end{proof}
+\begin{proposition}
+\par\noindent
+\begin{enumerate}
+\item
+\(∀𝑝∈ℕ,\ +_{0}(𝑝)=𝑝\),
+\item
+\(∀𝑝∈ℕ,\ +_{1}(𝑝)=𝑝₊=p+1\),
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+À compléter.
+\end{proof}
+%
+\begin{definition}
+[addition des entiers naturels]
+\label{seq:refDefinition6} 
+%
+\begin{equation*}
+∀𝑛,𝑝∈ℕ,\ 𝑛+𝑝\mybydef{=}+_{𝑛}(𝑝)
+\end{equation*}
+\end{definition}
+%
+\subsubsection{Propriétés}
+%
+\begin{theorem}
+\par\noindent
+%
+\begin{enumerate}
+\item
+Élément neutre : \(∀𝑛∈ℕ,𝑛+0=0+𝑛=𝑛\) 
+\item
+Successeur : \(∀𝑛∈ℕ,𝑛₊=𝑛+1=1+𝑛\) 
+\item
+Associativité : \(∀𝑝,𝑞,𝑟∈ℕ,\ (𝑝+𝑞)+𝑟=𝑝+(𝑞+𝑟)\) 
+\item
+Commutativité : \(∀𝑝,𝑞∈ℕ,\ 𝑝+𝑞=𝑞+𝑝\) 
+\item %
+\(
+∀𝑝,𝑞∈ℕ,\ 𝑝+𝑞=0⟺𝑝=𝑞=0
+\)
+\item Régularité : \(∀𝑝,𝑞,𝑟∈ℕ,\ 𝑝+𝑟=𝑞+𝑟⟹𝑝=𝑞\) 
+\end{enumerate}
+\end{theorem}
+\begin{remark}
+\vspace{-\baselineskip}
+\begin{itemize}
+\item
+Par 1), 2), 4) et 6), \((ℕ,+)\) est un \mykeyword{monoïde régulier commutatif}.
+\item
+Par 2), la notation \ref{ntn.N.successeur} est consistante avec la definition \ref{def.N.addition}
+\end{itemize}
+\end{remark}
+%
+\begin{proof}
+\par\noindent
+%
+\begin{enumerate}
+\item Par le theorème \ref{thm.N.addition0}, pour tout entier naturel \(𝑛\), on a
+ \(𝑛+0=𝑛\). L'autre égalité se montre par récurrence.
+ On a \(0+0=0\) et
+ \(0+𝑛=𝑛⇒𝑛₊=(0+𝑛)₊=0+𝑛₊\)
+%
+\item Pour la première égalité, \(𝑛₊=(𝑛+0)₊=𝑛+(0₊)=𝑛+1\). Par récurrence pour la deuxième, \(0+1=1+0=1\) et
+%
+\begin{equation*}
+𝑛+1=1+𝑛⇒(𝑛+1)+1=(1+𝑛)+1=1+(𝑛+1)
+\end{equation*}
+\item Par récurrence sur \(𝑟\). Initialisation : \((𝑝+𝑞)+0=𝑝+𝑞=𝑝+(𝑞+0)\). Hérédité : si \ on a 
+\((𝑝+𝑞)+𝑟=𝑝+(𝑞+𝑟)\), alors
+%
+\begin{equation*}
+(𝑝+𝑞)+𝑟₊=\bigl((𝑝+𝑞)+𝑟\bigr)₊=\bigl(𝑝+(𝑞+𝑟)\bigr)₊=𝑝+(𝑞+𝑟)₊=𝑝+(𝑞+𝑟₊)
+\end{equation*}
+\item Par récurrence sur \(𝑝\) à \(𝑛\) fixé. Initialisation : voir 1) ci-dessus. Hérédité : si on a \(𝑛+𝑝=𝑝+𝑛\). alors
+%
+\begin{equation*}
+𝑛+(𝑝+1)=(𝑛+𝑝)+1=(𝑝+𝑛)+1=𝑝+(𝑛+1)=𝑝+(1+𝑛)=(𝑝+1)+𝑛
+\end{equation*}
+\item \(0+0=0\) donne un sens de l'équivalence. Par ailleurs, si \(𝑞\) est un successeur, \(𝑝+𝑞\) aussi. Par
+contraposition, si \(𝑝+𝑞\) est nul alors \(𝑞\) aussi. Il en va de même pour \(𝑝\) par commutativité.
+\item Par récurrence sur \(𝑟\). Initialisation : immédiat. Hérédité : essentiellement
+
+ \(𝑝+(𝑟+1)=𝑞+(𝑟+1)⇒(𝑝+𝑟)+1=(𝑞+𝑟)+1⇒𝑝+𝑟=𝑞+𝑟\).
+\end{enumerate}
+\end{proof}
+%
+\begin{proposition} 
+On obtient une égalité vraie en ajoutant membre à membre des égalités vraies.
+\end{proposition}
+%
+\begin{proof}
+Par le \emph{principe de Leibnitz},
+\begin{equation*}
+\begin{cases}
+𝑎=𝑏\\𝑐=𝑑\\𝑎+𝑐=𝑎+𝑐
+\end{cases}⇒\begin{cases}
+𝑎=𝑏\\𝑎+𝑐=𝑎+𝑑
+\end{cases}⇒𝑎+𝑐=𝑏+𝑑
+\end{equation*}
+\end{proof}
+%
+\subsection[Ordre]{Ordre}
+\subsubsection{Définitions}
+%
+\begin{definition}
+\label{dfn.N.ordre}
+Pour tous entiers \(𝑝\) et \(𝑞\) 
+%
+\begin{enumerate}
+\item \(𝑝⩽𝑞\) signifie \(∃𝛿∈ℕ,\ 𝑝+𝛿=𝑞\),
+\item \(𝑝<𝑞\) signifie en plus \(𝛿≠0\),
+\item \(𝑞⩾𝑝\) signifie \(𝑝⩽𝑞\) et
+\item \(𝑞>𝑝\) signifie \(𝑝<𝑞\).
+\end{enumerate}
+\begin{itemize}
+\item
+1) et 3) sont des \mykeyword{inégalités larges}, les autres sont des \mykeyword{inégalités
+strictes}.
+\item
+1) et 2) sont des inégalités de \mykeyword{sens croissant}, les deux autres sont des inégalités de
+\mykeyword{sens décroissant}.
+\item
+\(𝑝\) \mykeyword{minore} \(𝑞\), \(𝑝\) \mykeyword{est minorant de} \(𝑞\) sont des
+synonymes de \(𝑝⩽𝑞\).
+\item
+\(𝑝\) \mykeyword{majore} \(𝑞\), \(𝑝\) \mykeyword{est majorant de} \(𝑞\) sont des
+synonymes de \(𝑝⩾𝑞\).
+\item
+\(𝑝⩽𝑞⩽𝑟\) signifie \(𝑝⩽𝑞\myand𝑞⩽𝑟\). De même avec des inégalités strictes, et avec des inégalités dans
+l'autre sens.
+\end{itemize}
+\end{definition}
+%
+\begin{definition}
+\par\noindent
+\begin{itemize}
+\item
+\(𝑝\) est \mykeyword{positif ou nul} signifie \(0⩽𝑝\).
+\item
+\(𝑝\) est \mykeyword{positif} signifie \(0<𝑝\).
+\item
+\(𝑝\) est \mykeyword{négatif ou nul} signifie \(𝑝⩽0\).
+\item
+\(𝑝\) est \mykeyword{négatif} signifie \(𝑝<0\).
+\end{itemize}
+\end{definition}
+\subsubsection{Propriétés}
+%
+\begin{proposition} 
+Tout entier naturel est positif ou nul.
+\end{proposition}
+%
+\begin{proof}
+Pour tout entier naturel \(𝑝\), on a \(0+𝑝=𝑝\), c'est la définition de \(0⩽𝑝\) avec \(𝛿=𝑝\).
+\end{proof}
+%
+\begin{theorem} 
+
+Pour tous entiers naturels \(𝑝\) et \(𝑞\), \(𝑝⩽𝑝+𝑞\). Si en plus \(𝑞\) n'est pas nul, \(𝑝<𝑝+𝑞\). En particulier 
+\(𝑝<𝑝+1\) 
+\end{theorem}
+%
+\begin{proof}
+\item 
+
+On a \(𝑝+𝑞=𝑝+𝑞\), c'est la définition de \(𝑝⩽𝑝+𝑞\) ou \(𝑝<𝑝+𝑞\) avec \(𝛿=𝑞\).
+\end{proof}
+%
+\begin{theorem} 
+
+Pour tous entiers \(𝑝\) et \(𝑞\),
+%
+\begin{enumerate}
+\item %
+\(
+𝑝⩽𝑞⟺𝑝<𝑞\text{ ou }𝑝=𝑞
+\)
+\item
+\(𝑝<𝑞⟺∃𝛿∈ℕ,\ 𝑝+𝛿+1=𝑞\).
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item
+On a par définitions \(𝑝⩽𝑞⟸𝑝<𝑞\myor𝑝=𝑞\). De plus,
+%
+\begin{align*}
+𝑝⩽𝑞\myand𝑝≠𝑞
+&{}⟹∃𝛿∈ℕ,\ 𝑝+𝛿=𝑞,\ 𝑝≠𝑞
+\\&{}⟹
+∃𝛿∈ℕ,\ (𝛿=0,\ 𝑝+𝛿=𝑞,\ 𝑝≠𝑞)
+\\
+&\hspace{8em}\myor(𝛿≠0,\ 𝑝+𝛿=𝑞,\ 𝑝≠𝑞)
+\\&{}⟹
+∃𝛿∈ℕ,\ (𝛿=0,\ 𝑝=𝑞,\ 𝑝≠𝑞)
+\\
+&\hspace{8em}\myor(𝛿≠0,\ 𝑝+𝛿=𝑞,\ 𝑝≠𝑞)
+\\&{}⟹
+∃𝛿∈ℕ,\ 𝛿≠0,\ 𝑝+𝛿=𝑞
+\\&{}⟹
+𝑝<𝑞
+\end{align*}
+\item On a
+\end{enumerate}
+%
+\begin{align*}
+\lefteqn{∃𝛿∈ℕ,\ 𝛿≠0,\ 𝑝+𝛿=𝑞}
+\hspace{5em}
+\\&{}⟺
+∃𝛿∈ℕ,\ ∃𝛿'∈ℕ,\ 𝛿=𝛿'+1,\ 𝑝+𝛿=𝑞
+\\&{}⟺
+∃𝛿∈ℕ,\ ∃𝛿'∈ℕ,\ 𝛿=𝛿'+1,\ 𝑝+(𝛿'+1)=𝑞
+\\&{}⟺
+∃𝛿'∈ℕ,\ 𝑝+(𝛿'+1)=𝑞,\ ∃𝛿∈ℕ,\ 𝛿=𝛿'+1
+\\&{}⟺
+∃𝛿'∈ℕ,\ 𝑝+(𝛿'+1)=𝑞
+\end{align*}
+\end{proof}
+%
+\begin{lemma} 
+Pour tout entier naturel \(𝑝\), on a \(𝑝⩽𝑝\).
+\end{lemma}
+%
+\begin{proof}
+\item 
+
+On a \(𝑝+0=𝑝\), c'est la définition de \(𝑝⩽𝑝\) avec \(𝛿=0\).
+\end{proof}
+%
+\begin{theorem} 
+
+Pour tous entiers naturels \(𝑝\) et \(𝑞\), on a \(𝑝⩽𝑞 \myand𝑞⩽𝑝⟹𝑝=𝑞\).
+\end{theorem}
+%
+\begin{proof}
+\item 
+
+%
+\begin{equation*}
+%
+\begin{matrix}𝑝⩽𝑞 \myand𝑞⩽𝑝&⟹&∃𝛿∈ℕ,\ 𝑝+𝛿=𝑞 \myand∃𝛿'∈ℕ,\ 𝑞+𝛿'=𝑝
+\\&⟹&∃𝛿,𝛿'∈ℕ,\ 𝑝+𝛿=𝑞,\ (𝑝+𝛿)+𝛿'=𝑝\\&⟹&∃𝛿,𝛿'∈ℕ,\ 𝑝+𝛿=𝑞,\ 𝑝+(𝛿+𝛿')=𝑝\\&⟹&∃𝛿,𝛿'∈ℕ,\ 𝑝+𝛿=𝑞,\ 𝛿+𝛿'=0\\&⟹&∃𝛿,𝛿'∈ℕ,\ 𝑝+𝛿=𝑞,\ 𝛿=𝛿'=0\\&⟹&∃𝛿,𝛿'∈ℕ,\ 𝑝+0=𝑞,\ 𝛿=𝛿'=0\\&⟹&𝑝+0=𝑞,\ ∃𝛿,𝛿'∈ℕ,\ 𝛿=𝛿'=0\\&⟹&𝑝=𝑞
+\end{matrix}
+\end{equation*}
+\end{proof}
+%
+\begin{theorem} 
+
+Pour tous entiers naturels \(𝑝\), \(𝑞\) et \(𝑟\), on a
+
+ \(𝑝⩽𝑞 \myand𝑞⩽𝑟⟹𝑝⩽𝑟\).
+\end{theorem}
+%
+\begin{proof}
+\begin{align*}
+\lefteqn{𝑝⩽𝑞 \myand𝑞⩽𝑟 \myand𝑟⩽𝑝}
+\hspace{5em}&
+\\&{}⟹∃𝛿,𝛿',𝛿''∈ℕ,\ 𝑝+𝛿=𝑞 \myand𝑞+𝛿'=𝑟 \myand𝑟+𝛿''=𝑝
+\\&{}⟹
+∃𝛿,𝛿',𝛿''∈ℕ,\
+\begin{cases}
+\bigl((𝑝+𝛿)+𝛿'\bigr)+𝛿''=𝑝
+\\
+𝑝+𝛿=𝑞 \myand𝑞+𝛿'=𝑟 \myand𝑟+𝛿''=𝑝
+\end{cases}
+\end{align*}
+Or,
+%
+\begin{align*}
+%
+((𝑝+𝛿)+𝛿')+𝛿''=𝑝
+&{}⟹
+𝑝+((𝛿+𝛿')+𝛿'')=𝑝
+\\&{}⟹((𝛿+𝛿')+𝛿'')=0
+\\&{}⟹
+𝛿+𝛿'=0,\ 𝛿''=0
+\\&{}⟹
+𝛿=𝛿'=𝛿''=0
+\end{align*}
+Cela donne directement le résultat après
+%
+\begin{align*}
+%
+\lefteqn{𝑝⩽𝑞 \myand𝑞⩽𝑟 \myand𝑟⩽𝑝}
+\hspace{5em}
+\\&{}⟹
+∃𝛿,𝛿',𝛿''∈ℕ,\%
+\begin{cases}
+𝛿=𝛿'=𝛿''=0
+\\𝑝+𝛿=𝑞 \myand𝑞+𝛿'=𝑟 \myand𝑟+𝛿''=𝑝
+\end{cases}
+\\&{}⟹
+∃𝛿,𝛿',𝛿''∈ℕ,\ %
+\begin{cases}
+𝛿=𝛿'=𝛿''=0
+\\
+𝑝=𝑞\myand𝑞=𝑟\myand𝑟=𝑝
+\end{cases}
+\end{align*}
+\end{proof}
+%
+\begin{lemma} 
+Pour tous entiers naturels \(𝑝\), \(𝑞\) et \(𝑟\), on a \(𝑝⩽𝑞 \myand𝑞⩽𝑟 \myand𝑟⩽𝑝⟹𝑝=𝑞=𝑟\) 
+\end{lemma}
+%
+\begin{proof}
+\begin{align*}
+%
+𝑝⩽𝑞 \myand𝑞⩽𝑟 \myand𝑟⩽𝑝
+&{}⟹
+𝑝⩽𝑞 \myand𝑞⩽𝑟 \myand𝑝⩽𝑟 \myand𝑟⩽𝑝
+\\&{}⟹
+𝑝⩽𝑞 \myand𝑞⩽𝑟 \myand𝑝=𝑟
+\\&{}⟹
+𝑝⩽𝑞 \myand𝑞⩽p \myand𝑝=𝑟
+\\&{}⟹
+𝑝=𝑞 \myand𝑝=𝑟
+\end{align*}
+\end{proof}
+%
+%
+\begin{lemma} 
+Pour tous entiers naturels \(𝑝\), \(𝑞\) et \(𝑟\), on a
+\begin{itemize}
+\item
+\(𝑝<𝑞 \myand𝑞⩽𝑟⟹𝑝<𝑟\),
+\item
+\(𝑝⩽𝑞 \myand𝑞<𝑟⟹𝑝<𝑟\).
+\end{itemize}
+\end{lemma}
+%
+\begin{proof}
+\begin{align*}
+𝑝<𝑞 \myand𝑞⩽𝑟
+&{}⟹
+𝑝<𝑞 \myand𝑝⩽𝑞 \myand𝑞⩽𝑟
+\\&{}⟹
+𝑝<𝑞 \myand𝑞⩽𝑟\myand𝑝⩽𝑟
+\\&{}⟹
+𝑝<𝑞 \myand𝑞⩽𝑟 \myand𝑝=𝑟
+\myor
+𝑝<𝑞 \myand𝑞⩽𝑟 \myand𝑝<𝑟
+\\&{}⟹
+𝑟<𝑞\myand𝑞⩽𝑟
+\myor
+𝑝<𝑟
+\\&{}⟹
+𝑟≠𝑞 \myand𝑟⩽𝑞 \myand𝑞⩽𝑟
+\myor𝑝<𝑟
+\\&{}⟹
+𝑟≠𝑞 \myand𝑟=𝑞
+\myor
+𝑝<𝑟
+\\&{}⟹
+𝑝<𝑟
+\end{align*}
+\end{proof}
+%
+\begin{lemma} 
+Pour tous entiers \(𝑝\) et \(𝑞\), on a \(𝑝<𝑞\) ou bien \(𝑝=𝑞\) ou bien \(𝑞<𝑝\).
+\end{lemma}
+%
+\begin{proof}
+On montre par récurrence que pour tout entier naturel \(𝑝\),
+on a
+\begin{equation*}
+∀𝑞∈ℕ,\ 𝑝<𝑞\myor𝑝=𝑞\myor𝑞<𝑝.
+\end{equation*}
+\begin{itemize}
+\item
+Initialisation : sachant que tout entier est positif ou nul, avec le lemme précédent, nous avons
+\(∀𝑞∈ℕ,\ 0<𝑞\myor0=𝑞\).
+\item
+Hérédité : on a d'après ce qui précède
+\begin{gather*}
+𝑝<𝑞⇒𝑝+1⩽𝑞⇒(𝑝+1<𝑞\myor𝑝+1=𝑞),
+\\
+𝑝=𝑞⇒𝑝+1>𝑞
+\\
+𝑞<𝑝⇒𝑞<𝑝<𝑝+1⇒𝑞<𝑝+1
+\end{gather*}
+On a le résultat par combinaison de \myor\ par rapport à \(⇒\).
+\qedhere
+\end{itemize}
+\end{proof}\footnote{\(\bigl((A⇒B)\myor(C⇒D)\bigr)⟹\bigl((A\myor C)⇒(B\myor D)\bigr)\)}
+%
+\begin{theorem} 
+\(⩽\) et \(⩾\) sont des relations d'ordre total.
+\end{theorem}
+%
+\begin{proof}
+\item 
+
+Voir ce qui précède.
+\end{proof}
+%
+\begin{theorem} 
+
+Pour tous entiers naturels \(𝑝\) et \(𝑞\),
+\begin{equation*}
+(𝑝<𝑞)⟺(𝑝+1⩽𝑞)⟺(𝑝⩽𝑞₋)
+\end{equation*}
+\end{theorem}
+%
+\begin{proof}
+\begin{align*}
+𝑝<𝑞
+&{}\mybydef{⟺}
+∃𝛿∈ℕ^{\ast},\ 𝑝+𝛿=𝑞
+\\&{}⟺\vphantom{\mybydef{⟺}}
+∃𝛿'∈ℕ,\ 𝑝+(𝛿'+1)=𝑞
+\\&{}⟺\vphantom{\mybydef{⟺}}
+∃𝛿'∈ℕ,\ (𝑝+1)+𝛿'=𝑞
+\\&{}\mybydef{⟺}
+𝑝+1⩽𝑞
+\end{align*}
+\begin{align*}
+∃𝛿'∈ℕ,\ 𝑝+(𝛿'+1)=𝑞
+&{}⇔
+∃𝛿'∈ℕ,\ (𝑝+𝛿')+1=𝑞
+\\&{}⇔
+∃𝛿'∈ℕ,\ 𝑝+𝛿'=𝑞₋
+\\&{}⇔
+𝑝⩽𝑞₋.
+\end{align*}
+\end{proof}
+%
+\begin{theorem}
+\label{seq:refTheorem26} 
+Pour tout entier naturel \(𝑛\),
+\begin{equation*}
+⟦0~;~𝑛⟧=\bigl\{𝑘∈ℕ\mathbin|0⩽𝑘⩽𝑛\bigr\}.
+\end{equation*}
+\end{theorem}
+%
+\begin{proof}
+On a \(⟦0~;~0⟧=\bigl\{0\bigr\}=\bigl\{𝑘∈ℕ\mathbin|0⩽𝑘⩽0\bigr\}\) sachant que \(0⩽𝑘⩽0⇔𝑘=0\). Pour tout \(𝑘\)
+\begin{gather*}
+𝑘⩽𝑛+1⇔𝑘<n+1\myor𝑘=𝑛+1⇔𝑘⩽𝑛\myor𝑘=𝑛+1,
+\end{gather*}
+\begin{align*}
+\bigl\{𝑘∈ℕ\mathbin|0⩽𝑘⩽𝑛+1\bigr\}
+&{}=
+\bigl\{𝑘∈ℕ\mathbin|0⩽𝑘\myand(𝑘⩽𝑛\myor𝑘=𝑛+1)\bigr\}
+\\&{}=
+\bigl\{𝑘∈ℕ\mathbin|0⩽𝑘⩽𝑛\bigr\}∪\bigl\{𝑛+1\bigr\}
+\end{align*}
+Cela fait deux suites définies par la même récurrence : elles sont égales.
+\end{proof}
+%
+\begin{definition} 
+
+Soit \(𝐴\) une partie de \(ℕ\).
+%
+\begin{enumerate}
+\item \(𝑚\) \mykeyword{minore} \(𝐴\), \(𝑚\) est un \mykeyword{minorant} de \(𝐴\),
+signifient que \(𝑚\) \mykeyword{minore} tout élément de \(𝐴\).
+\item \(𝑚\) \mykeyword{majore} \(𝐴\), \(𝑚\) est un \mykeyword{majorant }de \(𝐴\),
+signifient que \(𝑚\) \mykeyword{majore} tout élément de \(𝐴\).
+\item \(𝑚\) est un \mykeyword{plus petit élément} de \(𝐴\), \(𝑚\) est un
+\mykeyword{minimum} de \(𝐴\), signifient que \(𝑚\) est un minorant de \(𝐴\) appartenant à \(𝐴\).
+\item \(𝑚\) est un \mykeyword{plus grand élément} de \(𝐴\), \(𝑚\) est un
+\mykeyword{maximum} de \(𝐴\), signifient que \(𝑚\) est un majorant de \(𝐴\) appartenant à \(𝐴\).
+\item \(𝐴\) est \mykeyword{majorée} si elle admet un majorant.
+\end{enumerate}
+\end{definition}
+%
+\begin{lemma}
+Pour tout entier naturel \(𝑛\), \(⟦0;𝑛⟧\) a pour maximum \(𝑛\). \(ℕ\) n'est pas majoré.
+\end{lemma}
+%
+\begin{proof}
+Immédiat par la proposition \ref{seq:refTheorem26} ou les définitions.
+\end{proof}
+%
+\begin{theorem} 
+%
+\begin{enumerate}
+\item Un minorant d'un minorant est un minorant.
+\item Un majorant d'un majorant est un majorant.
+\item Un minorant de \(𝐴\) minore tout partie de \(𝐴\).
+\item Un majorant de \(𝐴\) majore tout partie de \(𝐴\).
+\item Quand il existe, un minimum est unique. \emph{Idem} pour un maximum.
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item Immédiat.
+\item Immédiat.
+\item Immédiat.
+\item Immédiat.
+\item Si \(𝑚\) et \(𝑚'\) sont deux minima, on a \(𝑚⩽𝑚'⩽𝑚\), donc \(𝑚=𝑚'\). \emph{Idem} dans l'autre
+sens.
+\end{enumerate}
+\end{proof}
+%
+\begin{theorem} 
+Toute partie non vide de \(ℕ\) admet un minimum unique.
+\end{theorem}
+%
+\begin{proof}
+\par\noindent
+\begin{itemize}
+\item
+Unicité : immédiat.
+\item
+Existence.
+Soit \(𝐴\) une partie de \(ℕ\) contenant \(𝑎\) et \(𝑀\) l'ensemble de ses minorants. \(𝑀\) contient 0. Si \(𝑀\) 
+contenait le successeur de chacun de ses éléments, ce serait \(ℕ\) et il contiendrait \(𝑎+1\) qui ne minore pas \(𝑎\)
+. Donc il existe un entier naturel \(𝑚\) dans \(𝑀\) tel que \(𝑚+1\) n'est pas dans \(𝑀\). Or 
+\begin{align*}
+𝑚∈𝑀 \myand𝑚+1∉𝑀
+&{}⟹
+𝑚∈𝑀 \myand∃𝑝∈𝐴,\ 𝑚+1>𝑝
+\\&{}⟹
+∃𝑝∈𝐴,\ 𝑚⩾𝑝 \myand𝑚⩽𝑝
+\\&{}⟹
+∃𝑝∈𝐴,\ 𝑚=𝑝\hfill
+\\&{}⟹
+𝑚∈𝐴
+\end{align*}
+Donc \(𝑚\) est un minimum de \(𝐴\).\qedhere
+\end{itemize}
+\end{proof}
+%
+\begin{theorem} 
+Toute partie non vide majorée de \(ℕ\) admet un maximum unique.
+\end{theorem}
+%
+\begin{proof}
+Soit \(𝐴\) une partie de \(ℕ\) contenant \(𝑎\) et majorée par \(𝑚\), \(𝑀\) l'ensemble de ses majorants. \(𝑀\),
+contenant \(𝑚\), n'est pas vide : soit \(𝑚'\) son minimum. Si \(𝑚'\) n'appartient pas à \(𝐴\), cela signifie que 
+\(𝑎<𝑚'\), ou \(𝑎⩽𝑚'₋\), et de même pour tout autre élément de \(𝐴\). \(𝑚'₋\) est un maximum de \(𝐴\) qui
+contredit la minimalité de \(𝑚'\). Ainsi, \(𝑚'\) est dans \(𝐴\) : c'est un maximum.
+\end{proof}
+%
+\begin{definition}
+[Intervalles entiers naturels]
+Pour tous entiers naturels \(𝑝\) et \(𝑞\), on pose
+\begin{itemize}
+\item
+\(⟦𝑝~;𝑞⟧\mybydef{=}\bigl\{𝑛∈ℕ\mathbin|𝑝⩽𝑛⩽𝑞\bigr\}\),
+\item
+\(⟦𝑝~;𝑞⟦\mybydef{=}\bigl\{𝑛∈ℕ\mathbin|𝑝⩽𝑛<𝑞\bigr\}\),
+\item
+\(⟧𝑝~;𝑞⟧\mybydef{=}\bigl\{𝑛∈ℕ\mathbin|𝑝<𝑛⩽𝑞\bigr\}\),
+\item
+\(⟧𝑝~;𝑞⟦\mybydef{=}\bigl\{𝑛∈ℕ\mathbin|𝑝<𝑛<𝑞\bigr\}\),
+\item
+\(⟦𝑝~;∞⟦\mybydef{=}\bigl\{𝑛∈ℕ\mathbin|𝑝⩽𝑛\bigr\}\),
+\item
+\(⟧𝑝~;∞⟦\mybydef{=}\bigl\{𝑛∈ℕ\mathbin|𝑝<𝑛\bigr\}\).
+\end{itemize}
+\end{definition}
+%
+\begin{remark}
+\(⟦𝑝;𝑝⟧=\bigl\{𝑝\bigr\}\), \(⟦𝑝;𝑝⟦=∅\)...
+\end{remark}
+%
+\begin{theorem}
+[Récurrence décalée]
+Si un sous-ensemble de \(ℕ\) contient un entier naturel \(𝑛\) et contient le successeur de chacun de ses éléments, alors elle
+contient \(⟦𝑛~;∞⟦\).
+\end{theorem}
+%
+\begin{proof}
+Notons cette partie \(𝐴\). Par l'absurde, si \(⟦𝑛~;∞⟦∖𝐴\) n'est pas vide, soit \(𝑚\) son minimum. On a \(𝑛⩽𝑚\), 
+\(𝑛≠𝑚\) qui garantit \(𝑚>0\). Par minimalité, \(𝑚-1∉⟦𝑛~;∞⟦∖𝐴\), donc \(𝑚-1∈𝐴\) et \(𝑚∈𝐴\) par succession.
+Contradiction.
+\end{proof}
+%
+\begin{theorem}
+[Récurrence finie]
+Si \(𝑢_0=𝑣_0\) et si pour tout \(0⩽𝑖<𝑛\), on a \(𝑢_{𝑖}=𝑣_i⇒𝑢_{𝑖+1}=𝑣_{i+1}\) alors pour tout \(0⩽𝑖⩽𝑛\), on a 
+\(𝑢_{𝑖}=𝑣_i\).
+\end{theorem}
+%
+\begin{proof}
+Par récurrence sur \(𝑛\), en exercice...
+\end{proof}
+\subsection{Soustraction}
+\subsubsection{Définition}
+%
+\begin{theorem} 
+Pour tout entier naturel \(𝑛\), \(+_{𝑛}\) est une bijection de ℕ sur \(⟦𝑛~;∞⟦\) (voir \ref{seq:refDefinition6}).
+\end{theorem}
+%
+\begin{proof}
+L'injectivité vient de la régularité de l'addition. La surjectivité vient de la définition de l'ordre.
+\end{proof}
+%
+\begin{definition}
+[Soustraction des entiers naturels] \(∀𝑝,𝑞∈ℕ,\ 𝑞⩾𝑝\),
+\begin{equation*}
+𝑞-𝑝\mybydef{=}+_{𝑝}^{-1}(𝑞).
+\end{equation*}
+\end{definition}
+\subsubsection{Propriétés}
+%
+\begin{theorem} 
+\begin{equation*}
+∀𝑛∈ℕ,\ 𝑛₋=𝑛-1
+\end{equation*}
+\end{theorem}
+%
+\begin{proof}
+C'est une réécriture de la définition du prédécesseur.
+\end{proof}
+%
+\begin{theorem}
+\par\noindent
+\begin{itemize}
+\item
+\(∀𝑝,𝑞∈ℕ,\ 𝑞⩾𝑝,\ (𝑞-𝑝)+𝑝=𝑞\)
+\item
+\(∀𝑝,𝑞∈ℕ,\ (𝑝+𝑞)-𝑞=𝑝\)
+\end{itemize}
+\end{theorem}
+%
+\begin{proof}
+C'est une réécriture de \(+_{𝑝}￮+_{𝑝}^{-1}\) et \(+_{𝑞}^{-1}￮+_{𝑞}\).
+\end{proof}
+%
+\subsection[Multiplication]{Multiplication}
+\subsubsection{Définition}
+%
+\begin{lemma} 
+Pour tout entier naturel \(𝑛\), il existe une unique application de \(ℕ\) dans \(ℕ\), notée \(𝑝↦×_𝑛(𝑝)\) telle que
+%
+\begin{enumerate}
+\item \(×_{𝑛}(0)=0\),
+\item \(∀𝑝∈ℕ,\ ×_{𝑛}(𝑝₊)=×_{𝑛}(𝑝)+𝑛\).
+\end{enumerate}
+\end{lemma}
+%
+\begin{proof}
+C'est une définition par récurrence.
+À compléter.
+\end{proof}
+%
+\begin{definition}
+[multiplication des entiers naturels]
+%
+\begin{equation*}
+∀𝑛,𝑝∈ℕ,\ 𝑛×𝑝\mybydef{=}×_{𝑛}(𝑝)
+\end{equation*}
+\end{definition}
+\begin{remark}
+On pourra omettre le signe × s'il n'y a pas d'ambiguïté.
+\end{remark}
+\begin{attention}
+La multiplication est prioritaire devant l'addition.
+\end{attention}
+%
+\subsubsection{Propriétés}
+%
+\begin{theorem}
+\par\noindent
+%
+\begin{enumerate}
+\item Élément absorbant : \(∀𝑛∈ℕ,\ 𝑛×0=0×𝑛=0\) 
+\item Élément neutre : \(∀𝑛∈ℕ,\ 𝑛×1=𝑛=1×𝑛\) 
+\item Distributivités : \(
+\begin{aligned}[t]
+&∀𝑝,𝑞,𝑟∈ℕ,\ (𝑝+𝑞)×𝑟=𝑝×𝑟+𝑞×𝑟
+\\
+&∀𝑝,𝑞,𝑟∈ℕ,\ 𝑝×(𝑞+𝑟)=𝑝×𝑞+𝑝×𝑟
+\end{aligned}
+\)
+\item Associativité : \(∀𝑝,𝑞,𝑟∈ℕ,\ (𝑝×𝑞)×𝑟=𝑝×(𝑞×𝑟)\) 
+\item Commutativité : \(∀𝑝,𝑞∈ℕ,\ 𝑝×𝑞=𝑞×𝑝\) 
+\item Intégrité : \(∀𝑝,𝑞∈ℕ,\ 𝑝×𝑞=0⇔𝑝=0\text{ ou }𝑞=0\) 
+\item Régularité : \(∀𝑝,𝑞,𝑟∈ℕ,\ 𝑝×𝑟=𝑞×𝑟⟹𝑝=𝑞\) 
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item La première égalité est immédiate. La deuxième est prouvée par récurrence. Initialisation : immédiat. Hérédité :
+%
+\begin{equation*}
+0×𝑛=0⟹0×(𝑛+1)=0×𝑛+0=0+0=0
+\end{equation*}
+\item On a \(𝑛×1=𝑛×0+𝑛=0+𝑛=𝑛\). Par récurrence pour la deuxième égalité. Initialisation : voir i). Hérédité :
+%
+\begin{equation*}
+𝑛=1×𝑛⟹𝑛+1=1×𝑛+1=1×(𝑛+1)
+\end{equation*}
+\item Par récurrence sur \(𝑟\) pour prouver les deux égalités. Initialisation : \((𝑝+𝑞)×0=0=0+0=𝑝×0+𝑞×0\). Hérédité
+: si \((𝑝+𝑞)𝑟=𝑝𝑟+𝑞𝑟\) 
+%
+\begin{align*}
+(𝑝+𝑞)(𝑟+1)
+&{}=
+(𝑝+𝑞)𝑟+(𝑝+𝑞)
+\\&{}=
+(𝑝𝑟+𝑞𝑟)+(𝑝+𝑞)
+\\&{}=
+(𝑝𝑟+𝑝)+(𝑞𝑟+𝑞)
+\\&{}=
+𝑝(𝑟+1)+𝑞(𝑟+1)
+\end{align*}
+Initialisation : \(𝑝(𝑞+0)=𝑝𝑞=𝑝𝑞+0=𝑝𝑞+𝑝×0\). Hérédité : si \ \(𝑝(𝑞+𝑟)=𝑝𝑞+𝑝𝑟\),
+%
+\begin{enumerate}
+\item[] %
+\begin{align*}
+𝑝(𝑞+(𝑟+1))
+&{}=
+𝑝((𝑞+𝑟)+1)
+\\&{}=
+𝑝(𝑞+𝑟)+𝑝
+\\&{}=
+(𝑝𝑞+𝑝𝑟)+𝑝
+\\&{}=
+𝑝𝑞+(𝑝𝑟+𝑝)
+\\&{}=
+𝑝𝑞+𝑝(𝑟+1)
+\end{align*}
+\end{enumerate}
+\item Par récurrence sur \(𝑟\). Initialisation : on a \(𝑝×(𝑞×0)=𝑝×0=0=(𝑝×𝑞)×0\). Hérédité :
+%
+\begin{equation*}
+(𝑝𝑞)×(𝑟+1)=(𝑝𝑞)×𝑟+(𝑝𝑞)=𝑝×(𝑞𝑟)+(𝑝𝑞)=𝑝×(𝑞𝑟+𝑞)=𝑝×(𝑞×(𝑟+1))
+\end{equation*}
+\item Par récurrence sur \(𝑞\). Initialisation : voir 1). Hérédité : si \(𝑝×𝑞=𝑞×𝑝\) alors
+%
+\begin{equation*}
+𝑝×(𝑞+1)=𝑝×𝑞+𝑝=𝑞×𝑝+𝑝=𝑞×𝑝+1×𝑝=(𝑞+1)×𝑝
+\end{equation*}
+\item Déjà 1) donne un sens de l'équivalence, l'autre est montré par contraposition. Si \(𝑝\) et \(𝑞\) ne sont pas
+nuls, ce sont des successeurs, donc on a
+%
+\begin{equation*}
+𝑝×𝑞=(𝑝₋+1)×𝑞=𝑝₋×𝑞+𝑞=𝑝₋×𝑞+(𝑞₋+1)=(𝑝₋×𝑞+𝑞₋)+1
+\end{equation*}
+et leur produit est aussi un successeur : il n'est pas nul.
+\item Si on a \(𝑝<𝑞\) alors \(𝑞=𝑝+𝛿₊\) et \(𝑞𝑟₊=(𝑝+𝛿₊)𝑟₊=𝑝𝑟₊+𝛿₊𝑟₊\) donc \(𝑞𝑟₊<𝑝𝑟₊\). Par
+contraposition puis échange de \(𝑝\) et \(𝑞\) on obtient la régularité.
+\end{enumerate}
+\end{proof}
+%
+\begin{theorem}
+[Puissances entières]
+Pour tout entier naturel \(𝑝\), il existe une unique application de \(ℕ\) dans \(ℕ\), notée \(𝑛↦𝑝^{𝑛}\) telle que
+%
+\begin{enumerate}
+\item \(𝑝^0=1\),
+\item \(∀𝑛∈ℕ,\ 𝑝^{𝑛+1}=𝑝^{𝑛}×𝑝\).
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+On applique le théorème de définition par récurrence à \(𝑎=1\), \(𝐸=ℕ\) et \(𝐻(𝑛,𝑦)\mybydef{=}𝑦×𝑝\).
+\end{proof}
+\subsection{Division}
+Le problème de la division est traité dans le chapitre d'arithmétique.

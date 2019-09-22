@@ -1,0 +1,863 @@
+% !TEX encoding = UTF-8
+% !TEX program = xelatex
+% !TEX root =../Main/main.tex
+
+\section{Variables aléatoires}
+Variable aléatoires sur un univers fini : lois usuelles (lois uniformes, lois binomiales), variables aléatoires
+indépendantes, espérance, variance et écart-type. Variables aléatoires discrètes : espérance et variance, lois de
+Poisson, lois géométriques. Lois exponentielles, loi faible des grands nombres.
+
+On rappelle que \(𝟙_{𝐸}\) est l'indicatrice de l'ensemble \(𝐸\) qui vaut 1 sur \(𝐸\) et 0 sur son complémentaire.
+\subsection{Variables aléatoires discrètes}
+\subsubsection{Définitions}
+Un espace probabilisé \((Ω,𝒯,ℙ_Ω)\) et un espace mesurable \((Ω',ℰ)\) étant donnés.
+\paragraph{Cas général}
+\begin{definition}
+[Variable aléatoire]
+Une \textbf{variable aléatoire} est une application \(𝑋\) de \(Ω\) dans \(Ω'\) telle que la préimage par \(𝑋\) de toute
+partie mesurable est un événement.
+\end{definition}
+\begin{remark}
+De manière équivalente : la préimage par \(𝑋\) de tout élément de \(ℰ\) est un élément de
+\(𝒯\).
+\end{remark}
+\begin{theorem}
+[Loi de la variable aléatoire]
+L'application qui à tout élément \(𝐸\) de \(ℰ\) associe \(ℙ_Ω\bigl(𝑋^{-1}(𝐸)\bigr)\) est une mesure de
+probabilités sur \(\left(Ω',ℰ\right)\), elle est notée \(ℙ_{𝑋}\).
+
+C'est la \mykeyword{loi de la variable aléatoire} \(𝑋\)
+\end{theorem}
+\begin{proof}
+On a :
+\begin{enumerate}
+\item
+\vskip\abovedisplayskip
+\(
+0≤ℙ_{𝑋}(𝐸)=ℙ_Ω\bigl(𝑋^{-1}(𝐸)\bigr)≤1
+\)
+\item
+\vskip\abovedisplayskip
+\(
+ℙ_{𝑋}(Ω')=ℙ_Ω\bigl(𝑋-1(Ω')\bigr)=ℙ_Ω(Ω)=1
+\)
+\item
+\vskip\belowdisplayskip
+Si \((𝐸_{𝑖})_{𝑖∈𝐼}\) est une famille dénombrable d'éléments de \(ℰ\) deux à
+deux disjoints, alors \(\bigl(𝑋^{-1}(𝐸_{𝑖})\bigr)_{𝑖∈𝐼}\) est une famille dénombrable d'événements de \(Ω\) deux à deux
+disjoints. En effet, par contraposition :
+\end{enumerate}
+\begin{align*}
+𝑋^{-1}(𝐸_{𝑖})∩𝑋^{-1}(𝐸_{𝑗})≠ ∅
+&{}⟹∃𝜔,\;𝜔∈𝑋^{-1}(𝐸_{𝑖})\text{ et
+}𝜔∈𝑋^{-1}(𝐸_{𝑗})
+\\&{}⟹
+∃𝜔,\;𝑋(𝜔)∈𝐸_{𝑖}\myand𝑋(𝜔)∈𝐸_{𝑗}
+\\&{}⟹
+∃𝑥,\;𝑥∈𝐸_{𝑖}\myand𝑥∈𝐸_{𝑗}
+\\&{}⟹
+𝐸_{𝑖}∩𝐸_{𝑗}≠ ∅
+\end{align*}
+ainsi,
+\begin{align*}
+ℙ_{𝑋}\Bigl(\bigcup_{𝑖∈𝐼}𝐸_{𝑖}\Bigr)
+&{}=
+ℙ_Ω\Bigl(𝑋^{-1}\Bigl(\bigcup_{𝑖∈𝐼}𝐸_{𝑖}\Bigr)\Bigr)
+=
+ℙ_Ω\Bigl(\bigcup_{𝑖∈𝐼}𝑋^{-1}(𝐸_{𝑖})\Bigr)
+\\&{}=∑_{𝑖∈𝐼}ℙ_Ω\bigl(𝑋^{-1}(𝐸_{𝑖})\bigr)
+=∑_{𝑖∈𝐼}ℙ_{𝑋}(𝐸_{𝑖})
+\qedhere
+\end{align*}
+\end{proof}
+%
+\begin{terminology}
+Sont synonymes
+\begin{itemize}
+\item
+\(ℙ(𝑋∈𝐸)\), \(ℙ_{𝑋}(𝐸)\) et \(ℙ_Ω(𝑋^{-1}(𝐸))\).
+\item
+\(ℙ(𝑋=𝑥)\) et  \(ℙ_{𝑋}\bigl(\{𝑥\}\bigr)\) et \(ℙ_Ω\bigl(𝑋^{-1}\bigl(\{𝑥\}\bigr)\bigr)\).
+\end{itemize}
+\end{terminology}
+%
+\begin{remark}
+Ce n'est plus une notation fonctionnelle mais c'est pratique d'un certain point de vue car cela permet de cacher \(Ω\) et de se consacrer à l'essentiel.
+\end{remark}
+\begin{terminology}
+Si \(𝑋\) prend des valeurs réelles, sont synonymes
+\begin{itemize}
+\item
+\(ℙ(𝑋<𝑎)\) et \(ℙ(𝑋∈\left]-∞,𝑎\right[)\),
+\item
+\(ℙ(𝑋⩽𝑎)\) et \(ℙ(𝑋∈\left]-∞,𝑎\right])\),
+\item
+\(ℙ(𝑋>𝑎)\) et \(ℙ(𝑋∈\left]𝑎,-∞\right[)\),
+\item
+\(ℙ(𝑋⩾𝑎)\) et \(ℙ(𝑋∈\left[𝑎,-∞\right[)\),
+\item
+\(ℙ(𝑎<𝑋<𝑏)\) et \(ℙ(𝑋∈\left]𝑎,𝑏\right[)\),
+\item
+\(ℙ(𝑎<𝑋⩽𝑏)\) et \(ℙ(𝑋∈\left]𝑎,𝑏\right])\),
+\item
+\(ℙ(𝑎⩽𝑋<𝑏)\) et \(ℙ(𝑋∈\left[𝑎,𝑏\right[)\),
+\item
+\(ℙ(𝑎⩽𝑋⩽𝑏)\) et \(ℙ(𝑋∈\left[𝑎,𝑏\right])\).
+\end{itemize}
+\end{terminology}
+\paragraph{Variables aléatoires sur des espaces dénombrables}
+\begin{definition}
+Si \(Ω\) et \(Ω'\) sont \mykeyword{dénombrables}, avec événements ou ensembles mesurables par défaut, une
+\mykeyword{variable aléatoire} est une application de \(Ω\) dans \(Ω'\).
+\end{definition}
+\begin{theorem}
+L'application qui à tout événement élémentaire \(\{𝑥\}\) de \(Ω'\) associe \(ℙ_Ω\bigl(𝑋^{-1}(𝑥)\bigr)\) définit bien une loi de
+probabilités sur  \(Ω'\), elle est notée \(ℙ_{𝑋}\).
+\end{theorem}
+\begin{proof}
+Les préimages par \(𝑋\) des événements élémentaires de  \(Ω'\) forment un système complet
+d'événements. À compléter...
+\end{proof}
+Dans la suite, \(∆\) désigne une \mykeyword{partie dénombrable} de \(ℝ\).
+\begin{definition}
+[Variable aléatoire discrète]
+Une \mykeyword{variable aléatoire discrète} est une application de \(Ω\) dans \(∆\) telle que la préimage
+de tout nombre est un événement.
+\end{definition}
+\begin{remark}
+ une variable aléatoire discrète prend ses valeurs dans une partie dénombrable de \(ℝ\),
+pas une partie discrète de \(ℝ\).
+\end{remark}
+Dans les deux contextes précédent ci-dessus, on a le
+\begin{theorem}
+[Loi d'une variable aléatoire discrète]
+L'application qui à tout événement élémentaire \(\{𝑥\}\) de \(∆\) associe \(ℙ_Ω\bigl(𝑋^{-1}(𝑥)\bigr)\) définit bien une loi de
+probabilités sur  \(∆\), elle est notée \(ℙ_{𝑋}\).
+\end{theorem}
+\begin{proof}
+On a :
+\begin{enumerate}
+\item
+\vskip\abovedisplayskip\(
+0⩽ℙ_{𝑋}(𝑥)=ℙ_Ω\bigl(𝑋^{-1}(𝑥)\b)⩽1
+\)
+\item
+\vskip\belowdisplayskip
+\(\bigl(𝑋^{-1}(𝑥)\bigr)_{𝑥∈∆}\) est une famille dénombrable d'événements de \(Ω\) deux à deux disjoints.
+En effet, par contraposition :
+\end{enumerate}
+\begin{align*}
+𝑋^{-1}(𝑥)∩𝑋^{-1}(𝑥')≠∅
+&⟹
+∃𝜔,\;𝜔∈𝑋^{-1}(𝑥)\myand𝜔∈𝑋^{-1}(𝑥')
+\\&{}⟹
+∃𝜔,\;𝑋(𝜔)=𝑥\myand𝑋(𝜔)=𝑥'
+\\&{}⟹
+𝑥=𝑥'
+\end{align*}
+ainsi,
+\begin{gather*}
+ℙ_Ω\Bigl(\bigcup_{𝑥∈∆}𝑋^{-1}(𝑥)\Bigr)=∑_{𝑥∈∆}ℙ_Ω\bigl(𝑋^{-1}(𝑥)\bigr)=∑_{𝑥∈∆}ℙ_{𝑋}(𝑥)=1
+\qedhere
+\end{gather*}
+\end{proof}
+%
+Dans la suite, les variables aléatoires discrètes ont leurs valeurs dans \(∆\).
+\subsubsection{Opérations algébriques}
+\begin{theorem}
+Si \(𝑋\) et \(𝑌\) sont deux variables aléatoires discrètes définies sur \(Ω\), \(𝜆\) et \(𝜇\) deux réels.
+\begin{itemize}
+\item
+\(𝜆𝑋+𝜇\),
+\(𝑋+𝑌\) et \(𝑋×𝑌\) sont aussi des variables aléatoires discrètes définies sur \(Ω\).
+\item
+Si \(𝑌\) ne s'annule pas,
+\(𝑋/𝑌\) est aussi une variable aléatoire discrète définie sur  \(Ω\).
+\end{itemize}
+\end{theorem}
+\begin{proof}
+À préciser...
+\end{proof}
+\subsubsection[Espérance]{Espérance}
+\begin{definition}
+[Espérance]
+L'\mykeyword{espérance} d'une variable aléatoire discrète \(𝑋\) est
+\begin{itemize}
+\item
+le nombre  \(∑_{𝑥∈𝑋(Ω)}𝑥ℙ(𝑋=𝑥)\) si \(𝑋(Ω)\) est fini, 
+\item
+la somme de la série \(∑_{𝑖∈ℕ}𝑥_{𝑖}ℙ(𝑋=𝑥_{𝑖})\) si \(𝑋(Ω)=\left\{𝑥_{𝑖},𝑖∈ℕ\right\}\) et
+s'il y a convergence absolue
+\item
+non définie sinon.
+\end{itemize}
+Elle est notée \(𝔼(𝑋)\) ou \(\overline{𝑋}\).
+\mykeyword{Moyenne (arithmétique)} est synonyme d'espérance.
+\end{definition}
+\begin{remark}
+On ne peut pas définir une notion d'espérance si la série est semi-convergente car la
+somme dépend alors de l'ordre des termes.
+\end{remark}
+\begin{theorem}
+[Linéarité de l'espérance]
+Si \(𝑋\) et \(𝑌\) sont deux variables aléatoires discrètes définies sur \(Ω\), \(𝜆\) et \(𝜇\) deux réels, alors
+\(𝔼(𝜆𝑋+𝜇𝑌)=𝜆𝔼(𝑋)+𝜇𝔼(𝑌)\) dès que deux des trois espérances sont bien définies.
+\end{theorem}
+\begin{proof}
+À préciser...
+\end{proof}
+\begin{theorem}
+[Croissance de l'espérance]
+Si elle existe, l'espérance d'une variable aléatoire discrète à valeurs positives est positive.
+\end{theorem}
+\begin{proof}
+À préciser...
+\end{proof}
+\subsubsection{Variance}
+\begin{definition}
+[Variance, écart type]
+La \mykeyword{variance} d'une variable aléatoire discrète \(𝑋\) est \(𝔼\bigl((𝑋-𝔼(𝑋)\bigr)^2)\) si elle existe.
+Elle est notée \(𝕍(𝑋)\). L'\mykeyword{écart-type} est la racine carrée de la variance, il est noté
+\(σ(𝑋)\).
+\end{definition}
+\begin{remark}
+L'écart-type est traduit en anglais par ``standard deviation'' dont a première lettre correspond à \(𝕍\) en grec.
+\end{remark}
+\begin{theorem}
+[de König]
+\begin{equation*}
+𝔼\bigl((𝑋-𝔼(𝑋)\bigr)^2=𝔼(𝑋^2)-𝔼(𝑋)^2
+\end{equation*}
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+\begin{theorem}
+[Homogénéité]
+Pour une variable aléatoire discrète \(𝑋\), \(𝜆\) et \(𝜇\) deux nombres réels, on a
+\(𝕍(𝜆𝑋+𝜇)=𝜆^2𝕍(𝑋)\) et \(σ(𝜆𝑋+𝜇)=|𝜆|σ(𝑋)\), quand c'est bien défini.
+\end{theorem}
+\begin{remark}
+ on dit que la variance est homogène de degré 2, l'écart-type de degré 1.
+\end{remark}
+\begin{proof}
+À préciser...
+\end{proof}
+\begin{theorem}
+[Normalisation]
+Pour une variable aléatoire discrète \(𝑋\) d'espérance \(𝜇\) et d'écart-type \(𝜎\), \(\frac{𝑋-𝜇} 𝜎\) a pour
+espérance \(0\) et pour écart-type \(1\).
+\end{theorem}
+\begin{proof}
+À préciser...
+\end{proof}
+\begin{theorem}
+[Sous additivité]
+Si \(𝑋\) et \(𝑌\) sont deux variables aléatoires discrètes définies sur \(Ω\), on a
+\(σ(𝑋+𝑌)⩽σ(𝑋)+σ(𝑌)\).
+\end{theorem}
+\begin{proof}
+À préciser...
+\end{proof}
+\subsubsection{Indépendance}
+\begin{theorem}
+[Loi jointe, lois marginales]
+Si \((𝑋,𝑌)\) est un couple de variables aléatoires discrètes définies sur \(Ω\), à valeurs respectivement dans
+\(∆_{𝑋}\) et \(∆_{𝑌}\). L'application qui à tout événement élémentaire \(\{(𝑥,𝑦)\}\) de \(∆_{𝑋}×∆_{𝑌}\) associe
+\(ℙ_Ω\bigl(𝑋^{-1}(𝑥)∩𝑌^{-1}(𝑦)\bigr)\) définit bien une loi de probabilités sur \(∆_{𝑋}×∆_{𝑌}\). C'est la
+\mykeyword{loi jointe} du couple, les lois de \(𝑋\) et de \(𝑌\) en sont les
+\mykeyword{lois marginales}.
+On note
+\begin{gather*}
+ℙ_{𝑋,𝑌}(𝐸×𝐹)\overset{\text{déf.}}{=}ℙ(𝑋∈𝐸,𝑌∈𝐹)\overset{\text{déf.}}{=}ℙ_Ω(𝑋^{-1}(𝐸)∩𝑌^{-1}(𝐹)).
+\end{gather*}
+\end{theorem}
+\begin{lemma}
+Dans le contexte ci-dessus,
+\(\bigl\{𝑋^{-1}(𝑥)∩𝑌^{-1}(𝑦)\mathbin{|}(𝑥,𝑦)∈∆_{𝑋}×∆_{𝑌}\bigr\}\)
+forme un système complet d'événements de \(Ω\).
+\end{lemma}
+\begin{proof}
+Pour le lemme, on a
+\begin{enumerate}
+\item
+pour tout issue \(ω\) de \(Ω\),
+on a \(ω∈𝑋^{-1}\bigl(X(ω)\bigr)∩𝑌^{-1}\bigl(𝑌(ω)\bigr)\),
+\item
+si \((𝑥,𝑦)≠(𝑥',𝑦')\), on a \(𝑥≠𝑥'\) ou \(𝑦≠𝑦'\), par conséquent \(𝑋^{-1}(𝑥)∩𝑋^{-1}(𝑥')=∅\)
+\ ou \(𝑌^{-1}(𝑦)∩𝑌^{-1}(𝑦')=∅\). En tout cas,
+\(𝑋^{-1}(𝑥)∩𝑌^{-1}(𝑦)∩𝑋^{-1}(𝑥')∩𝑌^{-1}(𝑦')= ∅\).
+\end{enumerate}
+Pour le théorème, il suffit de vérifier que la somme éventuellement infinie des probabilités des événements élémentaires
+vaut \(1\). D'après le lemme précédent, on a un système complet d'événement dénombrable, cela suffit.
+\end{proof}
+\begin{definition}
+Deux variables aléatoires discrètes \(𝑋\) et \(𝑌\) définies sur \(Ω\), à valeurs respectivement dans \(∆_{𝑋}\) et
+\(∆_{𝑌}\) sont \mykeyword{indépendantes} signifie que pour tout événement élémentaire \(\{(𝑥,𝑦)\}\) de
+\(∆_{𝑋}×∆_{𝑌}\) on a
+\begin{gather*}
+ℙ_{𝑋,𝑌}(\{(𝑥,𝑦)\})=ℙ_{𝑋}(\{𝑥\})×ℙ_{𝑌}(\{𝑦\})
+\intertext{ou de manière synonyme}
+ℙ(𝑋=𝑥,𝑌=𝑦)=ℙ(𝑋=𝑥)×ℙ(𝑌=𝑦).
+\end{gather*}
+\end{definition}
+%
+\begin{lemma}
+Si \(𝑋\) et \(𝑌\) sont deux variables aléatoires discrètes indépendantes définies sur \(Ω\), pour toutes paires de
+fonctions réelles d'une variable réelle \(𝑓\) et \(𝑔\), on a \(𝔼(𝑓(𝑋)×𝑔(𝑌))=𝔼(𝑓(𝑋))×𝔼(𝑔(𝑌))\), si ces
+quantités sont bien définies.
+\end{lemma}
+\begin{proof}
+À compléter...
+\end{proof}
+\begin{proposition}
+Si \(𝑋\) et \(𝑌\) sont deux variables aléatoires discrètes indépendantes définies sur \(Ω\), alors
+\(𝔼(𝑋×𝑌)=𝔼(𝑋)×𝔼(𝑌)\) et \(𝕍(𝑋+𝑌)=𝕍(𝑋)+𝕍(𝑌)\), si toutes ces quantités sont bien définies.
+\end{proposition}
+\begin{proof}
+À compléter...
+\end{proof}
+\begin{terminology}
+Indépendance et \mykeyword{corrélation} sont contraires, tout comme indépendant et
+\mykeyword{corrélé}.
+\end{terminology}
+\subsection[Exemples de lois discrètes]{Exemples de lois discrètes}
+\subsubsection{Lois uniformes discrètes}
+C'est la transposition de l'équiprobabilité.
+\subsubsection{Épreuve de Bernoulli}
+\begin{definition}
+[Épreuve de Bernoulli]
+«succès» et «échec» désignant deux objets différents,
+une \mykeyword{épreuve de Bernoulli} est une expérience aléatoire modélisée par l'univers \(Ω=\{\text{succès},\text{échec}\}\), ainsi
+que \(ℙ\bigl(\{\text{succès}\}\bigr)=𝑝\) et \(ℙ\bigl(\{\text{échec}\bigr\})=1-𝑝\), où \(𝑝\) est un paramètre réel de \([0,1]\).
+
+L'application qui à \(\text{succès}\) associe 1 et à \(\text{échec}\) associe 0 définit une variable aléatoire discrète
+particulière.
+\end{definition}
+\begin{definition}
+[Loi de Bernoulli]
+Une variable aléatoire \(𝑋\) discrète suit la loi de Bernoulli de paramètre \(𝑝\), réel de \([0,1]\), si \(ℙ(𝑋=1)=𝑝\)
+et \(ℙ(𝑋=0)=1-𝑝\).
+
+On note \(𝑋∼𝓑(𝑝)\), qui est lu «\(𝑋\) suit la loi
+\(𝓑(𝑝)\)» ou «\(𝑋\) suit la loi de Bernoulli de paramètre \(𝑝\)».
+On peut aussi trouver les notations \(𝑋⤳𝓑(𝑝)\) et \(𝑋↪𝓑(𝑝)\).
+\end{definition}
+
+\begin{theorem}
+[Espérance, variance, écart-type]
+Si \(𝑋∼𝓑(𝑝)\), \(𝔼(𝑋)=𝑝\), \(𝕍(𝑋)=𝑝(1-𝑝)\) et \(σ(𝑋)=\sqrt{𝑝(1-𝑝)}\).
+\end{theorem}
+\subsubsection{Lois géométriques}
+\paragraph{Modèle}
+Une suite d'épreuves de Bernoulli mutuellement indépendantes : occurrence du premier succès.
+\paragraph{Formule}
+\begin{definition}
+[Loi géométrique]
+Une variable aléatoire \(𝑋\) discrète suit la loi de géométrique de paramètre \(𝑝\), réel de \([0,1]\), si
+\(ℙ(𝑋=𝑘)=𝑝(1-𝑝)^{𝑘-1}𝟙_ℕ(𝑘)\).
+\end{definition}
+\paragraph{Propiétés}
+\begin{theorem}
+[Espérance, variance, écart-type]
+Si une variable aléatoire \(𝑋\) discrète suit la loi de géométrique de paramètre \(𝑝\), réel de \(\left]0,1\right]\),
+\(𝔼(𝑋)=\frac 1{𝑝}\),  \(𝕍(𝑋)=\frac{1-𝑝}{𝑝^2}\).
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+\subsubsection{Lois binomiales}
+\paragraph{Modèle}
+Le nombre de succès parmi \(𝑛\) épreuves de Bernoulli de même paramètre \(𝑝\) de \([0,1]\) et deux à deux
+indépendantes.
+\paragraph{Formule}
+\begin{definition}
+[Loi binomiale]
+Une variable aléatoire \(𝑆\) discrète suit la loi de binomiale de paramètres \(𝑛\) entier naturel et \(𝑝\), réel de
+\([0,1]\), si \(ℙ(𝑆=𝑘)=\left(\genfrac{}{}{0pt}{0}{𝑛}{𝑘}\right)𝑝^{𝑘}(1-𝑝)^{𝑛-𝑘}𝟙_ℕ(𝑘)\).
+
+On note \(𝑆∼𝓑(𝑛,𝑝)\), qui est lu «\(𝑆\) suit la loi
+\(𝓑(𝑛,𝑝)\)« ou «\(𝑆\) suit la loi binomiale de paramètres \(𝑛\) et \(𝑝\)
+\(~\)».
+\end{definition}
+\begin{remark}
+\(𝓑(𝑝)\) et \(𝓑(1,𝑝)\) sont les mêmes lois.
+\end{remark}
+\paragraph{Propriétés}
+\begin{theorem}
+Si \(𝑛\) variables aléatoires deux à deux indépendantes suivent la loi \(𝓑(𝑝)\) alors leur somme suit
+la loi \(𝓑(𝑛,𝑝)\).
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+\begin{theorem}
+[Espérance, variance, écart-type]
+\par\noindent
+Si \(𝑆∼𝓑(𝑛,𝑝)\), \(𝔼(𝑆)=𝑛𝑝\), \(𝕍(𝑆)=𝑛𝑝(1-𝑝)\) et
+\(σ(𝑆)=\sqrt{𝑛𝑝(1-𝑝)}\).
+\end{theorem}
+\begin{proof}
+À compléter de deux manières : avec la linéarité et par le calcul direct
+\end{proof}
+\subsubsection{Lois de Poisson}
+\paragraph{Modèle}
+On modélise un nombre d'occurrences par unité lorsque la moyenne est connue.
+\paragraph[Formule]{Formule}
+\begin{definition}
+[Loi de Poisson]
+Une variable aléatoire \(𝑋\) discrète suit la loi de Poisson de paramètre \(𝜆\), notée \(𝒫(𝜆)\) avec
+\(𝜆\) réel strictement positif, si \(ℙ(𝑋=𝑘)=\frac{𝜆^{𝑘}}{𝑘!}\operatorname{e}^{-𝜆}\;𝟙_ℕ(𝑘)\).
+
+On note \(𝑋∼𝒫(𝜆)\), qui est lu «\(𝑋\) suit la loi
+\(𝒫(𝜆)\)« ou «\(𝑋\) suit la loi de Poisson de paramètre \(𝜆\)«.
+\end{definition}
+\paragraph[Propriétés]{Propriétés}
+\begin{theorem}
+[Espérance, variance, écart-type]
+Si \(𝑋∼𝒫(𝜆)\), \(𝔼(𝑋)=𝜆\), \(𝕍(𝑋)=𝜆\) et \(σ(𝑋)=\sqrt{𝜆}\).
+\end{theorem}
+\begin{theorem}
+Si \(𝑋∼𝒫(𝜆)\) et \(𝑌∼𝒫(𝜇)\), \(𝑋\) et \(𝑌\) étant indépendantes, alors
+\(𝑋+𝑌∼𝒫(𝜆+𝜇)\).
+\end{theorem}
+\begin{proof}
+Pour tout entier naturel \(𝑘\), l'événement \(𝑋+𝑌=𝑘\) est la réunion disjointe de tous les événements \((𝑋=𝑖\text{
+et }𝑌=𝑘–𝑖)\) lorsque \(𝑖\) varie entre \(0\) et \(𝑘\).
+\begin{align*}
+ℙ(𝑋+𝑌=𝑘)&{}=∑_{𝑖=0}^{𝑘}ℙ(𝑋=𝑖,𝑌=𝑘-𝑖)
+\\&{}=
+∑_{𝑖=0}^{𝑘}ℙ(𝑋=𝑖)\;ℙ(𝑌=𝑘-𝑖)
+\\&{}=
+∑_{𝑖=0}^{𝑘}\frac{λ^{𝑖}}{𝑖!}\operatorname{e}^{-λ}\frac{μ^{𝑘-𝑖}}{(𝑘-𝑖)!}\operatorname{e}^{-μ}
+\\&{}=
+\frac{(λ+μ)^{𝑘}}{𝑘!}\operatorname{e}^{-(λ+μ)}λ^{𝑖}μ^{𝑘-𝑖}
+\end{align*}
+On a utilisé l'indépendance pour obtenir la deuxième ligne.
+\end{proof}
+%
+\subsection{Variables aléatoires à densité}
+\subsubsection{Définitions}
+\begin{definition}
+[fonction de densité]
+Une \mykeyword{(fonction de) densité} est une fonction réelle de variable réelle, positive, continue par morceaux, croissante et
+d'intégrale \(1\).
+\end{definition}
+\begin{definition}
+[variables aléatoires à densité]
+Une variable aléatoire \(𝑋\) est à densité \(𝑓\) signifie que  pour tous réels \(𝑎\) et \(𝑏\), on a
+\begin{gather*}
+\displaystyle
+ℙ(𝑎⩽𝑋)=\int _{𝑥=𝑎}^{+∞}𝑓(𝑥)\;𝖽𝑥
+\\
+ℙ(𝑋⩽𝑏)=\int _{𝑥=-∞}^{𝑏}𝑓(𝑥)\;𝖽𝑥
+\end{gather*}
+\end{definition}
+%
+\begin{corollary}
+Dans le même contexte,
+\begin{gather*}
+ℙ(𝑎⩽𝑋⩽𝑏)=∫_{𝑥=𝑎}^{𝑏}𝑓(𝑥)\;𝖽𝑥
+\end{gather*}
+\end{corollary}
+\begin{remark}
+\vspace{-\baselineskip}
+\begin{itemize}
+\item
+les intégrales impropres ne sont pas au programme de l'enseignement secondaire. Elles sont définies comme des limites
+d'intégrales propres lorsque les bornes tendent vers l'infini de manière indépendante. Il se pose la question de la
+convergence...
+\item
+En fait on a pour tout ensemble mesurable \(𝐸\),
+\(ℙ(𝑋∈𝐸)=\int _{𝐸}𝑓(𝑥)\;𝖽𝑥\).
+\end{itemize}
+\end{remark}
+%
+\begin{proposition}
+Si la variable aléatoire réelle \(𝑋\) est à densité \(𝑓\), pour tous réel \(𝑎\) on a
+\(ℙ(𝑋=𝑎)=0\).
+\end{proposition}
+\begin{proof}
+\(ℙ(𝑋=𝑎)=ℙ(𝑎⩽𝑋⩽𝑎)=\int _{𝑥=𝑎}^{𝑎}𝑓(𝑥)\;𝖽𝑥=0\)
+\end{proof}
+\subsubsection{Loi uniforme continue}
+\begin{definition}
+[Loi uniforme continue]
+Une variable aléatoire réelle \(𝑋\) suit la \mykeyword{loi uniforme} sur l'intervalle
+\([𝑎,𝑏]\), avec \(𝑎<𝑏\), signifie qu'elle a pour densité
+\begin{equation*}
+𝑥⟼\frac 1{𝑏-𝑎}\;𝟙_{[𝑎,𝑏]}(𝑥)
+\end{equation*}
+\end{definition}
+\begin{theorem}
+Soit \(𝑋\) une variable aléatoire réelle qui suit la loi uniforme sur l'intervalle \([𝑎,𝑏]\), avec
+\(𝑎<𝑏\).
+\(𝔼(X)=\frac{𝑎+𝑏} 2\), \(𝕍(X)=\frac{(𝑏-𝑎)^2}{12}\) et
+\(σ(X)=\frac{𝑏-𝑎}{2\sqrt 3}\).
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+\subsubsection[Loi exponentielle]{Loi exponentielle}
+\begin{definition}
+[Loi exponentielle]
+Une variable aléatoire réelle \(𝑋\) suit la \mykeyword{loi exponentielle} de paramètre
+\(𝜆\) , avec \(𝜆>0\), si elle a pour densité
+\begin{equation*}
+𝑥⟼𝜆\;\operatorname{e}^{-𝜆𝑥}\;𝟙_{\left[0,+∞\right[}(𝑥)
+\end{equation*}
+\end{definition}
+\begin{theorem}
+Soit \(𝑋\) une variable aléatoire réelle qui suit la loi exponentielle de paramètre \(𝜆\), avec
+\(𝜆>0\).
+\(𝔼(X)=\frac 1{𝜆}\), \(𝕍(X)=\frac 1{𝜆^2}\) et \(σ(X)=\frac 1{𝜆}\).
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+\begin{theorem}
+[Vieillissement]
+Soit \(𝑋\) une variable aléatoire réelle qui suit une loi exponentielle, on a
+\begin{gather*}
+∀𝑡,𝑡'∈ℝ+,\;ℙ_{𝑋⩾𝑡}(𝑋⩾𝑡+𝑡')=ℙ(𝑋⩾𝑡').
+\end{gather*}
+\end{theorem}
+\begin{remark}
+Si \(𝑋\) modélise une durée de vie, alors la probabilité de vivre encore \(𝑡'\) ne dépend pas de l'âge déjà atteint \emph{id est} du viellissement.
+\end{remark}
+\begin{proof}
+C'est une réécriture de la propriété fonctionnelle de l'exponentielle.
+
+À compléter...
+\end{proof}
+\begin{remark}
+La somme de variables aléatoires indépendantes qui suivent une loi exponentielle ne suit
+pas une loi exponentielle mais une loi dite gamma. En revanche, c'est le cas pour leur minimum.
+\end{remark}
+\subsubsection{Loi normale}
+\begin{definition}
+[Loi normale]
+Une variable aléatoire \(𝑋\) suit la \mykeyword{loi normale} de paramètres \(𝜇\) réel et \(𝜎\) réel
+strictement positif signifie qu'elle a pour densité
+\begin{equation*}
+𝑥⟼\frac 1{\sqrt{2π𝜎^2}}\operatorname{e}^{\frac{-(𝑥-𝜇)^2}{2𝜎^2}}
+\end{equation*}
+On note \(𝑋∼𝒩(𝜇,𝜎)\), qui est lu «\(𝑋\) suit la loi
+\(𝒩(𝜇,𝜎)\)» ou «\(𝑋\) suit la loi normale de paramètres \(𝜇\) et \(𝜎\)«. On peut
+trouver la notation \(𝑋∼𝒩(𝜇,𝜎^2)\).
+\end{definition}
+\begin{theorem}
+[Espérance et variance de la loi normale]
+Si \(𝑋∼𝒩(𝜇,𝜎)\) alors \(𝔼(𝑋)=𝜇\) et \(𝕍(𝑋)=𝜎^2\).
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+En particulier, pour \(𝜇=0\) et \(𝜎=1\) on a la
+\begin{definition}
+[Loi normale centrée réduite]
+Une variable aléatoire \(𝑋\) suit la \mykeyword{loi normale centrée réduite}, signifie qu'elle a pour densité
+\begin{equation*}
+𝑥⟼\frac 1{\sqrt{2π}}\operatorname{e}^{\frac{-𝑥^2} 2}
+\end{equation*}
+On note \(𝑋∼𝒩(0,1)\), qui est lu comme ci-dessus ou «\(𝑋\) suit la loi
+normale centrée réduite».
+\end{definition}
+\begin{theorem}
+[Valeurs remarquables]
+Pour tout \(𝛼\) de \(\left[0,1\right[\), il existe un unique réel \(𝑢_{𝛼}\) tel que
+\begin{equation*}
+\frac 1{\sqrt{2π}}\int _{𝑥=-𝑢_{𝛼}}^{𝑢_{𝛼}}\operatorname{e}^{\frac{-𝑥^2} 2}\;𝖽𝑥=𝛼
+\end{equation*}
+En particulier :
+\tablefirsthead{\hline
+\centering \(𝛼\) &
+\centering\arraybslash \(𝑢_{𝛼}\)
+\\
+}
+\tablehead{\hline
+\centering \(𝛼\) &
+\centering\arraybslash \(𝑢_{𝛼}\)
+\\
+}
+\tabletail{}
+\tablelasttail{}
+\begin{supertabular}
+{|m{2cm}|m{2cm}|}
+\hline
+\centering \(⩾99~\%\) &
+\centering\arraybslash \(2,58\)
+\\
+\hline
+\centering \(⩾95~\%\) &
+\centering\arraybslash \(1,96\)
+\\
+\hline
+\centering \(⩾90~\%\) &
+\centering\arraybslash \(1,65\)
+\\
+\hline
+\end{supertabular}
+\end{theorem}
+\begin{proof}
+Dans une feuille de calcul, mettre en colonne A les nombres de \(1,64\) à
+\(2,58\) avec un pas de \(0,01\). Mettre en B1 la formule
+\(=\mathtt{1-2\ast \mathit{NORM.S.DIST}(\mathit{A1};1)}\) puis étendre vers le bas. À compléter...
+\end{proof}
+\begin{definition}
+[Plages de normalité]
+Si \(𝑋∼𝒩(𝜇,𝜎)\) alors
+\begin{equation*}
+ℙ(𝑋∈\left[𝜇-𝜎,𝜇+𝜎\right])≅68~\text{\%}
+\end{equation*}
+\begin{equation*}
+ℙ(𝑋∈[𝜇-2𝜎,𝜇+2𝜎])≅95\text{\%}
+\end{equation*}
+\begin{equation*}
+ℙ(𝑋∈[𝜇-3𝜎,𝜇+3𝜎])≅99~\text{\%}
+\end{equation*}
+Ces intervalles sont les \mykeyword{plages de normalité} à niveau de confiance de 68~\%,
+95~\%, 99,7~\%.
+\end{definition}
+\subsection[Théorèmes limites]{Théorèmes limites}
+\subsubsection{Loi faible des grands nombres}
+\begin{theorem}
+[Inégalité de Bienaymé-Tchebychev]
+Soit \(𝑋\) une variable aléatoire réelle avec espérance et variance.
+\begin{equation*}
+∀𝜀∈\left]0,+∞\right[,\;ℙ\bigl(|𝑋-𝔼(𝑋)|⩾𝜀\bigr)⩽\frac{𝕍(𝑋)}{𝜀^2}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+\begin{theorem}
+[Loi faible des grands nombres]
+Soit \((𝑋_{𝑛})_{𝑛∈ℕ^{ *}}\) une suite de variables aléatoires réelles définies sur le même espace probabilisé,
+deux à deux indépendantes, suivant la même loi d'espérance \(𝜇\) et d'écart-type \(𝜎\).
+\begin{equation*}
+∀𝜀∈\left]0,+∞\right[,\;ℙ\left(\left|\frac{𝑋_1+𝑋_2+...+𝑋_𝑛}{𝑛}-𝜇\right|⩾𝜀\right)\mathop{⟶}_{𝑛→∞}0
+\end{equation*}
+\end{theorem}
+\begin{proof}
+On applique l'inégalité de Bienaymé-Tchebychev à la moyenne
+\(\frac{𝑋_1+𝑋_2+...+𝑋_𝑛}{𝑛}\).
+Sachant que
+\begin{gather*}
+𝔼\left(\frac{𝑋_1+𝑋_2+...+𝑋_𝑛}{𝑛}\right)=𝜇\text{ et }𝕍\left(\frac{𝑋_1+𝑋_2+...+𝑋_𝑛}{𝑛}\right)=\frac{𝜎^2}
+n
+\intertext{on obtient :}
+ℙ\left(\left|\frac{𝑋_1+𝑋_2+...+𝑋_𝑛}{𝑛}-𝜇\right|⩾𝜀\right)⩽\frac{𝜎^2}{𝑛𝜀^2}
+\end{gather*}
+d'où le résultat.
+\end{proof}
+\begin{corollary}
+Dans le même contexte,
+\begin{equation*}
+∀𝜀∈\left]0,+∞\right[,\;ℙ\left(-𝜀<\frac{𝑋_1+𝑋_2+...+𝑋_𝑛}{𝑛}-𝜇<𝜀\right)\mathop{⟶}_{𝑛→∞}1
+\end{equation*}
+\end{corollary}
+\begin{proof}
+Il suffit de passer au complémentaire.
+\begin{gather*}
+\textstyle
+ℙ\left(-𝜀<\frac{𝑋_1+𝑋_2+...+𝑋_𝑛}{𝑛}-𝜇<𝜀\right)=1-ℙ\left(\left|\frac{𝑋_1+𝑋_2+...+𝑋_𝑛}{𝑛}-𝜇\right|⩾𝜀\right)
+\qedhere
+\end{gather*}
+\end{proof}
+\begin{remark}
+La loi faible des grands nombres est précisée par le théorème central limite ci-dessous.
+\end{remark}
+
+\subsubsection{Théorème central limite}
+Hors programme mais pas de beaucoup, en tout cas absolument indispensable à la compréhension.
+\begin{theorem}
+[Central limite]
+Soit \((𝑋_{𝑛})_{𝑛∈ℕ^{ *}}\) une suite de variables aléatoires réelles définies sur le même espace probabilisé,
+deux à deux indépendantes, suivant la même loi d'espérance \(𝜇\) et d'écart-type \(𝜎\) non nul. Pour tout nombre
+\(𝑡\),
+\begin{equation*}
+ℙ\left(\frac{𝑋_1+𝑋_2+...+𝑋_𝑛-𝑛𝜇}{𝜎\sqrt{𝑛}}⩽t\right)\mathop{⟶}_{𝑛→∞}\frac 1{\sqrt{2π}}\int
+_{-∞}^t\operatorname{e}^{\frac{-x^2} 2}\mathit{dx}
+\end{equation*}
+\end{theorem}
+\begin{remark}
+C'est un théorème très puissant car on ne connaît de la loi commune à toutes les variables aléatoires que la moyenne et
+l'écart type, et rien d'autre.
+\end{remark}
+\begin{proof}
+Hors programme.
+\end{proof}
+\begin{theorem}
+[Théorème de Moivre-Laplace]
+Soit \((𝑆_{𝑛})_{𝑛∈ℕ^{ *}}\) une suite de variables aléatoires réelles telles que \(𝑆_{𝑛}∼ℬ(𝑛,𝑝)\),
+avec \(𝑝\) dans \(\left]0,1\right[\).
+Pour tous réels \(𝑎\) et \(𝑏\) tels que \(𝑎⩽𝑏\), on a
+\begin{equation*}
+ℙ\left(𝑎⩽\frac{𝑆_𝑛-𝑛𝑝}{\sqrt{𝑛𝑝(1-𝑝)}}⩽𝑏\right)\mathop{⟶}_{𝑛→∞}\frac 1{\sqrt{2π}}\int
+_{𝑎}^{𝑏}\operatorname{e}^{\frac{-x^2} 2}\mathit{dx}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Hors programme.
+\end{proof}
+\begin{remark}
+On retrouve le théorème central limite si
+\(𝑆_{𝑛}=𝑋_1+𝑋_2+...+𝑋_{𝑛}\) et si les \(𝑋_{𝑛}\) suivent une loi de Bernoulli de paramètre \(𝑝\). Au passage :
+peut-on toujours obtenir une telle décomposition de \(𝑆_{𝑛}\) ? À préciser...
+\end{remark}
+\subsubsection[Autre convergence]{Autre convergence}
+\begin{theorem}
+Si pour tout entier naturel \(𝑛\) on a \(𝑆_{𝑛}∼ℬ(𝑛,𝑝_{𝑛})\), avec
+\(𝑛\;𝑝_{𝑛}\mathop{⟶}_{n→+∞}𝜆\) alors
+\begin{equation*}
+ℙ\left(𝑆_{𝑛}=𝑘\right)\mathop{⟶}_{𝑛→∞}\frac{𝜆^{𝑘}}{𝑘!}\;e^{-𝜆}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+\subsection{Fluctuation. Estimation.}
+La fluctuation : on connaît la loi de l'échantillon, on connaît la fréquence, on mesure la cohérence des deux.
+
+L'estimation : on connaît le type de loi de l'échantillon, on connaît la fréquence, on estime la moyenne.
+\subsubsection[Intervalle de fluctuation en 2de]{Intervalle de fluctuation en 2\textsuperscript{de}}
+\paragraph{Présentation}
+Le programme de 2\textsuperscript{de} suggère de présenter aux élèves le résultat suivant : pour des échantillons de
+taille \(𝑛\) supérieure ou égale à \(25\) et des proportions \(𝑝\) du caractère comprises entre
+\(0,2\) et \(0,8\) : si \(𝑓\) désigne la fréquence du caractère dans l’échantillon,
+\(𝑓\) appartient à l’intervalle \(\left[𝑝-1/\sqrt{𝑛},𝑝+1/\sqrt{𝑛}\right]\) avec une probabilité d’au moins
+\(0,95\).
+\paragraph{Justification asymptotique}
+Pour \(0,2⩽𝑝⩽0,8\), on obtient \(0,4⩽\sqrt{𝑝(1-𝑝)}⩽0,5\), d'où
+\begin{gather*}
+-\frac{1,96\sqrt{𝑝(1-𝑝)}}{\sqrt{𝑛}}⩽\frac{𝑆_{𝑛}}{𝑛}-𝑝⩽\frac{1,96\sqrt{𝑝(1-𝑝)}}{\sqrt{𝑛}}
+⟹
+-\frac1{\sqrt{𝑛}}⩽\frac{𝑆_{𝑛}}{𝑛}-𝑝⩽\frac 1{\sqrt{𝑛}}.
+\end{gather*}
+Sous réserve que la limite existe, on retrouve bien l'estimation de la classe de seconde
+\begin{equation*}
+\lim _{n→+∞}ℙ\left(-\frac 1{\sqrt n}⩽\frac{𝑆_{𝑛}}{𝑛}-𝑝⩽\frac 1{\sqrt n}\right)⩾95\text{\%}
+\end{equation*}
+\begin{remark}
+Dans ce programme, il est conseillé de s'assurer que \(𝑛⩾25\) et \(0,2⩽𝑝⩽0,8\). En
+classe terminale, on prendra plutôt \(𝑛⩾30\), \(𝑛𝑝⩾5\) et \(𝑛(1-𝑝)⩾5\). Mais  à la limite !
+\end{remark}
+\paragraph[Justification]{Justification}
+On sait que \(𝑛𝑓\) suit la loi \(
+(𝑛,𝑝)\), ce qui nous permet d'avoir une idée beaucoup plus précise du
+seuil de tolérance. Dans le tableau suivant, on a indiqué pour différentes valeurs de \(𝑛\) pour les lignes et \(𝑝\) pour les colonnes la probabilité
+d'avoir \(𝑓\) dans l'intervalle indiqué ci-dessus, avec \(4\) chiffres après la virgule.
+\begin{center}
+\begin{tabular}{|*{7}{>{\(}c<{\)}|}}
+\hline
+𝑛∖𝑝 & 0,2 & 0,25 & 0,3 & 0,35 & 0,4 & 0,45
+\\\hline
+25 & 0,9944 & 0,9822 & 0,9736 & 0,9649 & 0,9774 & 0,9569
+\\\hline
+26 & 0,9891 & 0,9791 & 0,9678 & 0,9608 & 0,9569 & 0,9526
+\\\hline
+27 & 0,9866 & 0,9741 & 0,9807 & 0,9589 & 0,9508 & 0,9682
+\\\hline
+28 & 0,9832 & 0,9855 & 0,9636 & 0,9728 & 0,9673 & 0,9443
+\\\hline
+29 & 0,9915 & 0,9817 & 0,9763 & 0,9692 & 0,9438 & 0,9618
+\\\hline
+30 & 0,9893 & 0,9678 & 0,9737 & 0,9467 & 0,9616 & 0,9354
+\\\hline
+40 & 0,9906 & 0,9837 & 0,9766 & 0,9703 & 0,9655 & 0,9625
+\\\hline
+50 & 0,9925 & 0,9790 & 0,9805 & 0,9633 & 0,9707 & 0,9545
+\\\hline
+100 & 0,9916 & 0,9852 & 0,9786 & 0,9729 & 0,9685 & 0,9657
+\\\hline
+1000 & 0,9873 & 0,9786 & 0,9703 & 0,9633 & 0,9580 & 0,9548
+\\\hline
+10000 & 0,9880 & 0,9797 & 0,9717 & 0,9649 & 0,9598 & 0,9566
+\\\hline
+\end{tabular}
+\end{center}
+On a utilisé la
+symétrie \(𝑝⟷1-𝑝\) pour restreindre \(𝑝\) entre \(0,2\) et \(0,5\), ainsi que la formule
+suivante
+\begin{align*}
+=&\text{BINOM.DIST}(\text{FLOOR}(𝑛*𝑝+\text{SQRT}(𝑛));𝑛;𝑝;1)-...
+\\
+&...-\text{BINOM.DIST}(\text{CEILING}(𝑛*𝑝-\text{SQRT}(𝑛))-1;𝑛;𝑝;1)
+\end{align*}
+qui vient du
+\begin{lemma}
+\begin{equation*}
+ℙ\left(-\frac 1{\sqrt{𝑛}}⩽𝑓-𝑝⩽\frac 1{\sqrt{𝑛}}\right)=ℙ(𝑛𝑓⩽⌊𝑛𝑝+\sqrt{𝑛}⌋)-ℙ(𝑛𝑓<⌈𝑛𝑝-\sqrt{𝑛}⌉)
+\end{equation*}
+\end{lemma}
+\begin{proof}
+On a
+\begin{gather*}
+-\frac 1{\sqrt{𝑛}}⩽𝑓-𝑝⩽\frac 1{\sqrt{𝑛}}⟺𝑛𝑝-\sqrt{𝑛}⩽𝑛𝑓⩽𝑛𝑝+\sqrt{𝑛}
+\intertext{donc}
+ℙ\left(-\frac 1{\sqrt{𝑛}}⩽𝑓-𝑝⩽\frac 1{\sqrt{𝑛}}\right)=ℙ(𝑛𝑓⩽𝑛𝑝+\sqrt{𝑛})-ℙ(𝑛𝑓<𝑛𝑝-\sqrt{𝑛}).
+\intertext{Comme \(𝑛𝑓\) est un entier,}
+𝑛𝑓⩽𝑛𝑝+\sqrt{𝑛}⟺𝑛𝑓⩽⌊𝑛𝑝+\sqrt{𝑛}⌋,\\
+𝑛𝑓<𝑛𝑝-\sqrt{𝑛}⟺𝑛𝑓<⌈𝑛𝑝+\sqrt{𝑛}⌉.
+\qedhere
+\end{gather*}
+\end{proof}
+\begin{remark}
+ si on fait une étude avec plus de données, on observe que pour avoir effectivement un
+seuil plus grand que \(0,95\), il faut prendre \(𝑛⩾49\). Ce n'est pas du tout
+\(𝑛⩾25\)\(~\)! C'est ce qui fait la différence entre un intervalle de fluctuation et un intervalle de
+fluctuation asymptotique.
+\end{remark}
+\subsubsection{Intervalle de fluctuation en terminale.}
+\begin{theorem}
+Si la variable aléatoire \(𝑆_{𝑛}\) suit la loi \(ℬ(𝑛,𝑝)\), alors, pour tout \(𝛼\) dans
+\(\left[0,1\right[\) on a,
+\begin{gather*}
+ℙ\left(-𝑢_{𝛼}⩽\frac{𝑆_{𝑛}-𝑛𝑝}{\sqrt{𝑛𝑝(1-𝑝)}}⩽𝑢_{𝛼}\right)\mathop{⟶}_{𝑛→∞}𝛼
+\intertext{ou de manière équivalente}
+ℙ\left(\frac{𝑆_{𝑛}}{𝑛}∈𝐼_{𝑛}^{𝛼}(𝑝)\right)
+\mathop{⟶}_{𝑛→∞}
+𝛼,\text{ avec }
+𝐼_{𝑛}^{𝛼}(𝑝)\mybydef{=}𝑝+𝑢_{𝛼}\sqrt{\frac{𝑝(1-𝑝)}{𝑛}}[-1,1]
+\end{gather*}
+\(𝑢_{𝛼}\) étant la valeur remarquable associée à \(𝛼\).
+\end{theorem}
+\begin{proof}
+Application du théorème de Moivre-Laplace. À compléter...
+\end{proof}
+Pour appliquer ce théorème, on a la
+\begin{method}
+Soit \((𝑋_{𝑛})_{𝑛∈ℕ^{ *}}\) une suite de variables aléatoires réelles deux à deux indépendantes qui suivent la
+même loi de Bernoulli. Soit \(𝑓_{𝑛}\) une réalisation de \(\frac{𝑋_1+𝑋_2+...+𝑋_{𝑛}}{𝑛}\).
+\begin{itemize}
+\item
+Si \(𝑓_{𝑛}∈𝐼_{𝑛}^{𝛼}(𝑝)\), on décidera que le paramètre de la loi de Bernoulli est \(𝑝\) au seuil asymptotique
+\(1-𝛼\). Le risque asymptotique d'erreur dépend du paramètre réel de la loi.
+\item
+Si \(𝑓_{𝑛}∉𝐼_{𝑛}^{𝛼}(𝑝)\), on décidera que le paramètre de la loi de Bernoulli n'est pas \(𝑝\) au seuil
+asymptotique \(1-𝛼\). Le risque asymptotique d'erreur est de \(𝛼\).
+\end{itemize}
+\end{method}
+\subsubsection[Estimation]{Estimation}
+Avec les notations précédentes, on observe que d'une certain manière,
+\begin{equation*}
+𝑝+𝑢_{𝛼}\sqrt{\frac{\frac{𝑆_{𝑛}}{𝑛}\left(1-\frac{𝑆_{𝑛}}{𝑛}\right)}{𝑛}}[-1,1]\mathop{⟶}_{𝑛→∞}𝑝+𝑢_{𝛼}\sqrt{\frac{𝑝(1-𝑝)}{𝑛}}[-1,1]
+\end{equation*}
+comme par ailleurs
+\begin{equation*}
+\frac{𝑆_{𝑛}}{𝑛}∈𝑝+𝑢_{𝛼}\sqrt{\frac{\frac{𝑆_{𝑛}}{𝑛}\left(1-\frac{𝑆_{𝑛}}{𝑛}\right)}{𝑛}}[-1,1]⟺𝑝∈\frac{𝑆_{𝑛}}{𝑛}+𝑢_{𝛼}\sqrt{\frac{\frac{𝑆_{𝑛}}{𝑛}\left(1-\frac{𝑆_{𝑛}}{𝑛}\right)}{𝑛}}[-1,1]
+\end{equation*}
+on en déduit d'une certaine manière le
+\begin{theorem}
+[Estimation de paramètre]
+\begin{gather*}
+ℙ\left(𝑝∈𝐽_{𝑛}^{𝛼}\right)\mathop{⟶}_{𝑛→∞}𝛼%
+,\text{ avec }
+𝐽_{𝑛}^{𝛼}\mybydef{=}\frac{𝑆_{𝑛}}{𝑛}+𝑢_{𝛼}\sqrt{\frac{\frac{𝑆_{𝑛}}{𝑛}\left(1-\frac{𝑆_{𝑛}}{𝑛}\right)}{𝑛}}[-1,1]
+\end{gather*}
+\(𝑢_{𝛼}\) étant la valeur remarquable associée à \(𝛼\).
+\end{theorem}
+\begin{proof}
+Hors programme...
+\end{proof}

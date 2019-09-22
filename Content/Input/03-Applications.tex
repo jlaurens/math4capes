@@ -1,0 +1,432 @@
+% !TEX program = xelatex
+% !TEX root = ../main.tex
+
+\section{Applications}
+
+\subsection{Généralités}
+Dans la suite \(𝐸\), \(𝐹\), \(𝐺\)... désignent des ensembles quelconques dont les propriétés sont précisées
+selon les besoins.
+
+\begin{definition}
+[Application]
+Une \mykeyword{application} \(𝑓\) est la donnée de
+\begin{enumerate}
+\itemrnd un ensemble \(𝐸\), l'\mykeyword{ensemble de départ},
+\itemrnd un ensemble \(𝐹\), l'\mykeyword{ensemble d'arrivée},
+\itemrnd une partie \(Γ\) de \(𝐸×𝐹\), le
+\mykeyword{graphe}, telle que
+\begin{equation*}
+∀𝑥∈𝐸\text{, }∃!𝑦∈𝐹\text{, }(𝑥;𝑦)∈Γ
+\end{equation*}
+\end{enumerate}
+Pour \((𝑥~;𝑦)\) de \(Γ\), \(𝑦\) est l'\mykeyword{image} de \(𝑥\) par
+\(𝑓\), notée \(𝑓(𝑥)\). \(𝑥\) est un \mykeyword{antécédent} de
+\(𝑦\) par \(𝑓\), l'ensemble de tous les antécédents de \(𝑦\) est noté
+\(\overset{-1}{𝑓}(𝑦)\), c'est l'\mykeyword{image réciproque} ou
+\mykeyword{pré image} de \(𝑦\) par \(𝑓\). \(𝑦\) est
+\mykeyword{associé à} \(𝑥\) par \(𝑓\).
+\end{definition}
+%
+\begin{remark}
+Deux applications sont égales si et seulement si elles ont même
+ensemble de départ, même ensemble d'arrivée et même graphe.
+\end{remark}
+%
+\begin{definition}
+L'ensemble des applications de \(𝐸\) dans \(𝐹\) est noté \(𝐹^{𝐸}\).
+
+\(𝑓~:𝐸→𝐹\) désigne une application de \(𝐸\) dans \(𝐹\) nommée \(𝑓\).
+ On peut rencontrer la notation
+\(𝑓\;:\;𝐸↪𝐹\).
+\end{definition}
+\begin{equation*}
+\begin{matrix}
+𝑓~:&𝐸&⟶&𝐹\\&𝑥&⟼&\text{une formule}
+\end{matrix}
+\end{equation*}
+désigne l'application de \(𝐸\) dans \(𝐹\) nommée \(𝑓\) qui à \(𝑥\) associe \(\text{une
+formule}\).
+
+\begin{theorem}
+Il n'existe qu'un seule application de \(∅\) dans \(𝐹\), son graphe est \(∅\).
+On la désigne par \mykeyword{application vide}.
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+%
+\begin{theorem}
+[Application de choix]
+Étant donnée une partition \(𝑃\) de \(𝐸\),
+il existe une application de choix \(𝜑~:𝑃→𝐸\) telle que pour tout \(𝐹\) de
+\(𝑃\), on a \ \(𝜑(𝐹)∈𝐹\).
+\end{theorem}
+\begin{proof}
+L'axiome du choix appliqué à la partition \(𝑃\) donne un ensemble \(𝐺\)
+qui contient un seul élément par composante de la partition.
+\(\left\{(𝑥~;𝑦)\left|∈𝑥∈𝑃~\text{ et }~𝑦∈𝑥∩𝐸\right.\right\}\)
+est un graphe qui répond à la question. À détailler...
+\end{proof}
+%
+\begin{definition}
+[Prolongement, restriction]
+Soit \(𝑓~:𝐸→𝐹\) et \(𝑔~:𝐺→𝐹\), de graphes respectifs \(Γ_{𝑓}\) et \(Γ_{𝑔}\). \(𝑓\) est une
+\mykeyword{restriction} de \(𝑔\) ou \(𝑔\) est un \mykeyword{prolongement} de \(𝑓\) signifie
+que \(𝐸⊂𝐺\) et \(Γ_{𝑓}⊂Γ_{𝑔}\). \(𝑔\) est aussi notée \(𝑓_{\left|𝐺\right.}\), lu «~ \(𝑓\) restreinte à \(𝐺\)~».
+\end{definition}
+\begin{remark}
+On garde le même ensemble d'arrivée.
+\end{remark}
+%
+\subsection{Injection}
+\begin{definition}
+[Injection]
+\(𝐸\) et \(𝐹\) étant des ensembles, une application \(𝑓\) de
+\(𝐸\) dans \(𝐹\) est \mykeyword{injective} ou de manière synonyme une
+\mykeyword{injection} signifie que
+\begin{equation*}
+∀𝑥,𝑥'∈𝐸,\;(𝑓(𝑥)=𝑓(𝑥')⟹𝑥=𝑥')
+\end{equation*}
+ou par contraposition
+\begin{equation*}
+∀𝑥,𝑥'∈𝐸,\;(𝑥≠𝑥'⟹𝑓(𝑥)≠𝑓(𝑥'))
+\end{equation*}
+L'ensemble des injections de \(𝐸\) dans \(𝐹\) est noté \(I(𝐸~;𝐹)\).
+\end{definition}
+%
+\begin{theorem}
+Une application vide est injective.
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+%
+\begin{theorem}
+Toute restriction d'une injection est une injection.
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+%
+\begin{definition}
+[Image réciproque]
+\(𝐸\) et \(𝐹\) étant des ensembles, \(𝑓\) une application de \(𝐸\) dans \(𝐹\).
+Pour un ensemble \(𝐺\), l'\mykeyword{image réciproque} de \(𝐺\) par \(𝑓\) est
+\(\left\{𝑥∈𝐸\middle|∃𝑦∈𝐺\text{, }𝑦=𝑓(𝑥)\right\}\),
+notée \(\overset{-1}{𝑓}(𝐺)\).
+\end{definition}
+\begin{remark}
+\(\overset{-1}{𝑓}(𝐺)\) est \(\overset{-1}{𝑓}(𝑦)\) si \(𝐺\) est le singleton \(\left\{𝑦\right\}\).
+\end{remark}
+%
+\begin{theorem}
+[Image réciproque]
+\(𝐸\) et \(𝐹\) étant des ensembles, \(𝑓\) une application de \(𝐸\) dans \(𝐹\).
+Pour un ensemble \(𝐺\),
+\begin{equation*}
+\left\{𝑥∈𝐸\middle|∃𝑦∈𝐺\text{, }𝑦=𝑓(𝑥)\right\}=
+\bigcup_{𝑦∈𝐺}\overset{-1}{𝑓}(𝑦)
+\end{equation*}
+C'est l'\mykeyword{image réciproque} ou \mykeyword{pré image} de \(𝐺\) par \(𝑓\),
+notée \(\overset{-1}{𝑓}(𝐺)\), c'est aussi \(\overset{-1}{𝑓}(𝑦)\) si \(𝐺\)
+est le singleton \(\left\{𝑦\right\}\).
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+%
+\begin{theorem}
+\label{thm:injection}
+Une application \(𝑓\) est une injection si et seulement si pour tout \(𝑦\), \(\overset{-1}{𝑓}(𝑦)\) est
+vide ou un singleton.
+\end{theorem}
+\begin{proof}
+S'il n'est pas vide, \(\overset{-1}{𝑓}(𝑦)\) contient \(𝑥_0\) et par définition de l'image réciproque, \(𝑦=𝑓(𝑥_0)\).
+Comme \(𝑓\) est injective, en particulier
+\begin{equation*}
+∀𝑥∈𝐸\text{, }(𝑥∈\overset{-1}{𝑓}(𝑦)
+\overset{\text{\scriptsize déf}}{⟹}
+𝑓(𝑥)=𝑦
+⟹
+𝑥=𝑥_0
+\end{equation*}
+d'où \(\overset{-1}{𝑓}(𝑦)\) est le singleton \(\{𝑥_0\}\).
+\end{proof}
+%
+\begin{definition}
+[Injection canonique]
+Étant donné \(𝐹⊂𝐸\), l'\mykeyword{injection}
+\index{injection!canonique}\mykeyword{canonique} de \(𝐹\) dans \(𝐸\) est l'application qui à
+tout élément associe lui-même.
+\end{definition}
+%
+\begin{definition}
+L'injection canonique est une injection.
+\end{definition}
+\begin{proof}
+En exercice...
+\end{proof}
+%
+\begin{definition}
+[Ensemble infini]
+Un ensemble \(𝐸\) est infini s'il existe une injection de lui-même dans
+un de ses sous-ensembles stricts :
+\begin{equation*}
+𝐸\text{ est infini}\overset{\text{\scriptsize déf}}{⟺}∃𝐹⊊𝐸,\;∃𝛷\;:\;𝐸↪𝐹
+\end{equation*}
+\end{definition}
+\begin{definition}
+[Ensemble dénombrable)]
+Un ensemble \(𝐸\) est \index{dénombrable}\mykeyword{dénombrable} signifie qu'il existe une
+injection de \(𝐸\) dans \(ℕ\).
+\end{definition}
+\begin{exercise}
+\(ℕ^2\) est dénombrable, on vérifie que \((𝑚,𝑛)↦2^{𝑚}3^{𝑛}\) est une injection de \(ℕ^2\) dans \(ℕ\).
+Généraliser à \(ℕ^{𝑘}\) , \(𝑘∈ℕ\).
+\(ℝ\) et \(ℕ^ℕ\) ne sont pas dénombrables.
+\end{exercise}
+\subsection{Surjection}
+\begin{definition}
+[Surjection]
+\(𝐸\) et \(𝐹\) étant des ensembles, une application \(𝑓\)
+de \(𝐸\) dans \(𝐹\) est \mykeyword{surjective}, ou de manière synonyme une
+\mykeyword{surjection}, signifie que
+\(∀𝑦∈𝐹,∃𝑥∈𝐸,𝑦=𝑓(𝑥)\).
+\end{definition}
+\begin{remark}
+Pour une formulation textuelle : tout élément de l'ensemble d'arrivée a au moins un antécédent.
+\end{remark}
+%
+\begin{theorem}
+L'application vide de \(∅\) dans lui-même est surjective.
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+%
+\begin{theorem}
+\label{thm:surjection}
+Une application \(𝑓\) est une surjection si et seulement si pour tout \(𝑦\) de son ensemble d'arrivée,
+ \(\overset{-1}{𝑓}(𝑦)\) n'est pas vide.
+ \end{theorem}
+\begin{proof}
+On a \(∃𝑥∈𝐸,𝑦=𝑓(𝑥)\overset{\text{\scriptsize déf}}{⟺}\overset{-1}{𝑓}(𝑦)≠∅\).
+\end{proof}
+%
+\begin{proposition}
+Tout prolongement d'une surjection est une surjection.
+\end{proposition}
+\begin{proof}
+En exercice...
+\end{proof}
+%
+\begin{definition}
+[Image]
+Soit \(𝐺⊂𝐸\) et \(𝑓:𝐸→𝐹\), \(\left\{𝑦∈𝐹\middle|∃𝑥∈𝐺\text{, }𝑦=𝑓(𝑥)\right\}\)
+est l'\mykeyword{image} de \(𝐺\) par \(𝑓\), noté \(𝑓(𝐺)\).
+L'\mykeyword{image} de \(𝑓\) est \(𝑓(𝐸)\) aussi notée \(\Im 𝑓\) .
+\end{definition}
+%
+\begin{theorem}
+\label{thm:surctive}
+Une application \(𝑓\) de \(𝐸\) dans \(𝐹\) est surjective si et seulement si
+ \(\Im 𝑓=𝐹\).
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+\subsection{Bijection}
+\begin{definition}
+[Bijection]
+\(𝐸\) et \(𝐹\) étant des ensembles, une application \(𝑓\) de
+\(𝐸\) dans \(𝐹\) est \mykeyword{bijective} ou de manière synonyme une
+\mykeyword{bijection} si
+\begin{equation*}
+∀𝑦∈𝐹,\;∃~!𝑥∈𝐸,\;𝑦=𝑓(𝑥)
+\end{equation*}
+\end{definition}
+%
+\begin{theorem}
+L'application vide de \(∅\) dans lui-même est bijective.
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+%
+\begin{theorem}
+L'application de \(𝐸\) dans \(𝐸\) qui à tout élément associe lui-même est une bijection, elle est noté
+\(\operatorname{Id}_{𝐸}\)
+\end{theorem}
+\begin{proof}
+À compléter...
+\end{proof}
+%
+\begin{definition}
+ \(𝐸\) et \(𝐹\) sont en bijection, ou \mykeyword{équipotents}, signifie qu'il existe une bijection de \(𝐸\)
+ sur \(𝐹\) .
+\end{definition}
+%
+\begin{theorem}
+\label{thm:bijection}
+Une application \(𝑓\) est une bijection si et seulement si pour tout \(𝑦\) de son ensemble d'arrivée,
+\(\overset{-1}{𝑓}(𝑦)\) est un singleton.
+\end{theorem}
+\begin{proof}
+On a \(∃~!𝑥∈𝐸,\;𝑦=𝑓(𝑥)⟺\overset{-1}{𝑓}(𝑦)\text{ est un singleton}\).
+\end{proof}
+\begin{theorem}
+Toute injection induit une bijection sur son image.
+\end{theorem}
+\begin{proof}
+Soit \(𝑓~:𝐸→𝐹\). Son graphe \(Γ\), en tant que partie de \(𝐸×\Im 𝑓\), définit une application de \(𝐸\) dans \(\Im
+𝑓\) , qui est une bijection. À compléter...
+\end{proof}
+%
+\begin{theorem}
+\label{thm:bijection2}
+Une application est une bijection si et seulement si c'est une injection et une surjection.
+\end{theorem}
+\begin{proof}
+C'est une application des lemmes \ref{seq:refTheorem5} et \ref{seq:refTheorem8}.
+\end{proof}
+%
+\begin{theorem}
+Étant donnés \(𝑎\) et \(𝑏\) de \(𝐸\),
+\begin{equation*}
+\begin{matrix}
+𝜏~:&𝐸&⟶&𝐸\\&𝑥&⟼&\left\{
+\begin{matrix}𝑎~\text{ si }~𝑥=𝑏
+\\𝑏~\text{ si }~𝑥=𝑎\hfill\null
+\\𝑥\text{ sinon}\hfill\null \end{matrix}
+\right.\end{matrix}
+\end{equation*}
+ \(𝜏\) est une bijection.
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+\subsection{Composition}
+\begin{definition}
+[Composition]
+\(𝐸\), \(𝐹\) et \(𝐺\) étant des ensembles,
+\(𝑓\) étant une application de \(𝐸\) dans \(𝐹\) et \(𝑔\) une application
+de \(𝐹\) dans \(𝐺\) , l'application \(𝑥↦𝑔(𝑓(𝑥))\) est notée \(𝑔∘𝑓\), c'est l'application
+\mykeyword{composée} de \(𝑔\) par \(𝑓\).
+\end{definition}
+%
+\begin{theorem}
+La composition est associative : \((ℎ∘𝑔)∘𝑓=ℎ∘(𝑔∘𝑓)\).
+\end{theorem}
+\begin{proof}
+On a \((ℎ∘𝑔)∘𝑓(𝑥)=(ℎ∘𝑔)(𝑓(𝑥))=ℎ(𝑔(𝑓(𝑥)))=ℎ((𝑔∘𝑓(𝑥)))=ℎ∘(𝑔∘𝑓)(𝑥)\).
+\end{proof}
+\begin{remark}
+La composition n'est pas commutative. En général, on a trois ensembles
+de départ ou d'arrivée mutuellement différents, pour avoir la commutativité,
+il en faut nécessairement deux au total et pas plus.
+\end{remark}
+%
+\begin{theorem}
+\begin{enumerate}
+\item La composée de deux applications injectives et injective.
+\item La composée de deux applications surjectives et surjective.
+\item La composée de deux applications bijectives et bijective.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item On a \(𝑥≠𝑦⇒𝑓(𝑥)≠𝑓(𝑦)⇒𝑔(𝑓(𝑥))≠𝑔(𝑓(𝑦))\).
+\item Avec les notations de la définition de composition, on a
+\(∀𝑧∈𝐺\text{, }∃~𝑦_{𝑧}∈𝐹\text{, }𝑧=𝑔(𝑦_{𝑧})\) et
+\(∀𝑦∈𝐹\text{, }∃~𝑥_{𝑦}∈𝐸\text{, }𝑦=𝑓(𝑥_{𝑦})\).
+En particulier, \(𝑧=𝑔∘𝑓(𝑥_{𝑦_{𝑧}})\).
+\item Par les point précédents ainsi que la proposition \ref{seq:refTheorem15}.
+\end{enumerate}
+\end{proof}
+%
+\begin{definition}
+[Application réciproque, à gauche, à droite]
+\(𝐸\) et \(𝐹\) étant des ensembles,
+\(𝑓\) étant une application de \(𝐸\) dans \(𝐹\) et
+\(𝑔\) une application de \(𝐹\) dans \(𝐸\).
+\begin{enumerate}
+\item \(𝑔\) est \mykeyword{réciproque à gauche} de \(𝑓\) signifie que
+\(𝑔∘𝑓=\operatorname{Id}_{𝐸}\).
+\item \(𝑔\) est \mykeyword{réciproque à droite} de \(𝑓\) signifie que
+\(𝑓∘𝑔=\operatorname{Id}_{𝐹}\).
+\item \(𝑔\) est \mykeyword{réciproque} de \(𝑓\) signifie \(𝑔\) est à la
+fois réciproque à gauche et réciproque à droite de \(𝑓\).
+\end{enumerate}
+\end{definition}
+%
+\begin{theorem}
+\begin{enumerate}
+\item Toute application injective admet une réciproque à gauche.
+\item Toute application surjective admet une réciproque à droite.
+\item Toute application bijective admet une réciproque, qui est unique et à la fois réciproque à gauche et à droite.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+On note \(𝑓~:𝐸→𝐹\) , \(𝑔~:𝐹→𝐸\) , \(Γ_{𝑓}\) le graphe de \(𝑓\) et \(Γ_{𝑔}\) celui de \(𝑔\).
+Soit \(𝐺\overset{\text{\scriptsize déf}}{=}\left\{(𝑦;𝑥)\left|(𝑥;𝑦)∈Γ_{𝑓}\right.\right\}\).
+On laisse en exercice le cas où l'un des deux ensembles est vide. À compléter...
+\begin{enumerate}
+\item Si \(𝑓\) est injective. Soit \(𝑥_0∈𝐸\) et \(𝐺'\overset{\text{\scriptsize déf}}{=}\left\{(𝑦;𝑥_0)\middle|𝑦∉\Im
+𝐹\right\}\), \(𝐺∪𝐺\)' est le graphe d'une application réciproque à gauche de \(𝑓\). À compléter...
+\item Si \(𝑓\) est surjective. Par l'axiome du choix, il existe une application \(𝜑\) qui à tout
+\(\overset{-1}{𝑓}(𝑦)\) associe l'un de ses éléments. L'application \(𝜑\) est un inverse à droite de \(𝑓\).
+
+Si \(𝐸\) est dénombrable, il peut être muni d'une relation d'ordre total\footnote{À détailler...} ce qui permet d'éviter
+l'axiome du choix : on prend \(𝜑~:𝑦↦\operatorname{min}\overset{-1}{𝑓}(𝑦)\).
+
+\item Si \(𝑓\) est bijective, on a une réciproque à gauche et une réciproque à droite : \(𝑔∘𝑓=\operatorname{Id}_{𝐸}\)
+ et \(𝑓∘𝑔'=\operatorname{Id}_{𝐹}\) . Par associativité, \(𝑔=𝑔∘(𝑓∘𝑔')=(𝑔∘𝑓)∘𝑔'=𝑔'\) , donc \(𝑔\) est réciproque
+de \(𝑓\), mais aussi réciproque à gauche et à droite.
+L'unicité vient de
+\(𝑔∘𝑓=ℎ∘𝑓=\operatorname{Id}⇒(𝑔∘𝑓)∘𝑔=(ℎ∘𝑓)∘𝑔⇒𝑔∘(𝑓∘𝑔)=ℎ∘(𝑓∘𝑔)⇒𝑔=ℎ\).
+\end{enumerate}
+\end{proof}
+\begin{definition}
+On note \(𝑓^{-1}\) la réciproque de \(𝑓\).
+\end{definition}
+%
+\begin{theorem}
+\begin{enumerate}
+\item Si \(𝑔∘𝑓\) est injective alors \(𝑓\) est injective.
+\item Si \(𝑔∘𝑓\) est surjective, alors \(𝑔\) est surjective.
+\item Si \(𝑔∘𝑓\) est bijective, \(𝑔_{\left|\Im 𝑓\right.}\) est une bijection.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{enumerate}
+\item Si \(𝑓\) n'est pas injective, on a \(𝑓(𝑥)=𝑓(𝑥')\) avec \(𝑥≠𝑥'\),
+d'où \(𝑔∘𝑓(𝑥)=𝑔∘𝑓(𝑥')\) et \(𝑔∘𝑓\)
+n'est pas injective. On a le résultat par contraposition.
+\item Notons \(𝑓~:𝐸→𝐹\) et \(𝑔~:𝐺→𝐻\). Si \(𝑔∘𝑓\) est surjective, on a \(𝑔(𝑓(𝐸))~=𝐻\).
+Comme on a \(𝑓(𝐸)⊂𝐹\), on a aussi \(𝑔(𝑓(𝐸))⊂𝑔(𝐹)\).
+Cela donne \(𝐻⊂𝑔(𝐹)⊂𝐻\) puis \(𝑔(𝐹)=𝐻\) et la surjectivité de \(𝑔\).
+\item Par 1, \(𝑓\) est injective, soit \(𝑓_b\) la bijection qu'elle induit sur \(\Im 𝑓\) . On a \(𝑔∘𝑓=𝑔_{\left|\Im
+𝑓\right.}∘𝑓_b\) et \(𝑔_{\left|\Im 𝑓\right.}=(𝑔∘𝑓)∘𝑓_b^{-1}\) qui est la composée de deux bijections.
+\end{enumerate}
+\end{proof}
+%
+\begin{theorem}
+\begin{enumerate}
+\item Toute application qui admet une réciproque à gauche est injective.
+\item Toute application qui admet une réciproque à droite est surjective.
+\item Toute application qui admet une réciproque est bijective.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Si on a \(𝑔∘𝑓=\operatorname{Id}_{𝐸}\) , sachant que \(\operatorname{Id}_{𝐸}\) est à la fois injective et surjective,
+\(𝑔\) est surjective et \(𝑓\) injective. Si on a en plus \(𝑓∘𝑔=\operatorname{Id}_{𝐹}\) , \(𝑔\) est aussi injective et
+ \(𝑓\) surjective, les deux sont des bijections.
+\end{proof}
+\begin{theorem}
+Une réciproque à gauche est surjective, une réciproque à droite injective.
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}

@@ -1,0 +1,922 @@
+% !TEX encoding = UTF-8
+% !TEX program = xelatex
+% !TEX root =../Main/main.tex
+
+\section{Combinatoire}
+Listes, combinaisons, factorielles, formule du binôme.
+\subsection{Factorielle}
+\subsubsection{Définition et propriétés}
+\begin{definition}
+[Factorielle] \((𝑛!)_{𝑛⩾0}\) désigne la suite bien définie par \(0!=\mybydef{}1\) et \(∀𝑛∈ℕ\), \((𝑛+1)!=(𝑛+1)\times 𝑛\).
+\end{definition}
+\begin{remark}
+ c'est aussi la définition\footnotemark{} de \(𝑛!=∏
+_{𝑖=1}^{𝑛}𝑖\). Pour \(𝑛=0\) on obtient un produit vide qui vaut donc \(1\). En extension\footnotetext{Où sont définis
+les produits ?}
+\(𝑛!=𝑛\times (𝑛-1)\times (𝑛-2)….2\times 1\).
+\end{remark}
+\begin{proposition}
+\(∑_{𝑘=0}^{∞}\frac{𝑥^𝑘}{𝑘!}\) converge normalement sur toute partie bornée de \(ℂ\) vers \(𝑥↦\operatorname{e}^𝑥\). En particulier
+\(∑_{𝑘=0}^{∞}\frac{1}{𝑘!}=\operatorname{e}\).
+\end{proposition}
+\begin{proof}
+En utilisant la règle de d’Alembert, comme on a \(\limsup_{𝑛→+∞}\left|\frac{𝑥^{𝑛+1}}{(𝑛+1)!}\right|=0\), le rayon
+de convergence de la série est \(+∞\). Par le lemme d’Abel, on en déduit que la série converge normalement sur
+toute partie bornée de \(ℂ\).
+
+Que la limite soit l'exponentielle dépend de la façon dont celle-ci est définie.
+
+Une autre preuve de la convergence de \(∑_{𝑘=0}^{∞}\frac{1}{𝑘!}\). On montre par récurrence que \(∀𝑛∈ℕ,\ (𝑛+1)!⩾2^{𝑛}\).
+\begin{enumerate}
+\item
+Initialisation. \(1!=1\) et \(2^0=1\).
+\item
+Hérédité. \((𝑛+2)!=(𝑛+1)!(𝑛+2)⩾2^{𝑛}\times 2=2^{𝑛+1}\).
+\end{enumerate}
+Donc à partir du rang \(1\), on a \(\frac 1{𝑛!}⩽\frac 1{2^{𝑛-1}}\). \(∑_{𝑘=0}^{∞}\frac{1}{𝑘!}\) est une série à termes positifs,
+dont les termes sont majorés par ceux d'une série géométrique convergente, elle est donc convergente.
+\end{proof}
+\begin{theorem}
+\begin{equation*}
+∀𝑛∈ℕ,\ ∫_0^{+∞}\operatorname{e}^{-𝑡}𝑡^𝑛𝖽𝑡=𝑛!
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Par récurrence sur \(𝑘\).
+\begin{enumerate}
+\item
+Initialisation. 
+\begin{gather*}
+∫_{𝑡=0}^{+∞}\operatorname{e}^{-𝑡}𝖽𝑡=\lim _{𝐴→+∞}∫_{𝑡=0}^{𝐴}\operatorname{e}^{-𝑡}𝖽𝑡=\lim _{𝐴→+∞}\left[-\operatorname{e}^{-𝑡}\right]_{𝑡=0}^{𝐴}=1
+\end{gather*}
+\item
+Hérédité. On intègre par parties (à vérifier...)
+\end{enumerate}
+\begin{align*}
+∫_{𝑡=0}^{+∞}\operatorname{e}^{-𝑡}𝑡^{𝑛+1}𝖽𝑡&{}=\lim _{𝐴→+∞}\int
+_{𝑡=0}^{𝐴}\operatorname{e}^{-𝑡}𝑡^{𝑛+1}𝖽𝑡
+ \\
+&{}=\lim _{𝐴→+∞}\left[\operatorname{e}^{-𝑡}𝑡^{𝑛+1}\right]_0^𝐴+\lim
+_{𝐴→+∞}(𝑛+1)∫_{𝑡=0}^𝐴\operatorname{e}^{-𝑡}𝑡^𝑛𝖽𝑡
+\\
+&{}=(𝑛+1)\int
+_{𝑡=0}^{+∞}\operatorname{e}^{-𝑡}𝑡^𝑛𝖽𝑡=(𝑛+1)!
+\qedhere
+\end{align*}
+\end{proof}
+%
+\subsubsection{Formule de Stirling}
+\begin{theorem}
+[Stirling]
+\begin{equation*}
+𝑛!\mathop{~}_{𝑛→+∞}
+𝑛^𝑛\operatorname{e}^{-𝑛}\sqrt{2\mathit{πn}}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+En trois lemmes.
+\end{proof}
+\begin{lemma}
+Il existe une constante \(𝐶\) positive telle que \(?!?\sim 𝐶𝑛^𝑛\operatorname{e}^{-𝑛}\sqrt{𝑛}\).
+\end{lemma}
+\begin{proof}
+Posons \(𝑢_𝑛\mybydef{=}\ln \left(\frac{𝑛!}{𝑛^𝑛\operatorname{e}^{-𝑛}\sqrt 𝑛}\right)\). On a
+\begin{align*}
+𝑢_𝑛&{}=\ln (𝑛!)-\ln \left(𝑛^𝑛\right)-\ln \left(\operatorname{e}^{-𝑛}\right)-\ln \left(\sqrt
+𝑛\right)
+ \\&{}=\ln (𝑛!)-𝑛\ln (𝑛)+𝑛-\tfrac 1 2\ln (𝑛)
+ \\&{}=\ln (𝑛!)–\left(𝑛+\tfrac
+1 2\right)\ln 𝑛+𝑛
+\end{align*}
+et
+\begin{align*}
+𝑢_{𝑛+1}-𝑢_{𝑛}
+&{}=\ln \bigl((𝑛+1)!\bigr)-\left(𝑛+1+\tfrac 1 2\right)\ln (𝑛+1)+𝑛+1
+\\\lefteqn{\hspace{4em}-\left(\ln 𝑛!-(𝑛+\tfrac 1 2)\ln(𝑛)+𝑛\right)}
+\\&{}=1-(𝑛+\tfrac 1 2)\ln \tfrac{𝑛+1}{𝑛}
+\end{align*}
+D’après la formule de Taylor-Young, au voisinage de \(0\),
+\begin{equation*}
+\ln (1+𝑥)=𝑥-\tfrac{𝑥^2} 2+𝑂(x³).
+\end{equation*}
+Par conséquent quand \(𝑛\) est grand :
+\begin{equation*}
+𝑢_{𝑛+1}-𝑢_𝑛=1-\left(𝑛+\tfrac 1 2\right)\left(\frac 1 𝑛-\frac 1{2𝑛^2}+𝑂\left(\frac
+1{𝑛^3}\right)\right)=𝑂\left(\frac 1{𝑛^2}\right)
+\end{equation*}
+La série de terme général \(𝑢_{𝑛+1}-𝑢_𝑛\) est donc absolument convergente et la suite \(𝑢_𝑛\) admet une limite
+notée \(𝑐\). Ainsi, \(\frac{𝑛!}{𝑛^𝑛\operatorname{e}^{-𝑛}\sqrt 𝑛}\) tend vers \(\operatorname{e}^𝑐\) qui est la
+constante cherchée.
+\end{proof}
+\begin{lemma}
+Soient les intégrales de Wallis définies par
+\begin{gather*}
+∀𝑛∈ℕ,\ 𝐼_𝑛\mybydef{=}∫_{𝑥=0}^{π⁄2}\cos ^𝑛𝑥\;𝖽𝑥.
+\intertext{On a}
+𝐼_𝑛\underset{𝑛→+∞}{\sim }\sqrt{\frac π{2𝑛}}
+\end{gather*}
+\end{lemma}
+\begin{proof}
+En intégrant par parties, on montre que pour tout entier \(𝑛\), \((𝑛+2)𝐼_{𝑛+2}=(𝑛+1)𝐼_𝑛\).
+\begin{gather*}
+𝐼_{𝑛+2}=∫_{𝑥=0}^{π⁄2}\cos ^{𝑛+2}𝑥\;𝖽𝑥=∫_{𝑥=0}^{π⁄2}(\cos ^{𝑛+1}𝑥)(\sin
+𝑥)'\;𝖽𝑥
+ \\
+\phantom{𝐼_{𝑛+2}}=\left[\cos ^{𝑛+1}𝑥\sin 𝑥\right]_{𝑥=0}^{π⁄2}-\int
+_{𝑥=0}^{π⁄2}(\cos ^{𝑛+1}𝑥)'\sin 𝑥\;𝖽𝑥
+ \\
+\phantom{𝐼_{𝑛+2}}=∫_{𝑥=0}^{π⁄2}(𝑛+1)\sin
+𝑥\cos ^{𝑛}𝑥\sin 𝑥\;𝖽𝑥
+ \\
+\phantom{𝐼_{𝑛+2}}=(𝑛+1)∫_{𝑥=0}^{π⁄2}\cos ^{𝑛}𝑥\sin
+^2𝑥\;𝖽𝑥=(𝑛+1)∫_{𝑥=0}^{π⁄2}\cos ^{𝑛}𝑥(1-\cos ^2𝑥)\;𝖽𝑥
+\\
+phantom{𝐼_{𝑛+2}}=(𝑛+1)∫_{𝑥=0}^{π⁄2}\cos ^{𝑛}𝑥-\cos
+^{𝑛+2}𝑥\;𝖽𝑥=(𝑛+1)(𝐼_𝑛-𝐼_{𝑛+2})
+ \end{gather*}
+D'où, \((𝑛+2)𝐼_{𝑛+2}=(𝑛+1)𝐼_𝑛\), puis \((𝑛+2)𝐼_{𝑛+1}𝐼_{𝑛+2}=(𝑛+1)𝐼_𝑛𝐼_{𝑛+1}\) et \((𝑛+1)𝐼_𝑛𝐼_{𝑛+1}\)
+ ne dépend pas de \(𝑛\). Comme par ailleurs \(𝐼_0=∫_{𝑥=0}^{π⁄2}\;𝖽𝑥=\frac π 2\) et \(𝐼_1=\int
+_{𝑡=0}^{π⁄2}\cos 𝑥\;𝖽𝑥=1\), on a \((𝑛+1)𝐼_𝑛𝐼_{𝑛+1}=I₁𝐼_0=\frac π 2\).
+
+En intégrant \(0<\cos ^{𝑛+1}𝑥⩽\cos ^𝑛𝑥\) sur \(\left[0,π⁄2\right[\), on trouve que \(0<𝐼_{𝑛+1}⩽𝐼_𝑛\) et par
+conséquent \(\frac{𝐼_{𝑛+1}}{𝐼_𝑛}⩽1\). Par la relation de récurrence ci-dessus, on a \(\frac{𝐼_{𝑛+1}}
+{𝐼_𝑛}=\frac{𝑛+1}{𝑛+2}\frac{𝐼_{𝑛+1}}{𝐼_{𝑛+2}}⩾\frac{𝑛+1}{𝑛+2}\), ce qui donne
+\(\frac{𝑛+1}{𝑛+2}⩽\frac{𝐼_{𝑛+1}}{𝐼_𝑛}⩽1\). Le théorème des gendarmes donne \(𝐼_{𝑛+1}\underset{𝑛→+∞}{\sim
+}𝐼_𝑛\) puis \ \((𝑛+1)𝐼_𝑛𝐼_{𝑛+1}\underset{𝑛→+∞}{\sim }𝑛𝐼_𝑛^2\) \ d'où le résultat.
+\end{proof}
+\begin{lemma}
+Pour tout entier naturel \(𝑝\), on a \(𝐼_{2𝑝}=\frac π 2\frac{(2𝑝)!}{2^{2𝑝}𝑝!^2}\).
+\end{lemma}
+\begin{proof}
+Par récurrence sur \(𝑝\).
+\begin{enumerate}
+\item
+Initialisation. \(𝐼_0=\frac π 2\) et \(\frac π 2\frac{0!}{2^00!^2}=\frac π 2\)
+\item
+Hérédité.
+\end{enumerate}
+\(𝐼_{2(𝑝+1)}=\frac{2𝑝+1}{2𝑝+2}𝐼_{2𝑝}=\frac{2𝑝+2}{2𝑝+2}\times \frac{2𝑝+1}{2𝑝+2}\times \frac π
+2\frac{(2𝑝)!}{2^{2𝑝}(?!?)^2}=\frac π 2\times \frac{(2(𝑝+1))!}{2^{2𝑝+2}((𝑝+1)!)^2}\hfill \)
+
+Pour finir \(𝐼_{2𝑝}\underset{𝑝→+∞}{\sim }\sqrt{\frac π{4𝑝}}\) \, on a donc par i)
+\begin{enumerate}
+\item
+[] \begin{equation*}
+\sqrt{\frac π{4𝑝}}\underset{𝑝→+∞}{\sim }\frac π 2\frac{(2𝑝)!}{2^{2𝑝}?!?^2}\underset{𝑝→+∞}{\sim }\frac π
+2\frac{𝐶(2𝑝)^{2𝑝}\operatorname{e}^{-2𝑝}\sqrt{2𝑝}}{2^{2𝑝}(𝐶𝑝^𝑝\operatorname{e}^{-𝑝}\sqrt{𝑝})^2}\underset{𝑝→+∞}{\sim }\frac π 2\frac{\sqrt 2}{𝐶\sqrt{𝑝}}
+\end{equation*}
+\end{enumerate}
+qui donne \(𝐶=\sqrt{2𝜋}\).
+\end{proof}
+\subsection{Listes et application}
+\begin{definition}
+[Liste] \(𝐹\) étant un ensemble, une \mykeyword{liste} de \(𝑝\) éléments de \(𝐹\) est une application de
+\(⟦1;𝑝⟧\) dans \(𝐹\). Elle peut être notée \((𝑥_{𝑖})_{1⩽𝑖⩽𝑝}\). La \mykeyword{longueur} de la liste
+est \(𝑝\).
+\end{definition}
+\begin{remark}
+  on rencontre souvent \(𝑝\) -liste pour signifier liste de longueur
+\(𝑝\), même si ce n'est pas très heureux. La notion d'ordre des éléments est primordiale.
+\end{remark}
+\begin{example}
+Si \(𝐹=\{𝑦_1,𝑦_2,𝑦_3\}\), il y a neuf listes de deux éléments de \(𝐹\) qui sont : \((𝑦_1,𝑦_1)\), \((𝑦_1,𝑦_2)\),
+\((𝑦_1,𝑦_3)\), \((𝑦_2,𝑦_2)\), \((𝑦_2,𝑦_1)\), \((𝑦_2,𝑦_3)\), \((𝑦_3,𝑦_3)\), \((𝑦_3,𝑦_2)\), \((𝑦_3,𝑦_1)\).
+\end{example}
+\begin{theorem}
+Soient \(𝐸\) et \(𝐹\) deux ensembles finis, l'ensemble \(𝐹^𝐸\) des applications de \(𝐸\) dans \(𝐹\) est fini et
+son cardinal est \((\operatorname{card}𝐹)^{\operatorname{card}𝐸}\).
+\end{theorem}
+\begin{proof}
+Si \(𝐸\) et \(𝐹\) sont vides, comme il n'existe qu'une seule application de \( ∅\) dans lui-même,
+\(\operatorname{card}( ∅^{ ∅})=1=0^0\). Si \(𝐹\) est vide mais pas \(𝐸\), il n'existe aucune application
+de \(𝐸\) dans \( ∅\) et \(\operatorname{card}( ∅^{𝐸})=0=0^{\operatorname{card}(𝐸)}\). Si \(𝐹\) n'est
+pas vide, on montre le théorème par récurrence sur le cardinal de \(𝐸\).
+\begin{enumerate}
+\item
+Initialisation : déjà vu ci-dessus.
+\item
+Hérédité. Considérons \(𝐸\) de cardinal \(𝑝+1\). N'étant pas vide, soit \(𝑥\) l'un de ses éléments et
+\(𝐸'=𝐸∖\{𝑥\}\). \(𝐸'\) est fini, de cardinal \(𝑝\). Considérons
+\begin{equation*}
+\begin{matrix}𝜑:&𝐹^{𝐸}&⟶&𝐹^{𝐸'}×𝐹\\&𝑓&⟼&\left(𝑓_{\left|𝐸'\right.};𝑓(𝑥)\right)\end{matrix}
+\end{equation*}
+C'est une injection car si on a \(\left(𝑓_{\left|𝐸'\right.};𝑓(𝑥)\right)=\left(𝑔_{\left|𝐸'\right.};𝑔(𝑥)\right)\)
+alors \(𝑓(𝑧)=𝑔(𝑧)\) si \(𝑧=𝑥\) et \(𝑓(𝑧)=𝑓_{\left|𝐸'\right.}(𝑧)=𝑔_{\left|𝐸'\right.}(𝑧)=𝑔(𝑧)\) sinon.
+C'est une surjection car un élément \((𝑔;𝑦)\) de \(𝐹^{𝐸'}×𝐹\) a pour antécédent
+\begin{equation*}
+\begin{matrix}
+𝑓:&𝐸&⟶&𝐹
+\\
+&𝑧&⟼&\begin{cases}
+𝑔(𝑧)\text{ si }𝑧∈𝐸'
+ \\
+𝑦\text{ sinon}
+\end{cases}
+\end{matrix}
+\end{equation*}
+Ainsi, \(𝜑\) est une bijection et
+\begin{gather*}
+\operatorname{card}(𝐹^{𝐸})=\operatorname{card}(𝐹^{𝐸'})×\left|𝐹\right|=\left|𝐹\right|^𝑝×\left|𝐹\right|=\left|𝐹\right|^{𝑝+1}=\operatorname{card}(𝐹)^{\operatorname{card}(𝐸)}.
+\qedhere
+\end{gather*}
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+Soit \(𝐹\) un ensemble fini de cardinal \(𝑛\). Le nombre de listes d’éléments de \(𝐹\) de longueur \(𝑝\) est
+\(𝑛^𝑝\).
+\end{theorem}
+\begin{proof}
+On applique ce qui précède à \(𝐸=⟦1;𝑝⟧\).
+\end{proof}
+\subsection{Arrangements et injections}
+\begin{definition}
+\(𝐹\) étant un ensemble, un \mykeyword{arrangement} de \(𝑝\) éléments de \(𝐹\) est une liste de \(𝑝\)
+éléments de \(𝐹\) sans répétition \emph{id est} une application injective de \(⟦1;𝑝⟧\) dans \(𝐹\).
+\end{definition}
+\begin{example}
+Si \(𝐹=\{𝑦_1,𝑦_2,𝑦_3\}\), il y a six arrangements de deux éléments qui sont : \((𝑦_1,𝑦_2)\), \((𝑦_1,𝑦_3)\),
+\((𝑦_2,𝑦_1)\), \((𝑦_2,𝑦_3)\), \((𝑦_3,𝑦_2)\), \((𝑦_3,𝑦_1)\).
+\end{example}
+\begin{theorem}
+Soient les ensembles finis \(𝐸\) de cardinal \(𝑝\) et \(𝐹\) de cardinal \(𝑛\). Le nombre d'injections de \(𝐸\) dans
+\(𝐹\) est \(𝖠^𝑝_𝑛\) où
+
+\(𝖠^𝑝_𝑛=\prod _{𝑖=𝑛-𝑝+1}^{𝑛}𝑖\).
+\end{theorem}
+\begin{remark}
+ Pseudo preuve non rigoureuse.
+\begin{itemize}
+\item
+il y a \(𝑛\) possibilités de choisir le premier élément,
+\item
+il y a (n-1) possibilités de choisir le deuxième élément (car les éléments doivent être mutuellement distincts),
+\item
+…
+\item
+il y a \((𝑛-(𝑝-1))\) possibilités de choisir le \(𝑝^{𝑒}\) élément.
+\end{itemize}
+Il y a donc \(𝑛\times (𝑛-1)\times …\times (𝑛-(𝑝-1))=\frac{𝑛!}{(𝑛-𝑝)!}=𝖠^𝑝_𝑛\) possibilités d’arrangements
+de \(𝑝\) éléments dans \(𝑛\).
+\end{remark}
+\begin{proof}
+Remarque préliminaire. S'il existe une injection de \(𝐸\) dans \(𝐹\) alors on a \
+\(\operatorname{card}(𝐸)⩽\operatorname{card}(𝐹)\). Par contraposition, si
+\(\operatorname{card}(𝐹)<\operatorname{card}(𝐸)\), \emph{id est} \(𝑛<𝑝\), il n'y a pas d'injection de
+\(𝐸\) dans \(𝐹\). Dans ce cas, on a \(𝑛-𝑝+1⩽0⩽𝑛\), donc le produit contient 0 et \(\prod
+_{𝑖=𝑛-𝑝+1}^{𝑛}𝑖=0= 𝖠^𝑝_𝑛\).
+
+Par récurrence sur \(𝑝\), \(𝑛\) étant fixé.
+\begin{enumerate}
+\item
+Initialisation. L'application vide est l'unique application injective de \( ∅\) dans \(𝐹\), donc \(𝖠
+_𝑛^0?=1\). De plus \(∏_{𝑖=𝑛+1}^{𝑛}𝑖=1\) car c'est un produit vide.
+\item
+Hérédité. La remarque préliminaire donne l'hérédité pour \(𝑛⩽𝑝\) car toute implication de conclusion vraie est
+vraie. Il reste à montrer que pour \(𝑝<𝑛\) on a
+\begin{itemize}
+\item
+[] \begin{equation*}
+ 𝖠^𝑝_𝑛=\prod _{𝑖=𝑛-𝑝+1}^{𝑛}𝑖⇒ 𝖠_𝑛^{𝑝+1}=\prod _{𝑖=𝑛-(𝑝+1)+1}^{𝑛}𝑖
+\end{equation*}
+\end{itemize}
+\end{enumerate}
+ou plus simplement, \( 𝖠_𝑛^{𝑝+1}=(𝑛-𝑝) 𝖠^𝑝_𝑛\). Pour cela, considérons \(𝐸\) de cardinal \(𝑝+1\).
+N'étant pas vide, soit \(𝑥\) l'un de ses éléments et \(𝐸'=𝐸∖\{𝑥\}\). \(𝐸'\) est fini, de cardinal \(𝑝\).
+Considérons aussi
+
+.
+
+Cette application est bien définie puisque toute restriction d'une application injective est injective. Soit \(𝑔\) de
+\(\operatorname{I}(𝐸';𝐹)\), considérons
+\begin{gather*}
+\begin{matrix}
+𝜓_{𝑔}:&\overset{-1}{𝜑}(𝑔)&⟶&𝐹
+\\
+&𝑓&⟼&𝑓(𝑥)
+\end{matrix}.
+\end{gather*}
+Cette application est injective, car on a
+\(𝑓(𝑥)=𝑓'(𝑥)\myand𝑓_{\left|𝐸'\right.}=𝑓'_{\left|𝐸'\right.}⇒𝑓=𝑓'\).
+
+Par conséquent on a \(\text{Im}𝜓_{𝑔}⊂𝐹∖\text{Im}𝑔\). Pour tout \(𝑦\) de \(𝐹∖\text{Im}𝑔\), l'application
+\begin{gather*}
+\begin{matrix}
+𝑓_{𝑦}:&𝐸&⟶&𝐹
+\\
+&𝑧&⟼&\begin{cases}
+𝑦\text{ si }𝑧=𝑥
+ \\
+𝑔(𝑧)\text{ sinon}
+ \end{cases}
+\end{matrix}
+\end{gather*}
+est dans \(\overset{-1}{𝜑}(𝑔)\). À compléter...
+
+Ainsi, on a \(\operatorname{Im}𝜓_{𝑔}=𝐹∖\text{Im}𝑔\). De là, \(𝜓_{𝑔}\) est une bijection entre \(\overset{-1}{𝜑}(𝑔)\) et
+\(𝐹∖\text{Im}𝑔\) et
+\begin{gather*}
+\operatorname{card}\left(\overset{-1}{𝜑}(𝑔)\right)=\operatorname{card}\left(𝐹∖\text{Im}(𝑔)\right)=\left|𝐹\right|-\left|\text{Im}(𝑔)\right|=𝑛-\left|𝐸'\right|=𝑛-𝑝.
+\end{gather*}
+Par le lemme des bergers,
+\begin{gather*}
+𝖠_𝑛^{𝑝+1}=\operatorname{card}\left(\operatorname{I}(𝐸;𝐹)\right)=(𝑛-𝑝)\operatorname{card}\left(\operatorname{I}(𝐸';𝐹)\right)=(𝑛-𝑝)𝖠^𝑝_𝑛.
+\end{gather*}
+\end{proof}
+%
+\begin{theorem}
+Si \(𝑝⩽𝑛\) alors \( 𝖠^𝑝_𝑛=\frac{𝑛!}{(𝑛-𝑝)!}\).
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+\begin{remark}
+le nombre d'arrangements de \(𝑝\) éléments d'un ensemble de cardinal
+\(𝑛\) est \(𝖠^𝑝_𝑛\).
+\end{remark}
+\subsection{Bijections et permutations.}
+\begin{proposition}
+[Nombre de bijections]
+Soient \(𝐸\) et \(𝐹\) deux ensembles finis de même cardinal \(𝑛\). Le nombre de bijections de \(𝐸\) sur \(𝐹\) est
+\(𝑛\).
+\end{proposition}
+\begin{proof}
+À cause du cardinal commun, les bijections de \(𝐸\) sur \(𝐹\) sont les injections de \(𝐸\) dans \(𝐹\), il y en a donc
+\(𝖠_𝑛^{𝑛}\) or on a \(𝖠_𝑛^{𝑛}=\frac{𝑛!}{(𝑛-𝑛)!}=\frac{𝑛!}{0!}=𝑛!\).
+\end{proof}
+\begin{definition}
+[Permutation]
+Soit F un ensemble. Une \mykeyword{permutation} de F désigne une bijection de F sur F.
+L’ensemble des permutations de F est noté \(𝔖_{𝐹}\).
+\end{definition}
+\begin{theorem}
+S i \(𝐹\) est fini et ordonné, une permutation de \(𝐹\) est entièrement déterminée par une liste
+ordonnée de \(\left|𝐹\right|\) éléments de \(𝐹\), à ce titre, c’est un arrangement de \(\left|𝐹\right|\) éléments de
+\(𝐹\).
+\end{theorem}
+\begin{proof}
+À compléter....
+\end{proof}
+\begin{example}
+Soit \(𝐹=\left\{1;2;3\right\}\). Faisons un arbre des différentes possibilités :
+
+Les permutations de \(𝐹\) sont : \((1;2;3),\)  \((1;3;2)\), \((2;1;3)\), \((2;3;1)\), \((3;1;2)\), \((3;2;1)\). (Refaire
+le dessin)
+\begin{figure}
+\centering
+\includegraphics[width=4.023cm,height=4.988cm]{a1320E2809420Combinatoire-img002.png}
+\end{figure}
+\end{example}
+
+\begin{theorem}
+[Nombre de permutations]
+Le nombre de permutations d’un ensemble à \(𝑛\) éléments est \(𝑛!\).
+\end{theorem}
+\begin{proof}
+C'est le théorème ci-dessus avec \(𝐸=𝐹\).
+\end{proof}
+\subsection{Combinaisons}
+\subsubsection{Combinaison et coefficient binomial}
+\begin{definition}
+Une combinaison de \(𝑝\) éléments de \(𝐸\) désigne toute partie de E contenant \(𝑝\) éléments.
+\end{definition}
+\begin{theorem}
+Le nombre de combinaisons de \(𝑝\) éléments est le même pour tous les ensembles de même cardinal, il est noté \(\binom{𝑛}{𝑝}\)
+%  ou \(𝒫_𝑝(𝐹)=\left\{𝐴⊂𝐹\left|\operatorname{card}(𝐴)=𝑝\right.\right\}\),
+et lu «\(𝑝\) parmi \(𝑛\)».
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+\begin{theorem}
+On a
+\begin{gather*}
+\binom{𝑛}{𝑝}=
+\begin{cases}
+\frac{𝑛!}{𝑝!(𝑛-𝑝!)}\text{ si }0⩽𝑝⩽𝑛
+\\0\text{ sinon.}
+\end{cases}
+\end{gather*}
+\end{theorem}
+\begin{proof}
+Toute partie d'un ensemble fini a moins d'élément que l'ensemble. Par contraposition, il n'y a aucune partie avec
+strictement plus d'éléments. Cela donne le résultat si \(𝑝>𝑛\).
+
+Pour \(0⩽𝑝⩽𝑛\), soit \(𝐹\) de cardinal \(𝑛\). Notons
+\(𝒫_𝑝(𝐹)=\left\{𝐴⊂𝐹\mathbin{|}\operatorname{card}(𝐴)=𝑝\right\}\) et considérons
+\begin{gather*}
+\begin{matrix}
+𝜑_{𝑝}:&\operatorname{I}(⟦1;𝑝⟧;𝐹)&⟶&𝒫_𝑝(𝐹)
+\\
+&𝑓&⟼&\text{Im}𝑓
+\end{matrix}.
+\end{gather*}
+Pour \(𝐴\) de \(𝒫_𝑝(𝐹)\), on a
+\begin{gather*}
+\overset{-1}{𝜑_{𝑝}}(𝐴)=\left\{𝑓:⟦1;𝑝⟧→𝐹\mathbin{|}𝑓\text{
+injective et }\text{Im}(𝑓)=𝐴\right\}
+\end{gather*}
+donc \(\overset{-1}{𝜑_{𝑝}}(𝐴)\) est équipotent à
+l'ensemble des bijections de \(⟦1;𝑝⟧\) dans \(𝐴\) et son cardinal vaut \(𝑝!\). On obtient
+\(\operatorname{card}\left(𝐼(⟦1;𝑛⟧;𝐹)\right)=𝑝!\times \operatorname{card}\left(𝒫_𝑝(𝐹)\right)\)
+par le principe des bergers, d'où il vient
+\(\left(\genfrac{}{}{0pt}{0}{𝑛}{𝑝}\right)=\operatorname{card}\left(𝒫_𝑝(𝐹)\right)=\frac
+{𝐴_𝑛^𝑝}{𝑝!}=\frac{𝑛!}{𝑝!(𝑛-𝑝)!}\).
+\end{proof}
+\begin{lemma}
+Soient \(𝑛,𝑝∈ℕ\). Alors \(𝑛!𝑝!\mathbin{|}(𝑛+𝑝)!\).
+\end{lemma}
+\begin{proof}
+On a \((\binom{𝑛+𝑝}{𝑝}=\frac{(𝑛+𝑝)!}{𝑝!(𝑛+𝑝-𝑝)!}=\frac{(𝑛+𝑝)\text
+!}{𝑛\text !𝑝 !}\) donc \(𝑛\text !𝑝 !\left(\genfrac{}{}{0pt}{0}{𝑛+𝑝}{𝑝}\right)=(𝑛+𝑝) !\) avec
+\(\binom{𝑛+𝑝}{𝑝}∈ℕ\), ce qui démontre le résultat.
+\end{proof}
+%
+\subsubsection{Formule de Pascal}
+\begin{theorem}
+[Formule de Pascal]
+\begin{equation*}
+\binom{𝑛+1}{𝑝}=\binom{𝑛}{𝑝}+\binom{𝑛}{𝑝-1}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Soient \(𝐸\) un ensemble de cardinal \(𝑛+1\) éléments, \(𝑎∈𝐸\) et \(𝐸'=𝐸∖\{𝑎\}\), qui a \(𝑛\) éléments. Il y a
+deux sortes différentes de parties de \(𝐸\) ayant \(𝑝\) éléments :
+\begin{enumerate}
+\item
+celles qui ne contiennent pas \(𝑎\) : ce sont des parties à \(𝑝\) éléments dans \(𝐸'\), il y en a donc
+\(\binom{𝑛}{𝑝}\),
+\item
+celles qui contiennent \(𝑎\) : elles sont de la forme \(\{𝑎\}∪𝐴'\) avec \(𝐴'\) une partie à \(𝑝-1\) éléments
+de \(𝐸'\). Il y en a \(\binom{𝑛}{𝑝-1}\).
+\end{enumerate}
+Par somme, cela donne le résultat.
+
+D'un autre manière, on a :
+\begin{align*}
+\textstyle
+\binom{𝑛+1}{𝑝}-\left(\binom{𝑛}{𝑝}+\binom{𝑛}{𝑝-1}\right)
+&{}
+\textstyle
+=\frac{(𝑛+1)!}{𝑝!(𝑛+1-𝑝)!}-\left(\frac{𝑛!}{𝑝!(𝑛-𝑝)!}+\frac{𝑛!}{(𝑝-1)!(𝑛-𝑝+1)!}\right)
+\\\textstyle
+&
+\textstyle
+{}=\frac{𝑛!}{𝑝!(𝑛+1-𝑝)!}\left((𝑛+1)-(𝑛+1-𝑝)-𝑝\right)
+=0
+\qedhere
+\end{align*}
+\end{proof}
+\subsubsection{Triangle de Pascal}
+Chaque entrée du triangle de Pascal est la somme du nombre situé au-dessus à gauche et de celui situé au-dessus dans la
+même colonne, ce qui se traduit bien par la formule vue précédemment.
+\begin{center}
+\begin{tabular}{|>{\centering\(}m{1cm}<{\)}|*{9}{>{\centering\(}m{0.5cm}<{\)}|}>{\(}m{2cm}<{\)}|}
+\hline
+𝑝 ∖ 𝑛&
+0 &
+1 &
+2 &
+3 &
+4 &
+5 &
+6 &
+7 &
+8 &
+∑
+\\
+\hline
+0 &
+1 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+1=2^0
+\\
+\hline
+1 &
+1 &
+1 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+2=2^1
+\\
+\hline
+2 &
+1 &
+2 &
+1 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+4=2^2
+\\
+\hline
+3 &
+1 &
+3 &
+3 &
+1 &
+0 &
+0 &
+0 &
+0 &
+0 &
+8=2^3
+\\
+\hline
+4 &
+1 &
+4 &
+6 &
+4 &
+1 &
+0 &
+0 &
+0 &
+0 &
+16=2^4
+\\
+\hline
+5 &
+1 &
+5 &
+10 &
+10 &
+5 &
+1 &
+0 &
+0 &
+0 &
+32=2^5
+\\
+\hline
+6 &
+1 &
+6 &
+15 &
+20 &
+15 &
+6 &
+1 &
+0 &
+0 &
+64=2^6
+\\
+\hline
+7 &
+1 &
+7 &
+21 &
+35 &
+35 &
+21 &
+7 &
+1 &
+0 &
+128=2^7
+\\
+\hline
+8 &
+1 &
+8 &
+28 &
+56 &
+70 &
+56 &
+28 &
+8 &
+1 &
+256=2^8
+\\
+\hline
+\end{tabular}
+\end{center}
+%
+\subsubsection{Propriétés}
+\begin{theorem}
+Pour tous \(𝑛\) et \(𝑝\) entiers naturels tels que \(0⩽𝑝⩽𝑛\), on a
+\begin{gather*}
+\binom{𝑛}{𝑝}=\binom{𝑛}{𝑛-𝑝},
+\binom{𝑛}0=\binom{𝑛}{𝑛}=1\\
+\binom{𝑛}1=\binom{𝑛}{𝑛-1}=𝑛\text{ et }
+𝑛\binom{𝑛-1}{𝑘-1}=𝑘\binom{𝑛}{𝑘}
+\end{gather*}
+ \end{theorem}
+\begin{proof}
+\begin{equation*}
+\binom{𝑛}{𝑛-𝑝}=\frac{𝑛!}{(𝑛-𝑝)!(𝑛-(𝑛-𝑝))!}=\frac{𝑛!}{𝑝!(𝑛-𝑝)!}=\binom{𝑛}{𝑝}
+\end{equation*}
+\begin{equation*}
+\binom{𝑛}0=\binom{𝑛}{𝑛-0}=\frac{𝑛!}{0!𝑛!}=1
+\end{equation*}
+\begin{equation*}
+\binom{𝑛}{𝑛-1}=\binom{𝑛}1=\frac{𝑛!}{1!(𝑛-1)!}=𝑛
+\end{equation*}
+\begin{align*}
+𝑛\binom{𝑛-1}{𝑘-1}-𝑘\binom{𝑛}{𝑘}
+&{}=\frac{𝑛(𝑛-1)!}{(𝑘-1)!(𝑛-𝑘)!}-\frac{𝑘𝑛!}{𝑘!(𝑛-𝑘)!}
+\\&{}=
+\frac{𝑛!}{(𝑘-1)!(𝑛-𝑘)!}-\frac{𝑛!}{(𝑘-1)!(𝑛-𝑘)!}=0.
+\qedhere
+\end{align*}
+\end{proof}
+\subsubsection{Formule du binôme}
+\begin{theorem}
+Soient \(𝑥\) et \(𝑦\) deux éléments d'un anneau qui commutent. Pour tout entier naturel \(𝑛\), on a
+\begin{equation*}
+(𝑥+𝑦)^𝑛=∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}𝑥^𝑘𝑦^{𝑛-𝑘}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Par récurrence sur \(𝑛\).
+\begin{enumerate}
+\item
+Initialisation. Sachant que \(𝑧^0=1\),
+\begin{gather*}
+∑_{𝑘=0}^0\binom0{𝑘}𝑥^𝑘𝑦^{0-𝑘}=\binom00𝑥^0𝑦^0=1
+\end{gather*}
+et
+\((𝑥+𝑦)^0=1\).
+\item
+Hérédité.
+\begin{align*}
+(𝑥+𝑦)^{𝑛+1}
+&{}=
+(𝑥+𝑦)(𝑥+𝑦)^{𝑛}
+\\&{}=
+(𝑥+𝑦)∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}𝑥^𝑘𝑦^{𝑛-𝑘}
+\\&{}=
+∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}𝑥^{𝑘+1}𝑦^{𝑛-𝑘}+∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}𝑥^𝑘𝑦^{𝑛+1-𝑘}
+\\&{}=
+𝑥^{𝑛+1}+∑_{𝑘=0}^{𝑛-1}\binom{𝑛}{𝑘}𝑥^{𝑘+1}𝑦^{𝑛-𝑘}+∑_{𝑘=1}^{𝑛}\binom{𝑛}{𝑘}𝑥^𝑘𝑦^{𝑛+1-𝑘}+𝑦^{𝑛+1}
+\\&{}=
+𝑥^{𝑛+1}+∑_{𝑘=0}^{𝑛-1}\binom{𝑛}{𝑘}𝑥^{𝑘+1}𝑦^{𝑛-𝑘}+∑_{𝑘=0}^{𝑛-1}\binom{𝑛}{𝑘+1}𝑥^{𝑘+1}𝑦^{𝑛-𝑘}+𝑦^{𝑛+1}
+\\&{}=
+𝑥^{𝑛+1}+∑_{𝑘=0}^{𝑛-1}\left(\binom{𝑛}{𝑘}+\binom{𝑛}{𝑘+1}\right)𝑥^{𝑘+1}𝑦^{𝑛-𝑘}+𝑦^{𝑛+1}
+\\&{}=
+𝑥^{𝑛+1}+∑_{𝑘=0}^{𝑛-1}\binom{𝑛+1}{𝑘+1}𝑥^{𝑘+1}𝑦^{𝑛-𝑘}+𝑦^{𝑛+1}
+\\&{}=
+=𝑥^{𝑛+1}+∑_{𝑘=1}^{𝑛}\binom{𝑛+1}{𝑘}𝑥^{𝑘}𝑦^{𝑛+1-𝑘}+𝑦^{𝑛+1}
+\\&{}=
+∑_{𝑘=0}^{𝑛+1}\binom{𝑛+1}{𝑘}𝑥^𝑘𝑦^{𝑛+1-𝑘}
+\end{align*}
+Autre démonstration avec les polynômes. \((𝑋+𝑦)^{𝑛+1}\) est un polynôme en \(𝑋\) à coefficients dans
+\(ℤ\left[𝑦\right]\). Son polynôme dérivé est \((𝑛+1)(𝑋+𝑦)^{𝑛}\) donc
+\begin{align*}
+(𝑋+𝑦)^{𝑛+1}
+&{}=
+𝑦^{𝑛+1}+∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}\frac{𝑋^{𝑘+1}}{𝑘+1}𝑦^{𝑛-𝑘}
+\\&{}=
+𝑦^{𝑛+1}+∑_{𝑘=0}^{𝑛}\binom{𝑛+1}{𝑘+1}𝑋^{𝑘+1}𝑦^{𝑛-𝑘}
+\\&{}=𝑦^{𝑛+1}+∑_{𝑘=1}^{𝑛+1}\binom{𝑛+1}{𝑘}𝑋^{𝑘}𝑦^{𝑛+1-𝑘}
+\\&{}=∑_{𝑘=0}^{𝑛+1}\binom{𝑛+1}{𝑘}𝑋^{𝑘}𝑦^{𝑛+1-𝑘}
+\qedhere
+\end{align*}
+\end{enumerate}
+\end{proof}
+\begin{theorem}
+Pour tout entier naturel \(𝑛\), on a
+\begin{gather*}
+∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}=2^𝑛\text{ et }∑_{𝑘=0}^{𝑛}(-1)^{𝑘}\binom{𝑛}{𝑘}=0.
+\end{gather*}
+\end{theorem}
+\begin{proof}
+\begin{gather*}
+2^{𝑛}=(1+1)^𝑛=∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}1^𝑘1^{𝑛-𝑘}=∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}
+\\
+0=0^{𝑛}=(-1+1)^𝑛=∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}(-1)^𝑘1^{𝑛-𝑘}=∑_{𝑘=0}^{𝑛}(-1)^𝑘\binom{𝑛}{𝑘}
+\qedhere
+\end{gather*}
+\end{proof}
+\begin{theorem}
+Si \(\operatorname{card}(𝐸)=𝑛\) alors \(\operatorname{card}\bigl(𝒫(𝐸)\bigr)=2^𝑛\).
+\end{theorem}
+\begin{proof}
+Pour \(0⩽𝑘⩽𝑛\), \(𝒫_𝑘(𝐸)\) désigne l'ensemble des parties de \(𝐸\) de cardinal \(𝑘\). Ces ensembles
+forment une partition de \(𝒫(𝐸)\) donc
+\begin{gather*}
+\operatorname{card}\left(𝒫(𝐸)\right)=∑_{𝑘=0}^{𝑛}\operatorname{card}\bigl(𝒫_𝑘(𝐸)\bigr)=∑_{𝑘=0}^{𝑛}\binom{𝑛}{𝑘}=2^{𝑛}.
+\end{gather*}
+Autre preuve. \(𝒫(𝐸)\) est équipotent à \(\left\{0;1\right\}^{𝐸}\). À compléter...
+\end{proof}
+%
+\begin{theorem}
+[Formule de Vandermonde]
+Soit \(𝑚\), \(𝑛\) et \(𝑝\) trois entiers naturels, on a \(∑_{𝑘=0}^{𝑝}\binom{𝑚}{𝑘}\binom{𝑛}{𝑝-𝑘}=\binom{𝑚+𝑛}{𝑝}\)
+\end{theorem}
+\begin{proof}
+Soient \(𝐸\) et \(𝐹\) deux ensembles disjoints de cardinal \(𝑚\) et \(𝑛\), respectivement.
+Alors \(\operatorname{card}(𝐸∪𝐹)=𝑚+𝑛\) et il y a en tout \(\binom{𝑚+𝑛}{𝑝}\) parties de
+\(𝐸∪𝐹\) de cardinal \(𝑝\).
+
+Une telle partie se compose de \(𝑘\) éléments de \(𝐸\) et \(𝑝-𝑘\) éléments de \(𝐹\), où \(0⩽𝑘⩽𝑝\). Pour \(𝑘\)
+fixé, on obtient \(\binom{𝑚}{𝑘}\binom{𝑛}{𝑝-𝑘}\) parties de
+\(𝐸∪𝐹\) de cette sorte. Comme les parties de \(𝐸∪𝐹\) ainsi obtenues sont distinctes, le nombre total de parties de
+\(𝐸∪𝐹\) de cardinal p est \(∑_{𝑘=0}^{𝑝}\binom{𝑚}{𝑘}\binom{𝑛}{𝑝-𝑘}\). D'où l'égalité.
+
+Autre preuve. Dans \(ℤ\left[𝑋\right]\), on a \((1+𝑋)^𝑚(1+𝑋)^𝑛=(1+𝑋)^{𝑚+𝑛}=∑_{𝑝=0}^{𝑚+𝑛}\binom{𝑚+𝑛}{𝑝}𝑋^𝑝\) et par ailleurs,
+\begin{align*}
+(1+𝑋)^𝑚(1+𝑋)^𝑛
+&{}=\left(∑_{𝑖=0}^{𝑚}\binom{𝑚}{𝑖}𝑋^𝑖\right)\left(∑_{𝑗=0}^{𝑛}\binom{𝑛}{𝑗}𝑋^𝑗\right)
+\\&{}=
+∑_{𝑖=0}^{𝑚}∑_{𝑗=0}^{𝑛}\binom{𝑚}{𝑖}\binom{𝑛}{𝑗}𝑋^{𝑖+𝑗}
+\\&{}=∑_{𝑝=0}^{𝑚+𝑛}
+∑_{\stackrel{0⩽𝑖,𝑗}{𝑖+𝑗=𝑝}}^{𝑚}\binom{𝑚}{𝑖}\binom{𝑛}{𝑗}𝑋^{𝑖+𝑗}.
+\end{align*}
+Par identification des coefficients de degré \(𝑝\), on obtient le résultat.
+\end{proof}
+\begin{theorem}
+[Formule de Chu]
+Soient \(𝑝\) et \(𝑛\) deux entiers naturels tels \ que \(0⩽𝑝⩽𝑛\), on a 
+\begin{gather*}
+∑_{𝑘=𝑝}^{𝑛}\binom{𝑘}{𝑝}=\binom{𝑛+1}{𝑝+1}
+\end{gather*}
+\end{theorem}
+\begin{proof}
+\begin{align*}
+∑_{𝑘=𝑝}^{𝑛}\binom{𝑘}{𝑝}
+&{}=
+∑_{𝑘=𝑝}^{𝑛}\left(\binom{𝑘+1}{𝑝+1}-\binom{𝑘}{𝑝+1}\right)
+\\&{}=
+=∑_{𝑗=𝑝+1}^{𝑛+1}\binom{𝑗}{𝑝+1}-∑_{𝑘=𝑝}^{𝑛}\binom{𝑘}{𝑝+1}
+\\&{}=
+\binom{𝑛+1}{𝑝+1}-\binom{𝑝}{𝑝+1}
+\\&{}=
+\binom{𝑛+1}{𝑝+1}
+\qedhere
+\end{align*}
+\end{proof}
+%
+\subsubsection{Application aux développements en séries entières}
+\begin{theorem}
+Pour tout \(𝑘∈ℕ\) et \(𝑧∈ℂ\) avec \(\left|𝑧\right|<1\), on a
+\begin{gather*}
+\frac 1{(1-𝑧)^{𝑘+1}}=∑_{𝑛⩾0}\binom{𝑛+𝑘}{𝑘}𝑧^𝑛
+\end{gather*}
+\end{theorem}
+\begin{proof}
+Par récurrence.
+\begin{enumerate}
+\item
+Initialisation.
+\(∑_{𝑛⩾0}\binom{𝑛}0𝑧^𝑛=∑_{𝑛⩾0}𝑧^𝑛=\frac 1{1-𝑧}\).
+\item
+Hérédité.
+On utilise la formule de Chu dans
+\begin{align*}
+\frac 1{(1-𝑧)^{𝑘+1}}
+&{}=
+∑_{𝑛⩾0}\binom{𝑛+𝑘-1}{𝑘-1}𝑧^𝑛\times
+∑_{𝑛⩾0}𝑧^𝑛
+\\&{}=
+∑_{𝑛⩾0}∑_{𝑝+𝑞=𝑛}𝑧^𝑝\binom{𝑞+𝑘-1}{𝑘-1}𝑧^𝑞
+\\&{}=
+∑_{𝑛⩾0}\left(∑_{𝑞=0}^{𝑛}\binom{𝑞+𝑘-1}{𝑘-1}\right)𝑧^𝑛
+\\&{}=
+∑_{𝑛⩾0}\binom{𝑛+𝑘}{𝑘}𝑧^𝑛
+\end{align*}
+\end{enumerate}
+\end{proof}
+%
+\begin{definition}
+[Coefficient binomial généralisé]
+Pour tout entier naturel \(𝑝\) et tout nombre \(𝛼\) on pose
+\begin{equation*}
+\binom{𝛼}{𝑝}\mybydef{=}\frac{∏_{𝑖=0}^{𝑝-1}𝛼-𝑖}{𝑝~!}
+\end{equation*}
+\end{definition}
+\begin{theorem}
+[Dérivées successives des puissances]
+\begin{equation*}
+\left(𝑥↦𝑥^𝛼\right)^{(𝑝)}=𝑝~!\binom{𝛼}{𝑝}\left(𝑥↦𝑥^{𝛼-𝑝}\right)
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Par récurrence sur \(𝑝\). À compléter...
+\end{proof}
+\begin{theorem}
+[Majoration des coefficients binomiaux]
+\par\noindent
+Pour \(\left|𝛼\right|<\ln 𝑝\), on a
+\(\displaystyle\left|\binom{𝛼}{𝑝}\right|⩽3^{⌈\left|𝛼\right|⌉}⌈\left|𝛼\right|⌉^{⌊\left|𝛼\right|⌋}𝑝^{⌊\left|𝛼\right|⌋}\)
+.
+\end{theorem}
+\begin{proof}
+Pour \(𝛼\) entier naturel, le coefficient binomial vaut \(0\).
+Pour \(-1<𝛼<𝑝\) et \(𝛼\) non entier naturel, on a
+\begin{align*}
+\biggl|∏_{𝑖=0}^{𝑝-1}𝛼-𝑖\biggr|
+&{}=
+\biggl(∏_{𝑖=0}^{⌈𝛼⌉-1}𝛼-𝑖\biggr)×
+\biggl(∏_{𝑖=⌈𝛼⌉}^{𝑝-1}𝑖-𝛼\biggr)
+\\&{}<
+\biggl(∏_{𝑖=0}^{⌈𝛼⌉-1}⌈𝛼⌉-𝑖\biggr)×
+\biggl(∏_{𝑖=⌈𝛼⌉}^{𝑝-1}𝑖-⌊𝛼⌋\biggr)
+\\&{}=
+\biggl(∏_{𝑖=1}^{⌈𝛼⌉}𝑖\biggr)×
+\biggl(∏_{𝑖=1}^{𝑝-1-⌊𝛼⌋}𝑖\biggr)
+\\&{}=⌈𝛼⌉!(𝑝-⌈𝛼⌉)!
+\end{align*}
+donc on a
+\begin{align*}
+\left|\binom{𝛼}{𝑝}\right|
+&{}⩽
+\frac{⌈𝛼⌉!(𝑝-⌈𝛼⌉)!}{𝑝!}=\frac{⌈𝛼⌉!}{∏_{𝑖=𝑝-⌈𝛼⌉+1}^{𝑝}𝑖}
+\\&{}⩽
+\frac{⌈𝛼⌉!}{∏_{𝑖=𝑝-⌈𝛼⌉+1}^{𝑝}𝑝-⌈𝛼⌉+1}
+\\&{}⩽\frac{⌈𝛼⌉!}{(𝑝-⌊𝛼⌋)^{⌈𝛼⌉}}
+\end{align*}
+ce qui donne pour \(-1<𝛼<\ln 𝑝\)
+\begin{equation*}
+\left|\binom{𝛼}{𝑝}\right|⩽\frac 1{𝑝^{⌈𝛼⌉}}\frac{⌈𝛼⌉!}{(1-\ln 𝑝∕𝑝)^{⌈𝛼⌉}}⩽\frac
+1{𝑝^{⌈𝛼⌉}}\frac{⌈𝛼⌉!}{(1-1∕\operatorname{e})^{⌈𝛼⌉}}⩽\frac{3^{⌈𝛼⌉}⌈𝛼⌉!}{𝑝^{⌈𝛼⌉}}
+\end{equation*}
+Pour \(𝛼⩽-1\) et \(𝛼\) non entier naturel,
+\begin{align*}
+\left|∏_{𝑖=0}^{𝑝-1}𝛼-𝑖\right|
+&{}=
+∏_{𝑖=0}^{𝑝-1}𝑖-𝛼=∏_{𝑖=0}^{𝑝-1}𝑖+(-𝛼)
+\\&{}<∏_{𝑖=0}^{𝑝-1}𝑖+⌈-𝛼⌉=∏_{𝑖=⌊-𝛼⌋+1}^{𝑝+⌊-𝛼⌋}𝑖
+\\&{}=\frac{(𝑝+⌊-𝛼⌋)!}{⌊-𝛼⌋!}
+\end{align*}
+donc
+\begin{equation*}
+\left|\binom{𝛼}{𝑝}\right|⩽\frac{(𝑝+⌊-𝛼⌋)!}{𝑝!⌊-𝛼⌋!}=\frac{∏_{𝑖=𝑝+1}^{𝑝+⌊-𝛼⌋}𝑖}{⌊-𝛼⌋!}⩽\frac{(𝑝+⌊-𝛼⌋)^{⌊-𝛼⌋}}{⌊-𝛼⌋!}⩽\frac{⌈-𝛼⌉^{⌊-𝛼⌋}}{⌊-𝛼⌋!}𝑝^{⌊-𝛼⌋}
+\end{equation*}
+En compilant les deux cas, on obtient au pire
+\begin{equation*}
+\left|\binom{𝛼}{𝑝}\right|⩽\operatorname{max}(3^{⌈𝛼⌉}⌈𝛼⌉!,⌈\left|𝛼\right|⌉^{⌊\left|𝛼\right|⌋})𝑝^{⌊\left|𝛼\right|⌋}
+\end{equation*}
+d'où le résultat.
+\end{proof}
+\begin{theorem}
+\begin{gather*}
+\binom{𝛼}{𝑝}=(-1)^{𝑝}\binom{𝑝-𝛼-1}{𝑝}.
+\end{gather*}
+\end{theorem}
+\begin{proof}
+On a \(∏_{𝑖=0}^{𝑝-1}𝛼-𝑖=∏_{𝑖=0}^{𝑝-1}𝛼-(𝑝-1-𝑖)=∏_{𝑖=0}^{𝑝-1}𝑖+𝛼-𝑝+1\)...
+\end{proof}
+\begin{remark}
+On a
+\begin{align*}
+(1+𝑧)^{-𝑘-1}
+&{}=∑_{𝑛⩾0}(-1)^𝑛\binom{𝑛+𝑘}{𝑛}𝑧^𝑛
+\\&{}=∑_{𝑛⩾0}(-1)^𝑛\binom{𝑛+𝑘}{𝑛}𝑧^𝑛
+%\\&{}
+=∑_{𝑛⩾0}\binom{-𝑘-1}{𝑛}𝑧^𝑛
+\end{align*}
+\end{remark}
+%
+\begin{theorem}
+Pour tout \(𝛼∈ℝ\) et \(𝑧∈ℂ\) avec \(\left|𝑧\right|<1\), on a
+\begin{gather*}
+(1+𝑧)^𝛼=∑_{𝑝⩾0}\binom{𝛼}{𝑝}𝑧^{𝑝}.
+\end{gather*}
+\end{theorem}
+\begin{proof}
+Le cas complexe est admis. Pour \(𝛼\) entier naturel, c'est une conséquence directe de la formule du binôme. Pour \(𝛼\) entier
+relatif négatif, avec \(𝑘+1=-𝛼\) dans le développement précédent et le lemme ci-dessus, on obtient
+\begin{align*}
+(1+𝑧)^{𝛼}
+&{}=
+∑_{𝑛⩾0}(-1)^𝑛\binom{𝑛-𝛼-1}{-𝛼-1}𝑧^𝑛
+\\&{}=∑_{𝑛⩾0}(-1)^𝑛\binom{𝑛-𝛼-1}{𝑛}𝑧^𝑛=∑_{𝑛⩾0}\binom{𝛼}{𝑛}𝑧^𝑛.
+\end{align*}
+Pour \(𝑧\) réel uniquement, la formule de Taylor avec reste intégral donne pour \(𝛼⩽𝑛+1\),
+\begin{gather*}
+(1+𝑥)^𝛼=∑_{𝑝=0}^{𝑛}\binom{𝛼}{𝑝}𝑥^{𝑝}+𝑅_{𝑛}(𝑥)
+\intertext{avec}
+𝑅_{𝑛}(𝑥)=(𝑛+1)𝑥^{𝑛+1}\binom{𝛼}{𝑛+1}∫_{𝑡=0}^1\frac{(1-𝑡)^{𝑛}}{(1+𝑡𝑥)^{𝑛+1-𝛼}}\;𝖽𝑡
+\end{gather*}
+On a
+\begin{align*}
+\left|𝑅_{𝑛}(𝑥)\right|
+&{}⩽
+(𝑛+1)\left|𝑥\right|^{𝑛+1}\left|\binom{𝛼}{𝑛+1}\right|\underset{0⩽𝑡⩽1}{\operatorname{max}}(1+𝑡𝑥)^{𝛼-1}\int
+_{𝑡=0}^1\frac{(1-𝑡)^{𝑛}}{(1+𝑡𝑥)^{𝑛+2}}\;𝖽𝑡
+\\&{}⩽
+\frac{\left|𝑥\right|^{𝑛+1}}{1+𝑥}(𝑛+1)^{⌊\left|𝛼\right|⌋}3^{⌈\left|𝛼\right|⌉}⌈\left|𝛼\right|⌉^{⌊\left|𝛼\right|⌋}\underset{0⩽𝑡⩽1}{\operatorname{max}}(1+𝑡𝑥)^{𝛼-1}
+\end{align*}
+On a posé \(𝑠=\frac{1-𝑡}{1+𝑡𝑥}\) dans l'intégrale puis on a utilisé un lemme précédent. Par les théorèmes de
+comparaison, cela montre que le reste tend uniformément vers 0 sur tout segment de \(\left]-1;1\right[\).
+
+Squelette d'une autre preuve. D'abord, la fonction \(𝑥↦(1+𝑥)^𝛼\) est l'unique solution sur \(\left]-1;+∞\right[\) de
+l'équation différentielle ordinaire \((1+𝑥)𝑦'-𝛼𝑦=0\), qui vaut \(1\) en \(0\). Ensuite, la série entière \(𝑥↦∑_{𝑝⩾0}\binom{𝛼}{𝑝}𝑥^{𝑝}\) a pour rayon de convergence 1 et elle vérifie l'équation
+différentielle sur \(\left]-1;1\right[\) avec la même condition initiale. Ces deux fonctions coïncident sur
+\(\left]-1;1\right[\). À détailler...
+\end{proof}

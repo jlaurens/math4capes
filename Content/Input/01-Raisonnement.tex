@@ -1,0 +1,2031 @@
+% !TEX program = xelatex
+% !TEX encoding = UTF8
+% !TEX root = ../main.tex
+
+\section{Éléments de logique}
+On utilise la définition d'ensemble ainsi que les calculs algébriques sur les petits entiers. On présente un peu de
+calcul propositionnel.
+
+\subsection{Bases}
+\begin{axiom}
+[Proposition]
+\(\mytrue\) et \(\myfalse\) sont deux objects mathématiques dénommés valeurs logiques.
+\end{axiom}
+\begin{vocabulary}
+\par\noindent
+\begin{itemize}
+\itemrnd
+valeur de vérité est synonyme de valeur logique.
+\itemrnd
+\(𝗩\) et \(1\) sont synonymes de \(\mytrue\).
+\itemrnd
+\(𝗙\) et \(0\) sont synonymes de \(\myfalse\).
+\end{itemize}
+\end{vocabulary}
+En particulier, \(\myfalse=1-\mytrue\) ,
+\(\myfalse<\mytrue\).
+
+%
+\begin{definition}
+[Proposition]
+Une proposition est un objet mathématique auquel est associée une valeur logique
+\end{definition}
+\begin{definition}
+\par\noindent
+\begin{itemize}
+\itemrnd
+\(\mytrue\) est une proposition à laquelle est associée la valeur logique \(\mytrue\).
+\itemrnd
+\(\myfalse\) est une proposition à laquelle est associée la valeur logique \(\myfalse\).
+\end{itemize}
+\end{definition}
+\begin{notation}
+\(𝚟𝚕(𝖯)\) désigne la valuer logique de la proposition \(𝖯\).
+\end{notation}
+En particulier, \(𝚟𝚕=𝚟𝚕^2\)
+ou \(𝚟𝚕×(1-𝚟𝚕)=0\)
+\begin{definition}
+[Théorie]
+Une théorie est un ensemble de propositions.
+\end{definition}
+\begin{definition}
+[contraire, et, ou]
+Si \(𝖯\) et \(𝖰\) sont des propositions,
+\begin{itemize}
+\item \(\mynot 𝖯\) est une proposition appelée contraire de
+\(𝖯\), aussi notée \(¬𝖯\) ou \(\overline{𝖯}\),
+\item \(𝖯 \myand 𝖰\) est une proposition appelée conjonction de
+\(𝖯\) et \(𝖰\), aussi notée \(𝖯\mathbin{∧}𝖰\),
+\item \(𝖯 \myor 𝖰\) est une proposition appelée disjonction de
+\(𝖯\) et \(𝖰\), aussi notée \(𝖯 \mathbin{∨} 𝖰\).
+\end{itemize}
+\end{definition}
+\begin{vocabulary}
+[Propositions composées, atomiques]
+Une proposition est complexe signifie qu'elle est sous une des formes \(\mynot 𝖯\), \(𝖯 \myand 𝖰\) ou \(𝖯 \myor 𝖰\).
+Un proposition est atomique signifie qu'elle n'est pas sous l'une de ces formes.
+\end{vocabulary}
+\begin{definition}
+[Priorité]
+Par ordre de priorité décroissante des opérateurs, il vient \mynot , puis
+\(\myand\) et \(\myor\).
+\end{definition}
+
+\begin{remark}
+à rapprocher de certains langages informatiques.
+\end{remark}
+
+\begin{definition}
+[Table de vérité]
+Soit \(𝖯\) une proposition construite à partir d'un nombre fini de propositions atomiques
+\(𝖰_{𝑖}\).
+La table de vérité de \(𝖯\) est l'application qui associe à chaque combinaison possible des valeurs de vérité des
+\(𝖰_{𝑖}$ une valeur de vérité à \(𝖯\) correspondante.
+\end{definition}
+
+\begin{axiom}[Tables de vérité de la négation, de la conjonstion et de la disjonction]
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\begin{array}{|*{2}{>{\(}wc{1cm}<{\)}|}}
+\hline
+𝖯 &
+¬𝖯
+\\\hline
+𝗩 &
+𝗙
+\\\hline
+𝗙 &
+𝗩
+\\\hline
+\end{array},\
+\begin{array}{|*{2}{>{\(}wc{1cm}<{\)}|}>{\(}wc{1.5cm}<{\)}|}
+\hline
+𝖯 &
+𝖰 &
+𝖯\mathbin{∧}𝖰
+\\\hline
+𝗩 &
+𝗩 &
+𝗩
+\\\hline
+𝗩 &
+𝗙 &
+𝗙
+\\\hline
+𝗙 &
+𝗩 &
+𝗙
+\\\hline
+𝗙 &
+𝗙 &
+𝗙
+\\\hline
+\end{array},\
+\begin{array}{|*{2}{>{\(}wc{1cm}<{\)}|}>{\(}wc{1.5cm}<{\)}|}
+\hline
+𝖯 &
+𝖰 &
+𝖯\mathbin{∨}𝖰
+\\\hline
+𝗩 &
+𝗩 &
+𝗩
+\\\hline
+𝗩 &
+𝗙 &
+𝗩
+\\\hline
+𝗙 &
+𝗩 &
+𝗩
+\\\hline
+𝗙 &
+𝗙 &
+𝗙
+\\\hline
+\end{array}
+\end{equation*}
+\end{axiom}
+%
+\begin{remark}De manière synthétique, on a
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\begin{array}{|*{5}{>{\(}wc{1.5cm}<{\)}|}}
+\hline
+𝖯 &
+𝖰 &
+¬𝖯 &
+𝖯\mathbin{∧}𝖰 &
+𝖯\mathbin{∨}𝖰
+\\\hline
+𝗩 &
+𝗩 &
+𝗙 &
+𝗩 &
+𝗩
+\\\hline
+𝗩 &
+𝗙 &
+𝗙 &
+𝗙 &
+𝗩
+\\\hline
+𝗙 &
+𝗩 &
+𝗩 &
+𝗙 &
+𝗩
+\\\hline
+𝗙 &
+𝗙 &
+𝗩 &
+𝗙 &
+𝗙
+\\\hline
+\end{array}
+\end{equation*}
+\end{remark}
+
+En termes de valeur logique :
+\begin{equation*}
+𝚟𝚕(¬𝖯)=1-𝚟𝚕(𝖯)
+\end{equation*}
+\begin{equation*}
+𝚟𝚕(𝖯\mathbin{∧}𝖰)=𝚟𝚕(𝖯).𝚟𝚕(𝖰)
+\end{equation*}
+\begin{equation*}
+𝚟𝚕(𝖯\mathbin{∨}𝖰)=𝚟𝚕(𝖯)+𝚟𝚕(𝖰)-𝚟𝚕(𝖯).𝚟𝚕(𝖰)
+\end{equation*}
+
+%
+\begin{definition}
+[Tautologie, antinomie]
+Une tautologie est une proposition qui n'a que la valeur logique $\mytrue$ ,
+une antinomie est une proposition qui n'a que la valeur logique $\myfalse$ .
+\end{definition}
+%
+\begin{theorem}
+Soit \(𝖯\) et \(𝖰\) des propositions.
+Si \(𝖯\) est une tautologie, alors \(𝖯 \myor 𝖰\) est une tautologie.
+Si en plus \(𝖰\) est une tautologie, alors \(𝖯\) \myand \(𝖰\) est une tautologie.
+
+Si \(𝖯\) est une antinomie, alors \(𝖯 \myand 𝖰\) est une antinomie.
+Si en plus \(𝖰\) est une antinomie, alors \(𝖯 \myor 𝖰\) est une tautologie.
+\end{theorem}
+\begin{proof}
+Dans le premier cas, cela correspond aux deux premières lignes du tableau précédent.
+Uniquement la première dans le deuxième cas.
+\end{proof}
+
+De manière symétrique.
+\begin{theorem}
+Soit \(𝖯\) et \(𝖰\) des propositions.
+Si \(𝖯\) est une antinomie, alors \(𝖯 \myand 𝖰\) est une antinomie.
+Si en plus \(𝖰\) est une antinomie, alors \(𝖯 \myor 𝖰\) est une antinomie.
+\end{theorem}
+\begin{proof}
+Dans le premier cas, ce sont les deux dernières lignes du tableau précédent.
+Uniquement la dernière dans le deuxième
+cas.
+\end{proof}
+
+\begin{theorem}
+[Tiers exclu]
+\(𝖯 \myor \mynot 𝖯\) est une tautologie.
+\end{theorem}
+
+\begin{theorem}
+[Non contradiction]
+\(𝖯 \myand \mynot𝖯\) est une antinomie.
+\end{theorem}
+\begin{proof}
+On a regroupé ci-dessous les tables de vérités de
+\(𝖯 \myand \mynot 𝖯\) et \(𝖯 \myor \mynot 𝖯\).
+\begin{equation*}
+\begin{array}{|*{4}{>{\(}wc{2.0cm}<{\)}|}}
+\hline
+𝖯 &
+¬𝖯 &
+𝖯\mathbin{∧}¬𝖯 &
+𝖯\mathbin{∨}¬𝖯\\\hline
+𝗩 &
+𝗙 &
+𝗙 &
+𝗩
+\\\hline
+𝗙 &
+𝗩 &
+𝗙 &
+𝗩
+\\\hline
+\end{array}
+\end{equation*}
+
+On peut le lire dans le tableau précédent, mais on a aussi
+
+\begin{align*}
+𝚟𝚕(𝖯\mathbin{∧}¬𝖯)
+&{}=𝚟𝚕(𝖯).𝚟𝚕(¬𝖯)
+\\&{}=𝚟𝚕(𝖯).(1-𝚟𝚕(𝖯))
+\\&{}=0
+\end{align*}
+\begin{align*}
+𝚟𝚕(𝖯\mathbin{∨}¬𝖯)
+&{}=𝚟𝚕(𝖯)+𝚟𝚕(¬𝖯)-𝚟𝚕(𝖯).𝚟𝚕(¬𝖯)
+\\&{}=𝚟𝚕(𝖯)+1-𝚟𝚕(𝖯)-𝚟𝚕(𝖯).(1-𝚟𝚕(𝖯))
+\\&{}=1
+\end{align*}
+\end{proof}
+%
+\subsection{Implications}
+\begin{definition}
+[Implication]
+Si \(𝖯\) et \(𝖰\) sont des propositions, on pose :
+\begin{equation*}
+(𝖯⇒𝖰)≝((\mynot 𝖯)\myor𝖰)
+\end{equation*}
+\begin{equation*}
+(𝖰⇐𝖯)≝(𝖯⇒𝖰)
+\end{equation*}
+\(⇒\) est lu «implique» ou entraine.
+\(⇐\) est lu «est impliqué par» ou «est entrainé par».
+La proposition complexe \(𝖯⇒𝖰\) est une implication. \(𝖯\) et la prémisse, \(𝖰\) est la
+conclusion.
+\end{definition}
+
+\subsection{Équivalences}
+\begin{definition}[Équivalence]
+Si \(𝖯\) et \(𝖰\) sont des propositions, on pose
+\begin{equation*}
+𝖯⟺𝖰
+\overset{\text{déf}}{=}(𝖯\myand𝖰)\myor((\mynot 𝖯)\myand(\mynot 𝖰))
+\end{equation*}
+\end{definition}
+\begin{vocabulary}
+\(𝖯\) et \(𝖰\) sont équivalentes signifie que \(𝖯⟺𝖰\) est vraie.
+De même pour \(𝖯\) équivaut à \(𝖰\).
+Les équivalences sont les propositions complexes de la forme \(𝖯⟺𝖰\).
+\end{vocabulary}
+%
+\begin{theorem}[Tautologies]
+Si \(𝖯\) et \(𝖰\) sont des propositions, les équivalences suivantes sont des tautologies :
+\begin{itemize}
+\itemrnd
+(\mynot (\mynot 𝖯))⟺𝖯
+\itemrnd
+\((𝖯\myand𝖯)⟺𝖯\),
+\itemrnd
+\((𝖯\myor𝖯)⟺𝖯\)
+\itemrnd
+\((𝖯\myand𝖰)⟺(𝖰\myand𝖯)\)
+\itemrnd
+\(\displaystyle
+\mynot(𝖯\myand𝖰)⟺((\mynot𝖯)\myor(\mynot𝖰))
+\)
+\itemrnd
+\(\displaystyle
+\mynot(𝖯\myor𝖰)⟺()(\mynot𝖯)\myand(\mynot 𝖰))
+\)
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Pour les deux premières lignes :
+\begin{equation*}
+\begin{array}{|*{3}{>{\(}wc{1cm}<{\)}|}*{3}{>{\(}wc{1.5cm}<{\)}|}}
+\hline
+𝖯 &
+𝖯 &
+¬𝖯 &
+¬(¬𝖯) &
+𝖯\mathbin{∧}𝖯 &
+𝖯\mathbin{∨}𝖯
+\\\hline
+1 &
+1 &
+0 &
+1 &
+1 &
+1\\\hline
+0 &
+0 &
+1 &
+0 &
+0 &
+0\\\hline
+\end{array}
+\end{equation*}
+Il est facile de voir à partir de leurs définitions que \(\myand\) et
+\(\myor\) sont commutatifs par équivalence. Pour leurs négations :
+\begin{equation*}
+\begin{array}{|*4{>{\(}wc{0.5cm}<{\)}|}>{\(}wc{1cm}<{\)}|*6{>{\(}wc{1.5cm}<{\)}|}}
+\hline
+𝖯 & ¬𝖯 & 𝖰 & ¬𝖰 &
+𝖯\mathbin{∧}𝖰 &
+¬(𝖯\mathbin{∧}𝖰) &
+¬𝖯\mathbin{∨}¬𝖰 &
+𝖯\mathbin{∨}𝖰 &
+¬(𝖯\mathbin{∨}𝖰) &
+¬𝖯\mathbin{∧}¬𝖰\\\hline
+1 &
+0 &
+1 &
+0 &
+1 &
+0 &
+0 &
+1 &
+0 &
+0\\\hline
+1 &
+0 &
+0 &
+1 &
+0 &
+1 &
+1 &
+1 &
+0 &
+0\\\hline
+0 &
+1 &
+1 &
+0 &
+0 &
+1 &
+1 &
+1 &
+0 &
+0\\\hline
+0 &
+1 &
+0 &
+1 &
+0 &
+1 &
+1 &
+0 &
+1 &
+1\\\hline
+\end{array}
+\end{equation*}
+\begin{equation*}
+\begin{array}{|*4{>{\(}wc{0.75cm}<{\)}|}*6{>{\(}wc{1.5cm}<{\)}|}}
+\hline
+𝖯 &
+¬𝖯 &
+𝖰 &
+¬𝖰 &
+𝖯\mathbin{∧}𝖰 &
+¬𝖯\mathbin{∧}¬𝖰 &
+𝖯⇔𝖰 &
+𝖯⇒𝖰 &
+𝖰⇒𝖯 &
+(𝖯⇒𝖰)\mathbin{∧}(𝖰⇒𝖯)\\\hline
+1 &
+0 &
+1 &
+0 &
+1 &
+0 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+0 &
+0 &
+1 &
+0 &
+0 &
+0 &
+0 &
+1 &
+0\\\hline
+0 &
+1 &
+1 &
+0 &
+0 &
+0 &
+0 &
+1 &
+0 &
+0\\\hline
+0 &
+1 &
+0 &
+1 &
+0 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+\end{array}
+\end{equation*}
+\end{proof}
+%
+\begin{definition}
+Étant donné \(𝖯\) et \(𝖰\) deux propositions.
+\(𝖯⟺𝖰\) signifie que \(𝚟𝚕(𝖯)=𝚟𝚕(𝖰)\).
+\(𝖯⟺𝖰\) est lu «\(𝖯\) équivaut à \(𝖰\)» ou «\(𝖯\) est équivalent à \(𝖰\)».
+\end{definition}
+
+\begin{proof}
+Par la table de vérité :
+
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{0.5cm}
+\mynewcolumntype{B}{1.25cm}
+\mynewcolumntype{C}{2.75cm}
+\begin{array}{|AABC}
+\hline
+𝖯 &
+𝖰 &
+𝖯⇔𝖰 &
+𝚟𝚕(𝖯)=𝚟𝚕(𝖰)\\\hline
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+0 &
+0 &
+0\\\hline
+0 &
+1 &
+0 &
+0\\\hline
+0 &
+0 &
+1 &
+1\\\hline
+\end{array}
+\end{equation*}
+et par le calcul :
+\begin{align*}
+𝚟𝚕(𝖯⇔𝖰)
+&{}=
+𝚟𝚕((𝖯\mathbin{∧}𝖰)𝚟(¬𝖯\mathbin{∧}¬𝖰))
+\\&{}=
+𝚟𝚕(𝖯\mathbin{∧}𝖰)+𝚟𝚕(¬𝖯\mathbin{∧}¬𝖰)-𝚟𝚕(𝖯\mathbin{∧}𝖰).𝚟𝚕(¬𝖯\mathbin{∧}¬𝖰)
+\\&{}=
+𝚟𝚕(𝖯).𝚟𝚕(𝖰)+𝚟𝚕(¬𝖯).𝚟𝚕(¬𝖰)-𝚟𝚕(𝖯).𝚟𝚕(𝖰).𝚟𝚕(¬𝖯).𝚟𝚕(¬𝖰)
+\\&{}=
+𝚟𝚕(𝖯).𝚟𝚕(𝖰)+(1-𝚟𝚕(𝖯)).(1-𝚟𝚕(𝖰))
+\\&{}=
+1+2.𝚟𝚕(𝖯).𝚟𝚕(𝖰)-𝚟𝚕(𝖯)-𝚟𝚕(𝖰)
+\\&{}=
+1+2.𝚟𝚕(𝖯).𝚟𝚕(𝖰)-𝚟𝚕^2(𝖯)-𝚟𝚕^2(𝖰)
+\\&{}=
+1-\left(𝚟𝚕(𝖯)-𝚟𝚕(𝖰)\right)^2
+\end{align*}
+\end{proof}
+%
+\begin{theorem}
+[Substitution]
+Dans une proposition complexe, on peut remplacer une proposition argument d'un des opérateurs par une proposition qui
+lui est équivalente et obtenir ainsi une nouvelle proposition qui est équivalente à la celle de départ.
+\end{theorem}
+\begin{proof}
+On pourrait le démontrer modulo un formalisme adapté, mais c'est lourd...
+\end{proof}
+\begin{remark}
+Dans la suite, on n'utilise plus \(𝗩\) et \(𝗙\), seulement \(1\) et \(0\).
+\end{remark}
+%
+\begin{theorem}
+[Tautologies]
+Si \(𝖯\) et \(𝖰\) sont des propositions, les propositions suivantes sont des tautologies :
+\begin{itemize}
+\itemrnd
+\(𝖯⇒𝖯\),
+\itemrnd
+\(𝖯⇒(𝖯\myor𝖰)\)
+\end{itemize}
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+\mynewcolumntype{A}{1cm}
+\mynewcolumntype{B}{1.5cm}
+\mynewcolumntype{C}{2.5cm}
+\begin{array}{|AAABBC}
+\hline
+𝖯 &
+𝖰 &
+¬𝖯 &
+(¬𝖯)\mathbin{∨}𝖯 &
+𝖯\mathbin{∨}𝖰 &
+(¬𝖯)\mathbin{∨}(𝖯\mathbin{∨}𝖰)\\\hline
+1 &
+1 &
+0 &
+1 &
+1 &
+1\\\hline
+1 &
+0 &
+0 &
+1 &
+1 &
+1\\\hline
+0 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+0 &
+0 &
+1 &
+1 &
+0 &
+1\\\hline
+\end{array}
+\end{equation*}
+\end{proof}
+%
+\begin{theorem}
+Si \(𝖯\) et \(𝖰\) sont des propositions, la valeur de vérité de
+\(𝖯⇒𝖰$ est $\mytrue$ si
+et seulement si la valeur de vérité de \(𝖯\) est inférieure à celle de \(𝖰\).
+En plus court, \(
+(𝖯⇒𝖰)⟺(𝚟𝚕(𝖯)≤𝚟𝚕(𝖰))
+\)
+est une tautologie.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{1cm}
+\mynewcolumntype{B}{2cm}
+\mynewcolumntype{C}{3cm}
+\begin{array}{|AAABC}
+\hline
+𝖯 &
+𝖰 &
+¬𝖯 &
+(¬𝖯)\mathbin{∨}𝖰 &
+𝚟𝚕(𝖯)≤𝚟𝚕(𝖰)\\\hline
+1 &
+1 &
+0 &
+1 &
+1\\\hline
+1 &
+0 &
+0 &
+0 &
+0\\\hline
+0 &
+1 &
+1 &
+1 &
+1\\\hline
+0 &
+0 &
+1 &
+1 &
+1\\\hline
+\end{array}
+\end{equation*}
+\end{proof}
+%
+\begin{theorem}
+Pour montrer qu'une implication est une tautologie,
+il suffit de la démontrer dans le cas particulier où la prémisse est vraie.
+\end{theorem}
+
+\begin{theorem}
+[Simplification de et]
+Si \(𝖯\) et \(𝖰\) sont des propositions, $(𝖯\myand𝖰)⟹𝖯$ est une tautologie.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{1cm}
+\mynewcolumntype{B}{1cm}
+\mynewcolumntype{C}{2cm}
+\mynewcolumntype{D}{3cm}
+\begin{array}{|AABCD}
+\hline
+𝖯 &
+𝖰 &
+𝖯\mathbin{∧}𝖰 &
+¬(𝖯\mathbin{∧}𝖰) &
+¬(𝖯\mathbin{∧}𝖰)\mathbin{∨}𝖯\\\hline
+1 &
+1 &
+1 &
+0 &
+1\\\hline
+1 &
+0 &
+0 &
+1 &
+1\\\hline
+0 &
+1 &
+0 &
+1 &
+1\\\hline
+0 &
+0 &
+0 &
+1 &
+1\\\hline
+\end{array}
+\end{equation*}
+\end{proof}
+%
+\begin{theorem}
+[Syllogisme disjonctif]
+Si \(𝖯\) et \(𝖰\) sont des propositions,
+\(𝖯\myor𝖰)\myand\mynot𝖯⟹𝖰\) est une tautologie.
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{1cm}
+\mynewcolumntype{B}{2.5cm}
+\begin{array}{|AAAAB|}
+\hline
+𝖯 &
+𝖰 &
+𝖯\mathbin{∨}𝖰 &
+¬𝖯 &
+(𝖯\mathbin{∨}𝖰)\mathbin{∨}¬𝖯\\\hline
+1 &
+1 &
+1 &
+0 &
+0\\\hline
+1 &
+0 &
+1 &
+0 &
+0\\\hline
+0 &
+1 &
+1 &
+1 &
+1\\\hline
+0 &
+0 &
+0 &
+1 &
+0\\\hline
+\end{array}
+\end{equation*}
+Avec l'associativité de \(\myor\) vue ci-dessous, on a
+\begin{align*}
+((𝖯\mathbin{∨}𝖰)\mathbin{∧}¬𝖯⇒𝖰)
+&{}⟺¬((𝖯\mathbin{∨}𝖰)\mathbin{∧}¬𝖯)\mathbin{∨}𝖰
+\\&{}⟺
+(¬(𝖯\mathbin{∨}𝖰)\mathbin{∨}𝖯)\mathbin{∨}𝖰
+\\&{}⟺¬(𝖯\mathbin{∨}𝖰)\mathbin{∨}(𝖯\mathbin{∨}𝖰)
+\end{align*}
+\end{proof}
+%
+\begin{theorem}
+[Tautologies]
+Si \(𝖯\) et \(𝖰\) sont des propositions, les propositions complexes suivantes sont toutes des
+tautologies :
+\begin{itemize}
+\itemrnd
+\(
+(𝖯⇔𝖰)⟺((𝖯⇒𝖰)\myand(𝖰⇒𝖯))
+\)
+\itemrnd
+\(
+(𝖯⇔𝖰)⟺(𝖰⇔𝖯)
+\)
+\itemrnd
+\(
+\mynot (𝖯⇔𝖰)⟺((\mynot 𝖯)⇔𝖰)
+\)
+\itemrnd
+\(
+\mynot (𝖯⇔𝖰)⟺(𝖯⇔(\mynot 𝖰))
+\)
+\itemrnd
+\(
+\mynot (𝖯⇒𝖰)⟺(𝖯\myand\mynot 𝖰)
+\)
+\end{itemize}
+\end{theorem}
+%
+\begin{proof}
+Par substitution,
+\begin{align*}
+((𝖯⇒𝖰)\myand(𝖰⇒𝖯))
+&{}⟺((𝚟𝚕(𝖯){\leq}𝚟𝚕(𝖰))\myand(𝚟𝚕(𝖰){\leq}𝚟𝚕(𝖯)))
+\\&{}⟺(𝚟𝚕(𝖯)=𝚟𝚕(𝖰))
+\end{align*}
+on termine en utilisant la commutativité par équivalence de \myand ainsi que la
+caractérisation de l'équivalence par la valeur logique.
+
+Pour la deuxième ligne,
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{1cm}
+\mynewcolumntype{B}{1cm}
+\mynewcolumntype{C}{1.5cm}
+\mynewcolumntype{D}{2cm}
+\begin{array}{|ABABCDDD}
+\hline
+𝖯 &
+¬𝖯 &
+𝖰 &
+¬𝖰 &
+𝖯⇔𝖰 &
+¬(𝖯⇔𝖰) &
+(¬𝖯)⇔𝖰 &
+𝖯⇔(¬𝖰)\\\hline
+1 &
+0 &
+1 &
+0 &
+1 &
+0 &
+0 &
+0\\\hline
+1 &
+0 &
+0 &
+1 &
+0 &
+1 &
+1 &
+1\\\hline
+0 &
+1 &
+1 &
+0 &
+0 &
+1 &
+1 &
+1\\\hline
+0 &
+1 &
+0 &
+1 &
+1 &
+0 &
+0 &
+0\\\hline
+\end{array}
+\end{equation*}
+Pour finir, par substitutions successives :
+\begin{align*}
+¬(𝖯⇒𝖰)
+&{}\overset{\hphantom{\text{subs}}}{⟺}¬(¬𝖯\mathbin{∨}𝖰
+\\
+&{}\overset{\text{subs}}{⟺}
+(¬(¬𝖯)\mathbin{∧}¬𝖰)
+\\&{}\overset{\text{subs}}{⟺}
+(𝖯\mathbin{∧}¬𝖰)
+\end{align*}
+\end{proof}
+%
+\begin{theorem}
+[Contraposition]
+Si \(𝖯\) et \(𝖰\) sont des propositions, on a les tautologies :
+\begin{equation*}
+(𝖯⟺
+𝖰)⟺((\mynot 𝖯)⟺ (\mynot 𝖰))
+\end{equation*}
+\begin{equation*}
+(𝖯⇒𝖰)⟺((\mynot 𝖰)⇒(\mynot 𝖯))
+\end{equation*}
+\end{theorem}
+\begin{proof}
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{0.75cm}
+\mynewcolumntype{B}{1.25cm}
+\mynewcolumntype{C}{2cm}
+\begin{array}{|AAAABCBC}
+\hline
+𝖯 &
+¬𝖯 &
+𝖰 &
+¬𝖰 &
+𝖯⟺ 𝖰 &
+¬𝖯⟺ ¬𝖰 &
+𝖯⇒𝖰 &
+¬𝖰⇒¬𝖯\\\hline
+1 &
+0 &
+1 &
+0 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+0 &
+0 &
+1 &
+0 &
+0 &
+0 &
+0\\\hline
+0 &
+1 &
+1 &
+0 &
+0 &
+0 &
+1 &
+1\\\hline
+0 &
+1 &
+0 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+\end{array}
+\end{equation*}
+\end{proof}
+%
+En fait, il y a 16 combinaisons possibles pour des opérations binaires :
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{1cm}
+\newcolumntype{A}{>{\(}wc{0.45cm}<{\)}|}
+\def\mycell#1{\)\rotatebox{90}{\(#1\)}\(}
+\begin{array}{|*{18}{A}}
+\hline
+𝖯 &
+𝖰 &
+1 &
+2 &
+3 &
+4 &
+5 &
+5 &
+7 &
+8 &
+9 &
+10 &
+11 &
+12 &
+13 &
+14 &
+15 &
+16\\\hline
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0\\\hline
+1 &
+0 &
+1 &
+1 &
+1 &
+1 &
+0 &
+0 &
+0 &
+0 &
+1 &
+1 &
+1 &
+1 &
+0 &
+0 &
+0 &
+0\\\hline
+0 &
+1 &
+1 &
+1 &
+0 &
+0 &
+1 &
+1 &
+0 &
+0 &
+1 &
+1 &
+0 &
+0 &
+1 &
+1 &
+0 &
+0\\\hline
+0 &
+0 &
+1 &
+0 &
+1 &
+0 &
+1 &
+0 &
+1 &
+0 &
+1 &
+0 &
+1 &
+0 &
+1 &
+0 &
+1 &
+0\\\hline
+~
+ &
+~
+ &
+\mycell{𝖯\mathbin{∨}¬𝖯} &
+\mycell{𝖯\mathbin{∨}𝖰} &
+\mycell{𝖯\mathbin{∨}¬𝖰} &
+\mycell{𝖯} &
+\mycell{¬𝖯\mathbin{∨}𝖰} &
+\mycell{𝖰} &
+\mycell{¬𝖯⇔¬𝖰} &
+\mycell{𝖯\mathbin{∧}𝖰} &
+\mycell{¬(𝖯\mathbin{∧}𝖰)} &
+\mycell{¬(𝖯⇔𝖰)} &
+\mycell{¬𝖰} &
+\mycell{¬(𝖯⇒𝖰)} &
+\mycell{¬𝖯} &
+\mycell{¬(𝖰⇒𝖯)} &
+\mycell{¬(𝖯\mathbin{∨}𝖰)} &
+%\mycell{¬(𝖰⇒𝖯)} &
+\mycell{𝖯\mathbin{∧}¬𝖯}\\\hline
+\end{array}
+\end{equation*}
+\begin{remark}%
+On peut introduit l'opérateur binaire \(\myxor\) aussi noté \(\mathbin{∨∨}\)
+en sorte que \(¬(𝖯⇔𝖰)\) et
+\(𝖯\mathbin{∨∨}𝖰\) sont équivalents.
+\end{remark}
+
+\begin{theorem}
+[\(⇔\) est une relation d'équivalence]
+
+L'équivalence des propositions définit une relation d'équivalence entre les propositions.
+\end{theorem}
+\begin{proof}
+\par\noindent
+\begin{itemize}
+\itemrnd
+Réflexivité :
+\begin{align*}
+𝖯⇔𝖯
+&≝
+(𝖯\myand𝖯)\myor((\mynot 𝖯)\myand(\mynot 𝖯))
+\\&\overset{\text{subs}}{⟺}
+(𝖯\myor(\mynot 𝖯))
+\end{align*}
+\itemrnd
+Symétrie : c'est la première tautologie du théorème précédent.
+\itemrnd
+Transitivité :
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{1cm}
+\mynewcolumntype{B}{1.5cm}
+\mynewcolumntype{C}{3.5cm}
+\begin{array}{|AAABBCB}
+\hline
+𝖯 &
+𝖰 &
+𝖱 &
+𝖯⇔𝖰 &
+𝖰⇔𝖱 &
+(𝖯⇔𝖰)\mathbin{∧}(𝖰⇔𝖱) &
+𝖯⇔𝖱\\\hline
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+1 &
+0 &
+1 &
+0 &
+0 &
+0\\\hline
+1 &
+0 &
+1 &
+0 &
+0 &
+0 &
+0\\\hline
+1 &
+0 &
+0 &
+0 &
+1 &
+0 &
+0\\\hline
+0 &
+1 &
+1 &
+0 &
+1 &
+0 &
+0\\\hline
+0 &
+1 &
+0 &
+0 &
+0 &
+0 &
+0\\\hline
+0 &
+0 &
+1 &
+1 &
+0 &
+0 &
+0\\\hline
+0 &
+0 &
+0 &
+1 &
+1 &
+1 &
+1\\\hline
+\end{array}
+\end{equation*}
+\end{itemize}
+\end{proof}
+\begin{remark}
+On peut écrire les suites d'équivalence en ligne.
+\end{remark}
+%
+\begin{theorem}
+[Associativités]
+Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
+\begin{itemize}
+\itemrnd
+\(
+(𝖯\myand(𝖰\myand𝖱))⟺((𝖯\myand𝖰)\myand𝖱)
+\)
+\itemrnd
+\(
+(𝖯\myor(𝖰\myor𝖱))⟺((𝖯\myor𝖰)\myor𝖱)
+\)
+\itemrnd
+\(
+(𝖯⇔(𝖰⇔𝖱))⟺((𝖯⇔𝖰)⇔𝖱)
+\)
+\itemrnd
+\(
+(𝖯⇒(𝖰⇒𝖱))⟹((𝖯⇒𝖰)⇒𝖱)
+\)
+\end{itemize}
+\end{theorem}
+
+\begin{attention}
+\(⇒\) n'est pas associatifs !
+\end{attention}
+
+\begin{remark}
+(moyen presque mnémotechnique) commutatif donne associatif.
+\end{remark}
+
+\begin{proof}
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{0.75cm}
+\mynewcolumntype{B}{1.25cm}
+\mynewcolumntype{C}{2.5cm}
+\begin{array}{|AAABCBC}
+\hline
+𝖯 &
+𝖰 &
+𝖱 &
+𝖰\mathbin{∧}𝖱 &
+𝖯\mathbin{∧}(𝖰\mathbin{∧}𝖱) &
+𝖯\mathbin{∧}𝖰 &
+(𝖯\mathbin{∧}𝖰)\mathbin{∧}𝖱\\\hline
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+1 &
+0 &
+0 &
+0 &
+1 &
+0\\\hline
+1 &
+0 &
+1 &
+0 &
+0 &
+0 &
+0\\\hline
+1 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0\\\hline
+0 &
+1 &
+1 &
+1 &
+0 &
+0 &
+0\\\hline
+0 &
+1 &
+0 &
+0 &
+0 &
+0 &
+0\\\hline
+0 &
+0 &
+1 &
+0 &
+0 &
+0 &
+0\\\hline
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0\\\hline
+\end{array}
+\end{equation*}
+On en déduit :
+\begin{equation*}
+\begin{split}
+¬(𝖯\mathbin{∨}(𝖰\mathbin{∨}𝖱))⟺¬
+𝖯\mathbin{∧}¬
+(𝖰\mathbin{∨}𝖱)⟺¬
+𝖯\mathbin{∧}(¬𝖰\mathbin{∧}¬
+𝖱)⟺...
+\\
+...⟺(¬𝖯\mathbin{∧}¬𝖰)\mathbin{∧}¬
+𝖱⟺¬
+(𝖯\mathbin{∨}𝖰)\mathbin{∧}¬
+𝖱⟺¬
+((𝖯\mathbin{∨}𝖰)\mathbin{∨}𝖱)
+\end{split}
+\end{equation*}
+Pour les deux dernières lignes :
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\newcolumntype{X}{>{\(}wc{1.5cm}<{\)}|>{\(}wc{2.5cm}<{\)}|}
+\begin{array}{|
+*{3}{>{\(}wc{0.75cm}<{\)}|}
+*{2}{X}
+}
+\hline
+𝖯 &
+𝖰 &
+𝖱 &
+𝖰⇔𝖱 &
+𝖯⇔(𝖰⇔𝖱) &
+𝖯⇔𝖰 &
+(𝖯⇔𝖰)⇔𝖱\\\hline
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+1 &
+0 &
+0 &
+0 &
+1 &
+0\\\hline
+1 &
+0 &
+1 &
+0 &
+0 &
+0 &
+0\\\hline
+1 &
+0 &
+0 &
+1 &
+1 &
+0\\\hline
+0 &
+1 &
+1 &
+1 &
+0 &
+0 &
+0\\\hline
+0 &
+1 &
+0 &
+0 &
+1 &
+0 &
+1\\\hline
+0 &
+0 &
+1 &
+0 &
+1 &
+1 &
+1\\\hline
+0 &
+0 &
+0 &
+1 &
+0 &
+1 &
+0\\\hline
+\end{array}
+\end{equation*}
+%
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\newcolumntype{X}{>{\(}wc{1.5cm}<{\)}|>{\(}wc{2.5cm}<{\)}|}
+\begin{array}{|
+*{3}{>{\(}wc{0.3cm}<{\)}|}
+*{2}{X}
+}
+\hline
+𝖯 &
+𝖰 &
+𝖱 &
+𝖰⇒𝖱 &
+𝖯⇒(𝖰⇒𝖱) &
+𝖯⇒𝖰 &
+(𝖯⇒𝖰)⇒𝖱\\\hline
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+1 &
+0 &
+0 &
+0 &
+1 &
+0\\\hline
+1 &
+0 &
+1 &
+0 &
+0 &
+0 &
+1\\\hline
+1 &
+0 &
+0 &
+0 &
+0 &
+0 &
+1\\\hline
+0 &
+1 &
+1 &
+1 &
+0 &
+1 &
+1\\\hline
+0 &
+1 &
+0 &
+0 &
+0 &
+1 &
+0\\\hline
+0 &
+0 &
+1 &
+0 &
+0 &
+1 &
+1\\\hline
+0 &
+0 &
+0 &
+0 &
+0 &
+1 &
+0\\\hline
+\end{array}
+\end{equation*}
+\end{proof}
+%
+\begin{theorem}
+[Distributivités \(\myand\) \(\myor\)]
+Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
+\begin{itemize}
+\itemrnd
+\(
+(𝖯\myor(𝖰\myand𝖱))⟺((𝖯\myor𝖰)\myand(𝖯\myor𝖱))
+\)
+\itemrnd
+\(
+(𝖯\myand(𝖰\myor𝖱))⟺((𝖯\myand𝖰)\myor(𝖯\myand𝖱))
+\)
+\end{itemize}
+\end{theorem}
+%
+\begin{proof}
+\begin{equation*}
+\setlength{\extrarowheight}{0.25ex}
+\mynewcolumntype{A}{0.75cm}
+\mynewcolumntype{B}{1.25cm}
+\mynewcolumntype{C}{3cm}
+\begin{array}{|AAABCBBC}
+\hline
+𝖯 &
+𝖰 &
+𝖱 &
+𝖰\mathbin{∧}𝖱 &
+𝖯\mathbin{∨}(𝖰\mathbin{∧}𝖱) &
+𝖯\mathbin{∨}𝖰 &
+𝖯\mathbin{∨}𝖱 &
+(𝖯\mathbin{∨}𝖰)\mathbin{∧}(𝖯\mathbin{∨}𝖱)\\\hline
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+1 &
+0 &
+0 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+0 &
+1 &
+0 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+0 &
+0 &
+0 &
+1 &
+1 &
+1 &
+1\\\hline
+0 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+0 &
+1 &
+0 &
+0 &
+0 &
+1 &
+0 &
+0\\\hline
+0 &
+0 &
+1 &
+0 &
+0 &
+0 &
+1 &
+0\\\hline
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0\\\hline
+\end{array}
+\end{equation*}
+
+On pourrait faire le même tableau en échangeant les deux opérateurs, on peut aussi utiliser la négation :
+
+\begin{align*}
+¬(𝖯\mathbin{∧}(𝖰\mathbin{∨}𝖱))
+&{}⟺
+¬𝖯\mathbin{∨}¬(𝖰\mathbin{∨}𝖱)
+\\&{}⟺
+¬𝖯\mathbin{∨}(¬𝖰\mathbin{∧}¬𝖱)
+\\&{}⟺
+(¬𝖯\mathbin{∨}¬𝖰)\mathbin{∧}(¬𝖯\mathbin{∨}¬𝖱)
+\\&{}⟺
+¬(𝖯\mathbin{∧}𝖰)\mathbin{∧}¬(𝖯\mathbin{∧}𝖱)
+\\&{}⟺
+¬((𝖯\mathbin{∧}𝖰)\mathbin{∨}(𝖯\mathbin{∧}𝖱))
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+[Distributivités à gauche de $⇒$]
+Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
+\begin{itemize}
+\itemrnd
+\(
+(𝖯⇒(𝖰\myand𝖱))⟺((𝖯⇒𝖰)\myand(𝖯⇒𝖱))
+\)
+\itemrnd
+\(
+(𝖯⇒(𝖰\myor𝖱))⟺((𝖯⇒𝖰)\myor(𝖯⇒𝖱))
+\)
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Par la définition de l'implication et le théorème précédent,
+\begin{align*}
+¬𝖯\mathbin{∨}(𝖰\mathbin{∧}𝖱))
+&{}⟺
+((¬𝖯\mathbin{∨}𝖰)\mathbin{∧}(¬𝖯\mathbin{∨}𝖱))(¬𝖯\mathbin{∨}(𝖰\mathbin{∨}𝖱))
+\\&{}⟺
+((¬𝖯\mathbin{∨}¬𝖯)\mathbin{∨}(𝖰\mathbin{∨}𝖱))
+\\&{}⟺
+((¬𝖯\mathbin{∨}𝖰)\mathbin{∨}(¬𝖯\mathbin{∨}𝖱))
+\end{align*}
+On a terminé en utilisant associativité et commutativité de $\mathbin{∨}$.
+\end{proof}
+%
+\begin{theorem}
+[Séparation]
+Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions, on a les tautologies :
+
+\begin{itemize}
+\itemrnd
+\(
+((𝖯\myand𝖰)⇒𝖱)⟺(𝖯⇒(𝖰⇒𝖱))
+\)
+\itemrnd
+\(
+((𝖯\myor𝖰)⇒𝖱)⟺((𝖯⇒𝖱)\myand(𝖰⇒𝖱))
+\)
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Par la définition de l'implication et l'associativité de \myor,
+\begin{align*}
+((𝖯\mathbin{∧}𝖰)⇒𝖱)
+&{}⟺
+¬(𝖯\mathbin{∧}𝖰)\mathbin{∨}𝖱
+\\&{}⟺
+(¬𝖯\mathbin{∨}¬𝖰)\mathbin{∨}𝖱
+\\&{}⟺
+¬𝖯\mathbin{∨}(¬𝖰\mathbin{∨}𝖱)
+\\&{}⟺
+¬𝖯\mathbin{∨}(𝖰⇒𝖱)
+\\&{}⟺
+(𝖯⇒(𝖰⇒𝖱))
+\end{align*}
+et par la définition de l'implication et le théorème \ref{seq:refTheorem16},
+\begin{align*}
+((𝖯\mathbin{∨}𝖰)⇒𝖱)
+&{}⟺
+¬(𝖯\mathbin{∨}𝖰)\mathbin{∨}𝖱
+\\&{}⟺
+(¬𝖯\mathbin{∧}¬𝖰)\mathbin{∨}𝖱
+\\&{}⟺
+(¬𝖯\mathbin{∨}𝖱)\mathbin{∧}(¬𝖰\mathbin{∨}𝖱)
+\\&{}⟺
+(𝖯⇒𝖱)\mathbin{∧}(𝖰⇒𝖱)
+\end{align*}
+\end{proof}
+%
+\begin{theorem}
+Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions.
+\begin{itemize}
+\itemrnd
+\(
+(𝖯⇔(𝖰\myand𝖱))⟸((𝖯⇔𝖰)\myand(𝖯⇔𝖱))
+\)
+\itemrnd
+\(
+(𝖯⇔(𝖰\myor𝖱))⟹((𝖯⇔𝖰)\myor(𝖯⇔𝖱))
+\)
+\end{itemize}
+\end{theorem}
+\begin{remark}
+Ce ne sont pas des équivalences !
+\end{remark}
+\begin{proof}
+Pour la première implication, on compare les colonnes en gras :
+\begin{equation*}
+\setlength\extrarowheight{0.25ex}
+\mynewcolumntype{A}{0.5cm}
+\mynewcolumntype{B}{1.2cm}
+\mynewcolumntype{C}{2.25cm}
+\mynewcolumntype{D}{3.5cm}
+\begin{array}{|AAABCBBD}
+\hline
+𝖯 &
+𝖰 &
+𝖱 &
+𝖰\mathbin{∧}𝖱 &
+𝖯⇔(𝖰\mathbin{∧}𝖱) &
+𝖯⇔𝖰 &
+𝖯⇔𝖱 &
+(𝖯⇔𝖰)\mathbin{∧}(𝖯⇔𝖱)\\\hline
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+1 &
+0 &
+0 &
+0 &
+1 &
+0 &
+0\\\hline
+1 &
+0 &
+1 &
+0 &
+0 &
+0 &
+1 &
+0\\\hline
+1 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0 &
+0\\\hline
+0 &
+1 &
+1 &
+1 &
+0 &
+0 &
+0 &
+0\\\hline
+0 &
+1 &
+0 &
+0 &
+1 &
+0 &
+1 &
+0\\\hline
+0 &
+0 &
+1 &
+0 &
+1 &
+1 &
+0 &
+0\\\hline
+0 &
+0 &
+0 &
+0 &
+1 &
+1 &
+1 &
+1\\\hline
+\end{array}
+\end{equation*}
+
+Les cases grises montrent qu'il n'y a pas d'équivalences.
+Pour la deuxième implication, sont équivalentes :
+\begin{itemize}
+\itemrnd
+\(
+(𝖯⇔(𝖰\mathbin{∧}𝖱))⟸((𝖯⇔𝖰)\mathbin{∧}(𝖯⇔𝖱))
+\)
+\itemrnd
+\(
+¬((𝖯⇔𝖰)\mathbin{∧}(𝖯⇔𝖱))⟹¬(𝖯⇔(𝖰\mathbin{∧}𝖱))
+\)
+\itemrnd
+\(
+(¬(𝖯⇔𝖰)\mathbin{∨}¬(𝖯⇔𝖱))⟹(¬𝖯⇔¬(𝖰\mathbin{∧}𝖱))
+\)
+\itemrnd
+\(
+((¬𝖯⇔¬𝖰)\mathbin{∨}(¬𝖯⇔¬𝖱))⟹(¬𝖯⇔(¬𝖰\mathbin{∨}¬𝖱))
+\)
+\end{itemize}
+Il suffit de substituer à chaque proposition sa négation.
+\end{proof}
+%
+\begin{theorem}
+[Ordre]
+\(⇒\) est une relation d'ordre à équivalence près.
+\end{theorem}
+\begin{proof}
+À équivalence près signifie que c'est une relation d'ordre sur les classes d'équivalence.
+
+Soient \(𝖯\), \(𝖰\) et \(𝖱\) des propositions.
+\begin{itemize}
+\itemrnd
+$⇒$ est réflexive :
+Par définition, $𝖯⇒𝖯$ est la tautologie \((\mynot 𝖯)\myor𝖯\).
+\itemrnd
+\(⇒\) est anti-symétrique à équivalence près :
+on a déjà vu la tautologie
+\begin{equation*}
+(𝖯⇒𝖰\myand𝖯\Leftarrow𝖰)⟺(𝖯⇔𝖰)
+\end{equation*}
+\itemrnd
+$⇒$ est transitive :
+\begin{equation*}
+\setlength\extrarowheight{0.25ex}
+\mynewcolumntype{A}{0.75cm}
+\mynewcolumntype{B}{1.25cm}
+\mynewcolumntype{C}{3.5cm}
+\begin{array}{|AAABBCB}
+\hline
+𝖯 &
+𝖰 &
+𝖱 &
+𝖯⇒𝖰 &
+𝖰⇒𝖱 &
+(𝖯⇒𝖰)\mathbin{∧}(𝖰⇒𝖱) &
+𝖯⇒𝖱\\\hline
+1 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+1 &
+1 &
+0 &
+1 &
+0 &
+0 &
+0\\\hline
+1 &
+0 &
+1 &
+0 &
+1 &
+0 &
+1\\\hline
+1 &
+0 &
+0 &
+0 &
+1 &
+0 &
+0\\\hline
+0 &
+1 &
+1 &
+1 &
+1 &
+1 &
+1\\\hline
+0 &
+1 &
+0 &
+1 &
+0 &
+0 &
+1\\\hline
+0 &
+0 &
+1 &
+1 &
+1 &
+0 &
+1\\\hline
+0 &
+0 &
+0 &
+1 &
+1 &
+0 &
+1\\\hline
+\end{array}
+\end{equation*}
+\end{itemize}
+\end{proof}
+
+\section{Quantificateurs}
+Cette partie repose sur la notion d'ensembles détaillée au chapitre suivant.
+
+\begin{axiom}
+[Quantificateurs existentiel et universel]
+Pour tout ensemble \(𝐸\), les propositions suivantes sont des tautologies
+\begin{itemize}
+\itemrnd
+\(
+𝐸≠∅⟺∃𝑥(𝑥∈𝐸)
+\)
+\itemrnd
+\(
+𝐸=∅⟺∀𝑥(𝑥∉𝐸)
+\)
+\end{itemize}
+\end{axiom}
+\begin{remark}
+Ce ne sont pas des définitions car la notion d'ensemble est pré-requise, qui utilise elle-même les quantificateurs.
+\end{remark}
+
+\begin{definition}
+[Quantificateurs]
+Étant donnés un ensemble \(𝛺\) et une proposition dont l'écriture dépend formellement d'un paramètre \(𝑥\)
+notée $𝖯(𝑥)$,
+\begin{itemize}
+\itemrnd
+\(\displaystyle
+∃𝑥∈𝛺\;(𝖯(𝑥))
+\overset{\text{déf}}{⟺}
+∃𝑥\;(𝑥∈𝛺\myand𝖯(𝑥))
+\)
+\itemrnd
+\(\displaystyle
+∀𝑥∈𝛺\;(𝖯(𝑥))
+\overset{\text{déf}}{⟺}
+\mynot (∃𝑥∈𝛺\;(\mynot 𝖯(𝑥)))
+\)
+\end{itemize}
+\end{definition}
+\begin{communication}
+ \(∃𝑥∈𝛺\;...\) est lu «~il existe 𝑥 élément de (ou dans)
+\(𝛺\) tel que ...~».
+\(∀𝑥∈𝛺\;...\) est lu «quel que soit \(𝑥\) élément de (ou dans) \(𝛺\) tel que ...~»
+ou «~pour tout \(𝑥\) élément de (ou dans) \(𝛺\) tel que ...~».
+\end{communication}
+
+\begin{remark}
+En fait ce n'est pas une seule définition mais un gabarit de définitions.
+Cela permet de donner autant de définitions que de \(𝛺\) et $𝖯(𝚡)$
+possibles.
+\end{remark}
+
+\begin{theorem}
+Étant donnés un ensemble \(𝛺\) et une proposition dont l'écriture dépend formellement d'un paramètre \(𝑥\)
+notée \(𝖯(𝑥)\), on a les tautologies
+\begin{itemize}
+\itemrnd
+\(\displaystyle
+∃𝑥∈𝛺\;𝖯(𝑥)⟺\{𝑧∈𝛺\;/\;𝖯(𝑧)\}≠∅⟹𝛺≠∅
+\)
+\itemrnd
+\(\displaystyle
+∀𝑥∈𝛺\;(𝖯(𝑥))⟺\{𝑧∈𝛺\;/\;¬𝖯(𝑧)\}=∅⟺\{𝑧∈𝛺\;/\;𝖯(𝑧)\}=𝛺
+\)
+\end{itemize}
+\end{theorem}
+\begin{proof}
+Avec le quantificateur existentiel, c'est une application directe de l'axiome ci-dessus sachant que
+\begin{equation*}
+𝑥∈\{𝑧∈𝛺\;/\;𝖯(𝑧)\}
+\overset{\text{déf}}{⟺}
+𝑥∈𝛺\myand𝖯(𝑥)
+\end{equation*}
+Avec le quantificateur universel, on utilise les négations. On a
+\begin{equation*}
+∃𝑥∈𝛺\;(¬𝖯(𝑥))⟺\{𝑧∈𝛺\;/\;¬𝖯(𝑧)\}≠∅
+\end{equation*}
+d'où
+\begin{equation*}
+∀𝑥∈𝛺\;(𝖯(𝑥))⟺¬(∃𝑥∈𝛺\;(¬𝖯(𝑥)))⟺\{𝑧∈𝛺\;/\;¬𝖯(𝑧)\}=∅
+\end{equation*}
+\end{proof}
+
+\begin{theorem}
+Étant donnés un ensemble \(𝛺\) et
+une proposition dont l'écriture dépend formellement d'un paramètre notée \(𝖯\)(𝚡).
+Les ensembles
+\(\{𝑧∈𝛺\;/\;𝖯(𝑧)\}\) et \(\{𝑧∈𝛺\;/\;¬𝖯(𝑧)\}\)
+forment une partition de \(𝛺\), en particulier
+\begin{equation*}
+\{𝑧∈𝛺\;/\;𝖯(𝑧)\}=𝛺⟺\{𝑧∈𝛺\;/\;¬𝖯(𝑧)\}=∅
+\end{equation*}
+\end{theorem}
+\begin{proof}
+On a pour tout \(𝑥\),
+\begin{equation*}
+𝑥∈\{𝑧∈𝛺\;/\;𝖯(𝑧)\}∩\{𝑧∈𝛺\;/\;¬𝖯(𝑧)\}
+⟺𝑥∈𝛺\myand𝖯(𝑥)\myand¬𝖯(𝑥)
+⟺𝑥∈∅
+\end{equation*}
+et
+\begin{equation*}
+𝑥∈\{𝑧∈𝛺\;/\;¬𝖯(𝑧)\}∪\{𝑧∈𝛺\;/\;𝖯(𝑧)\}
+⟺𝑥∈𝛺\myand(𝖯(𝑥)\myor¬𝖯(𝑥))
+⟺𝑥∈𝛺
+\end{equation*}
+\end{proof}
+
+\begin{theorem}
+[Distributivité]
+Étant donnés un ensemble \(𝛺\), une proposition dont l'écriture dépend formellement d'un paramètre 𝚡
+notée \(𝖯\)(𝚡), et une proposition \(𝖰\), on a
+
+\begin{equation*}
+(∃𝑥∈𝛺\;𝖯(𝑥))\myand𝖰⟺∃𝑥∈𝛺\;(𝖯(𝑥)\myand𝖰)
+\end{equation*}
+et par contraposition et négation
+\begin{equation*}(∀𝑥∈𝛺\;𝖯(𝑥))\myor𝖰⟺∀𝑥∈𝛺\;(𝖯(𝑥)\myor𝖰)
+\end{equation*}
+De plus,
+\begin{equation*}
+(∃𝑥∈𝛺\;𝖯(𝑥))\myor𝖰⟸∃𝑥∈𝛺\;(𝖯(𝑥)\myor𝖰)
+\end{equation*}
+et par contraposition et négation
+\begin{equation*}
+(∀𝑥∈𝛺\;𝖯(𝑥))\myand𝖰⟹∀𝑥∈𝛺\;(𝖯(𝑥)\myand𝖰)
+\end{equation*}
+Si en plus \(𝛺\) n'est pas vide, les deux dernières implications sont des équivalence.
+\end{theorem}
+\begin{proof}
+Soit $𝑥_0$ tel que $𝖯(𝑥_0)$.
+Si \(𝖰\) est vrai alors la proposition
+\(𝖯(𝑥_0)\myand𝖰$ aussi d'où $∃𝑥∈𝛺 \;(𝖯(𝑥)\myand𝖰)$.
+Inversement, soit $𝑥_0$ tel que \(𝖯(𝑥_0)\myand𝖰$ est vrai.
+Alors $𝖯(𝑥_0)$ est vrai donc $∃𝑥∈𝛺 \;𝖯(𝑥)$ l'est aussi aussi.
+
+Soit $𝑥_0$ tel que \(𝖯(𝑥_0)\myor𝖰$ . On a
+\begin{equation*}
+𝖯(𝑥_0)⟹(∃𝑥∈𝛺\;𝖯(𝑥))⟹(∃𝑥∈𝛺\;𝖯(𝑥))\myor𝖰
+\end{equation*}
+\begin{equation*}
+𝖰⟹(∃𝑥∈𝛺\;𝖯(𝑥))\myor𝖰\end{equation*}
+Par le théorème \ref{seq:refTheorem18}:
+\begin{equation*}
+𝖯(𝑥_0)\myor𝖰⟹(∃𝑥∈𝛺 ,\;𝖯(𝑥))\myor𝖰
+\end{equation*}
+Inversement, supposons $∃𝑥∈𝛺\;𝖯(𝑥)$ vrai,
+soit donc $𝑥_0$ tel que $𝖯(𝑥_0)$.
+On a \(𝖯(𝑥_0)\myor𝖰\) donc \(∃𝑥∈𝛺 \;(𝖯(𝑥)\myor𝖰)\) est vrai.
+Supposons maintenant \(𝖰\) vrai et \(𝛺\) non vide. Soit
+\(𝑥_0$ un élément de \(𝛺\), on a encore
+\(𝖯(𝑥_0)\myor𝖰\) d'où le résultat.
+\end{proof}
+%
+\section{Types de raisonnements}
+\subsection{Modus ponens}
+\begin{equation*}
+(𝖯\myand(𝖯⇒𝖰))⟹𝖰
+\end{equation*}
+\subsection{Contraposition ou modus tollens}
+\begin{equation*}
+(¬𝖰⇒¬𝖯)⟹(𝖯⇒𝖰)
+\end{equation*}
+\subsection{Par l'absurde}
+\begin{equation*}
+𝖯\myand((𝖯\myand¬𝖰)⇒\myfalse)⟹𝖰
+\end{equation*}
+\subsection{Séparation}
+Le principe repose sur le théorème \ref{seq:refTheorem18} :
+\begin{equation*}
+((𝖯\myand𝖰)⇒𝖱)⟺(𝖯⇒(𝖰⇒𝖱))
+\end{equation*}
+\begin{equation*}
+((𝖯\myor𝖰)⇒𝖱)⟺((𝖯⇒𝖱)\myand(𝖰⇒𝖱))
+\end{equation*}
+\subsection{Contre-exemple}
+Sachant que
+\begin{equation*}
+¬(∀𝑥∈𝛺,\;𝖯(𝑥))⟺∃𝑥∈𝛺,\;¬𝖯(𝑥)
+\end{equation*}
+pour montrer que \(∀𝑥∈𝛺,\;𝖯(𝑥)\) est fausse, il suffit de trouver
+\(𝑥_0∈𝛺\) tel que \(𝖯(𝑥_0)\)
+est faux. \(𝑥_0\) est le contre-exemple.
+%
+\subsection{Disjonction des cas}
+Le principe repose sur
+\begin{equation*}
+∀𝑥∈\mathop{∪}\limits_{𝑖∈𝐼}𝛺_{𝑖}\ 𝖯(𝑥))⟺\mathop{∧}\limits_{𝑖∈𝐼}(∀𝑥∈𝛺_{𝑖}\;𝖯(𝑥))
+\end{equation*}
+La démonstration est adaptée à l'ensemble $𝛺_i$ étudié.
+
+\subsection{Syllogisme}
+\begin{equation*}
+∀𝑥\;(𝑥∈𝛺\myand𝛺{\subset}𝛺'⟹𝑥∈𝛺')
+\end{equation*}
+\subsection{Syllogisme disjonctif}
+\begin{equation*}
+((𝖯\myor𝖰)\myand¬𝖯)⟹𝖰
+\end{equation*}
+\subsection{Déduction}
+À compléter...
+
+\subsection{Récurrence}
+À compléter...
+
+\subsection{Descente}
+À compléter...
+
+\subsection{Abduction}
+\begin{remark}
+Ce n'est pas du tout une règle d'inférence logique mais c'est fondamental.
+\end{remark}
+\begin{equation*}
+((𝖯⇒𝖰)\myand𝖰)⟹𝖯
+\end{equation*}
+L'argument pour justifier un tel raisonnement est le suivant :
+si \(𝖰\) est une proposition complexe et s'il y a très peu de prémisses simples qui l'impliquent, il y a de forte chance que \(𝖯\) soit vrai.
+\subsection{Induction}
+\begin{remark}
+Ce n'est pas du tout une règle d'inférence logique.
+\end{remark}
+Passer du cas particulier au cas général : voir conjecturer...
+\begin{equation*}
+∃𝑥∈𝛺,\;𝖯(𝑥)⟹∀𝑥∈𝛺\;𝖯(𝑥)
+\end{equation*}
+Extension :
+\begin{equation*}
+∃𝛺'⊂𝛺, \; 𝛺'≠∅,\;\myand ∀𝑥∈𝛺'\;𝖯(𝑥)⟹∀𝑥∈𝛺\;𝖯(𝑥)
+\end{equation*}
+Cette proposition est vrai si \(𝛺'=𝛺\), pas toujours dans le cas contraire.
+Dans le doute, on peut se baser sur ce schéma si \(𝛺'\) est suffisamment grand.
+Cela peut être une aide pour trouver un raisonnement mathématique rigoureux,
+ou bien une aide à la prise de décision sans raisonnement mathématique rigoureux.
+Ce dernier cas intervient de manière essentielle dans la construction
+du raisonnement chez l'enfant et l'adolescent.

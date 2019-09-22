@@ -1,24 +1,10 @@
-# Compiled Object files
-*.o
-*.obj
+Style/*
+Content/Main/*
+!Content/Main/main.tex
+!Content/Main/Readme.md
+!Content/Main/preamble.sty
+Content/Content_base
+Content/Work/*
+!Content/Work/Readme.md
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
 
-# Compiled Static libraries
-*.a
-*.lib
-
-# Executables
-*.exe
-
-# DUB
-.dub
-docs.json
-__dummy.html
-docs/
-
-# Code coverage
-*.lst

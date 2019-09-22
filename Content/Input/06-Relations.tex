@@ -1,0 +1,197 @@
+% !TEX encoding = UTF-8
+% !TEX program = xelatex
+% !TEX root =../Main/main.tex
+
+\section{Relations}
+Relations d’ordre et relations d’équivalence.
+\subsection{Généralités}
+\begin{definition}
+[Relation binaire]
+Une \mykeyword{relation binaire} \(𝓡\) sur un ensemble \(𝐸\) est donnée par une partie
+\(Γ\) de \(𝐸×𝐸\). Pour deux éléments \(𝑥\) et \(𝑦\) de \(𝐸\),
+\(𝑥𝓡𝑦\) signifie que le couple \((𝑥,𝑦)\) est dans \(Γ\).
+
+\(𝑥𝓡𝑦\) est lu  : « \(𝑥\) est  en relation avec \(𝑦\) par \(𝓡\)». On omettra « par \(𝓡\) » si le contexte est
+suffisamment clair.
+\end{definition}
+%
+\begin{definition}
+[Relation binaire réciproque]
+À toute relation binaire \(𝓡\) sur un ensemble \(𝐸\) est associée la relation binaire réciproque
+\(𝓡'\) définie par
+\begin{equation*}
+𝑥𝓡'𝑦 \mybydef{⟺}𝑦𝓡𝑥
+\end{equation*}
+\end{definition}
+\begin{definition}
+[Réflexivité]
+Une relation binaire \(𝓡\) sur un ensemble \(𝐸\) est \mykeyword{réflexive} signifie que
+\begin{equation*}
+∀𝑥∈𝐸,\;𝑥𝓡𝑥
+\end{equation*}
+\end{definition}
+\begin{definition}
+[Symétrie]
+Une relation binaire \(𝓡\)sur un ensemble \(𝐸\) est \mykeyword{symétrique} signifie que
+\begin{equation*}
+∀(𝑥,𝑦)∈𝐸^2\;(𝑥𝓡𝑦⟹𝑦𝓡𝑥).
+\end{equation*}
+\end{definition}
+\begin{terminology}
+Dans le cas d'une relation symétrique,
+\(𝑥𝓡𝑦\) peut être lu «\(𝑥\) et \(𝑦\) sont en relation par \(𝓡\)».
+\end{terminology}
+\begin{definition}
+[Antisymétrie]
+Une relation binaire \(𝓡\) sur un ensemble \(𝐸\) est \mykeyword{antisymétrique} signifie que
+\begin{equation*}
+∀(𝑥,𝑦)∈𝐸^2\;(𝑥𝓡𝑦\myand𝑦𝓡𝑥⟹𝑥=𝑦).
+\end{equation*}
+\end{definition}
+\begin{definition}
+[Transitivité]
+Une relation binaire \(𝓡\) sur un ensemble \(𝐸\) est \mykeyword{transitive} signifie que
+\begin{equation*}
+∀(𝑥,𝑦,𝑧)∈𝐸^3\;(𝑥𝓡𝑦\myand𝑦𝓡𝑧⟹𝑥𝓡𝑧).
+\end{equation*}
+\end{definition}
+\subsection{Ordre}
+Voir le chapitre sur les corps totalement ordonnés.
+\subsection[Équivalence]{Équivalence}
+\subsubsection{Définitions}
+\begin{definition}
+[Équivalence]
+Une relation binaire est une \mykeyword{relation d'équivalence} signifie qu'elle est réflexive,
+symétrique et transitive.
+\end{definition}
+\begin{terminology}
+[Classe d'équivalence]
+Soit \(𝓡\) une relation d'équivalence sur \(𝐸\), et \(𝑥\) un élément de
+E. La \mykeyword{classe d'équivalence} de \(𝑥\) \mykeyword{modulo}
+\(𝓡\) est \(\bigl\{𝑦∈𝐸\mathbin{|}𝑥𝓡𝑦\bigr\}\).
+
+Elle est notée \(\overset{∙}{𝑥}\). On pourra omettre
+«\mykeyword{modulo} \(𝓡\)» s'il n'y a pas ambiguïté.
+Un élément d'une classe d'équivalence en est une \mykeyword{représentant}.
+\end{terminology}
+%
+\subsubsection{Propriétés}
+\begin{theorem}
+\label{seq:refTheorem0}
+
+La classe d'équivalence d'un élément contient au moins cet élément. En particulier, elle n'est pas vide.
+\end{theorem}
+\begin{proof}
+Immédiat par la réflexivité.
+\end{proof}
+\begin{theorem}
+\label{seq:refTheorem1}
+
+Pour une même relation d'équivalence, deux classes sont disjointes ou bien confondues.
+\end{theorem}
+\begin{proof}
+Soit \(ℛ\) une relation d'équivalence sur \(𝐸\), \(𝑥_0\) et \(𝑦_0\) deux éléments de
+\(E\). On a
+\begin{equation*}
+\overset{∙}{𝑥}_0∩\overset{∙}{𝑦}_0=∅\myxor\overset{∙}{𝑥}_0∩\overset{∙}{𝑦}_0≠∅
+\end{equation*}
+ Si \(\overset{∙}{𝑥}_0∩\overset{∙}{𝑦}_0≠∅\), soit \(𝑧_0\) élément
+commun.
+On a \(𝑥_0ℛ𝑧_0\) et \(𝑦_0ℛ𝑧_0\) donc \(𝑥_0ℛ𝑦_0\).
+Pour tout \(𝑥\) de \(\overset{∙}{𝑥}_0\),
+on a \(𝑥ℛ𝑥_0\) et \(𝑥_0ℛ𝑦_0\) donc \(𝑥ℛ𝑦_0\),
+\(𝑥\) est dans \(\overset{∙}{𝑦_0}\).
+Pour tout représentant \(𝑦\) de \(\overset{∙}{𝑦}_0\),
+on a \(𝑦ℛ𝑦_0\) et \(𝑦_0ℛ𝑥_0\) donc
+\(𝑦ℛ𝑥_0\), \(𝑦\) est dans \(\overset{∙}{𝑥}_0\). Ainsi, deux classes non disjointes sont
+confondues.
+
+Inversement, deux classes confondues ne sont pas disjointes puisqu'elles ne sont pas vides, ce qui donne
+\begin{equation*}
+\overset{∙}{𝑥}_0∩\overset{∙}{𝑦}_0≠∅⟺\overset{∙}{𝑥}_0=\overset{∙}{𝑦}_0
+\end{equation*}
+et le résultat.
+\end{proof}
+\begin{theorem}
+Toute classe d'équivalence est la classe d'équivalence de chacun de ses éléments.
+\end{theorem}
+\begin{proof}
+Soit \(ℛ\) une relation d'équivalence sur \(𝐸\), et \(𝑥_0\) un élément de E.
+Pour tout \(𝑥\) de \(\overset{∙}{𝑥}_0\),
+\(\overset{∙}{𝑥}\) et \(\overset{∙}{𝑥}_0\)
+ont en commun \(𝑥\) donc sont confondues.
+\end{proof}
+\begin{lemma}
+Soit \(𝓡\) une relation d'équivalence sur \(𝐸\), deux éléments de \(𝐸\) sont en relation
+si et seulement s'ils ont la même classe d'équivalence.
+\end{lemma}
+\begin{proof}
+On a
+\(𝑥𝓡𝑦⟺(𝑥∈\overset{∙}{𝑥}\myand𝑥∈\overset{∙}{𝑦})⟺\overset{∙}{𝑥}=\overset{∙}{𝑦}\).
+\end{proof}
+
+%
+\subsubsection{Projection canonique}
+\begin{definition}
+[Ensemble quotient]
+Soit \(𝓡\) une relation d'équivalence sur \(𝐸\). L'ensemble des classes d'équivalence est
+l'\mykeyword{ensemble quotient} de \(𝐸\) par \(𝓡\), noté \(𝐸⁄𝓡\).
+L'application de \(𝐸\) dans \(𝐸⁄𝓡\) qui à tout élément de \(𝐸\)
+associe sa classe d'équivalence est l'\mykeyword{application} (ou \mykeyword{projection})
+\mykeyword{canonique}.
+\end{definition}
+\begin{theorem}
+La projection canonique est surjective.
+\end{theorem}
+\begin{proof}
+En exercice...
+\end{proof}
+\begin{remark}
+les propriétés de 𝐸 qui ne dépendent que de la classe d'équivalence se
+transportent à l'ensemble quotient.
+\end{remark}
+\subsubsection{Partitions}
+\begin{theorem}
+Soit \(𝓡\) une relation d'équivalence sur \(𝐸\). Les classes d'équivalence définissent une partition de \(𝐸\).
+\end{theorem}
+\begin{proof}
+Par les lemmes \ref{seq:refTheorem0} et \ref{seq:refTheorem1}, les classes d'équivalences sont non
+vides et mutuellement disjointes. Comme tout élément de \(𝐸\) est dans sa classe d'équivalence, la réunion des classes est
+\(𝐸\).
+\end{proof}
+\begin{proposition}
+Toute partition de \(𝐸\) définit sur \(𝐸\) une relation d'équivalence dont les classes
+coïncident avec les éléments de la partition.
+\end{proposition}
+\begin{proof}
+Soit \(𝑃\) une partition de\textsubscript{ }𝐸. On pose
+\begin{equation*}
+𝑥ℛ𝑦 \mybydef{⟺}∃𝐹∈𝑃,\ (𝑥∈𝐹\myand𝑦∈𝐹)
+\end{equation*}
+À finir en exercice...
+\end{proof}
+\begin{theorem}
+[Relation et application]
+Étant donnée une application \(𝑓\) de \(𝛦\) dans \(𝐹\),
+\begin{equation*}
+𝑥𝓡𝑦 \mybydef{⟺}𝑓(𝑥)=𝑓(𝑦)
+\end{equation*}
+est une relation d'équivalence dans \(𝛦\).
+\end{theorem}
+\begin{proof}
+Pour appliquer le résultat précédent : \(\bigcup_{𝑦∈𝑓(𝛦)}\overset{-1}{𝑓}(𝑦)\) est une partition
+de \(𝛦\).
+\begin{enumerate}
+\item
+Tout \(𝑦\) de \(𝑓(𝛦)\) est un \(𝑓(𝑥)\), donc \(\overset{-1}{𝑓}(𝑦)\) contient \(𝑥\) et
+\(\overset{-1}{𝑓}(𝑦)≠∅\).
+\item
+Tout \(𝑥\) de \(𝛦\) est dans \(\overset{-1}{𝑓}(𝑓(𝑥))\). Or \(𝑓(𝑥)\) est dans \(𝑓(𝛦)\), donc
+\(\bigcup_{𝑦∈𝑓(𝛦)}?\overset{-1}{?}(𝑦)\), qui est une partie de \(𝛦\), contient
+\(\overset{-1}{𝑓}(𝑓(𝑥))\) et \(𝑥\). Donc \(𝐸=\bigcup_{𝑦∈𝑓(𝛦)}\overset{-1}{𝑓}(𝑦)\).
+\item
+Pour tous \(𝑦\) et \(𝑦'\) de \(𝑓(𝛦)\), si \(\overset{-1}{𝑓}(𝑦)∩\overset{-1}{𝑓}(𝑦')\) contient \(𝑥\) alors
+\(𝑓(𝑥)=𝑦=𝑦'\). Par contraposition, si \(𝑦\) et \(𝑦'\) sont différents,
+\(\overset{-1}{𝑓}(𝑦)∩\overset{-1}{𝑓}(𝑦')\) est vide.
+\end{enumerate}
+\end{proof}

@@ -1,0 +1,198 @@
+% !TEX program = xelatex
+% !TEX encoding = UTF-8
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The BOV math book
+% LaTeX Template
+%
+% Author:
+% Jérôme LAURENS (jerome.laurens@u-bourgogne.fr)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+
+\makeatletter
+\newcommand\BOVp@throot{../..}
+\newcommand\BOVp@thcontent{\BOVp@throot/Content}
+\newcommand\BOVp@thinput{\BOVp@thcontent/Input}
+\newcommand\BOVinput[1]{\input{\BOVp@thinput/#1}}
+\makeatother
+
+\RequirePackage{./preamble}
+
+\begin{document}
+
+\BOVinput{page-title.tex}
+\BOVinput{page-copyright.tex}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\usechapterimagefalse % If you don't want to include a chapter image, use this to toggle images off - it can be enabled later with \usechapterimagetrue
+
+\chapterimage{chapter_head_1.pdf} % Table of contents heading image
+
+\pagestyle{empty} % No headers
+
+\tableofcontents % Print the table of contents itself
+
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
+\pagestyle{fancy} % Print headers again
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+
+\BOVinput{Présentation.tex}
+
+\part{Cours}
+
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Raisonnements}
+\BOVinput{01-Raisonnement.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Ensembles}
+\BOVinput{02-Ensembles.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Applications}
+\BOVinput{03-Applications.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Nombres entiers naturels}
+\input{"../Input/04-Nombres\space entiers\space naturels.tex"}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Nombres entiers relatifs}
+\input{"../Input/05-Nombres\space entiers\space relatifs.tex"}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Relations}
+\BOVinput{06-Relations.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Nombres rationnels}
+%\BOVinput{Nombres rationnels.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Corps totalement ordonné}
+%\BOVinput{Corps totalement ordonné.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Nombres réels}
+%\BOVinput{Nombres réels.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Nombres décimaux}
+%\BOVinput{Nombres décimaux.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Nombres complexes}
+%\BOVinput{Nombres complexes.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Dénombrement}
+\BOVinput{12-Dénombrement.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Combinatoire}
+\BOVinput{13-Combinatoire.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Groupes}
+%\BOVinput{Groupes.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Arithmétique}
+%\BOVinput{Arithmétique.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Congruences}
+%\BOVinput{Congruences.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Polynômes}
+%\BOVinput{Polynômes.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Suites réelles}
+%\BOVinput{Suites réelles.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Fonctions de variable réelle}
+%\BOVinput{Fonctions de variable réelle.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Suites et séries de fonctions}
+%\BOVinput{Suites et séries de fonctions.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Calcul intégral}
+%\BOVinput{Calcul intégral.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Intégrale de Riemann}
+%\BOVinput{Intégrale de Riemann.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Équations différentielles}
+%\BOVinput{Équations différentielles.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Analyse asymptotique}
+%\BOVinput{Analyse asymptotique.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Espaces vectoriels}
+%\BOVinput{Espaces vectoriels.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Applications linéaires}
+%\BOVinput{Applications linéaires.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Matrices et déterminants}
+%\BOVinput{Matrices et déterminants.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Systèmes linéaires}
+%\BOVinput{Systèmes linéaires.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Applications multi linéaires}
+%\BOVinput{Applications multi linéaires.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Espaces euclidiens}
+%\BOVinput{Espaces euclidiens.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Topologie d’un EVN de dimension finie}
+%\BOVinput{Topologie d’un EVN de dimension finie.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Applications linéaires continues}
+%\BOVinput{Applications linéaires continues.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Calcul différentiel}
+%\BOVinput{Calcul différentiel.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Probabilités}
+\BOVinput{34-Probabilités.tex}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Variables aléatoires}
+\input{"../Input/35-Variables\space aléatoires.tex"}
+\chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter{Familles}
+%\BOVinput{Familles.tex}
+\end{document}
+
+
+\part{Annexes}
+%\input{../../Style/Help/demo.tex}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\chapter*{Bibliography}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Bibliography}}
+
+%------------------------------------------------
+
+\section*{Articles}
+\addcontentsline{toc}{section}{Articles}
+\printbibliography[heading=bibempty,type=article]
+
+%------------------------------------------------
+
+\section*{Books}
+\addcontentsline{toc}{section}{Books}
+\printbibliography[heading=bibempty,type=book]
+
+%----------------------------------------------------------------------------------------
+%	INDEX
+%----------------------------------------------------------------------------------------
+
+\cleardoublepage
+\phantomsection
+\setlength{\columnsep}{0.75cm}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
+\printindex
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
